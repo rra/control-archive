@@ -1,5 +1,6 @@
 From: Newsgroup Changes Report <rra@stanford.edu>
 Newsgroups: {$newsgroup}
+Followup-To: news.admin.hierarchies
 Subject: Newsgroup changes ({$start} to {$end})
 Approved: rra@stanford.edu
 
