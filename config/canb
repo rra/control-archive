@@ -1,0 +1,11 @@
+id: $Id$
+hierarchy: CANB
+groups: canb.*
+type: public
+description: "Canberra, Australia"
+sender: [ ausadmin@aus.news-admin.org ]
+contact: [ ausadmin@aus.news-admin.org ]
+url: "http://canb.news-admin.org/"
+pgp: yes
+key-id: ausadmin@aus.news-admin.org
+key-url: "http://aus.news-admin.org/ausadmin.asc"
