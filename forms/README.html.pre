@@ -280,8 +280,7 @@ can be forged, so don't let him rmgroup..."</P>
 normal authorization done by <I>control.conf</I>, use the action
 <B>pgp</B> in the fourth field, in addition to whatever action you
 want to happen.  For example, if you trust group-admin@isc.org
-(currently David Lawrence &lt;tale@isc.org&gt;, aka tale@uunet.uu.net,
-the author of this document) to manage groups in the "Big 8"
+to manage groups in the "Big 8"
 hierarchies, you could have lines like these (but don't use the
 backslash continuation, which I have used here for readability; keep
 it all on one line):</P>
@@ -521,7 +520,7 @@ listed.  The "Check also" references point to locations that should
 have identical public key blocks; it is best if you confirm the block
 listed here by checking against the others.</P>
 
-<P>The existence of key here only means that I, David Lawrence, trust the
+<P>The existence of key here only means that we trust the
 person who uses it to be a responsible maintainer of that particular
 hierarchy of groups.  You are solely responsible for deciding whether
 you will use the keys here at your own site.</P>
