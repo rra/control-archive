@@ -51,7 +51,8 @@ sub log {
 	openlog;
     }
     my $date = strftime ('%Y-%m-%d %T', gmtime);
-    print LOG "$date [$$] ", @_, "\n";
+    print LOG "$date [$$] ", @_, " (manual)\n";
+    print @_, "\n";
     LOG->flush;
 }
 
