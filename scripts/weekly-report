@@ -1,0 +1,11 @@
+#!/bin/sh
+# $Id$
+#
+# weekly-report -- Run control-summary to produce the news.lists.misc report.
+#
+# This is just a wrapper around control-summary to produce the weekly report
+# that's posted to news.lists.misc.  It calls control-summary with the right
+# flags to use the appropriate template and so forth.
+
+/work/usenet/config/scripts/control-summary -e '^(alt|free)\.' -p \
+    -f /work/usenet/config/templates/control-report -w
