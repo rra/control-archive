@@ -257,6 +257,7 @@ sub post {
     my $post = "From: Automated Log Scan <$SENDER>\n";
     $post   .= "Newsgroups: $group\n";
     $post   .= "Subject: Newsgroup changes ($start - $end)\n";
+    $post   .= "Approved: $SENDER\n";
     $post   .= "\n";
     $post   .= $report;
     if ($nopost) {
