@@ -4,7 +4,7 @@ groups: staroffice.*
 type: public
 description: "StarOffice business suite, Sun Microsystems, Inc."
 sender: [ news@stardivision.de ]
-contact: [ news@stardivision.de ]
+contact: [ news@starnews.sun.com ]
 pgp: yes
 key-id: staroffice.admin
 key-fingerprint: "C6 3E 81 6F 2A 19 D3 84  72 51 F9 1B E3 B9 B2 C9"
