@@ -68,7 +68,8 @@ sub parse_config {
 sub check_fingerprint {
     my ($config) = @_;
     return unless $$config{'key-fingerprint'};
-    my $print = `gpg --homedir=keyring --fingerprint $$config{'key-id'}`;
+    my $options = '--no-secmem-warning --homedir=keyring --fingerprint';
+    my $print = `gpg $options $$config{'key-id'}`;
     if ($? != 0) {
         warn "Failed to find fingerprint for $$config{'key-id'}\n";
         return;
