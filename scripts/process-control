@@ -454,7 +454,7 @@ sub newgroup {
     my @components = split (/\./, $group);
     for (@components) {
         if (length ($_) > 30) {
-            log "$id bad component in $control[1] (too long)";
+            log "$id bad component in $group (too long)";
             return;
         }
     }
