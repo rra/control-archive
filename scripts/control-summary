@@ -37,6 +37,7 @@ use strict;
 use vars qw($ACTIVE $ADDRESS $ID $LOGBASE $NEWSGROUP $SENDER);
 
 use Date::Parse qw(str2time);
+use DB_File ();
 use Fcntl qw(LOCK_SH);
 use Getopt::Long qw(GetOptions);
 use POSIX qw(strftime);
@@ -76,20 +77,29 @@ sub scan_log {
     my ($start, $end) = @_;
     my @logs = build_log_names ($start, $end);
     my @actions;
-    for (@logs) {
-        open (LOG, "$LOGBASE/$_")
-            or die "$0: cannot open $LOGBASE/$_: $!\n";
-        my $line;
-        while (defined ($line = <LOG>)) {
-            next unless /(\d+-\d+-\d+ \d+:\d+:\d+) \[\d+\] (ACTION: .*)/;
+    for my $log (@logs) {
+        open (LOG, "$LOGBASE/$log")
+            or die "$0: cannot open $LOGBASE/$log $!\n";
+        local $_;
+        while (<LOG>) {
+	    next unless /^(\d+-\d+-\d+ \d+:\d+:\d+) \[\d+\] (ACTION: .*)/;
             my ($date, $action) = ($1, $2);
-            $date = str2time ($date, 'UTC');
-            next if ($date < $start);
-            last if ($date > $end);
+            my $time = str2time ($date, 'UTC');
+            next if ($time < $start);
+            last if ($time > $end);
             push (@actions, "$date $action");
         }
     }
     return @actions;
+}
+
+# Takes in a newsgroup name and returns the right number of tabs after it for
+# an entry in a newsgroups file.
+sub tabs {
+    my $newsgroup = shift;
+    my $extra = int ((23 - length $newsgroup) / 8);
+    $extra = $extra > 0 ? $extra : 0;
+    return ("\t" x (1 + $extra));
 }
 
 # Given an exclusion pattern for groups and a list of actions, generate a
@@ -97,10 +107,12 @@ sub scan_log {
 # to get descriptions for the affected groups.
 sub report {
     my ($exclude, @actions) = @_;
+    if ($exclude) {
+        @actions = grep { (split ' ')[4] !~ /$exclude/ } @actions;
+    }
     my (@newgroup, @rmgroup, @changedesc, @changegroup);
     for (@actions) {
         my ($action, $group) = (split ' ')[3,4];
-        next if ($exclude && $group =~ /$exclude/);
         if    ($action eq 'newgroup')    { push (@newgroup,    $group) }
         elsif ($action eq 'rmgroup')     { push (@rmgroup,     $group) }
         elsif ($action eq 'changedesc')  { push (@changedesc,  $group) }
@@ -114,11 +126,12 @@ sub report {
     flock (LOCK, LOCK_SH) or die "$0: cannot lock $ACTIVE.lock: $!";
     tie (%db, 'DB_File', $ACTIVE) or die "$0: cannot tie $ACTIVE: $!";
 
-    # Trim out changes that have been reversed or are no longer applicable.
-    @newgroup    = grep { defined $db{$_} } @newgroup;
-    @changegroup = grep { defined $db{$_} } @changegroup;
-    @changedesc  = grep { defined $db{$_} } @changedesc;
-    @rmgroup     = grep { not defined $db{$_} } @rmgroup;
+    # Trim out changes that have been reversed or are no longer applicable
+    # and sort the groups.
+    @newgroup    = sort grep { defined $db{$_} } @newgroup;
+    @changegroup = sort grep { defined $db{$_} } @changegroup;
+    @changedesc  = sort grep { defined $db{$_} } @changedesc;
+    @rmgroup     = sort grep { not defined $db{$_} } @rmgroup;
 
     # Generate the report.
     my $report = '';
@@ -151,7 +164,7 @@ sub report {
     }
     if (@actions) {
         $report .= "\n" if $report;
-        $report .= "Raw action log:\n" . join ("\n", @actions);
+        $report .= "Raw action log:\n" . join ("\n", @actions, '');
     }
 
     # Close the database and return.
@@ -245,7 +258,7 @@ sub mail {
     } else {
         $mail  = "From: Automated Log Scan <$SENDER>\n";
         $mail .= "To: $address\n";
-        $mail .= "Subject: Newsgroup changes ($start - $end)\n";
+        $mail .= "Subject: Newsgroup changes ($start to $end)\n";
         $mail .= "\n";
         $mail .= $report;
     }
@@ -258,7 +271,7 @@ sub mail {
         open (MAIL, "| $sendmail -f $SENDER -t -oi -oem")
             or die "$0: cannot open a pipe to sendmail: $!\n";
     }
-    print MAIL $report;
+    print MAIL $mail;
     close MAIL;
     die "$0: sendmail exited with status ", ($? >> 8), "\n" if ($? != 0);
 }
@@ -285,7 +298,7 @@ sub post {
     } else {
         $post  = "From: Automated Log Scan <$SENDER>\n";
         $post .= "Newsgroups: $group\n";
-        $post .= "Subject: Newsgroup changes ($start - $end)\n";
+        $post .= "Subject: Newsgroup changes ($start to $end)\n";
         $post .= "Approved: $SENDER\n";
         $post .= "\n";
         $post .= $report;
@@ -346,9 +359,9 @@ my @actions = scan_log ($start, $end);
 if (@actions) {
     my $report = $raw ? join ("\n", @actions) : report ($exclude, @actions);
     if ($post) {
-        post ($report, $start, $end, $address, $template, $nomail);
+        post ($report, $start, $end, $newsgroup, $template, $nomail);
     } else {
-        mail ($report, $start, $end, $newsgroup, $template, $nomail);
+        mail ($report, $start, $end, $address, $template, $nomail);
     }
 }
 
