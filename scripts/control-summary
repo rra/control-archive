@@ -357,7 +357,12 @@ my @actions = scan_log ($start, $end);
 
 # If there's anything left, send the summary mail or post the message.
 if (@actions) {
-    my $report = $raw ? join ("\n", @actions) : report ($exclude, @actions);
+    my $report;
+    if ($raw) {
+        $report = join ("\n", @actions, '');
+    } else {
+        $report = report ($exclude, @actions);
+    }
     if ($post) {
         post ($report, $start, $end, $newsgroup, $template, $nomail);
     } else {
