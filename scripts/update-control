@@ -328,6 +328,23 @@ checkgroups in to the program; normally, one would instead save just the
 body of a checkgroups message in a file and then pipe it into
 B<update-control> as in the previous example.)
 
+=head1 FILES
+
+=over 4
+
+=item F</work/usenet/config/active.db>
+
+The database of active groups, updated as described above.  It is locked
+against simultaneous access by using fcntl locking on a file by the same
+name but with C<.lock> appended.
+
+=item F</work/usenet/config/log.%Y-%m>
+
+Where actions are logged.  %Y is replaced by the current four-digit year and
+%m by the current two digit month.
+
+=back
+
 =head1 SEE ALSO
 
 process-control(1)
