@@ -1,0 +1,164 @@
+From: tale@isc.org (David Lawrence)
+Date: Wed Oct 21 15:59:38 EDT 1998
+
+     GROUP CREATION POLICIES AT THE INTERNET SOFTWARE CONSORTIUM
+
+This document describes the policies by which the active and newsgroups
+files in this directory (ftp://ftp.isc.org/pub/usenet/CONFIG) are
+maintained.  It describes first the addition and removal of groups in
+hierarchies that are covered, and then discusses what happens when we
+become aware of a new hierarchy via a newgroup control message.
+
+While I am the administrator for the Big 8 hierarchies (comp,
+humanities, misc, news, rec, sci, soc and talk), it is my desire that
+the active and newsgroups files here be complete for all publicly
+available hierarchies.  To that end, I appreciate when discrepancies
+with other authoritative lists are pointed out to me.
+
+This message refers to "newgroup" and "rmgroup" control messages,
+which are special types of Usenet articles that add and remove groups,
+respectively.  My usage of this terminology implicitly includes
+"checkgroups", another type of special Usenet article that compares an
+entire list of groups with those carried by a server.  It also
+includes maintenance that I do in response to messages received not
+via the normal Usenet control messages, such as from a web site or
+through email.
+
+This document is expected to remain fairly static.  A separate file,
+HIERARCHY-NOTES, contains information about the handling of specific
+hierarchies and will be updated as necessary.
+
+HIERARCHY MAINTENANCE
+
+Where a central authority nominally exists for a hierarchy, I honor
+the newgroups and rmgroups issued by that authority.  For example, the
+group additions and removals done by Ed Hew for biz.*, or Richard
+Letts for uk.*, or Dave Kristofferson for bionet.*, are honored here
+as definitive.  You can see which email addresses are honored by
+looking at the control.ctl file in this directory, fully known as
+ftp://ftp.isc.org/pub/usenet/CONFIG/control.ctl.
+
+Where no nominal authority exists for a hierarchy, I usually carry any
+group within the hierarchy that has a proper newgroup command sent for
+it.  This is mediated somewhat by whether the control message was sent
+by an admin who clearly didn't understand what he was doing (as has
+frequently happened with Netscape Collabra admins), whether it was
+issued by someone who clearly seems to be out of his jurisdiction
+(such as when a non-Japanese domain is affixed to a newgroup in
+japan.*) or whether it appears that the control message was a forgery,
+purely malicious or otherwise not a serious request.  This can clearly
+be a subjective call, and when there is a grey area where it is
+difficult to tell whether the message is legitimate then I write the
+sender to discuss it.
+
+The "alt" and "free" hierarchies are special cases.  In each
+hierarchy, all newgroups are automatically executed regardless of
+the mediating factors named above, and all rmgroups are ignored.
+
+All newsgroup names consist of components, which are the elements of
+the name between the dots.  For example, "news.announce.newgroups" has
+three components, "news", "announce" and "newgroups.  I do not add
+groups that do not conform to the following standard for Usenet group
+names:
+
+  + a component MUST contain at least one letter
+  + a component MUST not contain uppercase letters
+  + a component MUST begin with a letter or digit
+  + sequences 'all' and 'ctl' MUST not be used as components
+  + the name must have at least two components
+  + the first component MUST begin with a letter
+  + the first component MUST not be "control" or "to".
+
+Those criteria are based on rules written by Henry Spencer for the
+Internet draft standard that is to replace RFC 1036.
+
+I use an additional criteria that is addressed by the standard but
+still a matter of some debate -- the limit on the length of a
+component.  The de facto limit was 14 octets for over a decade and a
+half.  It is currently proposed that this be lifted to a "soft" limit
+of 30 octets (eg, it is recommended that name components be kept under
+30 octets, but it would not be illegal to have an even longer
+component).  There has not been a lot of discussion on why that length
+was chosen, and to be conservative (since the limit may be lowered
+again), I am now allowing newsgroup name elements up to 20 characters.
+Entire newsgroup names are limited to 80 characters, rather than the
+soft limit of 72 characters proposed by the standard, because two
+existing non-joke groups have names longer than 72 characters.
+
+Control message issuers should know that I usually process
+"checkgroups" messages more quickly than requests whose pgp signatures
+failed or whose sender information did not match what I have in
+control.ctl.  I like it very much when the central administrator for a
+hierarchy issues a checkgroups once a month, because it helps me be
+sure that I have not fallen out of sync.
+
+NEW HIERARCHIES
+
+When I get a newgroup for a top level hierarchy that I do not have
+information about, I send the issuer a form message similar to the
+following, along with a copy of the newgroup we received:
+
+  Did you mean to forward this off-site?  If you did, please send me a
+  list of the groups in the hierarchy with appropriate newsgroups file
+  descriptions.  We would be happy to carry the hierarchy at the
+  Internet Software Consortium, which many sites around the world use
+  to manage their active files.  If you did not mean for this to get
+  out, please recheck your configuration and post a message to
+  news.admin.hierarchies about the accidental leakage of local control
+  messages.  Thanks.
+
+If the Message-ID is such that the newgroup was apparently created via
+INN's makegroup command (which has not shipped with INN for several
+releases now), I include this paragraph:
+
+  By the way, if you did not mean for it to go off-site then I strongly
+  recommend that you never use INN's "makegroup" to create groups.  Use
+  "ctlinnd newgroup" to make a group on your local server.
+
+If the body text or Distribution header are such that Collabra is
+implicated, I'll send this additional text:
+
+  By the way, if you did not mean for it to go off-site then I strongly
+  recommend that you never use the Netscape Collabra Server for creating
+  groups.  It has a nasty habit of sending control messages worldwide.
+
+More than half the time the person who sent it either never responds
+or responds that it should not have gotten out.  Sometimes the mail to
+the sender totally bounces.  For all of those situations I do not add
+the group.  For those rare occasions when I get an affirmative reply,
+I add the entire hierarchy per whatever they say is the entire set of
+valid groups within it.
+
+THE NEWSGROUPS FILE
+
+The newsgroups file is maintained by using the "For your newsgroups
+file:" lines from the individual newgroups that make each group, or by
+the entire list provided in a checkgroups message.
+
+As far as the format of the newsgroups file is concerned, there's a
+format I'd like to see for each line.  Unfortunately I have not had
+time in a very long time to fix up the lines that are being
+automatically included from newgroup messages.  This information is
+provided so that control message senders can craft better control
+messages.
+
+Here's what I would like to see for each line:
+
+group.name<tabs>description.[ (Moderated)]
+
+There should be one or more hard tabs (assume 8 column tab stops) to
+get to a description; if the group.name is more than 24 characters,
+just one tab.  The description should start with a capital and end in
+a period and not be more than 56 characters (80 - 24) long.  If the
+group is moderated, it should have " (Moderated)" following the
+period, not counted as part of the length of the description.  The
+goal is to keep the total line under 80 columns, so if the group name
+is 25 characters long you'd have eight less description characters to
+work with.
+
+Some over-long descriptions could be made to easily fit the length by
+dropping "puff" phrases like "Discussion of" which don't meaningfully
+contribute to the description.  Others are usually pretty easy to get
+to no more than column eighty, except when the group names start
+getting really long.  Hopefully then the group name itself contains
+quite a bit of description.
