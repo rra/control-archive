@@ -13,7 +13,9 @@
 ##  two files will be kept in sync.  Please refer to the latest version of
 ##  this file for the most up-to-date hierarchy control information and
 ##  please use the latest version if you intend to carry all hierarchies.
-##  You may wish to change the policy for alt.*.
+##
+##  You may wish to review and change the policy for alt.*, free.*, and
+##  it-alt.* below before using this file on your server.
 ##
 ##  Format:
 ##     <message>:<from>:<newsgroups>:<action>
