@@ -55,7 +55,7 @@ if ($help) {
     $version =~ s/(\S+)$/($1)/;
     die $version, "\n";
 }
-my $address ||= $ADDRESS;
+$address ||= $ADDRESS;
 my $time = time - 60 * 60 * 24;
 if ($ARGV[0]) {
     $time = str2time ($ARGV[0])
@@ -90,7 +90,7 @@ if (@actions) {
     } else {
         open (MAIL, '>&STDOUT') or die "$0: cannot dup stdout: $!\n";
     }
-    print MAIL "From: Automated Log Scan <rra@stanford.edu>\n";
+    print MAIL "From: Automated Log Scan <rra\@stanford.edu>\n";
     print MAIL "To: $address\n";
     print MAIL "Subject: Newsgroup changes for $day\n";
     print MAIL "\n";
