@@ -8,4 +8,4 @@ url: "http://www.usenet.no/"
 pgp: yes
 key-id: no-hir-control
 key-url: "http://www.usenet.no/pgp-key.txt"
-admin-group: no.news.diverse
+admin-group: no.usenet.admin
