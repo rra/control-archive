@@ -8,3 +8,4 @@ url: "http://news.nl.linux.org/doc/nlo.html"
 pgp: yes
 key-id: nlo.newsgroups
 key-fingerprint: "63 DC B2 51 0A F3 DD 72  C2 BD C6 FD C1 C5 44 CF"
+key-url: "http://news.nl.linux.org/doc/nlo-3.html#ss3.1"
