@@ -19,7 +19,7 @@ $ACTIVE = '/work/usenet/config/active.db';
 $CONTROL = '/work/usenet/config/control.ctl';
 
 # The directory in which to look for log files.
-$LOG = '/work/usenet/config';
+$LOGS = '/work/usenet/config';
 
 # Directory in which to create the active and newsgroups files.
 $ROOT = '/work/usenet/config/export';
@@ -31,7 +31,7 @@ $ROOT = '/work/usenet/config/export';
 require 5.005;
 
 use strict;
-use vars qw($ACTIVE $CONTROL $ID $LOG $ROOT);
+use vars qw($ACTIVE $CONTROL $ID $LOGS $ROOT);
 
 use DB_File ();
 use Fcntl qw(LOCK_EX);
@@ -99,9 +99,9 @@ copy ($CONTROL, "$ROOT/control.ctl");
 unless (-d "$ROOT/LOGS") {
     mkdir "$ROOT/LOGS" or die "$0: cannot mkdir $ROOT/LOGS: $!\n";
 }
-opendir (LOGS, $LOG) or die "$0: cannot opendir $LOG: $!\n";
+opendir (LOGS, $LOGS) or die "$0: cannot opendir $LOGS: $!\n";
 for (grep { /^log\.\d{4}-\d\d$/ } readdir LOGS) {
-    copy ("$LOG/$_", "$ROOT/LOGS/$_");
+    copy ("$LOGS/$_", "$ROOT/LOGS/$_");
     chmod 0664, "$ROOT/LOGS/$_";
 }
 closedir LOGS;
