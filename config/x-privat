@@ -1,0 +1,13 @@
+id: $Id$
+hierarchy: X-PRIVAT
+groups: x-privat.*
+type: public
+description: Italian
+sender: [ dmitry@x-privat.org ]
+contact: [ dmitry@x-privat.org ]
+url: "http://www.x-privat.org/"
+pgp: yes
+key-id: dmitry@x-privat.org
+key-fingerprint: 9B0A 7E68 2780 C796  476B 0390 5105 6843
+key-url: "http://www.x-privat.org/dmitry.asc"
+admin-group: x-privat.newsgroup
