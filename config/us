@@ -3,4 +3,7 @@ hierarchy: US
 groups: us.*
 type: public
 description: "United States of America"
-sender: [ uscontrol@earthlink.net ]
+sender: [ control@usenetnews.us ]
+contact: [ admin@usenetnews.us ]
+url: "http://www.usenetnews.us/"
+admin-group: us.config
