@@ -29,8 +29,9 @@ $GPGV = '/usr/bin/gpgv';
 # The full path to the GnuPG keyring.
 $KEYRING = '/work/usenet/config/keyring/pubring.gpg';
 
-# The log file into which to record actions taken.
-$LOG = '/work/usenet/config/log';
+# The log file into which to record actions taken.  The current year and
+# month will be appended.
+$LOGBASE = '/work/usenet/config/log';
 
 # The temporary directory to use for PGP verification.
 $TMPDIR = '/work/usenet/config/tmp';
@@ -42,7 +43,8 @@ $TMPDIR = '/work/usenet/config/tmp';
 require 5.005;
 
 use strict;
-use vars qw($ACTIVE $ARCHIVE $CONTROL $GPGV $ID $KEYRING $LOG $TMPDIR);
+use vars qw($ACTIVE $ARCHIVE $CONTROL $GPGV $ID $KEYRING $LOG $LOGBASE
+            $TMPDIR);
 use subs qw(log);
 
 use Compress::Zlib qw(gzopen);
@@ -57,12 +59,18 @@ use POSIX qw(strftime);
 
 # Open the log file.
 sub openlog {
+    $LOG = $LOGBASE . '.' . strftime ('%Y-%m', gmtime);
     open (LOG, ">> $LOG") or die "$0: can't open $LOG: $!\n";
 }
 
 # Log a message to the log file.
 sub log {
-    my $date = strftime('%Y-%m-%d %T', gmtime);
+    my $log = $LOGBASE . '.' . strftime ('%Y-%m', gmtime);
+    if ($log ne $LOG) {
+        close LOG;
+	openlog;
+    }
+    my $date = strftime ('%Y-%m-%d %T', gmtime);
     print LOG "$date [$$] ", @_, "\n";
     LOG->flush;
 }

@@ -16,7 +16,7 @@ $ID = q$Id$;
 $ACTIVE = '/work/usenet/config/active.db';
 
 # The log file into which to record actions taken.
-$LOG = '/work/usenet/config/log';
+$LOGBASE = '/work/usenet/config/log';
 
 ##############################################################################
 # Modules and declarations
@@ -25,7 +25,7 @@ $LOG = '/work/usenet/config/log';
 require 5.006;
 
 use strict;
-use vars qw($ACTIVE $ID $LOG);
+use vars qw($ACTIVE $ID $LOG $LOGBASE);
 use subs qw(log);
 
 use DB_File ();
@@ -39,15 +39,20 @@ use POSIX qw(strftime);
 
 # Open the log file.
 sub openlog {
+    $LOG = $LOGBASE . '.' . strftime ('%Y-%m', gmtime);
     open (LOG, ">> $LOG") or die "$0: can't open $LOG: $!\n";
 }
 
-# Log a message to the log file and to standard out.
+# Log a message to the log file.
 sub log {
-    my $date = strftime('%Y-%m-%d %T', gmtime);
-    print LOG "$date [$$] ", @_, " (manual)\n";
+    my $log = $LOGBASE . '.' . strftime ('%Y-%m', gmtime);
+    if ($log ne $LOG) {
+        close LOG;
+	openlog;
+    }
+    my $date = strftime ('%Y-%m-%d %T', gmtime);
+    print LOG "$date [$$] ", @_, "\n";
     LOG->flush;
-    print @_, "\n";
 }
 
 ##############################################################################
