@@ -18,6 +18,9 @@ $ADDRESS = 'usenet-config@isc.org';
 # Directory in which to find log files that record the actions taken.
 $LOGBASE = '/work/usenet/config';
 
+# The address from which the reports are mailed.
+$SENDER = 'rra@stanford.edu';
+
 ##############################################################################
 # Modules and declarations
 ##############################################################################
@@ -25,7 +28,7 @@ $LOGBASE = '/work/usenet/config';
 require 5.005;
 
 use strict;
-use vars qw($ADDRESS $ID $LOGBASE);
+use vars qw($ADDRESS $ID $LOGBASE $SENDER);
 
 use Date::Parse qw(str2time);
 use Getopt::Long qw(GetOptions);
@@ -85,12 +88,12 @@ while (<LOG>) {
 # If there's anything left, send the summary mail to usenet-config.
 if (@actions) {
     if ($mail) {
-        open (MAIL, '| /usr/lib/sendmail -f rra@stanford.edu -t -oi -oem')
+        open (MAIL, '| /usr/lib/sendmail -f $SENDER -t -oi -oem')
             or die "$0: cannot open a pipe to sendmail: $!\n";
     } else {
         open (MAIL, '>&STDOUT') or die "$0: cannot dup stdout: $!\n";
     }
-    print MAIL "From: Automated Log Scan <rra\@stanford.edu>\n";
+    print MAIL "From: Automated Log Scan <$SENDER>\n";
     print MAIL "To: $address\n";
     print MAIL "Subject: Newsgroup changes for $day\n";
     print MAIL "\n";
@@ -98,3 +101,67 @@ if (@actions) {
     close MAIL;
     die "$0: sendmail exited with status ", ($? >> 8), "\n" if ($? != 0);
 }
+
+##############################################################################
+# Documentation
+##############################################################################
+
+=head1 NAME
+
+daily-summary - Send a daily summary of control activity
+
+=head1 SYNOPSIS
+
+daily-summary [B<-hmv>] [B<-a> I<address>]
+
+=head1 DESCRIPTION
+
+B<daily-summary> either prints out or mails a summary of one day's worth of
+activity in an active newsgroup database maintained by B<process-control>
+and B<update-control>, taken from their log files.  Note that all log file
+times, and therefore all day boundaries, are in UTC, not in the local time
+zone.
+
+=head1 OPTIONS
+
+=over 4
+
+=item B<-a> I<address>, B<--address>=I<address>
+
+Send the message to I<address> rather than the default of
+usenet-config@isc.org.  If you are using this program for your own purposes,
+please either use this option or change the default address at the top of
+this script.
+
+=item B<-h>, B<--help>
+
+Print out this documentation (which is done simply by feeding the script to
+C<perldoc -t>).
+
+=item B<-m>, B<--mail>
+
+Send the output in mail rather than just printing it to standard output.  By
+default this sends to usenet-config@isc.org, but see the B<-a> option.
+
+=item B<-v>, B<--version>
+
+Print out the version of B<daily-summary> and exit.
+
+=back
+
+=head1 SEE ALSO
+
+process-control(1), update-control(1)
+
+=head1 AUTHOR
+
+Russ Allbery <rra@stanford.edu>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2003 by Russ Allbery <rra@stanford.edu>
+
+This program is free software; you may redistribute it and/or modify it
+under the same terms as Perl itself.
+
+=cut
