@@ -1,0 +1,9 @@
+id: $Id$
+hierarchy: BELWUE
+groups: belwue.*
+type: public
+description: "Baden-Wuerttemberg, Germany"
+sender: [ news@news.belwue.de ]
+pgp: yes
+key-id: belwue-hier-control
+admin-group: belwue.infos
