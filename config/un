@@ -4,7 +4,6 @@ groups: un.*
 type: public
 description: "The United Nations"
 sender: [ news@news.itu.int ]
-url: "http://www.itu.int/Conferences/un/"
 pgp: yes
 key-id: ungroups@news.itu.int
 admin-group: un.public.usenet.admin
