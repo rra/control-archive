@@ -105,3 +105,79 @@ for (grep { /^log\.\d{4}-\d\d$/ } readdir LOGS) {
     chmod 0664, "$ROOT/LOGS/$_";
 }
 closedir LOGS;
+
+##############################################################################
+# Documentation
+##############################################################################
+
+=head1 NAME
+
+export-control - Export the newsgroup database as an active file
+
+=head1 SYNOPSIS
+
+export-control
+
+=head1 DESCRIPTION
+
+This program takes the database maintained by B<process-control> and
+B<update-control> and exports it as an active and newsgroups file in a
+format suitable for import into news software or for use with tools like
+actsync(8).
+
+B<export-control> generates an active file numered so that all of the groups
+are empty and a standard-format newsgroups file as well as versions of both
+files compressed with B<gzip> and B<bzip2>.  At the same time, it also
+copies the current F<control.ctl> file into the export directory and copies
+any log files that it finds into a F<LOGS> subdirectory.
+
+It is meant to be run periodically from cron to update a directory that is
+exported to other systems somehow (such as by a web server).
+
+=head1 FILES
+
+=over 4
+
+=item F</work/usenet/config/active.db>
+
+The database of active groups, updated as described above.  It is locked
+against simultaneous access by using fcntl locking on a file by the same
+name but with C<.lock> appended.
+
+=item F</work/usenet/config/control.ctl>
+
+The F<control.ctl> file used by B<process-control> to determine which
+control messages should be applied to the active newsgroups database.  Just
+copied into the export directory by B<export-control>.
+
+=item F</work/usenet/config/export>
+
+The export directory into which the generated active and newsgroups files
+are put.  Logs are copied into a LOGS subdirectory.  Other files in this
+directory are left untouched.
+
+=item F</work/usenet/config/log.%Y-%m>
+
+Where actions are logged by B<process-control> and B<update-control>.  %Y is
+replaced by the current four-digit year and %m by the current two digit
+month.  B<export-control> scans for any files fitting this name pattern and
+copies them into a LOGS subdirectory of the export directory.
+
+=back
+
+=head1 SEE ALSO
+
+process-control(1), update-control(1)
+
+=head1 AUTHOR
+
+Russ Allbery <rra@stanford.edu>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2003 by Russ Allbery <rra@stanford.edu>
+
+This program is free software; you may redistribute it and/or modify it
+under the same terms as Perl itself.
+
+=cut
