@@ -7,4 +7,4 @@ sender: [ ffm.admin@arcor.de ]
 url: "http://ffm.arcornews.de/"
 pgp: yes
 key-id: ffm.admin
-key-url: "http://ffm.arcornews.de/"
+key-url: "ftp://ftp.arcor-online.net/pub/news/PGPKEY.FFM"
