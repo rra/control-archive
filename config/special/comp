@@ -8,7 +8,7 @@ newgroup:group-admin@isc.org:*:drop
 newgroup:tale@*uu.net:*:drop
 rmgroup:group-admin@isc.org:*:drop
 rmgroup:tale@*uu.net:*:drop
-checkgroups:group-admin@isc.org:*:verify-news.announce.newgroups
+checkgroups:group-admin@isc.org:comp.*|humanities.*|misc.*|news.*|rec.*|sci.*|soc.*|talk.*:verify-news.announce.newgroups
 newgroup:group-admin@isc.org:comp.*|misc.*:verify-news.announce.newgroups
 newgroup:group-admin@isc.org:humanities.*:verify-news.announce.newgroups
 newgroup:group-admin@isc.org:news.*|rec.*|sci.*:verify-news.announce.newgroups
