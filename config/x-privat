@@ -10,4 +10,4 @@ pgp: yes
 key-id: dmitry@x-privat.org
 key-fingerprint: "9B 0A 7E 68 27 80 C7 96  47 6B 03 90 51 05 68 43"
 key-url: "http://www.x-privat.org/dmitry.asc"
-admin-group: x-privat.newsgroup
+admin-group: x-privat.info
