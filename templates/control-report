@@ -1,0 +1,50 @@
+From: Automated Log Scan <rra@stanford.edu>
+Newsgroups: {$newsgroup}
+Subject: Newsgroup changes ({$start} to {$end})
+Approved: rra@stanford.edu
+
+Over the past week, the following changes have been made to the list of
+Usenet newsgroups maintained at <ftp://ftp.isc.org/pub/usenet/CONFIG/>.
+This list is maintained via automatic processing of control messages as
+explained by the files in that directory.  For more information, see the
+end of this message.
+
+                      ------------------------------
+
+{$report}
+                      ------------------------------
+
+This report contains all changes to managed newsgroup hierarchies for
+which there are control message processing rules in the control.ctl file
+at:
+
+    <ftp://ftp.isc.org/pub/usenet/CONFIG/control.ctl>
+
+The control messages are processed according to the rules specified in:
+
+    <ftp://ftp.isc.org/pub/usenet/CONFIG/README>
+
+"Managed" in the above means that changes to alt.* and free.* are
+specifically excluded from this report (but included in the maintained
+newsgroup lists) because there is too much churn in those hierarchies and
+too much noise in the report.  Similar unmanaged hierarchies may be
+excluded in the future, should they cause similar problems.  This report
+will not be modified to include alt.* and free.*, but anyone else who
+wishes could produce a more inclusive report from the log files in:
+
+    <ftp://ftp.isc.org/pub/usenet/CONFIG/LOGS/>
+
+It is the intent of this archive and report to include every public Usenet
+hierarchy for which verifiable control messages are sent.  If you know of
+a public Usenet hierarchy which is not represented in this report or in
+the Usenet newsgroup lists and have the details on how to validate control
+messages for that hierarchy, please mail usenet-config@isc.org and let us
+know the details.  (If no control messages are being issued for that
+hierarchy, someone should start!)
+
+More information about Usenet hierarchy maintenance is at:
+
+    <http://www.eyrie.org/~eagle/faqs/usenet-hier.html>
+
+If you have any other questions about this report after reading the README
+file mentioned above, please mail usenet-config@isc.org.
