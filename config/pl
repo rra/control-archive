@@ -7,4 +7,5 @@ sender: [ michalj@*fuw.edu.pl newgroup@usenet.pl ]
 url: "http://www.ict.pwr.wroc.pl/doc/news-pl-new-site-faq.html"
 pgp: yes
 key-id: pl.announce.newgroups
+key-url: "http://www.usenet.pl/doc/news-pl-new-site-faq.html#pgp"
 admin-group: pl.news.admin
