@@ -9,5 +9,5 @@ url: "http://abg.news-kiste.de/"
 pgp: yes
 key-id: abgadmin@abg.news-kiste.de
 key-url: "http://abg.news-kiste.de/abgadmin.asc"
-key-fingerprint: "7D 18 DB E7 5B EB 0D 34  C1 89 5D 45 84 86 D3 A8"
+key-fingerprint: "17 04 9C 48 D7 D7 9C B9  56 9E 5F 64 3D F0 A2 4B"
 admin-group: abg.admin
