@@ -1,0 +1,14 @@
+## IT-ALT (Alternate Italian)
+#
+# There is no one official control message issuer for the it-alt.*
+# hierarchy, so this file doesn't choose any particular one.  Several
+# different people issue control messages for this hierarchy, which may
+# or may not agree, and sites carrying this hierarchy are encouraged to
+# pick one and add it below.
+#
+# Newgroup and removal requests are to be posted to it-alt.config.  A list
+# of people issuing PGP/GPG signed control messages is available in a
+# periodic posting to news.admin.hierarchies and it-alt.config.
+#
+newgroup:*:it-alt.*:drop
+rmgroup:*:it-alt.*:drop
