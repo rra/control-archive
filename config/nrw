@@ -1,0 +1,13 @@
+id: $Id$
+hierarchy: NRW
+groups: nrw.*
+type: public
+description: "Northrine-Westfalia, Germany"
+sender: [ moderator@nrw.usenetverwaltung.de ]
+contact: [ moderator@nrw.usenetverwaltung.de ]
+url: "http://nrw.usenetverwaltung.de/"
+pgp: yes
+key-id: moderator@nrw.usenetverwaltung.de
+key-fingerprint: "13 4A 80 FE D6 34 B4 64  AF 32 08 3F 62 0E B1 E2"
+key-url: "http://nrw.usenetverwaltung.de/pgp/nrw.asc"
+admin-group: nrw.admin.announce
