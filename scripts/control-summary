@@ -118,6 +118,15 @@ sub report {
     if ($exclude) {
         @actions = grep { (split ' ')[4] !~ /$exclude/ } @actions;
     }
+
+    # There are no descriptions maintained for this hierarchy.  This is a
+    # hack; fix it later.
+    @actions = grep {
+        my ($action, $group) = (split ' ')[3,4];
+        $group !~ /^microsoft\./ || $action ne 'changedesc';
+    } @actions;
+
+    # Sort the actions out into their own lists.
     my (@newgroup, @rmgroup, @changedesc, @changegroup);
     for (@actions) {
         my ($action, $group) = (split ' ')[3,4];
