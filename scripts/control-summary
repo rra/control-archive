@@ -40,6 +40,7 @@ use Date::Parse qw(str2time);
 use Fcntl qw(LOCK_SH);
 use Getopt::Long qw(GetOptions);
 use POSIX qw(strftime);
+use Text::Template ();
 
 ##############################################################################
 # Data gathering
@@ -223,12 +224,31 @@ sub parse_date {
 ##############################################################################
 
 # Send an e-mail report.  Takes the text report, the start and end times, the
-# e-mail address to mail the report to, and a flag saying whether to just
-# print the output to standard output.
+# e-mail address to mail the report to, a template (if any), and a flag saying
+# whether to just print the output to standard output.
 sub mail {
-    my ($report, $start, $end, $address, $nomail) = @_;
+    my ($report, $start, $end, $address, $template, $nomail) = @_;
     $start = strftime ('%Y-%m-%d', gmtime $start);
     $end   = strftime ('%Y-%m-%d', gmtime $end);
+    my $mail;
+    if ($template) {
+        my $form = Text::Template->new (TYPE => 'FILE', SOURCE => $template);
+        my $variables = { start   => $start,
+                          end     => $end,
+                          address => $address,
+                          sender  => $SENDER,
+                          report  => $report };
+        $mail = $form->fill_in (HASH => $variables);
+        unless (defined $mail) {
+            die "$0: failed to fill in template: $Text::Template::ERROR\n";
+        }
+    } else {
+        $mail  = "From: Automated Log Scan <$SENDER>\n";
+        $mail .= "To: $address\n";
+        $mail .= "Subject: Newsgroup changes ($start - $end)\n";
+        $mail .= "\n";
+        $mail .= $report;
+    }
     if ($nomail) {
         open (MAIL, '>&STDOUT') or die "$0: cannot dup stdout: $!\n";
     } else {
@@ -238,28 +258,38 @@ sub mail {
         open (MAIL, "| $sendmail -f $SENDER -t -oi -oem")
             or die "$0: cannot open a pipe to sendmail: $!\n";
     }
-    print MAIL "From: Automated Log Scan <$SENDER>\n";
-    print MAIL "To: $address\n";
-    print MAIL "Subject: Newsgroup changes ($start - $end)\n";
-    print MAIL "\n";
     print MAIL $report;
     close MAIL;
     die "$0: sendmail exited with status ", ($? >> 8), "\n" if ($? != 0);
 }
 
 # Post a report.  Takes the text report, the start and end times, the
-# newsgroup or newsgroups to post the report to, and a flag saying whether to
-# just print the output to standard output.
+# newsgroup or newsgroups to post the report to, a template (if any), and a
+# flag saying whether to just print the output to standard output.
 sub post {
-    my ($report, $start, $end, $group, $nopost) = @_;
+    my ($report, $start, $end, $group, $template, $nopost) = @_;
     $start = strftime ('%Y-%m-%d', gmtime $start);
     $end   = strftime ('%Y-%m-%d', gmtime $end);
-    my $post = "From: Automated Log Scan <$SENDER>\n";
-    $post   .= "Newsgroups: $group\n";
-    $post   .= "Subject: Newsgroup changes ($start - $end)\n";
-    $post   .= "Approved: $SENDER\n";
-    $post   .= "\n";
-    $post   .= $report;
+    my $post;
+    if ($template) {
+        my $form = Text::Template->new (TYPE => 'FILE', SOURCE => $template);
+        my $variables = { start     => $start,
+                          end       => $end,
+                          newsgroup => $group,
+                          sender    => $SENDER,
+                          report    => $report };
+        $post = $form->fill_in (HASH => $variables);
+        unless (defined $post) {
+            die "$0: failed to fill in template: $Text::Template::ERROR\n";
+        }
+    } else {
+        $post  = "From: Automated Log Scan <$SENDER>\n";
+        $post .= "Newsgroups: $group\n";
+        $post .= "Subject: Newsgroup changes ($start - $end)\n";
+        $post .= "Approved: $SENDER\n";
+        $post .= "\n";
+        $post .= $report;
+    }
     if ($nopost) {
         print $post;
     } else {
@@ -280,8 +310,8 @@ my $fullpath = $0;
 $0 =~ s%.*/%%;
 
 # Parse command-line options.
-my ($address, $exclude, $newsgroup, $help, $nomail, $post, $raw, $weekly,
-    $version);
+my ($address, $exclude, $newsgroup, $help, $nomail, $post, $raw, $template,
+    $weekly, $version);
 Getopt::Long::Configure ('bundling');
 GetOptions ('address|a=s'          => \$address,
             'exclude|e=s'          => \$exclude,
@@ -290,6 +320,7 @@ GetOptions ('address|a=s'          => \$address,
             'dry-run|just-print|n' => \$nomail,
             'post|p'               => \$post,
             'raw|r'                => \$raw,
+            'template|t=s'         => \$template,
             'weekly|w'             => \$weekly,
             'version|v'            => \$version) or exit 1;
 if ($help) {
@@ -315,9 +346,9 @@ my @actions = scan_log ($start, $end);
 if (@actions) {
     my $report = $raw ? join ("\n", @actions) : report ($exclude, @actions);
     if ($post) {
-        post ($report, $start, $end, $address, $nomail);
+        post ($report, $start, $end, $address, $template, $nomail);
     } else {
-        mail ($report, $start, $end, $newsgroup, $nomail);
+        mail ($report, $start, $end, $newsgroup, $template, $nomail);
     }
 }
 
@@ -332,7 +363,7 @@ control-summary - Send a summary report of control activity
 =head1 SYNOPSIS
 
 control-summary [B<-hnprwv>] [B<-a> I<address>] [B<-g> I<newsgroup>]
-[[I<start>] I<date>]
+[B<-t> I<template>] [[I<start>] I<date>]
 
 =head1 DESCRIPTION
 
@@ -389,6 +420,24 @@ script, so be careful with moderated groups.
 
 Don't format the report and include the newsgroup descriptions.  Instead,
 just print out the actions from the logs.
+
+=item B<-t> I<template, B<--template>=I<template>
+
+Rather than using the simple mail or news message format defined in the
+script, generate the mail or news message from I<template>.  This template
+will be processed by Text::Template and should follow its syntax for
+embedded code blocks and variables (basically by enclosing Perl expressions
+in {} and referring to variables as normal in Perl code).
+
+The following variables will be set:
+
+    $start      The starting date of the report as YYYY-MM-DD.
+    $end        The ending date of the report as YYYY-MM-DD.
+    $address    The address to send the message, for mail reports.
+    $newsgroup  The newsgroup to which to post the message, for posts.
+    $report     The text of the report, affected by the --raw flag.
+
+C<$address> and C<$newsgroup> are affected by the B<-a> and B<-g> flags.
 
 =item B<-w>, B<--weekly>
 
