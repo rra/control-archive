@@ -1,49 +1,66 @@
-                       SPECIAL HIERARCHY NOTES
+                         SPECIAL HIERARCHY NOTES
+
+This file is no longer being updated.  I (Russ Allbery) simply don't have
+the time, given the volume of control messages that flow by these days.
+At some point, it would be good to extract the information in here about
+private and defunct hierarchies and combine it with the hierarchies FAQ to
+produce a more comprehensive guide to Usenet hierarchies.  If someone is
+looking for an interesting project in Usenet archeology, they may find
+that one interesting.
+
+The remainder of this file are the notes that tale maintained when he was
+maintaining the control message archive and active newsgroup database.
+For the remainder of this file, I refers to tale.
+
+The last update of this file was in May of 2001, but I believe the last
+comprehensive work on maintaining it stopped somewhat earlier.  Most of
+the information here dates from the 1990s.
+
 
 This file contains information about the handling of particular
-hierarchies.  To aid in searching for a particular entry, all top
-level names are flush left with ".*" appended.  I have information
-about many more hierarchies than these, but have not yet had time
-to add it.
+hierarchies.  To aid in searching for a particular entry, all top level
+names are flush left with ".*" appended.  I have information about many
+more hierarchies than these, but have not yet had time to add it.
 
-================================================================
+==========================================================================
+
 The following is a list of hierarchies that I know to be private
 hierarchies; that is, the administrators in charge of them have
-specifically requested that they do not wish the hierarchy to appear
-in the ISC list, and often don't want it to appear anywhere except
-their own servers.
+specifically requested that they do not wish the hierarchy to appear in
+the ISC list, and often don't want it to appear anywhere except their own
+servers.
 
 alab.*
-  This hierarchy is for a department at the National Chiao Tung
-  University in Hsinchu, Taiwan.  Contact pcyu@alab.ee.nctu.edu.tw
-  (Pang-Cheng Yu) for more information.
+  This hierarchy is for a department at the National Chiao Tung University
+  in Hsinchu, Taiwan.  Contact pcyu@alab.ee.nctu.edu.tw (Pang-Cheng Yu)
+  for more information.
 apana.*
   Private hierarchy for the Australian Public Access Network Association.
-  Contact "Garry R. Ford" <garry@merddyn.apana.org.au> or Dean
-  Hollister <dean@odyssey.apana.org.au> for more information.
+  Contact "Garry R. Ford" <garry@merddyn.apana.org.au> or Dean Hollister
+  <dean@odyssey.apana.org.au> for more information.
 backbone.*
   This hierarchy is for internal use only by ruhr.de.  Contact
   admin@ruhr.de for more information.
 balcab.*
-  Private for the Basel, Switzerland, ISP named Balcab.  Contact
-  Matthias Leisi <leisi@gmx.ch> for more information.
+  Private for the Basel, Switzerland, ISP named Balcab.  Contact Matthias
+  Leisi <leisi@gmx.ch> for more information.
 best.*
   For Best Internet Communications (best.net) use only.  Contact
   news@best.net for more information.
 birk.*
-  Private.  Newgroups were leaked from hastur.rlyeh.net and starcat.rlyeh.net,
-  two of the peers in the birk hierarchy.  Contact birk-admin@ping.uio.no
-  (Jan Ingvoldstad) for more information.
+  Private.  Newgroups were leaked from hastur.rlyeh.net and
+  starcat.rlyeh.net, two of the peers in the birk hierarchy.  Contact
+  birk-admin@ping.uio.no (Jan Ingvoldstad) for more information.
 borland.*
-  On 31 May 1998, Chris Malatesta <cmalatesta@borland.com> responded to
-  my inquiry about leaked Collabra newgroups for borland.public.* groups
-  with the statement "We do not feed our news server... So I'm confused how
-  you recieved this...".  I explained about how to read Path headers, and
-  then asked, "Do I correctly infer from your reply that you do not wish the
-  Borland groups to be available outside of your own server?"  Having received
-  no further reply from him, it is my assumption that it is intended to
-  be a hierarchy only local to their own news server.  You can access
-  the Borland newsgroups via the forums.inprise.com news server, or
+  On 31 May 1998, Chris Malatesta <cmalatesta@borland.com> responded to my
+  inquiry about leaked Collabra newgroups for borland.public.* groups with
+  the statement "We do not feed our news server... So I'm confused how you
+  recieved this...".  I explained about how to read Path headers, and then
+  asked, "Do I correctly infer from your reply that you do not wish the
+  Borland groups to be available outside of your own server?"  Having
+  received no further reply from him, it is my assumption that it is
+  intended to be a hierarchy only local to their own news server.  You can
+  access the Borland newsgroups via the forums.inprise.com news server, or
   through http://www.borland.com/newsgroups/.
 cais.*
   For Capital Area Internet Service (cais.com) use only.  Contact
@@ -56,27 +73,27 @@ central.*
   usenet@iconz.co.nz for more information.
 chaven.*
   For internal use only by Celestial Haven ISP.  Contact news@chaven.com
-  for more information. 
+  for more information.
 chello.*
   On 15 Jan 2000, ralf@IAEhv.nl (Ralf van Dooren) sent a newgroup for
-  chello.nl.test.test worldwide.  It seemed fairly obvious that it
-  was a bogus newgroup not sanctioned by Chello Netherlands admins, but
-  nonetheless I took the opportunity to enquire of the folks at
-  Chello Netherlands whether the chello.* hierarchy existed as either a
-  private or public hierarchy.  To my surprise, Mr. van Dooren replied
-  that he was an employee of Chello at their "abusedesk", and had been
-  investigating some problems with chello.* groups disappearing on their
-  servers.  He said that to his knowledge chello.* is not intended to be
-  carried outside the chello-network.
+  chello.nl.test.test worldwide.  It seemed fairly obvious that it was a
+  bogus newgroup not sanctioned by Chello Netherlands admins, but
+  nonetheless I took the opportunity to enquire of the folks at Chello
+  Netherlands whether the chello.* hierarchy existed as either a private
+  or public hierarchy.  To my surprise, Mr. van Dooren replied that he was
+  an employee of Chello at their "abusedesk", and had been investigating
+  some problems with chello.* groups disappearing on their servers.  He
+  said that to his knowledge chello.* is not intended to be carried
+  outside the chello-network.
 cix.*
   Four newgroups in July 1998 all had Distribution: local headers that
   were (obviously) ineffective.  All were posted via kerberos.demon.co.uk
-  and had message-ids naming cix.compulink.co.uk.  They did not have
-  valid From: headers, though.  In May 2001, Sean Purdy <newsmaster@cix.co.uk>
+  and had message-ids naming cix.compulink.co.uk.  They did not have valid
+  From: headers, though.  In May 2001, Sean Purdy <newsmaster@cix.co.uk>
   reported to me that the hierarchy is private to cix.co.uk.
 cl.*
-  For internal use only by CL-Netz.  Contact koordination@cl-netz.de
-  for more information.
+  For internal use only by CL-Netz.  Contact koordination@cl-netz.de for
+  more information.
 cmi.*
   For internal use only at the University of Illinois at Urbana-Champaign,
   per mail from Bruce Gletty, CCSO news manager @uiuc.edu, July 1998.
@@ -84,55 +101,55 @@ cmi.*
   owned by prairienet and they need to bless any distribution beyond
   campus/local ISPs."
 cmu.*
-  For Carnegie-Mellon University use only, per Dan Lovinger <del+@cmu.edu>,
-  CMU Computing Services, August 1994.
+  For Carnegie-Mellon University use only, per Dan Lovinger
+  <del+@cmu.edu>, CMU Computing Services, August 1994.
 csie.*
-  Two Collabra newgroups.  Curiously, they were from very different domains
-  but with very similar names:  csie.bbs.fj and csie.bbs.fj.rec.  Much later,
-  on 24 Feb 2000, jkng@csie.nctu.edu.tw (NortonNg) sent six newgroups for
-  groups in the hierarchy, and he later reported to me that it was a mistake
-  and he corrected the configuration.
+  Two Collabra newgroups.  Curiously, they were from very different
+  domains but with very similar names:  csie.bbs.fj and csie.bbs.fj.rec.
+  Much later, on 24 Feb 2000, jkng@csie.nctu.edu.tw (NortonNg) sent six
+  newgroups for groups in the hierarchy, and he later reported to me that
+  it was a mistake and he corrected the configuration.
 cuhk.*
   In September of 1998, 22 Usenet newgroup control messages were sent
   around the world for groups in the cuhk.* hierarchy by a half-dozen
-  different people in the Engineering Faculty CUHK at cuhk.edu.hk
-  (Hong Kong).  Alan S. H. Lam <shlam@ie.cuhk.edu.hk> reported to me
-  that it was accidental and the hierarchy is private.
+  different people in the Engineering Faculty CUHK at cuhk.edu.hk (Hong
+  Kong).  Alan S. H. Lam <shlam@ie.cuhk.edu.hk> reported to me that it was
+  accidental and the hierarchy is private.
 deja.*
   In May 1999, group-admin@deja.com sent at least 40 newgroup messages
-  around the world that all bore the note, "[...] this is being created for
-  internal use by Deja.com Inc.  If you have mistakenly received this control
-  message, please contact group-admin@deja.com immediately. And please accept
-  our apologies."  Apology accepted.
+  around the world that all bore the note, "[...] this is being created
+  for internal use by Deja.com Inc.  If you have mistakenly received this
+  control message, please contact group-admin@deja.com immediately. And
+  please accept our apologies."  Apology accepted.
 dejanews.*
-  In February and May 1999, group-admin@deja.com sent six newgroup messages
-  like those described in deja.* above --- internal use, mistake for others
-  to get, apologies, yadda yadda.
+  In February and May 1999, group-admin@deja.com sent six newgroup
+  messages like those described in deja.* above --- internal use, mistake
+  for others to get, apologies, yadda yadda.
 duke.*
-  For use by Duke University only.  Conact news@newsgate.duke.edu
-  for more information.
+  For use by Duke University only.  Conact news@newsgate.duke.edu for more
+  information.
 earthlink.*
   For internal use by the EarthLink ISP only.
 fh-hannover.*
-  Local to shalom.cid-net.de.  Contact news@shalom.cid-net.de or
-  Daniel Joehrens <news@linux.rz.fh-hannover.de> for more information.
+  Local to shalom.cid-net.de.  Contact news@shalom.cid-net.de or Daniel
+  Joehrens <news@linux.rz.fh-hannover.de> for more information.
 fur.*
   For Furrynet use only.  Contact fur-config@taronga.com for more
   information.
 ibm.*
-  For internal use by IBM Corporation (ibm.net) only.  Contact
-  Mike Knope <mknope@us.ibm.com> or Ken Paquette <ken@us.ibm.com> for
-  more information.
+  For internal use by IBM Corporation (ibm.net) only.  Contact Mike Knope
+  <mknope@us.ibm.com> or Ken Paquette <ken@us.ibm.com> for more
+  information.
 ibmnet.*
   For internal use by IBM Corporation (ibm.net) only.  Contact
   news@ibm.net for more information.
 inprise.*
-  For Borland's Enterprise products. You can access the inprise.* newsgroups
-  via the forums.inprise.com news server, or through
+  For Borland's Enterprise products. You can access the inprise.*
+  newsgroups via the forums.inprise.com news server, or through
   http://www.borland.com/newsgroups/.
 iconz.*
-  For the Internet Company of New Zealand.  Contact usenet@iconz.co.nz
-  for more information.
+  For the Internet Company of New Zealand.  Contact usenet@iconz.co.nz for
+  more information.
 krst.*
   Local hierarchy for the Committee for Clean Monitors in the Terminal
   Rooms (yes, that's what I was told), University of Oslo, Norway.  Feeds
@@ -140,11 +157,11 @@ krst.*
   information.
 manawatu.*
   For the Manawatu district of New Zealand.  Contact news@manawatu.gen.nz
-  for more information.  According to Alan somebody in mail to me on
-  5 Feb 1993, "... it's unlikely that you'll ever see any traffic on
-  it - the New Zealand net administration prefers that we don't feed
-  regional distributions through it, and so all manawatu.* groups are
-  blocked from being fed to the net at the manawatu hub."
+  for more information.  According to Alan somebody in mail to me on 5 Feb
+  1993, "... it's unlikely that you'll ever see any traffic on it - the
+  New Zealand net administration prefers that we don't feed regional
+  distributions through it, and so all manawatu.* groups are blocked from
+  being fed to the net at the manawatu hub."
 mcom.*
   For Netscape Communications Corp.  Contact bpolk@netscape.com (Ben Polk)
   for more information.
@@ -159,12 +176,12 @@ netins.*
   for more information.
 optonline.*
   For use by Optimum Online only.  Matthew Sachs <matthewg@zevils.com>
-  sent a worldwide newgroup for optonline.discuss that he had thought
-  was limited with a local distribution, but it had not been.
+  sent a worldwide newgroup for optonline.discuss that he had thought was
+  limited with a local distribution, but it had not been.
 planet.*
-  Used by both the PlaNet FreeNZ Cooperative in New Zealand and
-  Planet Systems Inc in Tennessee, USA.  Contact office@pl.net or
-  news@news.planetc.com  for more information. 
+  Used by both the PlaNet FreeNZ Cooperative in New Zealand and Planet
+  Systems Inc in Tennessee, USA.  Contact office@pl.net or
+  news@news.planetc.com for more information.
 powersoft.*
   For use through Sybase's news server only.  Configure your news reader
   to use forums.powersoft.com as an NNTP server, or access the groups via
@@ -173,12 +190,12 @@ prima.*
   For Prima e.V. in Germany.  Contact admin@prima.ruhr.de for more
   information.
 psu.*
-  For internal use only by the Penn State University in the USA.
-  Contact barr@math.psu.edu (Dave Barr) for more information.
+  For internal use only by the Penn State University in the USA.  Contact
+  barr@math.psu.edu (Dave Barr) for more information.
 rpi.*
-  For Rensselaer Polytechnic Institute in Troy, NY.  This hierarchy
-  used to be publically available until 1994.  Contact usenet@rpi.edu
-  for more information.
+  For Rensselaer Polytechnic Institute in Troy, NY.  This hierarchy used
+  to be publically available until 1994.  Contact usenet@rpi.edu for more
+  information.
 sybase.*
   For use through Sybase's news server only.  Configure your news reader
   to use forums.sybase.com as an NNTP server, or access the groups via
@@ -187,54 +204,53 @@ tele.*
   For Tele Danmark Erhverv (Tele Denmark Internet, tele.dk or tdk.net).
   Contact usenet@tdk.net for more information.
 termvakt.*
-  Local hierarchy for technical support personnel at the Department
-  for Informatics, University of Oslo, Norway.  Feeds are restricted.
-  Contact Jan Ingvoldstad <jani@ifi.uio.no> for more information.
+  Local hierarchy for technical support personnel at the Department for
+  Informatics, University of Oslo, Norway.  Feeds are restricted.  Contact
+  Jan Ingvoldstad <jani@ifi.uio.no> for more information.
 uva.*
   For the University of Virginia, USA.  Contact usenet@virginia.edu.
 worldonline.*
   For use by Worldonline, Inc (worldonline.nl) only.  Contact
   newsmaster@worldonline.nl for more information.  As of 1 Oct 1996
-  Lennard voor den Dag at worldonline told me, "The hierarchy is
-  available on news.worldonline.nl:119, but is not really interesting
-  for the outside world, and in Dutch only."
+  Lennard voor den Dag at worldonline told me, "The hierarchy is available
+  on news.worldonline.nl:119, but is not really interesting for the
+  outside world, and in Dutch only."
 
-================================================================
-The following is a list of hierarchies that had a newgroup or
-checkgroups message sent worldwide from them.  I sent the person who
-issued the control message a query regarding the hierarchy's
-availability, but received no reply.  Therefore I consider the control
-message to have been an accidental leakage by someone who didn't
-really understand what was going on, and the hierarchy is not listed
-here.  There are _many_ _many_ hierarchies that fit into this
-catergory, but I have not had time to go through all my email folders
-identifying them all to add here.  There's also a whole slew of
-hierarchies that only had Collabra newgroups that I gave up even
-sending a message to the originator, because I pretty much never
-received replies from Collabra admins.
+==========================================================================
+
+The following is a list of hierarchies that had a newgroup or checkgroups
+message sent worldwide from them.  I sent the person who issued the
+control message a query regarding the hierarchy's availability, but
+received no reply.  Therefore I consider the control message to have been
+an accidental leakage by someone who didn't really understand what was
+going on, and the hierarchy is not listed here.  There are _many_ _many_
+hierarchies that fit into this catergory, but I have not had time to go
+through all my email folders identifying them all to add here.  There's
+also a whole slew of hierarchies that only had Collabra newgroups that I
+gave up even sending a message to the originator, because I pretty much
+never received replies from Collabra admins.
 
 The presence of a name in this list generally means that someone,
-somewhere is probably using the hierarchy name, but its current
-status is not entirely clear.
+somewhere is probably using the hierarchy name, but its current status is
+not entirely clear.
 
 agora.*
-  On four separate occasions (19 Feb 1998, 2 Jun 1998, 7 Jul 1998 and
-  6 Dec 1999) I have sent email inquiring about worldwide newgroup
-  messages for this hierarchy.  All but the first time went to
-  news@news.agora.it, which is the address on the control messages.
-  The hierarchy is apparently for "Agora - Internet Solution Provider".
+  On four separate occasions (19 Feb 1998, 2 Jun 1998, 7 Jul 1998 and 6
+  Dec 1999) I have sent email inquiring about worldwide newgroup messages
+  for this hierarchy.  All but the first time went to news@news.agora.it,
+  which is the address on the control messages.  The hierarchy is
+  apparently for "Agora - Internet Solution Provider".
 ait.*
-  Message sent to news@cs.ait.ac.th regarding newgroup of ait.language
-  on 17 July 1996.
+  Message sent to news@cs.ait.ac.th regarding newgroup of ait.language on
+  17 July 1996.
 amda.*
-  Message sent to dounuts@amda.or.jp (Hiroshi Sawada) regarding
-  newgroup of 7 amda.* groups for the Association of Medical Doctors
-  of Asia in March 1998.
+  Message sent to dounuts@amda.or.jp (Hiroshi Sawada) regarding newgroup
+  of 7 amda.* groups for the Association of Medical Doctors of Asia in
+  March 1998.
 archiworld.*
   Message sent to news@cna.archiworld.it on 25 Jun 1998 and 7 Dec 1999
-  regarding eleven and 43 newgroups, respectively.  Seems to be
-  associated with the non-responsive people who have been doing the
-  agora.* groups. 
+  regarding eleven and 43 newgroups, respectively.  Seems to be associated
+  with the non-responsive people who have been doing the agora.* groups.
 att.*
   Message sent to newsadm@bgtnfc01-news.ops.worldnet.att.net and
   newsadm@worldnett.att.net regarding newgroup of att.tech-trial.onemail
@@ -243,10 +259,10 @@ att.*
 bathspa.*
   Four Collabra newgroups from postmaster@bathspa.ac.uk in July, 1998.
 cargill.*
-  The only worldwide newgroup for anything in this hierarchy was clearly
-  a test message, sent on 29 Jul 1998 by jeff@cargill.com for a group
-  named cargill.me.  I did not even bother asking whether this was
-  meant to be a worldwide group.
+  The only worldwide newgroup for anything in this hierarchy was clearly a
+  test message, sent on 29 Jul 1998 by jeff@cargill.com for a group named
+  cargill.me.  I did not even bother asking whether this was meant to be a
+  worldwide group.
 chuvashia.*
   Two Collabra newgroups from the cap.ru domain in Autumn, 1997.
 consulting.*
@@ -256,8 +272,8 @@ corel.*
   newgroups.  As usual, there was no reply, and seven more Collabra
   newgroups from the same address were sent during the following week.
 corelsupport.*
-  Message sent to jimm@corel.ca regarding his 28 Collabra messages
-  of the Spring and Summer, 1998.
+  Message sent to jimm@corel.ca regarding his 28 Collabra messages of the
+  Spring and Summer, 1998.
 cslab.*
   A batch of newgroups in November 1998 and another in July 1999, both
   sets from network-admin@cslab.co.jp., for a handful of groups intended
@@ -280,8 +296,8 @@ ejb.*
 epm.*
   A Collabra newgroup from msantand@eeppm.com on 2 Jan 1998.
 forum_interne.*
-  Two Collabra newgroups from postmaster@getima.mutuagri.tm.fr on
-  21 Oct 1997.
+  Two Collabra newgroups from postmaster@getima.mutuagri.tm.fr on 21 Oct
+  1997.
 glbs.*
   13 Collabra newgroups from newsadm@deere.com in September, 1998.
 gsm.*
@@ -292,15 +308,15 @@ hec.*
 hphc.*
   Three Collabra newgroups from steve_toupin@hphc.org in Winter, 1997-1998.
 ifdef.*
-  Message sent to news@sunburn.snds.com regarding newgroup of six
-  ifdef.* groups on 7 May 1998.  All were generated using Netscape
-  Collabra.  Message bounced "User unknown".
+  Message sent to news@sunburn.snds.com regarding newgroup of six ifdef.*
+  groups on 7 May 1998.  All were generated using Netscape Collabra.
+  Message bounced "User unknown".
 installshield.*
-  This hierarchy was brough to my attention by someone who directed me
-  to http://support.installshield.com/nwsgrps/default.asp.  The groups
-  are available on the news.installshield.com NNTP server, and on 8 Feb 2000
-  I asked the folks at installshield.com whether they should be listed
-  in the ISC's active file.  No answer yet.
+  This hierarchy was brough to my attention by someone who directed me to
+  http://support.installshield.com/nwsgrps/default.asp.  The groups are
+  available on the news.installshield.com NNTP server, and on 8 Feb 2000 I
+  asked the folks at installshield.com whether they should be listed in
+  the ISC's active file.  No answer yet.
 ils.*
   13 Collabra newgroups from news@coho.ils.nwu.edu in autumn 1997.
 islam.*
@@ -311,8 +327,8 @@ kmc.*
   Three Collabra newgroups from ccchen@cc.kmc.edu.tw and
   www@mail.rm.kmc.edu.tw in Nov 1997.
 libertymutual.*
-  Seven Collabra newgroups from tjlanoie@infoserver.lmig.com in
-  February and April, 1998.
+  Seven Collabra newgroups from tjlanoie@infoserver.lmig.com in February
+  and April, 1998.
 list.*
   Four Collabra newgroups from news@corp.g2networks.com on 20 Jul 1998.
 lk-net.test
@@ -320,29 +336,29 @@ lk-net.test
 mortgageflex.*
   A Collabra newgroup from dwang@hsa.com on 5 Mar 1998.
 o-d-n.*
-  Newgroup by tecias@cyberdude.com (Tecias von Alcadious)
-  (Organization: Altavista personal user) on 12 Jul 1998 for
-  o-d-n.misc.tmp.
+  Newgroup by tecias@cyberdude.com (Tecias von Alcadious) (Organization:
+  Altavista personal user) on 12 Jul 1998 for o-d-n.misc.tmp.
 oloon.*
-  Newgroup from Remco van de Meent <remco@oloon.xs4all.nl> on
-  22 Oct 1997 for oloon.test.blah.
+  Newgroup from Remco van de Meent <remco@oloon.xs4all.nl> on 22 Oct 1997
+  for oloon.test.blah.
 pandora.*
   Two Collabra newgroups from news@afrodite.telenet-ops.be on 11 Feb 1998.
 paulp.*
-  A Collabra newgroup from paul.pink@twi.com for paulp.firstpost on
-  12 Nov 1997.
+  A Collabra newgroup from paul.pink@twi.com for paulp.firstpost on 12 Nov
+  1997.
 recar.*
-  A Collabra newgroup from postmaster@stardivision.de for
-  recar.service on 9 Jan 1998.
+  A Collabra newgroup from postmaster@stardivision.de for recar.service on
+  9 Jan 1998.
 reseaux.*
-  A Collabra newgroup from lelievre.remy@getima.mutuagri.tm.fr on 17 Nov 1997.
+  A Collabra newgroup from lelievre.remy@getima.mutuagri.tm.fr on 17 Nov
+  1997.
 servodata.*
   Seven Collabra newgroups from news@proton.servodata.co.at in early 1998.
 shadowclub.*
   A Collabra newgroup from jwiseman@netsite.com on 20 Jan 1998.
 sit.*
-  A Collabra newgroup from news@news.sunyit.edu (SUNY Utica/Rome) on
-  25 Sep 1997.
+  A Collabra newgroup from news@news.sunyit.edu (SUNY Utica/Rome) on 25
+  Sep 1997.
 sq.*
   A Collabra newgroup from joe_wright@compuware.com on 10 Jul 1998.
 sva.*
@@ -377,92 +393,93 @@ vsi.*
 wbband.*
   A Collabra newgroup from news@mercury.adc.com on 28 Sep 1997.
 zelenograd.*
-  "Dmitri N. Beloslioudtsev" <dnb@orgland.ru> sent two newgroups, one
-  for zelenograd.test and one for zelenograd.test1, on 4 Sep 1998.
-  No other newgroups have appeared for the hierarchy.
+  "Dmitri N. Beloslioudtsev" <dnb@orgland.ru> sent two newgroups, one for
+  zelenograd.test and one for zelenograd.test1, on 4 Sep 1998.  No other
+  newgroups have appeared for the hierarchy.
 
-================================================================
+==========================================================================
+
 The following are miscellaneous notes I have about various hierarchies.
 "It should be removed," is shorthand for, "It should be removed from your
 local list of active groups unless you have some special need for having
 it, such as a private local hierarchy by the same name."
 
 alive.*
-  It is not clear to me what the status of this hierarchy is.  My
-  latest messages to Sander van Minnen <mattew@pobox.org.sg>
-  (or <mattew@hacktic.nl>) asking for more information regarding
-  what the hierarchy is about and what its current groups are
-  were not answered.  It is, however, listed in the ISC active file
-  based on the list of groups I got in January 1997, and a half-dozen
-  newgroup messages since then.
+  It is not clear to me what the status of this hierarchy is.  My latest
+  messages to Sander van Minnen <mattew@pobox.org.sg> (or
+  <mattew@hacktic.nl>) asking for more information regarding what the
+  hierarchy is about and what its current groups are were not answered.
+  It is, however, listed in the ISC active file based on the list of
+  groups I got in January 1997, and a half-dozen newgroup messages since
+  then.
 
-  The USENET Config Files FAQ's version of control.ctl says that
-  this hierarchy is defunct and people should contact thijs@kink.xs4all.nl
-  or mattew@xs4all.nl for more information.  It should be removed. 
+  The USENET Config Files FAQ's version of control.ctl says that this
+  hierarchy is defunct and people should contact thijs@kink.xs4all.nl or
+  mattew@xs4all.nl for more information.  It should be removed.
 alot.*
-  Misspelled "alt.ziopino" as "alot.ziopino" in a forged newgroup on
-  5 Aug 1998.  It should be removed.
+  Misspelled "alt.ziopino" as "alot.ziopino" in a forged newgroup on 5 Aug
+  1998.  It should be removed.
 america.*
-  Forged newgroup for "america.sucks.scotland.rules.we.made.tv" on
-  13 Sep 1998.  It should be removed.
+  Forged newgroup for "america.sucks.scotland.rules.we.made.tv" on 13 Sep
+  1998.  It should be removed.
 apc.*
   13 Collabra newgroups in Summer of 1998.  It should be removed.
 au.*
   This Collabra newgroup was apparently a typo for aus.ads.jobs by
   joe_wright@compuware.com on 10 Jul 1998.
 betanews.*
-  Tests from Microsoft were escaping around the world.  It should be removed.
+  Tests from Microsoft were escaping around the world.  It should be
+  removed.
 blackbox.*
-  Newgroup for blackbox.doof, apparently a joke, sent worldwide on
-  25 Jan 1998.  There *may* be a legitimate blackbox.* hierarchy (the
-  control message was posted to blackbox.test) but I have seen no
-  other references to it.  Cf. at.blackbox.*.
+  Newgroup for blackbox.doof, apparently a joke, sent worldwide on 25 Jan
+  1998.  There *may* be a legitimate blackbox.* hierarchy (the control
+  message was posted to blackbox.test) but I have seen no other references
+  to it.  Cf. at.blackbox.*.
 bofh.*
-  The Bastard Operator From Hell hierarchy.  Feeds of it are
-  restricted to those who can figure out how to get a feed.
+  The Bastard Operator From Hell hierarchy.  Feeds of it are restricted to
+  those who can figure out how to get a feed.
 bugtraq.*
-  Forged newgroup on 29 Dec 1999, apparently without any support of
-  the Bugtraq administrators.
+  Forged newgroup on 29 Dec 1999, apparently without any support of the
+  Bugtraq administrators.
 cny.*
-  A newgroup was sent for cny.general, for the Central New York State region,
-  by Will Pierce <willp@dreamscape.com> in May 1998.  In January 2000,
-  Mr. Pierce reported to me that the only group that existed in the hierarchy
-  was cny.general, but it did not propagate very far and received an
-  insignificant amount of traffic.  It should be removed.
+  A newgroup was sent for cny.general, for the Central New York State
+  region, by Will Pierce <willp@dreamscape.com> in May 1998.  In January
+  2000, Mr. Pierce reported to me that the only group that existed in the
+  hierarchy was cny.general, but it did not propagate very far and
+  received an insignificant amount of traffic.  It should be removed.
 cronkite.*
-  Joke newgroup for cronkite.misc, "Miscellaneous discussion of
-  Walter Cronkite" by bedwarm@cycperspace.org (Bobby Tendinitis)
-  in April 1998.
+  Joke newgroup for cronkite.misc, "Miscellaneous discussion of Walter
+  Cronkite" by bedwarm@cycperspace.org (Bobby Tendinitis) in April 1998.
 earth.*
-  Newgroup for earth.crisis "Discussion of crises on Earth" by
-  Bobby Tendinitis <bedwarm@mail.dotcom.fr> on 21 Oct 1997 without
-  any discussion, support, followup, or other groups in hierarchy.
+  Newgroup for earth.crisis "Discussion of crises on Earth" by Bobby
+  Tendinitis <bedwarm@mail.dotcom.fr> on 21 Oct 1997 without any
+  discussion, support, followup, or other groups in hierarchy.
 fa.*
-  This hierarchy is defunct since the late 1980s.  It stood for
-  "from ARPAnet" to reflect that it was for messages gatewayed from 
-  ARPAnet mailing lists into newsgroups.  It should be removed. 
+  This hierarchy is defunct since the late 1980s.  It stood for "from
+  ARPAnet" to reflect that it was for messages gatewayed from ARPAnet
+  mailing lists into newsgroups.  It should be removed.
 foad.*
   Newgroup for foad.rant by abby@foad.org on 2 Dec 1997; see
-  ftp://ftp.isc.org/pub/usenet/control/foad/foad.rant.  The hierarchy
-  was apparently stillborn.
+  ftp://ftp.isc.org/pub/usenet/control/foad/foad.rant.  The hierarchy was
+  apparently stillborn.
 fr2.*
-  This appears to have been some sort of protest against the policies
-  or personalities of fr.*.  There were three newgroups in July of
-  1998 and nothing seems to have come of them.
+  This appears to have been some sort of protest against the policies or
+  personalities of fr.*.  There were three newgroups in July of 1998 and
+  nothing seems to have come of them.
 god.*
   Apparently an attempt to create alt.god.jesus and
-  alt.god.jesus.holyghost that failed to include the "alt.*" part
-  (the bodies of the messages use the alt prefix), two newgroups
-  were sent in August 1999 and were quickly followed by a half-dozen
-  joke newgroups.  It should be removed.
+  alt.god.jesus.holyghost that failed to include the "alt.*" part (the
+  bodies of the messages use the alt prefix), two newgroups were sent in
+  August 1999 and were quickly followed by a half-dozen joke newgroups.
+  It should be removed.
 jessica.*
-  Newgroup for jessica.config on 5 Nov 1997 by uhclem@usit.net,
-  apparently as some sort of joke.
+  Newgroup for jessica.config on 5 Nov 1997 by uhclem@usit.net, apparently
+  as some sort of joke.
 local.*
   This name occurs at many sites for their own local hierarchies.
-  Distributing a hierarchy by this name off of a single server is
-  a very bad idea because of the high likelihood of leakage between
-  the unrelated groups of different sites.
+  Distributing a hierarchy by this name off of a single server is a very
+  bad idea because of the high likelihood of leakage between the unrelated
+  groups of different sites.
 microsoft.*
   Microsoft does not maintain their hierarchy via Usenet control messages.
   I receive a list of changes to make every week directly from Microsoft
@@ -475,49 +492,48 @@ mod.*
   (which I personally think it is a bad idea), but as yet it has not been
   done.
 net.*
-  This hierarchy is only meant to be carried by sites that live by
-  a strict set of rules meant to keep down abuse of Usenet and improve
-  the overall quality of groups.  See http://www.usenet2.org/ for
-  more information about this hierarchy.
+  This hierarchy is only meant to be carried by sites that live by a
+  strict set of rules meant to keep down abuse of Usenet and improve the
+  overall quality of groups.  See http://www.usenet2.org/ for more
+  information about this hierarchy.
 openprojects.*
-  Robert Dinse <nanook@eskimo.com>, who responded to my message sent
-  to news@eskimo.com (the sender of the newgroup for openprojects.linpeople),
-  says, "I am trying to find out who did this; it looks to me like
-  someone forged a control message.  'eskimo.com' is not a news
-  server; it's our shell server.  Normally, when we create groups, we
-  would have used ctlinnd on the news server and 'eskimo.com' would
-  not have shown up in the path."
+  Robert Dinse <nanook@eskimo.com>, who responded to my message sent to
+  news@eskimo.com (the sender of the newgroup for openprojects.linpeople),
+  says, "I am trying to find out who did this; it looks to me like someone
+  forged a control message.  'eskimo.com' is not a news server; it's our
+  shell server.  Normally, when we create groups, we would have used
+  ctlinnd on the news server and 'eskimo.com' would not have shown up in
+  the path."
 pubnet.*
-  This hierarchy used to carry groups about publically available
-  Unix systems, but fell into disuse.  It was formally removed
-  for lack of traffic in the summer of 1991.  it should be removed.
+  This hierarchy used to carry groups about publically available Unix
+  systems, but fell into disuse.  It was formally removed for lack of
+  traffic in the summer of 1991.  it should be removed.
 stardivision.*
   This hierarchy was for the company that made the StarOffice business
-  suite software.  It was renamed to staroffice.* in September 1999,
-  and the old stardivision.* hierarchy should be removed.
+  suite software.  It was renamed to staroffice.* in September 1999, and
+  the old stardivision.* hierarchy should be removed.
 t-netz.*
-  This was a German language hierarchy for gatewayed email lists
-  something akin to alt.* in that anyone could create newsgroups in it.
-  The hierarchy is now defunct, having been moved to z-netz.alt.* in
-  a reorganization in 1996.  Contact lutz@jena.thur.de (Lutz Donnerhacke)
-  and/or dirk.meyer@dinoex.sub.org (Dirk Meyer) for more information.
-  See also zer.* in this file.  It should be removed.
+  This was a German language hierarchy for gatewayed email lists something
+  akin to alt.* in that anyone could create newsgroups in it.  The
+  hierarchy is now defunct, having been moved to z-netz.alt.* in a
+  reorganization in 1996.  Contact lutz@jena.thur.de (Lutz Donnerhacke)
+  and/or dirk.meyer@dinoex.sub.org (Dirk Meyer) for more information.  See
+  also zer.* in this file.  It should be removed.
 to.*
   A pseudo-hierarchy normally used for the propagation of ihave/sendme
-  control messages and test messages.  For example, SiteA and SiteB
-  might each have a to.sitea and to.siteb on their machines to facilitate
-  a special kind of news transport mechanism.
+  control messages and test messages.  For example, SiteA and SiteB might
+  each have a to.sitea and to.siteb on their machines to facilitate a
+  special kind of news transport mechanism.
 www.*
-  Apparently someone who thought a newsgroup name and domain name
-  should be equivalent.  Newgroup for www.wilhelp.com on 7 Jul 1998.
+  Apparently someone who thought a newsgroup name and domain name should
+  be equivalent.  Newgroup for www.wilhelp.com on 7 Jul 1998.
 zer.*
-  This was a German language hierarchy for gatewayed email lists
-  like t-netz.*, but was somewhat more structured regarding creation
-  of groups within it.  There was a bit of a problem with gateways
-  directing the same articles to both the zer.* hierarchy and the
-  z-netz.* hierarchy, with the resulting message-id collisions causing
-  a mess with propagation.  The hierarchy is now defunct, having been
-  moved to z-netz.* in a reorganization in 1996.  Contact
-  lutz@jena.thur.de (Lutz Donnerhacke) and/or
-  dirk.meyer@dinoex.sub.org (Dirk Meyer) for more information. 
-  See also t-netz.* in this file.  It should be removed.
+  This was a German language hierarchy for gatewayed email lists like
+  t-netz.*, but was somewhat more structured regarding creation of groups
+  within it.  There was a bit of a problem with gateways directing the
+  same articles to both the zer.* hierarchy and the z-netz.* hierarchy,
+  with the resulting message-id collisions causing a mess with
+  propagation.  The hierarchy is now defunct, having been moved to
+  z-netz.* in a reorganization in 1996.  Contact lutz@jena.thur.de (Lutz
+  Donnerhacke) and/or dirk.meyer@dinoex.sub.org (Dirk Meyer) for more
+  information. See also t-netz.* in this file.  It should be removed.
