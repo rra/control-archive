@@ -8,4 +8,5 @@ contact: [ satgroup@endicor.com ]
 url: "http://www.endicor.com/~satgroup/"
 pgp: yes
 key-id: satgroup@endicor.com
+key-url: "http://www.endicor.com/~satgroup/pubkey.asc"
 admin-group: sat.usenet.config
