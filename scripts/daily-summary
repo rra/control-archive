@@ -88,7 +88,7 @@ while (<LOG>) {
 # If there's anything left, send the summary mail to usenet-config.
 if (@actions) {
     if ($mail) {
-        open (MAIL, '| /usr/lib/sendmail -f $SENDER -t -oi -oem')
+        open (MAIL, "| /usr/lib/sendmail -f $SENDER -t -oi -oem")
             or die "$0: cannot open a pipe to sendmail: $!\n";
     } else {
         open (MAIL, '>&STDOUT') or die "$0: cannot dup stdout: $!\n";
