@@ -3,11 +3,4 @@ hierarchy: IT-ALT
 groups: it-alt.*
 type: public
 description: Alternate Italian
-sender: [ it-alt@x-privat.org ]
-contact: [ it-alt@x-privat.org ]
-url: "http://www.x-privat.org/it-alt/"
-pgp: yes
-key-id: it-alt@x-privat.org
-key-fingerprint: "01 AE 93 F7 CE 3B C1 F4  E0 35 8E 23 C4 04 A2 30"
-key-url: "http://www.x-privat.org/it-alt/pgp.txt"
 admin-group: it-alt.config
