@@ -3,6 +3,7 @@ hierarchy: FRANCE
 groups: france.*
 type: public
 description: France
+contact: [ control@usenet-france.news.eu.org ]
 sender: [ control@usenet-france.news.eu.org ]
 pgp: yes
 key-id: control@usenet-france.news.eu.org
