@@ -1,5 +1,5 @@
                          GROUP CREATION POLICIES
-$Date$
+                        Last modified: 2003-05-17
 
   (This document was originally written by David Lawrence, but has since
   been updated and is currently maintained by Russ Allbery.  For all
@@ -10,6 +10,12 @@ $Date$
   maintained.  It describes first the addition and removal of groups in
   hierarchies that are covered, and then discusses what happens when we
   become aware of a new hierarchy via a newgroup control message.
+
+  This archive updates hourly, and due to delays in propagation, it can
+  take somewhat longer for control messages to be acted on.  If the
+  control message was posted from a well-connected site, allow about two
+  hours for its effects to be reflected in the active and newsgroups
+  files.
 
   The intention is for the active and newsgroups files here to be complete
   for all publically available hierarchies.  To that end, we appreciate
@@ -29,10 +35,10 @@ $Date$
 
   This message refers to "newgroup" and "rmgroup" control messages, which
   are special types of Usenet articles that add and remove groups,
-  respectively.  My usage of this terminology implicitly includes
+  respectively.  Usage of this terminology implicitly includes
   "checkgroups", another type of special Usenet article that compares an
   entire list of groups with those carried by a server.  It also includes
-  maintenance that I do in response to messages received not via the
+  maintenance that we do in response to messages received not via the
   normal Usenet control messages, such as from a web site or through
   email.
 
@@ -171,6 +177,11 @@ THE NEWSGROUPS FILE
   descriptions.  They may, however, be less readable and less useful for
   some Usenet users.
 
+  Be very careful that your news client or other software that you use to
+  post the control message does not wrap the description line.  If it
+  does, any text that's wrapped will be ignored by most servers and will
+  not be included in the description.
+
   There is, at present, no good mechanism for managing the character set
   of the newsgroup descriptions.  Many non-English hierarchies include
   newsgroup descriptions in their native languages, since this is more
@@ -179,3 +190,43 @@ THE NEWSGROUPS FILE
   file will require different character set settings to read properly, and
   those character sets are not documented in the file.  Hopefully some
   future standard will provide a way to address this.
+
+LOGGING
+
+  Each action taken on the active group list, and each processed Usenet
+  control message, is logged in the log files at:
+
+    <ftp://ftp.isc.org/pub/usenet/CONFIG/LOGS/>
+
+  The log files are by year and month when the control message was
+  processed, and each log entry is timestamped.  All times are in UTC.
+  Lines beginning with ACTION represent a change in the active and
+  newsgroups files, and lines beginning with a message ID in angle
+  brackets describe the disposition of a control message.
+
+  The ACTION lines are:
+
+    ACTION: newgroup            New newsgroup added.
+    ACTION: changegroup         Moderation status of newsgroup changed.
+    ACTION: changedesc          Description of newsgroup changed.
+    ACTION: rmgroup             Newsgroup removed.
+
+  Other lines can help if you're attempting to determine what happened to
+  a particular control message.  If it was not archived, it will be
+  mentioned in the logs with some error message (assuming it reached us at
+  all).  If there is a log message stating that it has been processed,
+  that means that it was received, was valid, and was recognized by a rule
+  in control.ctl, but resulted in no change to the active and newsgroups
+  files.  Control messages that have no error message but also have no log
+  entry indicating they were processed did not match any rule in
+  control.ctl.
+
+  Archived messages are added to the control message archive at:
+
+    <ftp://ftp.isc.org/pub/usenet/control/>
+
+  See:
+
+    <ftp://ftp.isc.org/pub/usenet/control/README>
+
+  for more details on the archive policy.
