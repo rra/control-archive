@@ -1,5 +1,5 @@
 id: "$Id$"
-hierarchy: MICROSOFT
+hierarchy: MICROSOFT.PRIVATE
 groups: microsoft.private.*
 type: private
 description: Microsoft Corporation, USA
