@@ -1,0 +1,10 @@
+id: $Id$
+hierarchy: FFM
+groups: ffm.*
+type: public
+description: "Frankfurt/M., Germany"
+sender: [ ffm.admin@arcor.de ]
+url: "http://ffm.arcornews.de/"
+pgp: yes
+key-id: ffm.admin
+key-url: "http://ffm.arcornews.de/"
