@@ -3,9 +3,9 @@ hierarchy: ES
 groups: es.*
 type: public
 description: Spain
-sender: [ moderador@news.rediris.es ]
-contact: [ david.martinez@rediris.es ]
-url: "http://www.rediris.es/netnews/infonews/config.es.html"
+sender: [ moderador@corus-es.org ]
+contact: [ moderador@corus-es.org ]
+url: "http://www.corus-es.org/docs/es_newsadmins_faq.txt"
 pgp: yes
 key-id: es.news
-admin-group: es.news
+admin-group: es.news.anuncios
