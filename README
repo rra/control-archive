@@ -1,9 +1,12 @@
 The files in this directory are used to generate control.ctl for both the
 INN distribution and for ftp.isc.org, and the PGPKEYS and README.html
-files for /pub/usenet/CONFIG on ftp.isc.org.  This process is at present
+files for /pub/pgpcontrol on ftp.isc.org.  This process is at present
 semi-automated; scripts in this directory will automate the process of
 putting together those files, but installing them is currently done by
 hand.
+
+The forms/ directory contains the basic file structure for the three
+generated files.
 
 The configuration data is in one file per hierarchy in the config/
 directory.  Each file has the format specified in FORMAT and is designed
@@ -11,14 +14,17 @@ to be readable by INN's new configuration parser in case this can be
 further automated down the road.  The config/special/ directory contains
 overrides, raw control.ctl fragments that should be used for particular
 hierarchies instead of automatically-generated entries (usually for
-special comments).
+special comments).  Eventually, the format should be extended to handle
+these cases.
 
 The keys/ directory contains the PGP public keys for every hierarchy that
 has one.  Generally there's some introductory text giving the key ID and
-user ID.
-
-The forms/ directory contains the basic file structure for the three
-generated files.
+user ID.  The user IDs on these keys must match the signer expected by the
+configuration data for the corresponding hierarchy.  If a hierarchy
+administrator sets that up wrong (usually by putting additional key IDs on
+the key), this can be corrected by importing the key into a keyring with
+GnuPG, using gpg --edit-key to remove the offending user ID, and exporting
+the key again with gpg --export --ascii.
 
 To generate files from the configuration data and keys, first create a
 GnuPG keyring containing all of the keys in the directory keyring (which
@@ -33,20 +39,50 @@ README.html, and control.ctl in the current directory.
 control.ctl should be checked in to the samples/ directory of the INN CVS
 repository on all active branches (or the INN maintainers asked to do this
 if the control files are being maintained by people other than INN
-maintainers).
+maintainers).  It should also be updated in /work/usenet/config on the
+system that's maintaining the control message archive.
 
-Each of these files should also be updated in /news/local on isrv4.isc.org
-(control.ctl.netwide is what control.ctl is called there).  To do this,
-first lock each file with:
-
-    co -l control.ctl.netwide README.html PGPKEYS
-
-then copy the new files over, and finally check them in with:
-
-    ci -u control.ctl.netwide README.html PGPKEYS
-
-with some suitable commit message.
+When README.html or PGPKEYS change, which is only when the PGP key of a
+hierarchy changes or a new PGP key is added, they should be updated in
+~ftp/pub/pgpcontrol on ftp.isc.org.
 
 Updates to hierarchy control information is generally either posted to
 news.admin.hierarchies or mailed to usenet-config@isc.org.  There is a FAQ
 at <http://www.eyrie.org/~eagle/faqs/usenet-hier.html>.
+
+The process-control, update-control, and export-control scripts in the
+scripts directory maintain an archive of control messages and a database
+of active groups based on control.ctl rules and a PGP keyring.  See the
+embedded documentation (viewable by running perldoc on the scripts) for
+more information.  daily-summary sends out a summary of the actions taken
+by process-control or update-control.
+
+process-control expects to be fed file names and message IDs of control
+messages on standard input, and needs to be run from a news server.  A
+minimalist news server like tinynntpd is suitable for this (I wrote
+tinynntpd for that purpose, and it will be included in current INN CVS).
+update-control is for manual updates when necessary, such as processing
+checkgroups for hierarchies by hand.  export-control should be run from
+cron periodically to create /work/usenet/config/export, which is the
+source for /pub/usenet/CONFIG on ftp.isc.org.
+
+To set up the control message archive, create a directory structure like:
+
+    /work/usenet/config
+    /work/usenet/config/archive
+    /work/usenet/config/export
+    /work/usenet/config/keyring
+    /work/usenet/config/spool
+    /work/usenet/config/tmp
+
+and copy control.ctl to /work/usenet/config.  The spool directory is used
+by tinynntpd, and the tmp directory is used by process-control for PGP
+verification.  The keyring directory must contain a keyring with all of
+the keys for active hierarchies, generated with:
+
+    gpg --homedir=/work/usenet/config/keyring --import keys/*
+
+in this directory (the same as generating the keyring used by
+generate-files).  Obviously the existing archives and existing active
+newsgroup database should be maintained if possible (the existing active
+newsgroup database can be imported with update-control bulkload).
