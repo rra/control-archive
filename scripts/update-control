@@ -123,10 +123,12 @@ sub checkgroups {
         $desc =~ s/\s+$//;
         next unless ($group =~ /^[a-z0-9+_.-]+$/);
         next if ($group =~ /^\.|\.\.|\.$/);
+        next if length ($group) > 80;
         my @components = split (/\./, $group);
         for (@components) {
             next LINE if /^\d+$/;
             next LINE if /^(?:all|ctl)$/;
+            next LINE if length ($_) > 30;
         }
         my $mode = ($desc =~ /\(Moderated\)$/) ? 'm' : 'y';
         $checkgroups{$group} = "$mode $desc";
