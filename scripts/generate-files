@@ -168,11 +168,11 @@ sub generate_ctl {
     open (CTL, "> control.ctl") or die "Cannot create control.ctl: $!\n";
     cat_file (\*CTL, 'forms/control.ctl.pre');
     opendir (D, 'config') or die "Cannot open config directory: $!\n";
-    my @regular = grep { !/^\./ && $_ ne 'special' } readdir D;
+    my @regular = grep { !/^\.|^CVS/ && $_ ne 'special' } readdir D;
     closedir D;
     opendir (D, 'config/special')
         or die "Cannot open config/special directory: $!\n";
-    my @special = grep { !/^\./ } readdir D;
+    my @special = grep { !/^\.|^CVS/ } readdir D;
     closedir D;
     my %unique;
     my @hierarchies = grep { !$unique{$_}++ } sort (@regular, @special);
@@ -220,7 +220,7 @@ sub generate_keys {
     open (KEYS, "> PGPKEYS") or die "Cannot create PGPKEYS: $!\n";
     cat_file (\*KEYS, 'forms/PGPKEYS.pre');
     opendir (D, 'keys') or die "Cannot open keys directory: $!\n";
-    my @keys = sort grep { !/^\./ } readdir D;
+    my @keys = sort grep { !/^\.|^CVS/ } readdir D;
     closedir D;
     for (@keys) {
         print KEYS "\n         ", '_' x 61, "\n\n";
@@ -276,7 +276,7 @@ sub generate_html {
     open (KEYS, "> README.html") or die "Cannot create README.html: $!\n";
     cat_file (\*KEYS, 'forms/README.html.pre');
     opendir (D, 'keys') or die "Cannot open keys directory: $!\n";
-    my @keys = sort grep { !/^\./ } readdir D;
+    my @keys = sort grep { !/^\.|^CVS/ } readdir D;
     closedir D;
     for (@keys) {
         print KEYS "\n";
