@@ -5,6 +5,5 @@ type: public
 description: "Opera Software, Oslo, Norway"
 sender: [ *@opera.com ]
 contact: [ usenet@opera.com ]
-url: "http://news.opera.com/"
 pgp: yes
 key-id: opera-group-admin
