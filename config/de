@@ -4,6 +4,9 @@ groups: de.*
 type: public
 description: "German language"
 sender: [ moderator@dana.de ]
+contact: [ moderator@dana.de ]
+url: "http://www.dana.de/mod/"
 pgp: yes
 key-id: de.admin.news.announce
+key-url: "http://www.dana.de/mod/pgp/dana.asc"
 admin-group: de.admin.news.announce
