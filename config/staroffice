@@ -7,6 +7,6 @@ sender: [ news@stardivision.de ]
 contact: [ news@stardivision.de ]
 pgp: yes
 key-id: staroffice.admin
-key-fingerprint: "F6 6A 5C 57 77 1F 63 26  F2 43 02 41 75 2A 04 1C"
+key-fingerprint: "C6 3E 81 6F 2A 19 D3 84  72 51 F9 1B E3 B9 B2 C9"
 sync-server: starnews.sun.com
 admin-group: staroffice.admin
