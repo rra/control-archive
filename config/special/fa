@@ -1,0 +1,9 @@
+## FA (*DEFUNCT* -- "From ARPA" gatewayed mailing lists)
+# Removed in the "Great Renaming" of 1988.
+#
+# Note that a site in Finland is currently (as of 2001) gatewaying various
+# mailing lists into fa.* newsgroups, but that site does not appear to be
+# issuing any control messages for those groups.
+#
+newgroup:*:fa.*:mail
+rmgroup:*:fa.*:doit

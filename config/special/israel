@@ -1,0 +1,3 @@
+## ISRAEL & IL (Israel)
+newgroup:news@news.biu.ac.il:israel.*:doit
+rmgroup:news@news.biu.ac.il:israel.*|il.*:doit

@@ -1,0 +1,11 @@
+id: $Id$
+hierarchy: DK
+groups: dk.*
+type: public
+description: Denmark
+sender: [ news@news.dknet.dk ]
+url: "http://www.usenet.dk/dk-admin/"
+pgp: yes
+key-id: news@news.dknet.dk
+key-fingerprint: "7C B2 C7 50 F3 7D 5D 73  8C EE 2E 3F 55 80 72 FF"
+key-url: "http://www.usenet.dk/grupper/control_pubkey.html"

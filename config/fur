@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: FUR
+groups: fur.*
+type: private
+description: furrynet
+contact: [ fur-config@news.furry.net ]

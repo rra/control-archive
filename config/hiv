@@ -1,0 +1,12 @@
+id: $Id$
+hierarchy: HIV
+groups: hiv.*
+type: public
+description: "HIVNET Foundation, for HIV+/AIDS information"
+sender: [ news@hivnet.org ]
+contact: [ news@hivnet.org ]
+pgp: yes
+key-id: news@hivnet.org
+key-fingerprint: "5D D6 0E DC 1E 2D EA 0B  B0 56 4D D6 52 53 D7 A4"
+sync-server: news.hivnet.org
+admin-group: hiv.config

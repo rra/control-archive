@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: CENTRAL
+groups: central.*
+type: local
+description: "The Internet Company of New Zealand, Wellington, NZ"
+contact: [ usenet@iconz.co.nz ]

@@ -1,0 +1,9 @@
+id: $Id$
+hierarchy: SI
+groups: si.*
+type: public
+description: "The Republic of Slovenia"
+sender: [ news-admin@arnes.si ]
+pgp: yes
+key-id: si.news.announce.newsgroups
+admin-group: si.news.announce.newsgroups

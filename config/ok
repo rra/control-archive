@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: OK
+groups: ok.*
+type: public
+description: "Oklahoma, USA"
+sender: [ quentin@*qns.com ]

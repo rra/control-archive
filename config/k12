@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: K12
+groups: k12.*
+type: public
+description: "US Educational Network"
+sender: [ braultr@*csmanoirs.qc.ca ]

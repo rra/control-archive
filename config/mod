@@ -1,0 +1,5 @@
+id: $Id$
+hierarchy: MOD
+groups: mod.*
+type: defunct
+description: "Original top level moderated hierarchy"

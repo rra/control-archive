@@ -1,0 +1,7 @@
+## KANTO (?)
+# *PGP*   See comment at top of file.
+rmgroup:*:kanto.*:drop
+checkgroups:ty@kamoi.imasy.or.jp:kanto.*:verify-kanto.news.network
+# NOTE: newgroups aren't verified...
+newgroup:*@*.jp:kanto.*:doit
+rmgroup:ty@kamoi.imasy.or.jp:kanto.*:verify-kanto.news.network

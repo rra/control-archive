@@ -1,0 +1,13 @@
+id: $Id$
+hierarchy: ENGLAND
+groups: england.*
+type: public
+description: England
+sender: [ admin@england.news-admin.org ]
+contact: [ admin@england.news-admin.org ]
+url: "http://www.england.news-admin.org/newsadminsfaq.html"
+pgp: yes
+key-id: england-usenet
+key-fingerprint: "DA 3E C2 01 46 E5 61 CB  A2 43 09 CA 13 6D 31 1F"
+key-url: "http://www.england.news-admin.org/pgpkey.html"
+admin-group: england.news.policy

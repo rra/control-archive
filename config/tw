@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: TW
+groups: tw.*
+type: public
+description: Taiwan
+sender: [ ltc@news.cc.nctu.edu.tw ]

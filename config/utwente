@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: UTWENTE
+groups: utwente.*
+type: local
+description: "University of Twente, Netherlands"
+contact: [ newsmaster@utwente.nl ]

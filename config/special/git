@@ -1,0 +1,4 @@
+## GIT (Georgia Institute of Technology, USA)
+newgroup:news@news.gatech.edu:git.*:doit
+newgroup:news@news.gatech.edu:git*class.*:mail
+rmgroup:news@news.gatech.edu:git.*:doit

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: US
+groups: us.*
+type: public
+description: "United States of America"
+sender: [ uscontrol@earthlink.net ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: "ACS & OSU"
+groups: acs.*|osu.*
+type: local
+description: "Ohio State University, USA"
+contact: [ "Albert J. School <school.1@osu.edu>" "Harpal Chohan <chohan+@osu.edu>" ]

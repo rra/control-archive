@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: NV
+groups: nv.*
+type: public
+description: Nevada
+sender: [ cshapiro@netcom.com doctor@netcom.com ]

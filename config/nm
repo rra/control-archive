@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: NM
+groups: nm.*
+type: public
+description: "New Mexico, USA"
+sender: [ news@tesuque.cs.sandia.gov ]

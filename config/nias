@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: NIAS
+groups: nias.*
+type: public
+description: "Japanese ?"
+sender: [ news@cc.nias.ac.jp ]

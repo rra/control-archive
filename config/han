@@ -1,0 +1,11 @@
+id: $Id$
+hierarchy: HAN
+groups: han.*
+type: public
+description: "Korean Hangul"
+sender: [ newgroups-request@usenet.or.kr ]
+contact: [ newgroups-request@usenet.or.kr ]
+pgp: yes
+key-id: han.news.admin
+key-url: "ftp://ftp.usenet.or.kr/pub/korea/usenet/pgp/PGPKEY.han"
+admin-group: han.news.admin

@@ -1,0 +1,4 @@
+## UT (University of Toronto, Canada)
+# newgroup:news@ecf.toronto.edu:ut.*:doit
+# newgroup:news@ecf.toronto.edu:ut.class.*:mail
+# rmgroup:news@ecf.toronto.edu:ut.*:doit

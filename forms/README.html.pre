@@ -1,0 +1,527 @@
+<HTML><!-- -*- sgml -*- -->
+<HEAD>
+<TITLE>Authentication of Usenet Group Changes</TITLE>
+<LINK REV="made" HREF="mailto:tale@isc.org">
+</HEAD>
+
+<BODY>
+<H1>Authentication of Usenet Group Changes</H1>
+
+<P>This document addresses a method for the authentication of the special
+types of Usenet articles that are used to maintain the namespace of
+Usenet groups.  A basic familiarity with what the Usenet control
+message types "newgroup", "rmgroup" and "checkgroups" do is assumed;
+this is not a tutorial in namespace administration.</P>
+
+<P>Usenet articles are notoriously easy to forge, and control messages
+are no exception.  Since administrators often want to have their news
+systems automatically honor requests from some particular people to
+add or remove newsgroups, it is risky to trust the From: and Sender:
+headers to identify the real sender of a message, as has historically
+been done.  Thus a system using Philip Zimmerman's 
+<A HREF="#Getting PGP">Pretty Good Privacy</A>&#174
+(PGP&#174 ) was developed to provide a more secure means
+of authenticating the sender of a control message.</P>
+
+<P>Unlike traditional PGP authentication of messages, which just
+verifies that the contents of the body of a message are unchanged from
+when it was digitally "signed", this system also needed to sign a few
+headers of the control message to verify the action to be taken and
+to guard against certain other pitfalls.  Another goal was to make the
+signature as unobtrusive as possible and require minimal changes to
+existing software in order to work.</P>
+
+<H2>How to Verify Control Messages</H2>
+
+<P>Listed below are the steps you need to take to enable PGP
+authentication of control messages on your system.</P>
+
+<P>Here is the short and simple version for someone who feels confident
+hacking around the news system and doesn't like to read a lot:</P>
+
+<OL>
+<LI>Get and configure the software:
+<UL>
+<LI>
+<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/pgpverify">
+ftp://ftp.isc.org/pub/pgpcontrol/pgpverify</A>
+<LI>
+<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/server-patches/">
+ftp://ftp.isc.org/pub/pgpcontrol/server-patches/</A>
+</UL>
+<LI>Add
+<A HREF="#Keys">maintainers' PGP public keys</A>
+to the news system key ring.
+<LI>Enable verification through the news system authorization system.
+<DL>
+<DT>INN:
+<DD>Use the action <B>verify-<I>pgp_userid</I></B> (possibly appended
+<B>=<I>logfile</I></B>) in <I>control.ctl</I>.
+<DT>C News:
+<DD>Use the action <B>p</B> in the fourth field of <I>controlperm</I>
+followed by a suitable <I>pgp_userid</I> in the fifth field.
+<DT>D News:
+<DD>Use the action <B>doit,pgp</B> in <I>control.conf</I>.
+<DT>ANU News:
+<DD>Use the <B>HELP ADD FILE PGP_verification</B> ANU command.
+<DT>Other systems:
+<DD>Sorry, not implemented yet.
+</DL>
+<LI>Test <I>pgpverify</I>.
+If you have the news.announce.newgroups key in your key ring, run
+<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/sample.control">
+ftp://ftp.isc.org/pub/pgpcontrol/sample.control</A>
+through <I>pgpverify</I> on stdin.  It should spit out the
+string "news.announce.newgroups" on stdout.
+</OL>
+
+<P>Here is a more verbose version of the instructions:</P>
+
+<P>
+<OL>
+<LI>
+Get the software.
+
+<P>There are two pieces of code that will need to be added to a news
+server to make use of this authentication system: a stand-alone
+script that verifies an article is what it says it is, and a
+patch to hook it into the news server's processing of control messages.</P>
+
+<P>The stand-alone program, 
+<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/pgpverify">
+ftp://ftp.isc.org/pub/pgpcontrol/pgpverify</A>,
+is a
+<A HREF="#Getting Perl">Perl</A>
+script that should work with Perl version 4 and up.  (I have not tested
+it with earlier versions.)  It does not contain any code making it
+dependent on any particular news server software.</P>
+
+<P>
+<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/server-patches/">
+ftp://ftp.isc.org/pub/pgpcontrol/server-patches/</A>
+has patches for hooking the system into existing news server software.
+Choose the one for your system from the list below.</P>
+<UL>
+<LI>
+<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/server-patches/inn1.4sec/pgpcontrol.pch">
+INN version 1.4sec</A>
+<LI>
+<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/server-patches/inn1.4unoff4/pgpcontrol.pch">
+INN version 1.4unoff4</A>
+<LI>
+<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/server-patches/cnews-CR.G/pgpcontrol.pch">
+C News version CR.G</A>
+(Courtesy of System Administrator &lt;root@hp9000.laafb.af.mil&gt; and
+Charles Lindsey &lt;chl@clw.cs.man.ac.uk&gt;)
+</UL>
+
+<P>Newer versions of INN (since 1.5), D News and ANU News (since 6.2.0)
+do not need to be patched, as they ship with built-in handling for pgp
+verification.  You can therefore skip past the "Install it on your
+news system" section to "Enable verification for the hierarchies that
+interest you".  I recommend that you upgrade to <I>at least</I>
+INN 1.5.1sec if you
+are running any prior INN version, because it has a few important
+security problems fixed.</P>
+
+<P>I regret that I do not have the time to develop more patches, but I
+will gladly add patches for other systems to this page as they are
+made available to me.  The INN version 1.4sec patch will apply to
+all INN "unoff" versions, albeit with a little bit of fuzz.  I am not
+positive what versions of C News will work with the C News CR.G
+patch; if you try it with other versions, please let me know how it goes.</P>
+
+<LI>
+Install it in your news system.
+
+<P>First you must ensure that the absolute paths to <I>perl</I> and to
+<I>pgp</I> are correct in the first few lines of the <I>pgpverify</I>
+program.  No other configuration of options or pathnames should be
+needed.</P>
+
+<P>Next, the following steps assume, solely for the sake of making it
+easy for me to write a simple recipe, that you have copied
+<I>pgpverify</I> and the patch for your system to your news server as
+<I>/tmp/pgpverify</I> and <I>/tmp/pgpcontrol.pch</I> respectively.  I
+have tried to format this so that you should be able to cut and paste
+any of the lines in italics directly to your shell.</P>
+
+<P>
+<UL>
+<LI>If you are running INN:
+
+<PRE>
+cd to the executable program directory that has <I>ctlinnd</I>.
+<I>mv /tmp/pgpverify pgpverify</I>
+
+cd to the root of your INN source tree.
+<I>cd site</I>
+<I>patch &lt /tmp/pgpcontrol.pch</I>
+<I>make install</I>
+</PRE>
+
+<P>It has been reported to me that at least one AIX system has problems
+with <I>patch</I> not applying the last section of
+<I>parsecontrol.pch</I>.  If you run AIX, double check it and apply by
+manually editing, if necessary.</P>
+
+<LI>If you are running C News:
+
+<PRE>
+cd to the C News program directory that has <I>spacefor</I>.
+<I>mv /tmp/pgpverify pgpverify</I>
+
+cd to the root of your C News source tree.
+<I>cd ctl</I>
+<I>patch &lt /tmp/pgpcontrol.pch</I>
+<I>make install</I>
+</PRE>
+
+<LI>If you are running some other system:
+
+<P>You're out of luck until someone writes a patch and instructions for
+your system and makes it available to me for redistribution.</P>
+</UL>
+
+<LI>
+Enable verification for the hierarchies that interest you.
+
+<P>To verify messages, you must have a 
+<A HREF="#Keys">PGP public key for each signer</A>
+that you wish to trust.  It should be entered in a key ring that is
+accessible to the user-id that runs the news system by running
+<I>pgp -ka</I> on a file containing the key to add.  For example, at a
+site that runs the news server software as <I>news</I>, the following
+command run by the <I>news</I> user-id should add the key bounded by
+BEGIN and END "PGP PUBLIC KEY BLOCK" lines in the file <I>/tmp/key</I>
+to the default key ring that would be used for authentication:</P>
+
+<PRE>
+<I>pgp -ka /tmp/key</I>
+</PRE>
+
+<P>As a general policy rule, control message signers will not use their
+control message keys to introduce other keys, so when PGP asks you a
+question similar to, "Would you trust this user to act as an
+introducer and certify other people's public keys to you?" answer that
+you would not.</P>
+
+<P>After you have added the appropriate key to your key ring, you need to
+tell the news software to validate the control messages received.
+As implemented, the system will perform the requested action if the
+message can be authenticated and it will mail the message to the news
+system administrator if it cannot.  Clearly there are other possible
+actions that could be implemented, but I wanted to keep the patches
+minimal.  Future releases of the server software will probably have
+increased flexibility.</P>
+
+<P>
+<UL>
+<LI>If you are running INN:
+
+<P>Automatic processing of control messages is handled by
+<I>control.ctl</I>, which you edit in the same <I>site</I>
+subdirectory where you patched <I>parsecontrol</I>.
+<I>control.ctl</I> has several lines at the beginning of it that
+describe the format of the file, and there is an even longer
+<I>control.ctl(5)</I> manual page.  To enable PGP verification in
+addition to the normal authorization done by <I>control.ctl</I>, use
+the action <B>verify-<I>pgp_userid</I></B> in the fourth field.
+<P>For example, if you trust group-admin@isc.org (currently David
+Lawrence &lt;tale@isc.org&gt;, aka tale@uunet.uu.net, the author of
+this document) to manage groups in the "Big 8" hierarchies, you could
+have lines like these (but don't use the backslash continuation, which
+I have used here for readability; keep it all on one line):</P>
+
+<PRE>
+newgroup:group-admin@isc.org:\
+comp.*|humanities.*|misc.*|news.*|rec.*|sci.*|soc.*|talk.*:\
+verify-news.announce.newgroups
+rmgroup:group-admin@isc.org:\
+comp.*|humanities.*|misc.*|news.*|rec.*|sci.*|soc.*|talk.*:\
+verify-news.announce.newgroups
+checkgroups:group-admin@isc.org:\
+comp.*|humanities.*|misc.*|news.*|rec.*|sci.*|soc.*|talk.*:\
+verify-news.announce.newgroups
+</PRE>
+
+<P>Additionally, if you like the logging feature available with the
+action <B>doit=<I>logfile</I></B>, you can get the same logging 
+by using <B>verify-<I>pgp_userid</I>=<I>logfile</I></B>.</P>
+
+<LI>If you are running C News:
+
+<P>Automatic processing of control messages is handled by
+<I>controlperm</I>, which you edit in the subdirectory where you
+patched the control message handling scripts.  There is a
+<I>controlperm(5)</I> manual page that describes its format.  To
+enable PGP verification in addition to the normal authorization done
+by <I>controlperm</I>, use the action <B>p</B> in the fourth field
+instead of <B>y</B> and add a fifth field for the <I>pgp_userid</I>.</P>
+
+<P>For example, if you trust group-admin@isc.org (currently David
+Lawrence &lt;tale@isc.org&gt;, aka tale@uunet.uu.net, the author of
+this document) to manage groups in the "Big 8" hierarchies, you could
+have lines like these (but don't use the backslash continuation, which
+I have used here for readability; keep it all on one line):</P>
+
+<PRE>
+comp,sci,misc,news,rec,soc,talk group-admin@isc.org nrc pv \
+news.announce.newgroups
+</PRE>
+
+<P>You could then remove the line that follows the comment, "but his name
+can be forged, so don't let him rmgroup..."</P>
+
+<LI>If you are running D News:
+
+<P>Automatic processing of control messages is handled by
+<I>control.conf</I>.  To enable PGP verification in addition to the
+normal authorization done by <I>control.conf</I>, use the action
+<B>pgp</B> in the fourth field, in addition to whatever action you
+want to happen.  For example, if you trust group-admin@isc.org
+(currently David Lawrence &lt;tale@isc.org&gt;, aka tale@uunet.uu.net,
+the author of this document) to manage groups in the "Big 8"
+hierarchies, you could have lines like these (but don't use the
+backslash continuation, which I have used here for readability; keep
+it all on one line):</P>
+
+<PRE>
+newgroup:group-admin@isc.org:\
+comp.*,misc.*,news.*,rec.*,sci.*,soc.*,talk.*:doit,pgp
+rmgroup:group-admin@isc.org:\
+omp.*,misc.*,news.*,rec.*,sci.*,soc.*,talk.*:doit,pgp
+checkgroups:group-admin@isc.org:\
+comp.*,misc.*,news.*,rec.*,sci.*,soc.*,talk.*:doit,pgp
+</PRE>
+
+<P>Note that there is no provision, with the current D News
+implementation, for checking that the signature matches a particular
+string, just that it it has a valid signature.  This is probably
+adequate security as long as you keep the news user's PGP key ring
+limited only to people you trust to maintain newsgroup hierarchies.</P>
+
+<P>Finally, if you have not installed pgp on your system in a
+directory where D News normally looks for auxiliary programs, you will
+need to add a pointer to it in <I>dnews.conf</I>, like this:
+
+<PRE>
+pgp /path/to/pgp
+</PRE>
+
+<P>See
+<A HREF="http://www.netwinsite.com/pgp.htm">
+http://www.netwinsite.com/pgp.htm</A>
+for documentation by the D News authors that might supersede
+this document.</P>
+
+<LI>If you are running ANU News (V6.2.0 or later):
+
+<P>Instructions will (hopefully) soon appear here.  In the meantime,
+consult the <B>HELP ADD FILE PGP_verification</B> server command.
+
+<LI>If you are running some other system:
+
+<P>You're out of luck until someone writes a patch and instructions for
+your system and makes it available to me for redistribution.</P>
+</UL>
+
+<LI>
+Test the system.
+
+<P>Get
+<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/sample.control">
+ftp://ftp.isc.org/pub/pgpcontrol/sample.control</A>
+and save it to a file on your system; <I>/tmp/sample.control</I> will
+be used for this example.  You'll use it to make sure things will work
+as expected.</P>
+
+<P>To verify the control message, you will need the 
+<A HREF="#comp">key for news.announce.newgroups</A>
+and authorization in your news system for group-admin@isc.org to
+automatically perform "newgroup".  Go ahead and enable it for the test
+even if you don't want to really allow this, because it is easy enough
+to rescind after the test by editing the control message authorization
+file and removing the key with <I>pgp -kr news.announce.newgroups</I>.</P>
+
+<P>You can check that the <I>pgpverify</I> part of the system will work
+properly simply by feeding it the sample control message on stdin:
+
+<PRE>
+pgpverify &lt /tmp/sample.control
+</PRE>
+
+<P>If if could run pgp and find the correct key in the default key ring,
+the string <B>news.announce.newgroups</B> should be printed.  The exit
+status of the script, found in most shells with the command <I>echo
+$?</I> as the next command after <I>pgpverify</I>, should be 0 (zero).</P>
+
+<P>If it doesn't work, then
+
+<PRE>
+pgpverify -test &lt /tmp/sample.control
+</PRE>
+
+might give you some enlightment.  It will print out the input that is
+used for pgp (which is a reconstructed version of the input that
+supposedly created the control message) as well as the output of PGP's
+analysis of the message.  Look especially closely at the latter, since
+it can give you important information such as which keyring is being
+used.</P>
+
+<P>If it still doesn't work and you've tried and tried to figure out why, 
+<A HREF="mailto:tale@isc.org (David C Lawrence)">email me</A>
+a complete description of the problem you are having and how you have
+tried to remedy it.  At a bare minimum, your mail should include a
+copy of the message you are trying to verify, a typescript of the
+attempted execution of <I>pgpverify -test</I>, and the output of
+<I>pgp -kc</I> and <I>pgp -kvc news.announce.newgroups</I>.</P>
+
+<P>When <I>pgpverify</I> passes its test, use the appropriate procedure
+below for you news server to verify the authorization system.</P>
+
+<P>
+<UL>
+<LI>If you are running INN:
+
+<P>First, cd to the directory where <I>parsecontrol</I> is installed.
+Then execute the following four lines, in order, as the user who owns
+the news system:</P>
+
+<PRE>
+/bin/sh
+PROG=newgroup
+set "--" group-admin@isc.org "" /tmp/sample.control
+(. ./parsecontrol "$@"; echo $ACTION)
+</PRE>
+
+<P>If the message verified correctly, the <I>echo</I> command should
+output <B>doit</B>; otherwise, verification failed and the output
+should be <B>mail</B>.</P>
+
+<P>Edit <I>/tmp/sample.control</I> and change all occurences of
+<B>newusers</B> to <B>newgroups</B>.  Then repeat the
+<I>parsecontrol</I> and <I>echo</I> lines.  This time verification
+should fail.</P>
+
+<LI>If you are running C News:
+
+<P>Because of the way C News is implemented, I have not taken the trouble
+to find out how it can be tested without running through the whole
+<I>newgroup</I> script.  If you are testing with <I>sample.control</I>,
+I think this should let you know whether things will work:</P>
+
+<PRE>
+newsflag news.announce.newusers y
+newgroup news.announce.newusers moderated &lt /tmp/sample.control
+</PRE>
+
+<P>(newsflag is the C News program <I>maint</I> subdirectory; newgroup is
+in the <I>ctl</I> subdirectory.)</P>
+
+<P>You should get a mail message telling you that news.announce.newusers
+was changed to moderated.  If it didn't appear to work, doublecheck
+the <I>active</I> file.  If it really didn't work, fix the status of
+the group with the following command then let me know about.</P>
+
+<PRE>
+newsflag news.announce.newusers m
+</PRE>
+
+<P>If the message did verify correctly, edit <I>/tmp/sample.control</I>
+and change all occurences of <B>newusers</B> to <B>newgroups</B>.
+Then repeat the <I>newgroup</I> line with an <B>unmoderated</B>
+argument instead of <B>moderated</B>; the argument is unused in the
+PGP verification code and doing it this way saves you the effort of
+<I>newsflag</I>ging things again.</P>
+
+<P>With the changes to <I>sample.control</I> you should now get a mail
+message saying, "authentication failed".</P>
+
+<P>When you are all done, make sure news.announce.newusers is really
+marked moderated in your <I>active</I> file.</P>
+
+<LI>If you are running D News:
+
+<P>It appears to me that currently you'll have to wait for a control
+message to come in and see whether it does what you want.  If it
+doesn't, and you can't readily tell why, contact D News's customer
+support staff.</P>
+
+<LI>If you are running ANU News (V6.2.0 or later):
+
+<P>Instructions will (hopefully) soon appear here.  In the meantime,
+consult the <B>HELP ADD FILE PGP_verification</B> server command.</P>
+
+<LI>If you are running some other system:
+
+<P>You're out of luck until someone writes a patch and instructions for
+your system and makes it available to me for redistribution.</P>
+</UL>
+</OL>
+
+<H2>Format of Signed Control Messages</H2>
+
+<P>The format of the input to PGP for signing and verifying messages
+is described in a separate document,
+<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/FORMAT">
+ftp://ftp.isc.org/pub/pgpcontrol/FORMAT</A>.
+It is intended for people who want to implement their own signing
+and/or verifying programs instead of using pgpverify or signcontrol.</P>
+
+<H2>Frequently Asked Questions</H2>
+
+<OL>
+<H3><LI>How come this presumably valid messages doesn't check out with
+pgpverify?</H3>
+
+<UL>
+<LI>You don't have the latest version of <I>pgpverify</I>, which fixed
+whatever bug is causing authentication of the message to fail.
+<LI>You don't have your PGP configuration files and keyrings in the
+default path used by <I>pgp</I> and <B>PGPPATH</B> is not correctly
+set in your environment.  Either move your PGP directory to the
+default location or set the <B>$ENV{'PGPPATH'}</B> line in <I>pgpverify</I>.
+(Warning: some INN versions set <B>$HOME</B> to <B>_PATH_NEWSLIB</B>,
+so this might be the source of your trouble.)
+<LI>You don't have the correct key for the user that signed it in your
+key ring.
+<LI>You are using a non-English version of <I>pgp</I>, set up with
+a "<B>Language</B> = " line in your PGP <I>config.txt</I> file.  This
+means pgpverify can't find the string it is looking for in
+the <I>pgp</I> output.  <I>pgpverify</I> tries to overcome a non-English
+language specification by setting <B>LANGUAGE</B> in the 
+environment before calling <I>pgp</I>, but <I>pgp</I> overrides the
+runtime environment with the <I>config.txt</I> variables.
+<LI>You cut-and-pasted the message in your window system, which
+converted the tab characters in the original message into spaces in
+the message you are trying to decode.  Having this handled completely
+correctly by the signing/verifying code is harder than you might first
+think.
+<LI>You are running <I>pgpverify</I> on a saved
+copy of the article that includes an extraneous trailing newline, such
+as might be inserted by saving the message from a mail handler or news
+reader, that was not present in the original message. 
+<LI>You cut-and-pasted the sample INN <I>control.ctl</I> lines above
+and left the continuation lines in, instead of joining each group of
+three physical lines comprising one logical line to just one physical line.
+</UL>
+</OL>
+
+<HR><HR>
+<H2><A NAME="Keys">List of PGP Public Keys for Newsgroup Administration</A></H2>
+
+<P>This is a list of keys known to be used for maintaining various parts
+of the newsgroup namespace.  They are listed alphabetically by the
+hierarchies they are used for, along with the email address they are
+sent by and the pgp key userid of the signature (both for use in
+<I>control.ctl</I>).  The group that people should follow if they are
+interested in tracking announcements about the hierarchy is also
+listed.  The "Check also" references point to locations that should
+have identical public key blocks; it is best if you confirm the block
+listed here by checking against the others.</P>
+
+<P>The existence of key here only means that I, David Lawrence, trust the
+person who uses it to be a responsible maintainer of that particular
+hierarchy of groups.  You are solely responsible for deciding whether
+you will use the keys here at your own site.</P>

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: NY
+groups: ny.*
+type: public
+description: "New York State, USA"
+sender: [ root@ny.psca.com ]

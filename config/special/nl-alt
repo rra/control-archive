@@ -1,0 +1,10 @@
+## NL-ALT (Alternative Netherlands groups)
+# URL: http://www.xs4all.nl/~onno/nl-alt/
+# Several options are given in the FAQ for creating and removing groups.
+# Key fingerprint = 6B 62 EB 53 4D 5D 2F 96  35 D9 C8 9C B0 65 0E 4C
+# *PGP*   See comment at top of file.
+rmgroup:*:nl-alt.*:drop
+checkgroups:nl-alt-janitor@surfer.xs4all.nl:nl-alt.*:verify-nl-alt.config.admin
+newgroup:*:nl-alt.*:doit
+rmgroup:nl-alt-janitor@surfer.xs4all.nl:nl-alt.*:verify-nl-alt.config.admin
+rmgroup:news@kink.xs4all.nl:nl-alt.*:verify-nl-alt.config.admin

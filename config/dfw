@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: DFW
+groups: dfw.*
+type: public
+description: "Dallas/Fort Worth, Texas, USA"
+sender: [ eric@*cirr.com ]

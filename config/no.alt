@@ -1,0 +1,9 @@
+id: $Id$
+hierarchy: NO.ALT
+groups: no.alt.*
+type: public
+description: "Norway alternative hierarchy"
+newgroup-sender: [ *@*.no ]
+rmgroup-sender: [ control@usenet.no ]
+pgp: yes
+key-id: no-hir-control

@@ -1,0 +1,11 @@
+id: $Id$
+hierarchy: SAT
+groups: sat.*
+type: public
+description: "San Antonio, Texas, USA"
+sender: [ satgroup@endicor.com ]
+contact: [ satgroup@endicor.com ]
+url: "http://www.endicor.com/~satgroup/"
+pgp: yes
+key-id: satgroup@endicor.com
+admin-group: sat.usenet.config

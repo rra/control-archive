@@ -1,0 +1,123 @@
+##  rone's unified control.ctl
+##  $Id$
+##
+##  control.ctl - Access control for control messages.
+##
+##  Please copy usenet-config@isc.org on any updates to this file so that
+##  it can be updated in the INN CVS repository and on ftp.isc.org.  For
+##  changes to a public hierarchy, please also post the changes to
+##  news.admin.hierarchies.
+##
+##  The canonical version of this file can be found in the latest INN
+##  release and at <ftp://ftp.isc.org/pub/usenet/CONFIG/control.ctl>; these
+##  two files will be kept in sync.  Please refer to the latest version of
+##  this file for the most up-to-date hierarchy control information and
+##  please use the latest version if you intend to carry all hierarchies.
+##  You may wish to change the policy for alt.*.
+##
+##  Format:
+##     <message>:<from>:<newsgroups>:<action>
+##
+##     <message>      Control message or "all" if it applies to all control
+##                    messages.
+##     <from>         Pattern that must match the From line.
+##     <newsgroups>   Pattern that must match the newsgroup being newgroup'd
+##                    or rmgroup'd (ignored for other messages).
+##     <action>       What to do:
+##                          doit        Perform action
+##                          drop        Ignore message
+##                          log         One line to error log
+##                          mail        Send mail to admin
+##                          verify-pgp_userid   Do PGP verification on user.
+##                    All actions except drop and mail can be given a log
+##                    location by following the action with an = and the
+##                    log ("mail" says to mail the admin, an empty location
+##                    tosses the log information, and a relative path xxx
+##                    logs to $LOG/xxx.log.
+##
+##  The *last* matching entry is used.  See the expire.ctl(5) man page for
+##  complete information.
+##
+##  This file follows the following policies:
+##
+##   * Most unknown or invalid control messages no longer result in mail.
+##     This is due to the proliferation of forged control messages filling
+##     up mailboxes.  Some news servers even get overwhelmed with trying to
+##     log failure, so unsigned control messages for hierarchies that use
+##     PGP are simply dropped.
+##
+##   * The assumption is that you now have PGP on your system.  If you
+##     don't, you should get it to help protect yourself against all the
+##     control message forgeries.  See <ftp://ftp.isc.org/pub/pgpcontrol/>.
+##     PGP control message verification comes with all versions of INN since
+##     1.5, but you will need to install either PGP or GnuPG; see the
+##     installation instructions for your news server.
+##
+##     If for some reason you can't use PGP, search for the *PGP* comments
+##     and modify the control lines to change "verify-..." in the action
+##     field to "mail" or "doit=mail" or "doit=<log file>" or whatever you
+##     prefer (replacing <log file> with the name of an appropriate log
+##     file).
+## 
+##   * A number of hierarchies are for local use only but have leaked out
+##     into the general stream.  In this config file, they are set so that
+##     the groups will be easy to remove, and are marked with a comment of
+##     *LOCAL* (for use by that organization only, not generally
+##     distributed), *DEFUNCT* (a hierarchy that's no longer used), or
+##     *PRIVATE* (should only be carried after making arrangements with the
+##     given contact address).  Please delete all groups in those
+##     hierarchies from your server if you carry them, unless you've
+##     contacted the listed contact address and arranged a feed.
+##
+##     If you have permission to carry any of the hierachies so listed in
+##     this file, you should change the entries for those hierarchies below.
+##
+##  The comments of this file aren't in any formal or well-defined syntax,
+##  but they are meant to use a consistent syntax to allow eventual parsing
+##  by scripts into a better database format.  Please follow the syntax of
+##  existing entries when providing new ones.  The recognized "fields" are
+##  Contact (contact e-mail address), Admin group (the administrative group
+##  for the hierarchy), URL, Key URL (URL for PGP key), Key fingerprint, Key
+##  mail (address to mail for PGP key), and Syncable server (for actsync or
+##  a similar tool).
+
+## -------------------------------------------------------------------------
+##	DEFAULT
+## -------------------------------------------------------------------------
+
+# Default to dropping control messages that aren't recognized to allow
+# people to experiment without inadvertently mailbombing news admins.
+all:*:*:drop
+
+## -------------------------------------------------------------------------
+##	CHECKGROUPS MESSAGES
+## -------------------------------------------------------------------------
+
+# Default to mailing all checkgroups messages to the administrator.
+checkgroups:*:*:mail
+
+## -------------------------------------------------------------------------
+##	MISCELLANEOUS CONTROL MESSAGES
+## -------------------------------------------------------------------------
+
+# Mostly only used for UUCP feeds, very rarely used these days.
+ihave:*:*:drop
+sendme:*:*:drop
+
+# Request to send a copy of the newsfeeds file, intended for mapping
+# projects.  Almost never used for anything other than mailbombing now.
+sendsys:*:*:log=sendsys
+
+# Request to send the server's path entry.  Not particularly useful.
+senduuname:*:*:log=senduuname
+
+# Request to send the server's version number.
+version:*:*:log=version
+
+## -------------------------------------------------------------------------
+##	NEWGROUP/RMGROUP MESSAGES
+## -------------------------------------------------------------------------
+
+## Default (for any group)
+newgroup:*:*:mail
+rmgroup:*:*:mail

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: YORK
+groups: york.*
+type: local
+description: "York University, Toronto, ON"
+contact: [ "Peter Marques <news@yorku.ca>" ]

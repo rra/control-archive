@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: CHRISTNET
+groups: christnet.*
+type: public
+description: "Christian Discussion"
+sender: [ news@fdma.com ]

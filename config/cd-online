@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: CD-ONLINE
+groups: cd-online.*
+type: local
+description: ?
+contact: [ newsmaster@worldonline.nl ]

@@ -1,0 +1,12 @@
+id: $Id$
+hierarchy: STAROFFICE
+groups: staroffice.*
+type: public
+description: "StarOffice business suite, Sun Microsystems, Inc."
+sender: [ news@stardivision.de ]
+contact: [ news@stardivision.de ]
+pgp: yes
+key-id: staroffice.admin
+key-fingerprint: "F6 6A 5C 57 77 1F 63 26  F2 43 02 41 75 2A 04 1C"
+sync-server: starnews.sun.com
+admin-group: staroffice.admin

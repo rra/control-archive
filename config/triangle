@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: TRIANGLE
+groups: triangle.*
+type: public
+description: "Research Triangle, Central North Carolina, USA"
+sender: [ jfurr@acpub.duke.edu news@news.duke.edu tas@concert.net ]

@@ -1,0 +1,9 @@
+id: $Id$
+hierarchy: UCB
+groups: ucb.*
+type: public
+description: "University of California Berkeley, USA"
+sender: [ usenet@agate.berkeley.edu ]
+contact: [ "Chris van den Berg <usenet@agate.berkeley.edu>" ]
+pgp: yes
+key-id: ucb.news

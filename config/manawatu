@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: MANAWATU
+groups: manawatu.*
+type: local
+description: "Manawatu district, New Zealand"
+contact: [ "alan@manawatu.gen.nz or news@manawatu.gen.nz" ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: SU
+groups: su.*
+type: local
+description: "Stanford University, USA"
+contact: [ news@news.stanford.edu ]

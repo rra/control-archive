@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: SACHSNET
+groups: sachsnet.*
+type: public
+description: German
+sender: [ root@lusatia.de ]

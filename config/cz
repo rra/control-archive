@@ -1,0 +1,7 @@
+id: $Id$
+hierarchy: CZ
+groups: cz.*
+type: public
+description: "Czech Republic"
+sender: [ petr.kolar@vslib.cz ]
+url: "ftp://ftp.vslib.cz/pub/news/config/cz/newsgroups (text)"

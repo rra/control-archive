@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: IA
+groups: ia.*
+type: public
+description: "Iowa, USA"
+sender: [ skunz@iastate.edu ]

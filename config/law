@@ -1,0 +1,7 @@
+id: $Id$
+hierarchy: LAW
+groups: law.*
+type: public
+description: ?
+sender: [ *@*.kentlaw.edu *@*.law.vill.edu ]
+contact: [ "Jim Burke <jburke@kentlaw.edu>" ]

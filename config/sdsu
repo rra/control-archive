@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: SDSU
+groups: sdsu.*
+type: local
+description: "San Diego State University, CA"
+contact: [ "Craig R. Sadler <usenet@sdsu.edu>" ]

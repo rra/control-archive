@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: NASA
+groups: nasa.*
+type: local
+description: "National Aeronautics and Space Administration, USA"
+contact: [ news@nas.nasa.gov ]

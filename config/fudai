@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: FUDAI
+groups: fudai.*
+type: public
+description: "Japanese ?"
+sender: [ news@picard.cs.osakafu-u.ac.jp ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: HAWAII
+groups: hawaii.*
+type: public
+description: "Hawaii, USA"
+sender: [ news@lava.net ]

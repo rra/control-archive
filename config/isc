@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: ISC
+groups: isc.*
+type: public
+description: "Japanese ?"
+sender: [ news@sally.isc.chubu.ac.jp ]

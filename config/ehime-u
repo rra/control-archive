@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: EHIME-U
+groups: ehime-u.*
+type: public
+description: "? University, Japan ?"
+sender: [ news@cc.nias.ac.jp news@doc.dpc.ehime-u.ac.jp ]

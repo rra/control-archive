@@ -1,0 +1,10 @@
+id: $Id$
+hierarchy: IS
+groups: is.*
+type: public
+description: Iceland
+sender: [ news@isnet.is ]
+contact: [ "Marius Olafsson <news@isnet.is>" ]
+pgp: yes
+key-id: is.isnet
+admin-group: is.isnet

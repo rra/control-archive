@@ -1,0 +1,7 @@
+id: $Id$
+hierarchy: MEDLUX
+groups: medlux.*
+type: public
+description: "All-Russia medical teleconferences"
+sender: [ neil@new*.medlux.ru ]
+url: "ftp://ftp.medlux.ru/pub/news/medlux.grp"

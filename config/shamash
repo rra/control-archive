@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: SHAMASH
+groups: shamash.*
+type: public
+description: Jewish
+sender: [ archives@israel.nysernet.org ]

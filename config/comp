@@ -1,0 +1,11 @@
+id: $Id$
+hierarchy: COMP, HUMANITIES, MISC, NEWS, REC, SCI, SOC, TALK
+groups: comp.*|humanities.*|misc.*|news.*|rec.*|sci.*|soc.*|talk.*
+type: public
+description: "The Big Eight"
+sender: [ group-admin@isc.org ]
+contact: [ group-admin@isc.org ]
+pgp: yes
+key-id: news.announce.newgroups
+key-fingerprint: "F5 35 58 D3 55 64 10 14  07 C6 95 53 13 6F D4 07"
+admin-group: news.announce.newgroups

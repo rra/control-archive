@@ -1,0 +1,5 @@
+id: $Id$
+hierarchy: MCOM
+groups: mcom.*
+type: local
+description: "Netscape Inc, USA"

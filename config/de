@@ -1,0 +1,9 @@
+id: $Id$
+hierarchy: DE
+groups: de.*
+type: public
+description: "German language"
+sender: [ moderator@dana.de ]
+pgp: yes
+key-id: de.admin.news.announce
+admin-group: de.admin.news.announce

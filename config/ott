@@ -1,0 +1,8 @@
+id: $Id$
+hierarchy: OTT
+groups: ott.*
+type: public
+description: "Ottawa, Ontario, Canada"
+sender: [ clewis@ferret.ocunix.on.ca dave@revcan.ca gordon@*pinetree.org news@*pinetree.org news@bnr.ca news@ferret.ocunix.on.ca news@nortel.ca ]
+contact: [ onag@pinetree.org ]
+url: "http://www.pinetree.org/ONAG/"

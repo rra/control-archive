@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: PHL
+groups: phl.*
+type: public
+description: "Philadelphia, Pennsylvania, USA"
+sender: [ news@vfl.paramax.com ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: CMU
+groups: cmu.*
+type: local
+description: "Carnegie-Mellon University, Pennsylvania, USA"
+contact: [ "Daniel Edward Lovinger <del+@CMU.EDU>" ]

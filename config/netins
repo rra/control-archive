@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: NETINS
+groups: netins.*
+type: local
+description: "netINS, Inc"
+contact: [ news@netins.net ]

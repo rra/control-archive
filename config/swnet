@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: SWNET
+groups: swnet.*
+type: public
+description: "Sverige, Sweden"
+sender: [ ber@sunic.sunet.se ]

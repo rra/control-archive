@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: CODEWARRIOR
+groups: codewarrior.*
+type: public
+description: "CodeWarrior discussion"
+sender: [ news@supernews.net ]

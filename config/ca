@@ -1,0 +1,8 @@
+id: $Id$
+hierarchy: CA
+groups: ca.*
+type: public
+description: "California, USA"
+sender: [ ikluft@thunder.sbay.org ]
+contact: [ ikluft@thunder.sbay.org ]
+url: "http://www.sbay.org/ca/"

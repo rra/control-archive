@@ -1,0 +1,10 @@
+id: $Id$
+hierarchy: "ALABAMA & HSV"
+groups: alabama.*|hsv.*
+type: public
+description: "Huntsville, Alabama, USA"
+sender: [ jpc@suespammers.org ]
+contact: [ jpc@suespammers.org ]
+pgp: yes
+key-id: alabama-group-admin
+admin-group: alabama.config

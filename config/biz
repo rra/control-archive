@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: BIZ
+groups: biz.*
+type: public
+description: "Business Groups"
+sender: [ edhew@xenitec.on.ca ]

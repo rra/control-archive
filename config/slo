@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: SLO
+groups: slo.*
+type: public
+description: "San Luis Obispo, CA"
+sender: [ news@punk.net ]

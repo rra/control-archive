@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: BERMUDA
+groups: bermuda.*
+type: public
+description: Bermuda
+sender: [ news@*ibl.bm ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: BC
+groups: bc.*
+type: public
+description: "British Columbia, Canada"
+sender: [ bc_van_usenet@fastmail.ca ]

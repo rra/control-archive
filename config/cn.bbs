@@ -1,0 +1,8 @@
+id: $Id$
+hierarchy: CN.BBS
+groups: cn.bbs.*
+type: public
+description: China
+sender: [ news@zixia.net ]
+pgp: yes
+key-id: cn.bbs.admin.announce

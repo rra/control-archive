@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: ZA
+groups: za.*
+type: public
+description: "South Africa"
+sender: [ ccfj@hippo.ru.ac.za root@duvi.eskom.co.za ]

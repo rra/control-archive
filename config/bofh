@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: BOFH
+groups: bofh.*
+type: private
+description: "Bastard Operator From Hell"
+contact: [ myname@myhost.mydomain.com ]

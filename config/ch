@@ -1,0 +1,12 @@
+id: $Id$
+hierarchy: CH
+groups: ch.*
+type: public
+description: Switzerland
+sender: [ felix.rauch@nice.ch ]
+contact: [ ch-news-admin@use-net.ch ]
+url: "http://www.use-net.ch/Usenet/"
+pgp: yes
+key-id: ch-news-admin@use-net.ch
+key-fingerprint: "71 80 D6 8C A7 DE 2C 70  62 4A 48 6E D9 96 02 DF"
+key-url: "http://www.use-net.ch/Usenet/adminkey.html"

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: OH
+groups: oh.*
+type: public
+description: "Ohio, USA"
+sender: [ trier@ins.cwru.edu ]

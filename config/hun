@@ -1,0 +1,10 @@
+id: $Id$
+hierarchy: HUN
+groups: hun.*
+type: public
+description: Hungary
+sender: [ hun-mnt@news.sztaki.hu ]
+pgp: yes
+key-id: hun.admin.news
+key-url: "http://gatling.ikk.sztaki.hu/~kissg/news/hun.admin.news.asc"
+admin-group: hun.admin.news

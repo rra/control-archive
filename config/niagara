@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: NIAGARA
+groups: niagara.*
+type: public
+description: "Niagara Peninsula, USA/Canada"
+sender: [ news@niagara.com ]

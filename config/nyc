@@ -1,0 +1,7 @@
+id: $Id$
+hierarchy: NYC
+groups: nyc.*
+type: public
+description: "New York City"
+sender: [ perry@piermont.com ]
+contact: [ "Perry E. Metzger <perry@piermont.com>" ]

@@ -1,0 +1,6 @@
+## IU (Indiana University)
+newgroup:news@usenet.ucs.indiana.edu:iu.*:doit
+newgroup:root@usenet.ucs.indiana.edu:iu.*:doit
+newgroup:*@usenet.ucs.indiana.edu:iu*class.*:mail
+rmgroup:news@usenet.ucs.indiana.edu:iu.*:doit
+rmgroup:root@usenet.ucs.indiana.edu:iu.*:doit

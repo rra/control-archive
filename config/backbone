@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: BACKBONE
+groups: backbone.*
+type: local
+description: "ruhr.de/ruhrgebiet.individual.net in Germany"
+contact: [ admin@ruhr.de ]

@@ -1,0 +1,11 @@
+id: $Id$
+hierarchy: SAAR
+groups: saar.*
+type: public
+description: "Saarland Region, Germany"
+sender: [ control@saar-admin-news.de ]
+url: "http://www.saar-admin-news.de/"
+pgp: yes
+key-id: saar-control
+key-url: "http://www.saar-admin-news.de/saar-control.asc"
+admin-group: saar.admin.news

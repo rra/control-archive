@@ -1,0 +1,10 @@
+id: $Id$
+hierarchy: PL
+groups: pl.*
+type: public
+description: "Poland and Polish language"
+sender: [ michalj@*fuw.edu.pl newgroup@usenet.pl ]
+url: "http://www.ict.pwr.wroc.pl/doc/news-pl-new-site-faq.html"
+pgp: yes
+key-id: pl.announce.newgroups
+admin-group: pl.news.admin

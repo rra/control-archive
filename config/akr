@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: AKR
+groups: akr.*
+type: public
+description: "Akron, Ohio, USA"
+sender: [ red@redpoll.mrfs.oh.us ]

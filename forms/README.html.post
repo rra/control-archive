@@ -1,0 +1,62 @@
+<HR><HR>
+
+<H2><A NAME="Signing">Signing Control Messages</A></H2>
+
+<P>If you are responsible for sending control messages about authorized
+changes to a newsgroup hierarchy, then 
+<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/signcontrol">
+ftp://ftp.isc.org/pub/pgpcontrol/signcontrol</A> will
+sign your control messages so that <I>pgpverify</I> can authenticate
+them.  It is a Perl script that requires Perl version 5 or higher to
+work.  It has several configuration parameters that should be reviewed
+before use.</P>
+
+<P>When establishing a PGP key and control message sender, please use
+tokens that are not tied to a particular individual.  This makes it
+easier to transfer the administrative responsibility when it finally
+comes time.  (The all-too-common "tale@uunet.uu.net" sender is still
+appearing in Big 8 control messages because of its legacy in the
+installed server base; eventually it will be completely phased out and
+only group-admin@isc.org will be used.)  Please also do not sign other
+keys with the key that is used for control messages.</P>
+
+<P>Note that the key you use should not include whitespace or angle
+brackets, because some of the various pieces of software that deal
+with the user id mishandle it.  For the best results netwide, I
+strongly recommend that you use only alphanumeric characters, the at
+sign, dot, dash, plus and underscore.</P>
+
+<P>If you will be signing control messages, please
+<A HREF="mailto:tale@isc.org (David C Lawrence)">let me know</A> the
+hierarchy that you are responsible for maintaining and the information
+that you would like to appear in the <A HREF="#Keys">List of PGP
+Public Keys for Newsgroup Administration</A>.</P>
+
+<HR><HR>
+
+<H2><A NAME="Getting PGP">How to Get PGP</A></H2>
+
+<P>Information about obtaining PGP can be found in the
+<A HREF="http://www.cis.ohio-state.edu/hypertext/faq/usenet/pgp-faq/where-is-PGP/faq.html">
+Where to get the latest PGP FAQ</A>
+article, posted regularly in the
+<A HREF="news:alt.security.pgp">alt.security.pgp</A>
+newsgroup.</P>
+
+<H2><A NAME="Getting Perl">How to Get Perl</A></H2>
+
+<P>Information about obtaining Perl can be found in the
+<A HREF="http://www.cis.ohio-state.edu/hypertext/faq/usenet/perl-faq/part1/faq.html">
+comp.lang.perl.* FAQ 1/5 - Availability</A>
+article, posted regularly in the
+<A HREF="news:comp.lang.perl.misc">comp.lang.perl.misc</A>
+newsgroup.</P>
+
+<HR>
+Last modified: 16 June 1999
+<ADDRESS>
+David C Lawrence<BR>
+<A HREF="mailto:tale@isc.org (David C Lawrence)">tale@isc.org</A>
+</ADDRESS>
+</BODY>
+</HTML>

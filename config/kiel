@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: KIEL
+groups: kiel.*
+type: public
+description: "Kiel, Germany"
+sender: [ kris@white.schulung.netuse.de ]

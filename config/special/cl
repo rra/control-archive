@@ -1,0 +1,12 @@
+## CL (*PRIVATE* -- CL-Netz, German)
+# Contact: koordination@cl-netz.de
+# URL: http://www.cl-netz.de/
+# Key URL: http://www.cl-netz.de/control.txt
+# For private use only, contact above address for questions.
+# *PGP*   See comment at top of file.
+newgroup:*:cl.*:drop
+rmgroup:*:cl.*:doit
+# The following three lines are only for authorized cl.* sites.
+#checkgroups:koordination@cl-netz.de:cl.*:verify-cl.netz.infos
+#newgroup:koordination@cl-netz.de:cl.*:verify-cl.netz.infos
+#rmgroup:koordination@cl-netz.de:cl.*:verify-cl.netz.infos

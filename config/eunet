@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: EUNET
+groups: eunet.*
+type: public
+description: Europe
+sender: [ news@noc.eu.net ]

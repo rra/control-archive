@@ -1,0 +1,12 @@
+id: $Id$
+hierarchy: NET
+groups: net.*
+type: public
+description: "Usenet 2"
+sender: [ control@usenet2.org ]
+url: "http://www.usenet2.org"
+pgp: yes
+key-id: control@usenet2.org
+key-fingerprint: "D7 D3 5C DB 18 6A 29 79  BF 74 D4 58 A3 78 9D 22"
+key-url: "http://www.usenet2.org/control@usenet2.org.asc"
+admin-group: net.config

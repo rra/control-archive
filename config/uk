@@ -1,0 +1,9 @@
+id: $Id$
+hierarchy: UK
+groups: uk.*
+type: public
+description: "United Kingdom of Great Britain and Northern Ireland"
+sender: [ control@usenet.org.uk ]
+pgp: yes
+key-id: uk.net.news.announce
+admin-group: uk.net.news.announce

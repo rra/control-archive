@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: NAGASAKI-U
+groups: nagasaki-u.*
+type: public
+description: "Nagasaki University, Japan ?"
+sender: [ root@*nagasaki-u.ac.jp ]

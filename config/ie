@@ -1,0 +1,10 @@
+id: $Id$
+hierarchy: IE
+groups: ie.*
+type: public
+description: Ireland
+sender: [ control@usenet.ie ]
+contact: [ control@usenet.ie ]
+pgp: yes
+key-id: control@usenet.ie
+admin-group: ie.news.group

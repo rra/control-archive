@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: MCMASTER
+groups: mcmaster.*
+type: local
+description: "McMaster University, Ontario"
+contact: [ "Brian Beckberger <news@informer1.cis.mcmaster.ca>" ]

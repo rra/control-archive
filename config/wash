@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: WASH
+groups: wash.*
+type: public
+description: "Washington State, USA"
+sender: [ graham@ee.washington.edu ]

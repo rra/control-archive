@@ -1,0 +1,5 @@
+## FREE (Open Hierarchy where anyone can create a group)
+newgroup:*:free.*:doit
+newgroup:group-admin@isc.org:free.*:drop
+newgroup:tale@*uu.net:free.*:drop
+rmgroup:*:free.*:drop

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: WPI
+groups: wpi.*
+type: public
+description: "Worcester Polytechnic Institute, Worcester, MA"
+sender: [ aej@*.wpi.edu ]

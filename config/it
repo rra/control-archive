@@ -1,0 +1,13 @@
+id: $Id$
+hierarchy: IT
+groups: it.*
+type: public
+description: Italian
+sender: [ gcn@news.nic.it ]
+contact: [ gcn@news.nic.it ]
+url: "http://www.news.nic.it/"
+pgp: yes
+key-id: gcn@news.nic.it
+key-fingerprint: "94 A4 F7 B5 46 96 D6 C7  A6 73 F2 98 C4 8C D0 E0"
+key-url: "http://www.news.nic.it/pgp.txt"
+admin-group: it.news.annunci

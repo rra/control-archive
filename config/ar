@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: AR
+groups: ar.*
+type: public
+description: Argentina
+sender: [ jorge_f@nodens.fisica.unlp.edu.ar ]

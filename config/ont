@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: ONT
+groups: ont.*
+type: public
+description: "Ontario, Canada"
+sender: [ pkern@gpu.utcc.utoronto.ca ]

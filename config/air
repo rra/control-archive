@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: AIR
+groups: air.*
+type: defunct
+description: "Stanford University, USA"
+contact: [ news@news.stanford.edu ]

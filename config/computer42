@@ -1,0 +1,7 @@
+id: $Id$
+hierarchy: COMPUTER42
+groups: computer42.*
+type: public
+description: "Computer 42, Germany"
+sender: [ news@computer42.org ]
+contact: [ "Dirk Schmitt <news@computer42.org>" ]

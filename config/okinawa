@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: OKINAWA
+groups: okinawa.*
+type: public
+description: "Okinawa, Japan"
+sender: [ news@opus.or.jp ]

@@ -1,0 +1,16 @@
+hierarchy: (abbreviated hierarchy name, all caps)
+type: [ public | private | local | defunct ]
+description: (short English description)
+groups: (shell case pattern for hierarchy)
+sender: (vector of patterns matching control message sender)
+newgroup-sender: (vector of patterns matching newgroup sender)
+rmgroup-sender: (vector of patterns matching rmgroup sender)
+checkgroups-sender: (vector of patterns matching checkgroups sender)
+contact: (vector of contact addresses)
+url: (hierarchy URL)
+pgp: [ yes | no ]
+key-id: (user ID of PGP key)
+key-url: (URL for PGP key for hierarchy)
+key-fingerprint: (fingerprint of PGP key)
+key-mail: (instructions for obtaining the key via e-mail)
+sync-server: (news server allowing LIST)

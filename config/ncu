@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: NCU
+groups: ncu.*
+type: local
+description: "National Central University, Taiwan"
+contact: [ "Ying-Hao Chang <aqlott@db.csie.ncu.edu.tw>" <runn@news.ncu.edu.tw> ]

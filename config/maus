@@ -1,0 +1,10 @@
+id: $Id$
+hierarchy: MAUS
+groups: maus.*
+type: public
+description: "MausNet, Germany"
+sender: [ guenter@gst0hb.hb.provi.de guenter@gst0hb.north.de ]
+pgp: yes
+key-id: maus-info
+key-fingerprint: "82 52 C7 70 26 B9 72 A1  37 98 55 98 3F 26 62 3E"
+admin-group: maus.info

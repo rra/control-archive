@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: NIHON
+groups: nihon.*
+type: public
+description: Japan
+sender: [ ktomita@jade.dti.ne.jp ]

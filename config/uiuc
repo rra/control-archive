@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: UIUC
+groups: uiuc.*
+type: local
+description: "University of Illinois at Urbana-Champaign, USA"
+contact: [ usenet@uiuc.edu ]

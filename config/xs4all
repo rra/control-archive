@@ -1,0 +1,7 @@
+id: $Id$
+hierarchy: XS4ALL
+groups: xs4all.*
+type: public
+description: "XS4ALL, Netherlands"
+sender: [ news@*xs4all.nl ]
+contact: [ "Cor Bosman <news@xs4all.nl>" ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: NCF
+groups: ncf.*
+type: local
+description: "National Capital Freenet, Ottawa, Ontario, Canada"
+contact: [ news@freenet.carleton.ca ]

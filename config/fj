@@ -1,0 +1,12 @@
+id: $Id$
+hierarchy: FJ
+groups: fj.*
+type: public
+description: "Japan and Japanese language"
+sender: [ committee@fj-news.org ]
+contact: [ committee@fj-news.org ]
+url: "http://www.is.tsukuba.ac.jp/~yas/fj/"
+pgp: yes
+key-id: fj.news.announce
+key-url: "http://www.is.tsukuba.ac.jp/~yas/fj/fj.asc"
+admin-group: fj.news.announce

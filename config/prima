@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: PRIMA
+groups: prima.*
+type: local
+description: "prima.ruhr.de/Prima e.V. in Germany"
+contact: [ admin@prima.ruhr.de ]

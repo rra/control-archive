@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: VMSNET
+groups: vmsnet.*
+type: public
+description: "VMS Operating System"
+sender: [ cts@dragon.com ]

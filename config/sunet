@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: SUNET
+groups: sunet.*
+type: public
+description: "Swedish University Network"
+sender: [ ber@*.sunet.se ]

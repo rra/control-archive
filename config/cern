@@ -1,0 +1,8 @@
+id: $Id$
+hierarchy: CERN
+groups: cern.*
+type: private
+description: "CERN European Laboratory for Particle Physics"
+newgroup-sender: [ News.Support@cern.ch ]
+rmgroup-sender: [ News.Support@cern.ch ]
+contact: [ "Dietrich Wiegandt <News.Support@cern.ch>" ]

@@ -1,0 +1,12 @@
+id: $Id$
+hierarchy: WALES
+groups: wales.*
+type: public
+description: Wales
+sender: [ control@wales-usenet.org ]
+contact: [ committee@wales-usenet.org ]
+url: "http://www.wales-usenet.org/"
+pgp: yes
+key-id: wales-usenet
+key-fingerprint: "2D 9E DE DF 12 DA 34 5C  49 E1 EE 28 E3 AB 0D AD"
+admin-group: wales.usenet.config

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: WADAI
+groups: wadai.*
+type: public
+description: "Japanese ?"
+sender: [ kohe-t@*wakayama-u.ac.jp ]

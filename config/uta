@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: UTA
+groups: uta.*
+type: public
+description: Finnish
+sender: [ news@news.cc.tut.fi ]

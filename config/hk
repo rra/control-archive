@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: HK
+groups: hk.*
+type: public
+description: "Hong Kong"
+sender: [ hknews@comp.hkbu.edu.hk ]

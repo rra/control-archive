@@ -1,0 +1,13 @@
+id: $Id$
+hierarchy: SE
+groups: se.*
+type: public
+description: Sweden
+sender: [ usenet@usenet-se.net ]
+contact: [ usenet@usenet-se.net ]
+url: "http://www.usenet-se.net/"
+pgp: yes
+key-id: usenet-se
+key-fingerprint: "68 03 F0 FD 0C C3 4E 69  6F 0D 0C 60 3C 58 63 96"
+key-url: "http://www.usenet-se.net/pgp-key.txt"
+admin-group: se.internet.news.meddelanden

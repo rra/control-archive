@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: TERMVAKT
+groups: termvakt.*
+type: local
+description: "University of Oslo, Norway"
+contact: [ jani@ifi.uio.no ]

@@ -1,0 +1,7 @@
+id: $Id$
+hierarchy: GWU
+groups: gwu.*
+type: public
+description: "George Washington University, Washington, DC"
+sender: [ news@nit.gwu.edu ]
+contact: [ "Sweth Chandramouli <news@nit.gwu.edu>" ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: ALIVE
+groups: alive.*
+type: defunct
+description: ?
+contact: [ thijs@kink.xs4all.nl ]

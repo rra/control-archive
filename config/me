@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: ME
+groups: me.*
+type: public
+description: "Maine, USA"
+sender: [ kerry@maine.maine.edu ]

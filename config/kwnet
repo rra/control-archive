@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: KWNET
+groups: kwnet.*
+type: local
+description: Kitchener-Waterloo?
+contact: [ "Ed Hew <edhew@xenitec.on.ca>" ]

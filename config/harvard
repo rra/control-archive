@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: HARVARD
+groups: harvard.*
+type: public
+description: "Harvard University, Cambridge, MA"
+sender: [ *@*.harvard.edu ]

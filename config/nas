@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: NAS
+groups: nas.*
+type: local
+description: "NAS, NASA Ames Research Center, USA"
+contact: [ news@nas.nasa.gov ]

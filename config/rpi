@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: RPI
+groups: rpi.*
+type: local
+description: "Rensselaer Polytechnic Institute, Troy, NY, USA"
+contact: [ sofkam@rpi.edu ]

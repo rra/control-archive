@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: CHAVEN
+groups: chaven.*
+type: local
+description: "Celestian Haven ISP, Midwest, USA"
+contact: [ news@chaven.com ]

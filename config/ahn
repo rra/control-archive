@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: AHN
+groups: ahn.*
+type: public
+description: "Athens-Clarke County, Georgia, USA"
+sender: [ greg@*.ucns.uga.edu ]

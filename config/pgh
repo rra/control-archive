@@ -1,0 +1,9 @@
+id: $Id$
+hierarchy: PGH
+groups: pgh.*
+type: public
+description: "Pittsburgh, Pennsylvania, USA"
+sender: [ pgh-config@psc.edu ]
+pgp: yes
+key-id: pgh.config
+admin-group: pgh.config

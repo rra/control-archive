@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: STL
+groups: stl.*
+type: public
+description: "Saint Louis, Missouri, USA"
+sender: [ news@icon-stl.net ]

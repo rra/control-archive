@@ -1,0 +1,9 @@
+id: $Id$
+hierarchy: DE.ALT
+groups: de.alt.*
+type: public
+description: "German language alternative hierarchy"
+newgroup-sender: [ * ]
+rmgroup-sender: [ moderator@dana.de ]
+pgp: yes
+key-id: de.admin.news.announce

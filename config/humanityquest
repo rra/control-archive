@@ -1,0 +1,12 @@
+id: $Id$
+hierarchy: HUMANITYQUEST
+groups: humanityquest.*
+type: public
+description: "Humanities discussion"
+sender: [ news-admin@humanityquest.com ]
+contact: [ news-admin@humanityquest.com ]
+url: "http://www.humanityquest.com/projects/newsgroups/"
+pgp: yes
+key-id: humanityquest.admin.config
+key-fingerprint: "BA3D B306 B6F5 52AA BA8F 32F0 8C4F 5040 16F9 C046"
+key-url: "http://www.humanityquest.com/projects/newsgroups/PGP.htm"

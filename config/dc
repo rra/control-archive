@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: DC
+groups: dc.*
+type: public
+description: "Washington, D.C., USA"
+sender: [ news@mattress.atww.org ]

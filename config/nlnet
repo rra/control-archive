@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: NLNET
+groups: nlnet.*
+type: public
+description: "Netherlands ISP"
+sender: [ beheer@nl.net ]

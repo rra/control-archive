@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: NCTU
+groups: nctu.*
+type: public
+description: Taiwan
+sender: [ chen@cc.nctu.edu.tw ]

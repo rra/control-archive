@@ -1,0 +1,11 @@
+id: $Id$
+hierarchy: EE
+groups: ee.*
+type: public
+description: Estonia
+sender: [ news@news.ut.ee ]
+contact: [ usenet@news.ut.ee ]
+url: "http://news.ut.ee/"
+pgp: yes
+key-id: ee.news
+key-url: "http://news.ut.ee/pubkey.asc"

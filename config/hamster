@@ -1,0 +1,13 @@
+id: $Id$
+hierarchy: HAMSTER
+groups: hamster.*
+type: public
+description: "Hamster, a Win32 news and mail proxy server"
+sender: [ hamster-control@snafu.de ]
+contact: [ hamster-contact@snafu.de ]
+url: "http://www.nethamster.org"
+pgp: yes
+key-id: hamster-control@snafu.de
+key-fingerprint: "12 75 A9 42 8A D6 1F 77  6A CF B4 0C 79 15 5F 93"
+key-url: "http://www.nethamster.org/control/hamster.asc"
+admin-group: hamster.de.config

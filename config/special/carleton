@@ -1,0 +1,4 @@
+## CARLETON (Carleton University, Canada)
+newgroup:news@cunews.carleton.ca:carleton.*:doit
+newgroup:news@cunews.carleton.ca:carleton*class.*:mail
+rmgroup:news@cunews.carleton.ca:carleton.*:doit

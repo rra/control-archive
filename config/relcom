@@ -1,0 +1,10 @@
+id: $Id$
+hierarchy: RELCOM
+groups: relcom.*
+type: public
+description: "Commonwealth of Independent States"
+sender: [ coord@new*.relcom.ru ]
+url: "ftp://kiarchive.relcom.ru/pub/relcom/netinfo/"
+pgp: yes
+key-id: relcom.newsgroups
+admin-group: relcom.netnews

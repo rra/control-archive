@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: VGC
+groups: vgc.*
+type: public
+description: "Japan groups?"
+sender: [ news@isl.melco.co.jp ]

@@ -1,0 +1,11 @@
+id: $Id$
+hierarchy: BIONET
+groups: bionet.*
+type: public
+description: "Biology Network"
+sender: [ Biosci-control-key@net.bio.net ]
+url: "http://www.bio.net/"
+pgp: yes
+key-id: Biosci-control-key@net.bio.net
+key-fingerprint: "EB C0 F1 BA 26 0B C6 D6  FB 8D ED C4 AE 5D 10 54"
+admin-group: bionet.general

@@ -1,0 +1,11 @@
+id: $Id$
+hierarchy: KANTO
+groups: kanto.*
+type: public
+description: "?"
+newgroup-sender: [ *@*.jp ]
+rmgroup-sender: [ ty@kamoi.imasy.or.jp ]
+checkgroups-sender: [ ty@kamoi.imasy.or.jp ]
+pgp: yes
+key-id: kanto.news.network
+admin-group: kanto.news.network

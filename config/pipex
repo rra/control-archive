@@ -1,0 +1,7 @@
+id: $Id$
+hierarchy: PIPEX
+groups: pipex.*
+type: public
+description: "UUNET WorldCom UK"
+sender: [ news-control@ops.pipex.net ]
+contact: [ "Russell Vincent <news-control@ops.pipex.net>" ]

@@ -1,0 +1,10 @@
+id: $Id$
+hierarchy: EASYNET
+groups: easynet.*
+type: public
+description: "Easynet PLC, UK"
+sender: [ newsmaster@easynet.net ]
+contact: [ "Christiaan Keet <newsmaster@easynet.net>" ]
+pgp: yes
+key-id: easynet.news
+admin-group: easynet.support

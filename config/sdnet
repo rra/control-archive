@@ -1,0 +1,7 @@
+id: $Id$
+hierarchy: SDNET
+groups: sdnet.*
+type: public
+description: "Greater San Diego Area, California, USA"
+sender: [ wkronert@sunstroke.sdsu.edu ]
+url: "http://www-rohan.sdsu.edu/~wk/sdnet/sdnet.html"

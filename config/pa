@@ -1,0 +1,7 @@
+id: $Id$
+hierarchy: PA
+groups: pa.*
+type: public
+description: "Pennsylvania, USA"
+sender: [ fxp@epix.net ]
+url: "http://www.netcom.com/~rb1000/pa_hierarchy/"

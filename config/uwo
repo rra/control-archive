@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: UWO
+groups: uwo.*
+type: public
+description: "University of Western Ontario, London, Canada"
+sender: [ reggers@julian.uwo.ca ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: FINET
+groups: finet.*
+type: public
+description: "Finland and Finnish language alternative newsgroups"
+sender: [ *@*.fi ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: ARC
+groups: arc.*
+type: local
+description: "NASA Ames Research Center, USA"
+contact: [ news@arc.nasa.gov ]

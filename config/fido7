@@ -1,0 +1,9 @@
+id: $Id$
+hierarchy: FIDO7
+groups: fido7.*
+type: public
+description: FidoNet
+sender: [ newgroups-request@fido7.ru ]
+pgp: yes
+key-id: fido7.announce.newgroups
+admin-group: fido7.postmasters

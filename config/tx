@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: TX
+groups: tx.*
+type: public
+description: "Texas, USA"
+sender: [ eric@cirr.com fletcher@cs.utexas.edu usenet@academ.com ]

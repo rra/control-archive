@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: CMI
+groups: cmi.*
+type: local
+description: "Champaign County, IL, USA"
+contact: [ news@uiuc.edu ]

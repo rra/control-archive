@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: HAMILTON
+groups: hamilton.*
+type: public
+description: Canadian
+sender: [ news@*dcss.mcmaster.ca ]

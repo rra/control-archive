@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: CU
+groups: cu.*
+type: local
+description: "University of Colorado"
+contact: [ "Doreen Petersen <news@colorado.edu>" ]

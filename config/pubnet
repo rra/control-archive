@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: PUBNET
+groups: pubnet.*
+type: defunct
+description: ?
+url: "ftp://ftp.isc.org/pub/usenet/control/pubnet/pubnet.config.Z"

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: TCFN
+groups: tcfn.*
+type: public
+description: "Toronto Free Community Network, Canada"
+sender: [ news@t-fcn.net ]

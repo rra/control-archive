@@ -1,0 +1,11 @@
+id: $Id$
+hierarchy: LINUX
+groups: linux.*
+type: public
+description: "Gated Linux mailing lists"
+sender: [ linux-admin@bofh.it ]
+contact: [ "Marco d'Itri <md@toglimi.linux.it>" ]
+pgp: yes
+key-id: linux-admin@bofh.it
+key-fingerprint: "81 B3 27 99 4F CE 32 D1  1B C9 01 0D BB B3 2E 41"
+admin-group: linux.admin.news

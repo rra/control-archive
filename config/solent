@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: SOLENT
+groups: solent.*
+type: public
+description: "Solent region, England"
+sender: [ news@tcp.co.uk ]

@@ -1,0 +1,9 @@
+id: $Id$
+hierarchy: STGT
+groups: stgt.*
+type: public
+description: "Stuttgart, Germany"
+sender: [ stgt-control@news.uni-stuttgart.de ]
+url: "http://news.uni-stuttgart.de/hierarchie/stgt/stgt-control.txt"
+pgp: yes
+key-id: stgt-control

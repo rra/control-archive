@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: COURTS
+groups: courts.*
+type: defunct
+description: "Court discussion"
+contact: [ trier@ins.cwru.edu ]

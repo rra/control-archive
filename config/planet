@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: PLANET
+groups: planet.*
+type: local
+description: "PlaNet FreeNZ co-operative, New Zealand"
+contact: [ office@pl.net ]

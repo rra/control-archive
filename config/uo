@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: UO
+groups: uo.*
+type: public
+description: "University of Oregon, Eugene, Oregon, USA"
+sender: [ newsadmin@news.uoregon.edu ]

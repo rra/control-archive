@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: AZ
+groups: az.*
+type: public
+description: "Arizona, USA"
+sender: [ system@asuvax.eas.asu.edu ]

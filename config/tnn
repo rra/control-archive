@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: TNN
+groups: tnn.*
+type: public
+description: "The Network News, Japan"
+sender: [ netnews@news.iij.ad.jp tnn@iij-mc.co.jp ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: UWARWICK
+groups: uwarwick.*
+type: local
+description: "University of Warwick, UK"
+contact: [ "Jon Harley <news@csv.warwick.ac.uk>" ]

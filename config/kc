@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: KC
+groups: kc.*
+type: public
+description: "Kansas City, Kansas/Missouri, USA"
+sender: [ dan@sky.net ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: NIGERIA
+groups: nigeria.*
+type: public
+description: Nigeria
+sender: [ news@easnet.net ]

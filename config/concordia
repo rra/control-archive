@@ -1,0 +1,8 @@
+id: $Id$
+hierarchy: CONCORDIA
+groups: concordia.*
+type: public
+description: "Concordia University, Montreal, Canada"
+sender: [ news@newsflash.concordia.ca ]
+contact: [ newsmaster@concordia.ca ]
+url: "General University info at http://www.concordia.ca/"

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: PITT
+groups: pitt.*
+type: public
+description: "University of Pittsburgh, PA"
+sender: [ news+@pitt.edu news@toads.pgh.pa.us ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: UW
+groups: uw.*
+type: public
+description: "University of Waterloo, Canada"
+sender: [ bcameron@math.uwaterloo.ca ]

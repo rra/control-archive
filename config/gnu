@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: GNU
+groups: gnu.*
+type: public
+description: "Free Software Foundation"
+sender: [ gnu@prep.ai.mit.edu news@*ai.mit.edu ]

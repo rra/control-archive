@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: UVA
+groups: uva.*
+type: local
+description: "University of Virginia, USA"
+contact: [ usenet@virginia.edu ]

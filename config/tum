@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: TUM
+groups: tum.*
+type: public
+description: "Technische Universitaet Muenchen"
+sender: [ news@informatik.tu-muenchen.de ]

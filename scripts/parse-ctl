@@ -1,0 +1,252 @@
+#!/usr/bin/perl -w
+$ID = q$Id$;
+#
+# parse-ctl -- Parse a control.ctl file into hierarchy config files.
+#
+# Copyright 2002 Russ Allbery <rra@stanford.edu>
+#
+# This program is free software; you may redistribute it and/or modify it
+# under the same terms as Perl itself.
+#
+# This program converts a control.ctl following the formatting conventions
+# that had been used for the ISC and INN versions of that file into a tree of
+# hierarchy configuration files in a more machine-parsable format.  Any
+# entries that it's unable to parse are written into a separate tree of
+# special configurations.
+
+##############################################################################
+# Modules and declarations
+##############################################################################
+
+require 5.004;
+
+use strict;
+use vars qw($ID);
+
+##############################################################################
+# Entry generation
+##############################################################################
+
+# Write a single key, using vector format if needed.  Takes the file handle,
+# the config hash, and the name of the key.
+sub write_parameter {
+    my ($fh, $entry, $key) = @_;
+    return unless $$entry{$key};
+    print $fh "$key: ";
+    if (ref $$entry{$key}) {
+        return if !@{ $$entry{$key} };
+        my @values = map { / / ? ('"' . $_ . '"') : $_ } @{ $$entry{$key} };
+        print $fh '[ ', join (' ', @values), " ]\n";
+    } elsif ($key eq 'pgp') {
+        print $fh ($$entry{$key} ? 'yes' : 'no'), "\n";
+    } else {
+        my $value = $$entry{$key};
+        if ($value =~ /[ <>{}\[\]\\:;\"]/) {
+            $value = '"' . $value . '"';
+        }
+        print $fh $value, "\n";
+    }
+}
+
+# Given a hash representing a hierarchy configuration, write out a
+# configuration fragment.  This is written into a subdirectory of the current
+# directory named config, and the file name will be the first hierarchy
+# handled by that fragment.
+sub write_entry {
+    my ($entry) = @_;
+    my $filename = lc $$entry{hierarchy};
+    $filename =~ s/,? .*//;
+    open (ENTRY, "> config/$filename")
+        or die "Cannot create config/$filename: $!\n";
+    print ENTRY 'id: ' . "\$" . 'Id' . "\$" . "\n";
+    for (qw/hierarchy groups type description sender newgroup-sender
+            rmgroup-sender checkgroups-sender contact url pgp key-id
+            key-fingerprint key-url key-mail sync-server/) {
+        write_parameter (\*ENTRY, $entry, $_);
+    }
+    close ENTRY;
+}
+
+# Given an array containing an unparsable special entry, try to figure out a
+# good file name for it and then write it out to that file.  All files will be
+# written to a subdirectory named config/special.  If no good file name can be
+# determined, abort with an error message.
+sub write_special {
+    my @entry = @_;
+    die "Cannot parse entry starting with $entry[0]\n"
+        unless ($entry[0] =~ m%^\#\# ([A-Za-z0-9.-]+)%);
+    my $filename = lc $1;
+    open (ENTRY, "> config/special/$filename")
+        or die "Cannot create config/special/$filename: $!\n";
+    print ENTRY @entry;
+    close ENTRY;
+}
+
+##############################################################################
+# Entry parsing
+##############################################################################
+
+# Takes an array of lines representing an entry for a single hierarchy.  Tries
+# to parse it into a hash representing the new-style configuration syntax.  On
+# success, returns a reference to that hash; otherwise, returns undef
+# (indicating that this hierarchy should be dumped into the special category).
+sub parse_entry {
+    my @entry = @_;
+    my %config;
+
+    # The first line must be in the form "## NAME (comment)" with some special
+    # keywords recognized at the beginning of the comment.
+    local $_ = shift @entry;
+    return unless /^\#\# ([^\(]+) \(([^\)]+)\)\s*$/;
+    my ($hierarchy, $description) = ($1, $2);
+    my $type = 'public';
+    if    ($description =~ s/^\*DEFUNCT\* -- //) { $type = 'defunct' }
+    elsif ($description =~ s/^\*LOCAL\* -- //)   { $type = 'local'   }
+    elsif ($description =~ s/^\*PRIVATE\* -- //) { $type = 'private' }
+    $config{hierarchy} = $hierarchy;
+    $config{type} = $type;
+    $config{description} = $description;
+
+    # Now try to parse the rest of the section.  If we see anything we don't
+    # recognize, we bail out.
+    $config{pgp} = 0;
+    my $pattern;
+    while (defined ($_ = shift @entry)) {
+        if (/^\# Contact: (.*)/) {
+            $config{contact} ||= [];
+            push (@{ $config{contact} }, $1);
+        } elsif (/^\# URL: (.*)/) {
+            return if $config{url};
+            $config{url} = $1;
+        } elsif (/^\# \*PGP\*/) {
+            $config{pgp} = 1;
+        } elsif (/^\# Key URL: (.*)/) {
+            return if $config{'key-url'};
+            $config{'key-url'} = $1;
+        } elsif (/^\# Key fingerprint = (.*)/) {
+            return if $config{'key-fingerprint'};
+            $config{'key-fingerprint'} = $1;
+        } elsif (/^\# Key mail: (.*)/) {
+            return if $config{'key-mail'};
+            $config{'key-mail'} = $1;
+        } elsif (/^\# Syncable server: (.*)/) {
+            return if $config{'sync-server'};
+            $config{'sync-server'} = $1;
+        }
+        elsif (/^\# For (internal|local) use/ && $type eq 'local')   { next }
+        elsif (/^\# Limited distribution/     && $type eq 'private') { next }
+        elsif (/^\# For private use only/     && $type eq 'private') { next }
+        elsif (/^\# Defunct[, ]/              && $type eq 'defunct') { next }
+        elsif (/^(?:new|rm)group:\*(?:\@\*)?:([^:]+):drop$/) {
+            return if ($pattern && $1 ne $pattern);
+            $pattern = $1;
+            next if $config{pgp};
+            next if /^newgroup:/ && $type ne 'public';
+            return;
+        } elsif (/^newgroup:\*(?:\@\*)?:([^:]+):mail$/) {
+            return if ($pattern && $1 ne $pattern);
+            $pattern = $1;
+            next if $type ne 'public';
+            return;
+        } elsif (/^(newgroup|rmgroup|checkgroups):([^:]+):([^:]+):(.*)/) {
+            my ($control, $sender, $group, $action) = ($1, $2, $3, $4);
+            return if ($pattern && $group ne $pattern);
+            $pattern = $group;
+            return if $action eq 'drop';
+            if ($action eq 'mail' && $control ne 'checkgroups') {
+                return unless $control eq 'newgroup' && $type ne 'public';
+            }
+            if ($type ne 'public' && $control eq 'rmgroup') {
+                next if $action eq 'doit' && $sender =~ /^\*(\@\*)?$/;
+            }
+            if ($config{pgp} && $action !~ /^verify-.*/) {
+                return unless $control eq 'checkgroups';
+            }
+            if ($action =~ /^verify-(.*)/) {
+                return if $config{'key-id'} && $config{'key-id'} ne $1;
+                $config{'key-id'} = $1;
+            }
+            return unless $action =~ /^(doit|mail|verify-.*)$/;
+            $config{$control . '-sender'} ||= [];
+            push (@{ $config{$control . '-sender'} }, $sender);
+        } else {
+            return;
+        }
+    }
+
+    # Make sure that we found a group pattern.
+    return unless $pattern;
+    $config{groups} = $pattern;
+
+    # Collapse the sender information if possible.
+    if ($type eq 'public') {
+        return unless $config{'newgroup-sender'} && $config{'rmgroup-sender'};
+        $config{'checkgroups-sender'} ||= [];
+        my @newgroup = sort @{ $config{'newgroup-sender'} };
+        my @rmgroup = sort @{ $config{'rmgroup-sender'} };
+        my @checkgroup = sort @{ $config{'checkgroups-sender'} };
+        if ("@newgroup" eq "@rmgroup") {
+            if (!@checkgroup || "@newgroup" eq "@checkgroup") {
+                delete $config{'newgroup-sender'};
+                delete $config{'rmgroup-sender'};
+                delete $config{'checkgroups-sender'};
+                $config{'sender'} = [ @newgroup ];
+            }
+        }
+    }
+
+    # All done.  Return the results.
+    return \%config;
+}
+
+##############################################################################
+# File parsing
+##############################################################################
+
+# Given a control.ctl file, parse it, skipping everything up to the first
+# hierarchy entry and then separating the rest of the file into hierarchy
+# entries and parsing each one.  Write out normally parsed entries into new
+# config files, and ones that won't parse into the special hierarchy.
+sub parse_file {
+    my ($file) = @_;
+    mkdir ('config');
+    mkdir ('config/special');
+    open (CTL, $file) or die "Cannot open $file: $!\n";
+    local $_;
+    my @entry;
+
+    # Skip the prelude.
+    while (<CTL>) {
+        if (/^\#\# [A-Z][A-Z]/) {
+            push (@entry, $_);
+            last;
+        }
+    }
+
+    # Now, grab each entry (separated by blank lines) and try to parse it.
+    # Write it out as is appropriate for whether or not we parsed it.
+    while (!eof CTL) {
+        while (<CTL>) {
+            last if /^\s*$/;
+            push (@entry, $_);
+        }
+        my $entry = parse_entry (@entry);
+        if ($entry) {
+            write_entry ($entry);
+            print "Writing entry for $$entry{hierarchy}\n";
+        } else {
+            write_special (@entry);
+            print "Writing entry starting $entry[0]";
+        }
+        undef @entry;
+    }
+}
+
+##############################################################################
+# Main routine
+##############################################################################
+
+# Expect the path to the control.ctl file as an argument and just parse it.
+die "Usage: parse-ctl <file>\n" unless @ARGV == 1;
+parse_file ($ARGV[0]);
+exit;

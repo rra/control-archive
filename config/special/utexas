@@ -1,0 +1,7 @@
+## UTEXAS (University of Texas, USA)
+newgroup:fletcher@cs.utexas.edu:utexas.*:doit
+newgroup:news@geraldo.cc.utexas.edu:utexas.*:doit
+newgroup:fletcher@cs.utexas.edu:utexas*class.*:mail
+newgroup:news@geraldo.cc.utexas.edu:utexas*class.*:mail
+rmgroup:fletcher@cs.utexas.edu:utexas.*:doit
+rmgroup:news@geraldo.cc.utexas.edu:utexas.*:doit

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: "GER & HANNET & HANNOVER & HILDESHEIM & HISS"
+groups: ger.*|hannover.*|hannet.*|hildesheim.*|hiss.*
+type: public
+description: "Hannover, Germany"
+sender: [ fifi@hiss.han.de ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: BLGTN
+groups: blgtn.*
+type: public
+description: "Bloomington, In, USA"
+sender: [ control@news.bloomington.in.us ]

@@ -1,0 +1,13 @@
+id: $Id$
+hierarchy: ITALIA
+groups: italia.*
+type: public
+description: Italy
+sender: [ news@news.cineca.it ]
+contact: [ news@news.cineca.it ]
+url: "http://news.cineca.it/italia/"
+pgp: yes
+key-id: italia.announce.newgroups
+key-fingerprint: "0F BB 71 62 DA 5D 5D B8  D5 86 FC 28 02 67 1A 6B"
+key-url: "http://news.cineca.it/italia/italia-pgp.txt"
+admin-group: italia.announce.newgroups

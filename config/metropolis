@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: METROPOLIS
+groups: metropolis.*
+type: local
+description: ?
+contact: [ newsmaster@worldonline.nl ]

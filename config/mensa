@@ -1,0 +1,11 @@
+id: $Id$
+hierarchy: MENSA
+groups: mensa.*
+type: public
+description: "The Mensa Organisation"
+sender: [ usenet@newsgate.mensa.org ]
+contact: [ usenet@newsgate.mensa.org ]
+pgp: yes
+key-id: mensa.config
+key-fingerprint: "A7 57 24 49 C0 D4 47 33  84 A0 52 6E F1 A4 00 5B"
+admin-group: mensa.config

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: CALSTATE
+groups: calstate.*
+type: public
+description: "California State University"
+sender: [ *@*calstate.edu ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: OC
+groups: oc.*
+type: public
+description: "Orange County, California, USA"
+sender: [ bob@tsunami.sugarland.unocal.com ]

@@ -1,0 +1,7 @@
+id: $Id$
+hierarchy: TAMU
+groups: tamu.*
+type: public
+description: "Texas A&M University"
+sender: [ news@tamsun.tamu.edu ]
+contact: [ "Philip Kizer <news@tamu.edu>" ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: PIN
+groups: pin.*
+type: public
+description: "Personal Internauts' NetNews"
+sender: [ pin-admin@forus.or.jp ]

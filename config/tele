@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: TELE
+groups: tele.*
+type: local
+description: "Tele Danmark Internet"
+contact: [ usenet@tdk.net ]

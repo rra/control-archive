@@ -1,0 +1,10 @@
+id: $Id$
+hierarchy: PT
+groups: pt.*
+type: public
+description: "Portugal and Portuguese language"
+sender: [ pmelo@*.inescc.pt ]
+pgp: yes
+key-id: control@usenet-pt.org
+key-url: "http://www.usenet-pt.org/control@usenet-pt.org.asc"
+admin-group: pt.internet.usenet

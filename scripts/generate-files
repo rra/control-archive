@@ -1,0 +1,297 @@
+#!/usr/bin/perl -w
+$ID = q$Id$;
+#
+# generate-ctl -- Generate a control.ctl file from hierarchy configs.
+#
+# Copyright 2002 Russ Allbery <rra@stanford.edu>
+#
+# This program is free software; you may redistribute it and/or modify it
+# under the same terms as Perl itself.
+#
+# This program converts machine-parsable hierarchy configuration fragments
+# into a control.ctl file in the format that had been used for the ISC and INN
+# versions of that file.  It also supports special overrides.
+
+##############################################################################
+# Modules and declarations
+##############################################################################
+
+require 5.004;
+
+use strict;
+use vars qw($ID);
+
+##############################################################################
+# Parsing
+##############################################################################
+
+# Parse a hierarchy configuration fragment.  Takes a filename and returns a
+# reference to a hash containing all of the elements of the configuration.
+sub parse_config {
+    my ($file) = @_;
+    my %config;
+    open (CONFIG, $file) or die "Cannot open $file: $!\n";
+    local $_;
+    while (<CONFIG>) {
+        chomp;
+        warn "$file:$.: unparsable line: $_\n"
+            unless /^([^:\s]+): (\S.*)/;
+        my ($key, $value) = ($1, $2);
+        if ($value =~ /^\[ .* \]\s*$/) {
+            my @values;
+            $value =~ s/^\[\s*//;
+            $value =~ s/\s*\]$/ /;
+            while ($value =~ s/^(\"[^\"]+\"|\S+)\s+//) {
+                my $element = $1;
+                $element =~ s/^\"//;
+                $element =~ s/\"\s*$//;
+                push (@values, $element);
+            }
+            $config{$key} = [ @values ];
+        } else {
+            $value =~ s/^\"//;
+            $value =~ s/\"\s*$//;
+            $config{$key} = $value;
+        }
+    }
+    if ($config{pgp}) {
+        die "Invalid value for pgp: in $file\n"
+            unless $config{pgp} eq 'yes' || $config{pgp} eq 'no';
+        $config{pgp} = ($config{pgp} eq 'yes') ? 1 : 0;
+    }
+    return \%config;
+}
+
+# Check the key fingerprint of a config entry, assuming that a key ring with
+# all of the keys on it is in the keyring subdirectory of the current
+# directory.
+sub check_fingerprint {
+    my ($config) = @_;
+    return unless $$config{'key-fingerprint'};
+    my $print = `gpg --homedir=keyring --fingerprint $$config{'key-id'}`;
+    if ($? != 0) {
+        warn "Failed to find fingerprint for $$config{'key-id'}\n";
+        return;
+    }
+    $print =~ s/.*Key fingerprint = ([A-F0-9 ]+).*/$1/s;
+    unless ($print eq $$config{'key-fingerprint'}) {
+        warn "Fingerprint doesn't match for $$config{'key-id'}\n";
+        warn "  WAS: $$config{'key-fingerprint'}\n";
+        warn "  NOW: $print\n";
+    }
+}
+
+##############################################################################
+# Generation
+##############################################################################
+
+# Given an open file handle and a file, cat the contents of that file into the
+# open file handle.  Used to handle special control message configurations and
+# the initial header.
+sub cat_file {
+    my ($fh, $file) = @_;
+    open (FILE, $file) or die "Cannot open $file: $!\n";
+    print $fh <FILE>;
+    close FILE;
+}
+
+# Generate an entry for a control.ctl file from a hash of configuration
+# information.  Takes the file handle to write it to and the configuration
+# hash.
+sub generate_config {
+    my ($fh, $config) = @_;
+
+    # Generate the leading comments.
+    print $fh "## $$config{hierarchy} (";
+    if    ($$config{type} eq 'local')   { print $fh "*LOCAL* -- "   }
+    elsif ($$config{type} eq 'private') { print $fh "*PRIVATE* -- " }
+    elsif ($$config{type} eq 'defunct') { print $fh "*DEFUNCT* -- " }
+    print $fh $$config{description}, ")\n";
+    for (@{ $$config{contact} || [] }) {
+        print $fh "# Contact: $_\n";
+    }
+    print $fh "# URL: $$config{url}\n" if $$config{url};
+    print $fh "# Admin group: $$config{'admin-group'}\n"
+        if $$config{'admin-group'};
+    print $fh "# Key URL: $$config{'key-url'}\n" if $$config{'key-url'};
+    print $fh "# Key fingerprint = $$config{'key-fingerprint'}\n"
+        if $$config{'key-fingerprint'};
+    print $fh "# Syncable server: $$config{'sync-server'}\n"
+        if $$config{'sync-server'};
+    if ($$config{type} eq 'local' || $$config{type} eq 'private') {
+        print $fh "# For $$config{type} use only";
+        if ($$config{contact}) {
+            print $fh ", contact the above address for information.\n";
+        } else {
+            print $fh ".\n";
+        }
+    }
+    print $fh "# This hierarchy is defunct.  Please remove it.\n"
+        if $$config{type} eq 'defunct';
+
+    # Generate the actual rules.
+    my $action = 'doit';
+    if ($$config{pgp}) {
+        print $fh "# *PGP*   See comment at top of file.\n";
+        if (!$$config{'newgroup-sender'}
+            || $$config{'newgroup-sender'}[0] ne '*') {
+            print $fh "newgroup:*:$$config{groups}:drop\n";
+            print $fh "rmgroup:*:$$config{groups}:drop\n";
+        }
+        $action = "verify-$$config{'key-id'}";
+    }
+    if ($$config{type} eq 'public') {
+        for my $type (qw/checkgroups newgroup rmgroup/) {
+            my $sender = $$config{"$type-sender"} || $$config{sender};
+            next unless $sender;
+            for (@$sender) {
+                print $fh "$type:$_:$$config{groups}:";
+                print $fh (/^\*(\@\*\.[^.]+)?$/) ? "doit\n" : "$action\n";
+            }
+        }
+    } else {
+        my $sender = $$config{'newgroup-sender'} || $$config{sender} || ['*'];
+        for (@$sender) {
+            print $fh "newgroup:$_:$$config{groups}:mail\n";
+        }
+        $sender = $$config{'rmgroup-sender'} || $$config{sender} || ['*'];
+        for (@$sender) {
+            print $fh "rmgroup:$_:$$config{groups}:$action\n";
+        }
+    }
+}
+
+# Generate a control.ctl file in the current directory by combining the
+# forms/control.ctl.pre initial header and fragments generated from the
+# contents of the config subdirectory.
+sub generate_ctl {
+    open (CTL, "> control.ctl") or die "Cannot create control.ctl: $!\n";
+    cat_file (\*CTL, 'forms/control.ctl.pre');
+    opendir (D, 'config') or die "Cannot open config directory: $!\n";
+    my @regular = grep { !/^\./ && $_ ne 'special' } readdir D;
+    closedir D;
+    opendir (D, 'config/special')
+        or die "Cannot open config/special directory: $!\n";
+    my @special = grep { !/^\./ } readdir D;
+    closedir D;
+    my %unique;
+    my @hierarchies = grep { !$unique{$_}++ } sort (@regular, @special);
+    for (@hierarchies) {
+        print CTL "\n";
+        if (-f "config/special/$_") {
+            cat_file (\*CTL, "config/special/$_");
+        } else {
+            my $config = parse_config ("config/$_");
+            generate_config (\*CTL, $config);
+        }
+    }
+    close CTL;
+}
+
+# Generate a listing in the PGPKEYS file, given the file handle to print it
+# to, the config hash, and the file name of the key file.
+sub generate_keys_entry {
+    my ($fh, $config, $key) = @_;
+    print $fh "  $$config{hierarchy}\n\n";
+    my @sender;
+    if ($$config{sender}) {
+        @sender = @{ $$config{sender} };
+    } else {
+        @sender = @{ $$config{'rmgroup-sender'} };
+    }
+    for (@sender) {
+        print $fh "       Control message sender: $_\n";
+    }
+    print $fh "       Key User ID: $$config{'key-id'}\n";
+    print $fh "       Administrative group: $$config{'admin-group'}\n"
+        if $$config{'admin-group'};
+    if ($$config{'key-url'}) {
+        print $fh "       Check also:\n";
+        print $fh "          + $$config{'key-url'}\n";
+    }
+    print $fh "\n";
+    cat_file ($fh, "keys/$key");
+}
+
+# Generate the PGPKEYS file in the current directory by combining the
+# forms/PGPKEYS.pre header and entries generated from each config fragment
+# corresponding to a hierarchy for which we have a key.
+sub generate_keys {
+    open (KEYS, "> PGPKEYS") or die "Cannot create PGPKEYS: $!\n";
+    cat_file (\*KEYS, 'forms/PGPKEYS.pre');
+    opendir (D, 'keys') or die "Cannot open keys directory: $!\n";
+    my @keys = sort grep { !/^\./ } readdir D;
+    closedir D;
+    for (@keys) {
+        print KEYS "\n         ", '_' x 61, "\n\n";
+        my $config = parse_config ("config/$_");
+        check_fingerprint ($config);
+        generate_keys_entry (\*KEYS, $config, $_);
+    }
+    close KEYS;
+}
+
+# Generate an entry for the HTML documentation for PGP signing, given the file
+# handle to print it to, the config hash, and the file name of the key file.
+sub generate_html_entry {
+    my ($fh, $config, $key) = @_;
+    print $fh qq(<A NAME="$key"><HR></A>\n);
+    my $hierarchy = $$config{hierarchy};
+    $hierarchy =~ s/&/&amp;/g;
+    print $fh "<H3>$hierarchy</H3>\n\n";
+    my @sender;
+    if ($$config{sender}) {
+        @sender = @{ $$config{sender} };
+    } else {
+        @sender = @{ $$config{'rmgroup-sender'} };
+    }
+    for (@sender) {
+        s/&/&amp;/g;
+        s/</&lt;/g;
+        s/>/&gt;/g;
+        print $fh "Control message sender: $_<BR>\n";
+    }
+    print $fh "Key User ID: $$config{'key-id'}<BR>\n";
+    if ($$config{'admin-group'}) {
+        my $group = $$config{'admin-group'};
+        my $url = qq(<A HREF="news:$group">$group</A>);
+        print $fh "Administrative group: $url<BR>\n";
+    }
+    if ($$config{'key-url'}) {
+        my $url = $$config{'key-url'};
+        $url =~ s%(\S+:\S+)%<A HREF=\"$1\">$1</A>%;
+        print $fh "Check also:\n";
+        print $fh "<UL>\n<LI>$url\n</UL>\n";
+    }
+    print $fh "\n<PRE>\n";
+    cat_file ($fh, "keys/$key");
+    print $fh "</PRE>\n";
+}
+
+# Generate the README.html file in the current directory by combining the
+# forms/README.html.pre header, entries generated from each config fragment
+# corresponding to a hierarchy for which we have a key, and the
+# forms/README.html.post footer.
+sub generate_html {
+    open (KEYS, "> README.html") or die "Cannot create README.html: $!\n";
+    cat_file (\*KEYS, 'forms/README.html.pre');
+    opendir (D, 'keys') or die "Cannot open keys directory: $!\n";
+    my @keys = sort grep { !/^\./ } readdir D;
+    closedir D;
+    for (@keys) {
+        print KEYS "\n";
+        my $config = parse_config ("config/$_");
+        generate_html_entry (\*KEYS, $config, $_);
+    }
+    cat_file (\*KEYS, 'forms/README.html.post');
+    close KEYS;
+}
+
+##############################################################################
+# Main routine
+##############################################################################
+
+# Generate the various files.
+generate_ctl;
+generate_keys;
+generate_html;

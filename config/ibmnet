@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: IBMNET
+groups: ibmnet.*
+type: local
+description: ?
+contact: [ news@ibm.net ]

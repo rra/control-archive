@@ -1,0 +1,11 @@
+id: $Id$
+hierarchy: NO
+groups: no.*
+type: public
+description: Norway
+sender: [ control@usenet.no ]
+url: "http://www.usenet.no/"
+pgp: yes
+key-id: no-hir-control
+key-url: "http://www.usenet.no/pgp-key.txt"
+admin-group: no.news.diverse

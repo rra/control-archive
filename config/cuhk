@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: CUHK
+groups: cuhk.*
+type: local
+description: "Chinese University of Hong Kong"
+contact: [ "shlam@ie.cuhk.edu.hk (Alan S H Lam)" ]

@@ -1,0 +1,8 @@
+id: $Id$
+hierarchy: CPCUIIA
+groups: cpcuiia.*
+type: public
+description: "Chartered Prop. Casulty Underwriter/Insurance Institute of America"
+sender: [ miller@cpcuiia.org ]
+contact: [ miller@cpcuiia.org ]
+url: "http://www.aicpcu.org/"

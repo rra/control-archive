@@ -1,0 +1,12 @@
+id: $Id$
+hierarchy: BA
+groups: ba.*
+type: public
+description: "San Francisco Bay Area, USA"
+sender: [ ba-mod@nas.nasa.gov ]
+contact: [ ba-mod@nas.nasa.gov ]
+url: "http://ennui.org/ba/"
+pgp: yes
+key-id: ba.news.config
+key-url: "http://ennui.org/ba/ba-mod.asc"
+admin-group: ba.news.config

@@ -1,0 +1,8 @@
+id: $Id$
+hierarchy: CN
+groups: cn.*
+type: public
+description: China
+sender: [ control@bentium.com ]
+pgp: yes
+key-id: cn.admin.news.announce

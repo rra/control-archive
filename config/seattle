@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: SEATTLE
+groups: seattle.*
+type: public
+description: "Seattle, Washington, USA"
+sender: [ billmcc@akita.com graham@ee.washington.edu ]

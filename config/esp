@@ -1,0 +1,10 @@
+id: $Id$
+hierarchy: ESP
+groups: esp.*
+type: public
+description: "Spanish-language newsgroups"
+sender: [ mod-ena@ennui.org ]
+contact: [ <mod-ena@ennui.org> ]
+url: "http://ennui.org/esp/"
+pgp: yes
+key-id: esp.news.administracion

@@ -1,0 +1,13 @@
+id: $Id$
+hierarchy: JAPAN
+groups: japan.*
+type: public
+description: Japan
+sender: [ japan.admin.announce@news.efnet.com ]
+contact: [ "Tsuneo Tanaka <tt+null@efnet.com>" ]
+url: "http://www.asahi-net.or.jp/~AE5T-KSN/japan-e.html"
+pgp: yes
+key-id: japan.admin.announce@news.efnet.com
+key-fingerprint: "6A FA 19 47 69 1B 10 74  38 53 4B 1B D8 BA 3E 85"
+key-url: "http://grex.cyberspace.org/~tt/japan.admin.announce.asc"
+admin-group: japan.admin.announce

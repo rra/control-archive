@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: WORLDONLINE
+groups: worldonline.*
+type: local
+description: ?
+contact: [ newsmaster@worldonline.nl ]

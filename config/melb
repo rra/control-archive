@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: MELB
+groups: melb.*
+type: public
+description: "Melbourne, Australia"
+sender: [ kre@*mu*au revdoc@*uow.edu.au ]

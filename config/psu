@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: PSU
+groups: psu.*
+type: local
+description: "Penn State University, USA"
+contact: [ "Dave Barr (barr@math.psu.edu)" ]

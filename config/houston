@@ -1,0 +1,9 @@
+id: $Id$
+hierarchy: HOUSTON
+groups: houston.*
+type: public
+description: "Houston, Texas, USA"
+sender: [ news@academ.com ]
+pgp: yes
+key-id: houston.usenet.config
+admin-group: houston.usenet.config

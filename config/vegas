@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: VEGAS
+groups: vegas.*
+type: public
+description: "Las Vegas, Nevada, USA"
+sender: [ cshapiro@netcom.com doctor@netcom.com ]

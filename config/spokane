@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: SPOKANE
+groups: spokane.*
+type: public
+description: "Spokane, Washington, USA"
+sender: [ usenet@news.spokane.wa.us ]

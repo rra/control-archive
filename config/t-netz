@@ -1,0 +1,5 @@
+id: $Id$
+hierarchy: T-NETZ
+groups: t-netz.*
+type: defunct
+description: Germany

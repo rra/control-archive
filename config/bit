@@ -1,0 +1,10 @@
+id: $Id$
+hierarchy: BIT
+groups: bit.*
+type: public
+description: "Gatewayed Mailing lists"
+sender: [ bit@newsadmin.com ]
+url: "http://www.newsadmin.com/bit/bit.htm"
+pgp: yes
+key-id: bit@newsadmin.com
+admin-group: bit.admin

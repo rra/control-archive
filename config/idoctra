@@ -1,0 +1,7 @@
+id: $Id$
+hierarchy: IDOCTRA
+groups: idoctra.*
+type: public
+description: "Idoctra Translation Software, Translation Discussion"
+sender: [ support@idoctra.com ]
+contact: [ support@idoctra.com ]

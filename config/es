@@ -1,0 +1,11 @@
+id: $Id$
+hierarchy: ES
+groups: es.*
+type: public
+description: Spain
+sender: [ moderador@news.rediris.es ]
+contact: [ david.martinez@rediris.es ]
+url: "http://www.rediris.es/netnews/infonews/config.es.html"
+pgp: yes
+key-id: es.news
+admin-group: es.news

@@ -1,0 +1,13 @@
+id: $Id$
+hierarchy: MALTA
+groups: malta.*
+type: public
+description: "Nation of Malta"
+sender: [ cmeli@cis.um.edu.mt ]
+contact: [ cmeli@cis.um.edu.mt ]
+url: "http://www.malta.news-admin.org/"
+pgp: yes
+key-id: malta.config
+key-fingerprint: "20 17 01 5C F0 D0 1A 42  E4 13 30 58 0B 14 48 A6"
+key-url: "http://www.cis.um.edu.mt/news-malta/PGP.PUBLICKEY"
+admin-group: malta.config

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: UCD
+groups: ucd.*
+type: public
+description: "University of California Davis, USA"
+sender: [ usenet@mark.ucdavis.edu usenet@rocky.ucdavis.edu ]

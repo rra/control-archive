@@ -1,0 +1,7 @@
+id: $Id$
+hierarchy: CO
+groups: co.*
+type: public
+description: "Colorado, USA"
+sender: [ coadmin@boyznoyz.com ]
+contact: [ "coadmin@boyznoyz.com (Bill of Denver)" ]

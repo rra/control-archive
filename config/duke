@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: DUKE
+groups: duke.*
+type: local
+description: "Duke University, USA"
+contact: [ news@newsgate.duke.edu ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: SURFNET
+groups: surfnet.*
+type: public
+description: "Dutch Universities network"
+sender: [ news@info.nic.surfnet.nl ]

@@ -1,0 +1,10 @@
+## UMN (University of Minnesota, USA)
+newgroup:edh@*.tc.umn.edu:umn.*:doit
+newgroup:news@*.tc.umn.edu:umn.*:doit
+newgroup:Michael.E.Hedman-1@umn.edu:umn.*:doit
+newgroup:edh@*.tc.umn.edu:umn*class.*:mail
+newgroup:news@*.tc.umn.edu:umn*class.*:mail
+newgroup:Michael.E.Hedman-1@umn.edu:umn*class.*:mail
+rmgroup:news@*.tc.umn.edu:umn.*:doit
+rmgroup:edh@*.tc.umn.edu:umn.*:doit
+rmgroup:Michael.E.Hedman-1@umn.edu:umn.*:doit

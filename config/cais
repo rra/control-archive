@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: CAIS
+groups: cais.*
+type: local
+description: "Capital Area Internet Services"
+contact: [ news@cais.com ]

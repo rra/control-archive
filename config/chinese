@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: CHINESE
+groups: chinese.*
+type: public
+description: "China and Chinese language groups"
+sender: [ pinghua@stat.berkeley.edu ]

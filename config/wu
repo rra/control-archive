@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: WU
+groups: wu.*
+type: public
+description: "Washington University at St. Louis, MO"
+sender: [ *@*.wustl.edu ]

@@ -1,0 +1,12 @@
+id: $Id$
+hierarchy: NZ
+groups: nz.*
+type: public
+description: "New Zealand"
+sender: [ root@usenet.net.nz ]
+contact: [ root@usenet.net.nz ]
+url: "http://www.faqs.org/faqs/usenet/nz-news-hierarchy"
+pgp: yes
+key-id: nz-hir-control
+key-fingerprint: "07 DF 48 AA D0 ED AA 88  16 70 C5 91 65 3D 1A 28"
+admin-group: nz.net.announce

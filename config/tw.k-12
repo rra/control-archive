@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: TW.K-12
+groups: tw.k-12.*
+type: public
+description: "Taiwan K-12 Discussion"
+sender: [ k-12@news.nchu.edu.tw ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: SFNET
+groups: sfnet.*
+type: public
+description: Finland
+sender: [ sfnet@*.cs.tut.fi ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: INFO
+groups: info.*
+type: public
+description: "Gatewayed mailing lists"
+sender: [ rjoyner@uiuc.edu ]

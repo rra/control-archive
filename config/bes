@@ -1,0 +1,8 @@
+id: $Id$
+hierarchy: BES
+groups: bes.*
+type: private
+description: "Bejing Electron Spectrometer"
+newgroup-sender: [ news@news.stanford.edu ]
+rmgroup-sender: [ news@news.stanford.edu ]
+contact: [ news@news.stanford.edu ]

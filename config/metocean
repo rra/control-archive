@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: METOCEAN
+groups: metocean.*
+type: public
+description: "ISP in Japan"
+sender: [ fwataru@*.metocean.co.jp ]

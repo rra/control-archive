@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: CAPDIST
+groups: capdist.*
+type: public
+description: "Albany, The Capital District, New York, USA"
+sender: [ danorton@albany.net ]

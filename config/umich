@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: UMICH
+groups: umich.*
+type: public
+description: "University of Michigan, USA"
+sender: [ *@*.umich.edu ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: BDA
+groups: bda.*
+type: public
+description: "German groups?"
+sender: [ news@*netuse.de ]

@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: BIRK
+groups: birk.*
+type: local
+description: "University of Oslo, Norway"
+contact: [ birk-admin@ping.uio.no ]

@@ -1,0 +1,11 @@
+id: $Id$
+hierarchy: Z-NETZ
+groups: z-netz.*
+type: public
+description: "German non-Internet based network"
+sender: [ teko@dinoex.sub.org ]
+contact: [ teko@dinoex.sub.org ]
+pgp: yes
+key-id: z-netz.koordination.user+sysops
+key-url: "ftp://ftp.dinoex.de/pub/keys/z-netz.koordination.user+sysops.asc"
+admin-group: z-netz.koordination.user+sysops

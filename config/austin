@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: AUSTIN
+groups: austin.*
+type: public
+description: "Texas, USA"
+sender: [ chip@unicom.com fletcher@cs.utexas.edu pug@pug.net ]

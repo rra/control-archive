@@ -1,0 +1,7 @@
+id: $Id$
+hierarchy: TAOS
+groups: taos.*
+type: public
+description: "Taos, New Mexico, USA"
+sender: [ cgunn@laplaza.org ]
+contact: [ "Chris Gunn <cgunn@laplaza.org>" ]
