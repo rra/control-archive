@@ -3,6 +3,8 @@ hierarchy: CN.BBS
 groups: cn.bbs.*
 type: public
 description: China
-sender: [ news@zixia.net ]
+sender: [ control@cn-bbs.org ]
 pgp: yes
 key-id: cn.bbs.admin.announce
+key-url: "http://www.cn-bbs.org/pubkey-cn.bbs.admin.announce"
+admin-group: cn.bbs.admin.announce
