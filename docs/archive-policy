@@ -1,0 +1,94 @@
+                     CONTROL MESSAGE ARCHIVE POLICIES
+                        Last modified: 2003-05-17
+
+  This document describes the policies by which the archive of control
+  messages in this directory <ftp://ftp.isc.org/pub/usenet/control/> are
+  maintained.
+
+  This is an archive of all newgroup, rmgroup, and checkgroups control
+  messages seen on Usenet received since early 1991.  newgroups and
+  rmgroups, used to create and remove groups respectively, are arranged by
+  subdirectories by top-level hierarchy.  The archive was originally at
+  rpi.edu until Fall 1992 when it was moved to uu.net.  It was later moved
+  to isc.org.  A month or so of messages (around August 1992) are missing.
+
+  The archives are maintained in gzip (.gz) format.  You will need gzip to
+  decompress these archive files.  (Many web browsers will decompress gzip
+  automatically for you.)
+
+  The archives update every three hours, so please allow up to six hours
+  for a given control message to show up in the archives.
+
+WHAT IS ARCHIVED
+
+  All received newgroup, rmgroup, and checkgroups control messages are
+  archived.  newgroup and rmgroup control messages are archived by the
+  name of the group that would be affected, arranged in subdirectories by
+  top-level hierarchy (the portion of the newsgroup name up to the first
+  period).  checkgroups control messages are archived in the other.ctl
+  directory by year.
+
+  Other types of control messages used to be archived but are no longer.
+  The old archives are still available in the other.ctl directory.
+
+  Only valid control messages are archived.  This means that the article
+  must fulfill the following requirements:
+
+  - The message is a validly formatted Usenet article
+  - No larger than 256KB (64KB for newgroup and rmgroup messages)
+  - Contains an Approved header (even for checkgroups)
+  - None of the Approved, Sender, or X-PGP-Sig headers are duplicated
+  - If a newgroup mode is specified, it starts with "y" or "m"
+
+  In addition, the newsgroup affected by a newgroup or rmgroup message
+  must fulfill the following requirements (where a component is a portion
+  of a newsgroup name separated by periods):
+
+  - A component must not contain characters other than [a-z0-9+_.-]
+  - A component must contain at least one non-digit
+  - A component must not contain uppercase letters
+  - A component must begin with a letter or digit
+  - Sequences 'all' and 'ctl' must not be used as components
+  - The name must have at least two components
+  - The first component must begin with a letter
+  - The first component must not be "control", "to", or "example".
+  - The complete name must not be longer than 80 octets
+
+  To find out what happened to a given control message, look for its
+  message ID in the logs at:
+
+    <ftp://ftp.isc.org/pub/usenet/CONFIG/LOGS/>
+
+  If the message was received but not archived for some reason, the reason
+  will be logged there.
+
+  Rejected control messages were previously also archived, and those old
+  archives can be found in the other.ctl directory.  Messages not
+  fulfilling the above requirements are no longer archived at all.
+
+HOW THE ARCHIVES ARE MAINTAINED
+
+  These archives are maintained as automatically as possible.  Subject to
+  the above restrictions, all control messages are archived as received,
+  but with a "From " line with the arrival date added to the beginning of
+  the message and a blank line added to the end of the message so that the
+  archives are valid Unix mbox files (unless they contain a "From " line
+  in the body; such lines are not escaped).
+
+  We will not make any manual changes to the archives except under
+  exceptional circumstances, and a strong justification will be required
+  to make manual changes.  However, we may remove messages that pose a
+  legal risk for the archive maintainers, cause technical difficulties for
+  the archives, were archived in violation of the archive policies due to
+  software bugs, or were rendered invalid by a change of the archive
+  policies.  Please also be aware that Usenet propagation, while normally
+  fairly good, is not perfect, nor is the archiving software, so there is
+  always a possibility that some control messages may be missed, filtered
+  out by an intervening spam filter, or accidentally dropped.
+
+  Therefore, no guarantee is made that this is a full and complete
+  archive.  It is provided as-is, maintained to the best of our ability,
+  in the hope that it will be useful.
+
+  If you have any questions or comments about the archive, please send
+  them to usenet-config@isc.org.
