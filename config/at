@@ -4,3 +4,4 @@ groups: at.*
 type: public
 description: Austria
 sender: [ control@usenet.backbone.at ]
+url: "http://www.usenet.at/"
