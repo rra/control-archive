@@ -7,5 +7,5 @@ sender: [ usenet@newsgate.mensa.org ]
 contact: [ usenet@newsgate.mensa.org ]
 pgp: yes
 key-id: mensa.config
-key-fingerprint: "A7 57 24 49 C0 D4 47 33  84 A0 52 6E F1 A4 00 5B"
+key-fingerprint: "52B9 3963 85D9 0806 8E19  7344 973C 5005 DC7D B7A7"
 admin-group: mensa.config
