@@ -1,0 +1,13 @@
+id: $Id$
+hierarchy: ABG
+groups: abg.*
+type: public
+description: "Augsburg, Germany"
+sender: [ abgadmin@abg.news-kiste.de ]
+contact: [ abgadmin@abg.news-kiste.de ]
+url: "http://abg.news-kiste.de/"
+pgp: yes
+key-id: abgadmin@abg.news-kiste.de
+key-url: "http://abg.news-kiste.de/abgadmin.asc"
+key-fingerprint: "7D 18 DB E7 5B EB 0D 34  C1 89 5D 45 84 86 D3 A8"
+admin-group: abg.admin
