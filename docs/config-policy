@@ -1,5 +1,5 @@
                          GROUP CREATION POLICIES
-                        Last modified: 2003-05-17
+                        Last modified: 2004-03-29
 
   (This document was originally written by David Lawrence, but has since
   been updated and is currently maintained by Russ Allbery.  For all
@@ -84,7 +84,7 @@ HIERARCHY MAINTENANCE
   three components, "news", "announce" and "newgroups.  No groups will be
   added that do not conform to the following standard for Usenet groups:
 
-  - a component must not contain characters other than [a-z0-9+_.-]
+  - a component must not contain characters other than [a-z0-9+_-]
   - a component must contain at least one non-digit
   - a component must not contain uppercase letters
   - a component must begin with a letter or digit
