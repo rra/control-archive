@@ -3,5 +3,7 @@ hierarchy: CHILE
 groups: chile.*
 type: public
 description: "Chile and Chilean affairs"
-sender: [ mod-cga@*webhost.cl ]
-contact: [ mod-cga@webhost.cl ]
+sender: [ mod-cga@*lj.cl ]
+contact: [ mod-cga@usenet.cl ]
+url: "http://www.usenet.cl/"
+admin-group: chile.grupos.anuncios
