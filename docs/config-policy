@@ -1,5 +1,5 @@
                          GROUP CREATION POLICIES
-                        Last modified: 2004-03-29
+                        Last modified: 2004-10-09
 
   (This document was originally written by David Lawrence, but has since
   been updated and is currently maintained by Russ Allbery.  For all
@@ -112,7 +112,15 @@ HIERARCHY MAINTENANCE
   properly formatted Usenet messages containing an Approved header and a
   syntactically valid Control header.  "checkgroups" control messages must
   be no more than 256KB in size, and "newgroup" and "rmgroup" messages
-  must be no more than 64KB in size.
+  must be no more than 64KB in size.  "newgroup" control messages must
+  contain a valid newsgroup description for the created newsgroup, which
+  means there must be a line in the body reading, exactly:
+
+      For your newsgroups file:
+
+  with no leading whitespace, followed on the next line by a valid
+  description line for the newsgroup (see THE NEWSGROUPS FILE for a
+  discussion of the format of this line).
 
   The newsgroup descriptions in the newsgroups file are taken from the
   most recent control message for that group, whether a valid "newgroup"
