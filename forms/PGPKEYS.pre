@@ -1,17 +1,16 @@
 
-         List of PGP Public Keys for Newsgroup Administration
+       List of PGP Public Keys for Newsgroup Administration
 
-This is a list of keys known to be used for maintaining various
-parts of the newsgroup namespace. They are listed
-alphabetically by the hierarchies they are used for, along with
-the email address they are sent by (for use in control.ctl) and
-the group that people should follow if they are interested in
-tracking announcements about the hierarchy. The "Check also"
-references point to locations that should have identical public
-key blocks; it is best if you confirm the block listed here by
+This is a list of keys known to be used for maintaining various parts
+of the newsgroup namespace.  They are listed alphabetically by the
+hierarchies they are used for, along with the email address they are sent
+by (for use in control.ctl) and the group that people should follow if
+they are interested in tracking announcements about the hierarchy.  The
+"Check also" references point to locations that should have identical
+public key blocks; it is best if you confirm the block listed here by
 checking against the others.
 
-The existence of key here only means that I, David Lawrence, trust
-the person who uses it to be a responsible maintainer of that
-particular hierarchy of groups. You are solely responsible for
-deciding whether you will use the keys here at your own site.
+The existence of key here only means that I, Russ Allbery, trust the
+person who uses it to be a responsible maintainer of that particular
+hierarchy of groups.  You are solely responsible for deciding whether you
+will use the keys here at your own site.
