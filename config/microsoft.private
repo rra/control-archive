@@ -1,0 +1,8 @@
+id: "$Id$"
+hierarchy: MICROSOFT
+groups: microsoft.private.*
+type: private
+description: Microsoft Corporation, USA
+sender: [ usenet@microsoft.com ]
+contact: [ usenet@microsoft.com ]
+url: "http://www.microsoft.com/usenetadmin"
