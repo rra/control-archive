@@ -18,8 +18,8 @@ $ACTIVE = '/work/usenet/config/active.db';
 # Path to the control.ctl file to use.
 $CONTROL = '/work/usenet/config/control.ctl';
 
-# The log file into which to record actions taken.
-$LOG = '/work/usenet/config/log';
+# The directory in which to look for log files.
+$LOG = '/work/usenet/config';
 
 # Directory in which to create the active and newsgroups files.
 $ROOT = '/work/usenet/config/export';
@@ -96,4 +96,11 @@ system ("bzip2 -kf '$ROOT/newsgroups'") == 0
 
 # Copy some other files into the export directory.
 copy ($CONTROL, "$ROOT/control.ctl");
-copy ($LOG, "$ROOT/LOG");
+unless (-d "$ROOT/LOGS") {
+    mkdir "$ROOT/LOGS" or die "$0: cannot mkdir $ROOT/LOGS: $!\n";
+}
+opendir (LOGS, $LOG) or die "$0: cannot opendir $LOG: $!\n";
+for (grep { /^log\.\d{4}-\d\d$/ } readdir LOGS) {
+    copy ("$LOG/$_", "$ROOT/LOGS/$_");
+}
+closedir LOGS;
