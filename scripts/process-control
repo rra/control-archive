@@ -642,7 +642,9 @@ sub archive {
     logdie "bad newsgroup name $group" if (!$dir || $dir =~ m%^\.|^-|/%);
     $dir = "$ARCHIVE/$dir";
     unless (-d $dir) {
+        my $umask = umask 002;
         mkdir $dir or logdie "cannot create $ARCHIVE/$dir: $!";
+        umask $umask;
     }
     archive_message ("$dir/$group", $headers, $body);
     log "$id archived as $group";
