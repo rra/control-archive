@@ -18,13 +18,13 @@
   files.
 
   The intention is for the active and newsgroups files here to be complete
-  for all publically available hierarchies.  To that end, we appreciate
-  when discrepancies with other authoritative lists are pointed out.
-  Please send mail to usenet-config@isc.org if you have such a discrepancy
-  to point out.
+  for all publicly available hierarchies.  To that end, we appreciate when
+  discrepancies with other authoritative lists are pointed out.  Please
+  send mail to usenet-config@isc.org if you have such a discrepancy to
+  point out.
 
   Given the volume of Usenet control messages and the number of
-  hierarchies publically available, some intentional, some not, it is
+  hierarchies publicly available, some intentional, some not, it is
   unlikely that we'll be able to keep up with all new public hierarchies
   without help.  If you know of or are involved with a public newsgroup
   hierarchy that is not listed in control.ctl in this directory, please
@@ -199,7 +199,7 @@ LOGGING
     <ftp://ftp.isc.org/pub/usenet/CONFIG/LOGS/>
 
   The log files are by year and month when the control message was
-  processed, and each log entry is timestamped.  All times are in UTC.
+  processed, and each log entry is time stamped.  All times are in UTC.
   Lines beginning with ACTION represent a change in the active and
   newsgroups files, and lines beginning with a message ID in angle
   brackets describe the disposition of a control message.
