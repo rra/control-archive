@@ -1,11 +1,11 @@
 id: $Id$
-hierarchy: MELB
-groups: melb.*
+hierarchy: BNE
+groups: bne.*
 type: public
-description: "Melbourne, Australia"
+description: "Brisbane, Australia"
 sender: [ ausadmin@aus.news-admin.org ]
 contact: [ ausadmin@aus.news-admin.org ]
-url: "http://melb.news-admin.org/"
+url: "http://bne.news-admin.org/"
 pgp: yes
 key-id: ausadmin@aus.news-admin.org
 key-url: "http://aus.news-admin.org/ausadmin.asc"
