@@ -53,8 +53,15 @@ use Text::Template ();
 sub build_log_names {
     my ($start, $end) = @_;
     die "$0: bad date range: $start to $end\n" if $start > $end;
+
+    # Logs are only broken down by month, so set the day of the month to
+    # something that won't cause problems for transitions between months.
     my @current = gmtime $start;
     my @end = gmtime $end;
+    $current[3] = 15;
+
+    # Build the log file names.  First increment up to the ending year, and
+    # then increment up to the ending month.
     my @logs;
     while ($current[5] < $end[5]) {
         push (@logs, strftime ('log.%Y-%m', @current));
