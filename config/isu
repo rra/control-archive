@@ -1,0 +1,12 @@
+id: $Id$
+hierarchy: ISU
+groups: isu.*
+type: public
+description: "I-Shou University, Taiwan"
+sender: [ news@news.isu.edu.tw ]
+contact: [ news@news.isu.edu.tw ]
+url: "http://news.isu.edu.tw/"
+pgp: yes
+key-id: news@news.isu.edu.tw
+key-url: "http://news.isu.edu.tw/isu.asc"
+admin-group: isu.newgroups
