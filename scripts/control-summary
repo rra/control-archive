@@ -40,6 +40,7 @@ use Date::Parse qw(str2time);
 use DB_File ();
 use Fcntl qw(LOCK_SH);
 use Getopt::Long qw(GetOptions);
+use Net::NNTP ();
 use POSIX qw(strftime);
 use Text::Template ();
 
