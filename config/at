@@ -5,3 +5,4 @@ type: public
 description: Austria
 sender: [ control@usenet.backbone.at ]
 url: "http://www.usenet.at/"
+admin-group: at.usenet.gruppen
