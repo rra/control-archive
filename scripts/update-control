@@ -121,7 +121,7 @@ sub checkgroups {
     while (<STDIN>) {
         next unless /$pattern/;
         my ($group, $desc) = split (' ', $_, 2);
-        $desc = '?' unless defined $desc;
+        $desc = 'No description.' unless defined $desc;
         $desc =~ s/\s+$//;
         next unless ($group =~ /^[a-z0-9+_.-]+$/);
         next if ($group =~ /^\.|\.\.|\.$/);
