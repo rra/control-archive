@@ -8,3 +8,4 @@ contact: [ <mod-ena@ennui.org> ]
 url: "http://ennui.org/esp/"
 pgp: yes
 key-id: esp.news.administracion
+key-url: "http://ennui.org/esp/mod-ena.asc"

@@ -8,4 +8,5 @@ url: "http://www.europa.usenet.eu.org/"
 pgp: yes
 key-id: group-admin@usenet.eu.org
 key-fingerprint: "3A 05 A8 49 FB 16 29 25  75 E3 DE BB 69 E0 1D B4"
+key-url: "http://www.europa.usenet.eu.org/pgp/index.html"
 admin-group: europa.usenet.admin
