@@ -9,3 +9,4 @@ url: "http://aus.news-admin.org/"
 pgp: yes
 key-id: ausadmin@aus.news-admin.org
 key-url: "http://aus.news-admin.org/ausadmin.asc"
+admin-group: aus.net.news
