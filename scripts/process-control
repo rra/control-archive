@@ -1,0 +1,678 @@
+#!/usr/bin/perl -w
+$ID = q$Id$;
+#
+# process-control -- Process Usenet control messages to maintain a database.
+#
+# Written by Russ Allbery <rra@stanford.edu>
+# Based *very* heavily on controlchan by Marco d'Itri.
+# Portions based on pgpverify by David Lawrence.
+#
+# Please see the end of the documentation for full copyright statements and
+# license terms.
+
+##############################################################################
+# Site configuration
+##############################################################################
+
+# Path to the active newsgroup database.
+$ACTIVE = '/work/usenet/config/active.db';
+
+# Path to the root of the control message archive.
+$ARCHIVE = '/work/usenet/config/archive';
+
+# Path to the control.ctl file to use.
+$CONTROL = '/work/usenet/config/control.ctl';
+
+# The full path to the gpgv binary.
+$GPGV = '/usr/bin/gpgv';
+
+# The full path to the GnuPG keyring.
+$KEYRING = '/work/usenet/config/keyring/pubring.gpg';
+
+# The log file into which to record actions taken.
+$LOG = '/work/usenet/config/log';
+
+# The temporary directory to use for PGP verification.
+$TMPDIR = '/work/usenet/config/tmp';
+
+##############################################################################
+# Modules and declarations
+##############################################################################
+
+require 5.005;
+
+use strict;
+use vars qw($ACTIVE $ARCHIVE $CONTROL $GPGV $ID $KEYRING $LOG $TMPDIR);
+use subs qw(log);
+
+use Compress::Zlib qw(gzopen);
+use DB_File ();
+use Fcntl qw(LOCK_EX);
+use IO::Handle ();
+use POSIX qw(strftime);
+
+##############################################################################
+# Logging
+##############################################################################
+
+# Open the log file.
+sub openlog {
+    open (LOG, ">> $LOG") or die "$0: can't open $LOG: $!\n";
+}
+
+# Log a message to the log file.
+sub log {
+    my $date = strftime('%Y-%m-%d %T', gmtime);
+    print LOG "$date [$$] ", @_, "\n";
+    LOG->flush;
+}
+
+# Log a fatal message and then exit.
+sub logdie {
+    log ('FATAL: ', @_);
+    exit 1;
+}
+
+##############################################################################
+# control.ctl parsing and analysis
+##############################################################################
+
+# Read in control.ctl, converting the group patterns to regular expressions
+# (still separated by colons), and returning a reference to an array of
+# control lines.  Reverse the array so that subsequent code can use the first
+# matching pattern.
+sub read_ctl {
+    my @rules;
+    open (CONTROL, $CONTROL) or logdie "cannot open $CONTROL: $!";
+    local $_;
+    while (<CONTROL>) {
+        s/^\s+//;
+        s/\s+$//;
+        next if /^\#/;
+        next if /^$/;
+        my ($type, $sender, $groups, $action) = split /:/;
+        next unless $action;
+        next unless $type =~ /^(?:(?:new|rm)group|checkgroups)$/;
+        $action = 'drop' if $action eq 'mail';
+
+        # Convert patterns to regexes.
+        for ($sender, $groups) {
+            s/([\$+.])/\\$1/g;
+            s/\*/.*/g;
+            s/\?/./g;
+            $_ = '^' . $_ . "\$";
+            s/\|/\$|^/g;
+        }
+        push (@rules, join (':', $type, $sender, $groups, $action));
+    }
+    close CONTROL;
+    return [ reverse @rules ];
+}
+
+# Given a reference to an array of rules, the message ID, a sender, a control
+# message type, and an optional target, return a list of the action (one of
+# doit, verify-*, or mail) and the matching pattern.  The second is used for
+# checkgroups.
+sub check_ctl {
+    my ($rules, $id, $sender, $type, $target) = @_;
+    my $pattern;
+    my $action = 'drop';
+    for (@$rules) {
+        my @rule = split /:/;
+        if ($type eq $rule[0] && $sender =~ /$rule[1]/) {
+            if ($type ne 'checkgroups') {
+                next unless $target =~ /$rule[2]/;
+            }
+            $action = $rule[3];
+            $pattern = $rule[2];
+            last;
+        }
+    }
+    return ($action, $pattern);
+}
+
+##############################################################################
+# Article parsing
+##############################################################################
+
+# Check a wide variety of things about the headers.  Returns the log message
+# to use to reject the message if it's bad, or the empty string otherwise.
+# (This is an odd return value, but it makes the code a lot shorter.)  Takes
+# the message ID and a ref to the header hash.
+sub check_headers {
+    my ($id, $hdr) = @_;
+
+    for (qw/approved control from message-id subject/) {
+        return "$id missing header $_" unless exists $$hdr{$_};
+    }
+    return "$id message ID mismatch with $$hdr{'message-id'}"
+        if ($id && $$hdr{'message-id'} ne $id);
+    $id = $$hdr{'message-id'};
+
+    # Check the control header.
+    my @control = split (' ', $$hdr{control});
+    return "$id unknown control type $control[0]"
+        if ($control[0] !~ /^(?:(?:new|rm)group|checkgroups)$/);
+    return "$id invalid control header"
+        if (!@control || @control > 3);
+    return "$id invalid control header"
+        if ($control[0] eq 'rmgroup' && @control > 2);
+    return "$id missing newsgroup for $control[0]"
+        if ($control[0] =~ /^(?:new|rm)group$/ && !$control[1]);
+    if ($control[0] eq 'newgroup') {
+        return "$id bad newgroup mode $control[2]"
+            if ($control[2] && $control[2] !~ /^[ym]/);
+        return "$id bad newsgroup name $control[1]"
+            unless ($control[1] =~ /^[a-z0-9+_.-]+$/);
+        return "$id bad newsgroup name $control[1]"
+            if ($control[1] =~ /^\.|\.\.|\.$/);
+        return "$id bad newsgroup name $control[1]"
+            if ($control[1] =~ /^-/);
+        my @components = split (/\./, $control[1]);
+        for (@components) {
+            return "$id all-numeric component in $control[1]" if /^\d+$/;
+            return "$id all or ctl used in $control[1]" if /^(?:all|ctl)$/;
+        }
+    }
+    return '';
+}
+
+# Parse an article into a hash of headers and an array of body lines.  For
+# certain key headers, also ensure that the headers only occur once in the
+# message.  Takes the file handle to the article, its message ID, an array ref
+# into which to put the headers, an array ref into which to put the body, a
+# hash ref into which to put parsed headers, and a hash ref into which to put
+# duplicated headers.
+sub parse_article {
+    my ($fh, $id, $headers, $body, $hdr, $dups) = @_;
+    my %unique = map { $_ => 1 }
+        qw(approved control date from message-id subject sender x-pgp-sig);
+
+    # Parse the headers first, checking for duplicates as we go.
+    my $last;
+    local $_;
+    while (<$fh>) {
+        s/\r\n\z/\n/;
+        last if ($_ eq "\n");
+        push (@$headers, $_);
+        if (/^(\S+):\s+(.+)/) {
+            $last = lc $1;
+            if (exists $$hdr{$last}) {
+                if ($unique{$last}) {
+                    log "$id multiple $1 headers";
+                    return 0;
+                }
+                $$hdr{$last} .= ' ' . $2;
+                $$dups{$last}++;
+            } else {
+                $$hdr{$last} = $2;
+            }
+        } elsif (defined ($last) && /^(\s.+)/) {
+            $$hdr{$last} .= $1;
+        } else {
+            log "$id broken headers";
+            return 0;
+        }
+    }
+
+    # Check the validity of the errors.
+    unless (@$headers) {
+        log "$id appears to be empty";
+        return 0;
+    }
+    my $error = check_headers ($id, $hdr);
+    if ($error) {
+        log $error;
+        return 0;
+    }
+
+    # Slurp up the article body.
+    while (<$fh>) {
+        s/\r\n\z/\n/;
+        last if ($_ eq ".\n");
+        s/^\.\././;
+        push (@$body, $_);
+    }
+    return 1;
+}
+
+# Produce a cleaned up version of the e-mail address of the sender, for
+# checking against control.ctl.
+sub clean_from {
+    local $_ = shift;
+    s/(\s+)?\(.*\)(\s+)?//g;
+    s/^.*<(.*)>.*/$1/;
+
+    # Protect against weird characters.
+    s/[^-a-zA-Z0-9+_.@%]/_/g;
+    s/^-/_/;
+    return $_;
+}
+
+##############################################################################
+# PGP verification
+##############################################################################
+
+# Parse the X-PGP-Sig header, returning the version, the signature, and a list
+# of signed headers.  Returns an empty list if the header doesn't parse
+# correctly.
+sub parse_pgp_sig {
+    local $_ = shift;
+
+    # This is a complex regex, so break it up into pieces.  An X-PGP-Sig
+    # header consists of a version, a separator, a comma-separated list of
+    # headers included in the signature, a separator, and then some number of
+    # separated base64 lines.  The last line starts with =, and the second to
+    # the last line may end with one or more = characters.  Each base64 line
+    # except for the last should contain exactly 64 characters and the last
+    # should contain 4 characters after the =.
+    #
+    # $s is a separator, which is any number of spaces and tabs which can
+    # additionally be folded.
+    my $s = '[ \t]*(?:\n?[ \t]+)+';
+
+    # $b64 matches a single base64 character.
+    my $b64 = '[a-zA-Z0-9+/]';
+
+    # Now actually parse the header.
+    return unless /^(\S+)$s(\S+)(($s$b64{64})+$s$b64+=?=?$s=$b64{4})$/;
+
+    # Return the appropriate bits of the header.
+    my ($version, $headers, $signature) = ($1, $2, $3);
+    $signature =~ s/$s/\n/g;
+    return ($version, $signature, split (/,/, $headers));
+}
+
+# Generate the PGP message that should be verified.  Takes the version, a
+# reference to a list of headers that should be included in the signed
+# version, the signature, a ref to the hash of article headers, and a ref to
+# the array of body lines.  Returns the PGP message to be verified.
+sub generate_pgp {
+    my ($version, $headers, $signature, $hdr, $body) = @_;
+    my $message  = "-----BEGIN PGP SIGNED MESSAGE-----\n\n";
+    $message .= "X-Signed-Headers: " . join (',', @$headers) . "\n";
+    for my $header (@$headers) {
+        my $label = lc $header;
+        $message .= "$header: ";
+        $message .= "$$hdr{$label}" if $$hdr{$label};
+        $message .= "\n";
+    }
+    $message .= "\n";
+    for (@$body) {
+        my $line = $_;
+        $line =~ s/^-/- -/;
+        $message .= $line;
+    }
+    $message .= "\n-----BEGIN PGP SIGNATURE-----\n";
+    $message .= "Version: $version\n";
+    $message .= $signature;
+    $message .= "\n-----END PGP SIGNATURE-----\n";
+    return $message;
+}
+
+# Write the message to a file for checking.
+sub write_message {
+    my ($message, $file) = @_;
+    open (TMP, "> $file") or logdie "cannot create $file: $!";
+    print TMP $message;
+    close TMP or logdie "cannot flush $file: $!";
+    logdie "write error to $file" if (-s $file != length $message);
+}
+
+# Run GnuPG on a saved temporary file and return the key ID that signed the
+# message.  Takes the message ID for error reporting and file as an argument
+# and gets the keyring and path to GnuPG from global variables.
+sub gpg_check {
+    my ($id, $file) = @_;
+
+    # Run GnuPG and make sure it exits successfully.
+    my $opts = "--quiet --status-fd=1 --logger-fd=1 --keyring=$KEYRING";
+    open (GPG, "$GPGV $opts $file 2> /dev/null |")
+        or logdie "cannot execute $GPGV: $!";
+    local $/;
+    $_ = <GPG>;
+    unlink $file or log "ERROR: cannot unlink $file: $!";
+    close GPG;
+
+    # Check the results.
+    my $signer;
+    if ($? != 0) {
+        if (/\n/) {
+            my $firstline = $_;
+            $firstline =~ s/\n.*//s;
+            log "$id PGP: $firstline";
+        }
+        if ($? >> 8) {
+            log "$id PGP: gpgv exited with status " . ($? >> 8);
+        } else {
+            log "$id PGP: gpgv died on signal " . ($? & 255);
+        }
+    } else {
+        if (/\[GNUPG:\]\s+GOODSIG\s+\S+\s+(\S+)/) {
+            $signer = $1;
+        } else {
+            my $firstline = $_;
+            $firstline =~ s/\n.*//s;
+            log "$id PGP: $firstline";
+        }
+    }
+    return $signer;
+}
+
+# Given the message ID, a hash of the article headers, the hash of which
+# headers are duplicated, and the array containing the body, verify the PGP
+# signature and return the signer.  If the message isn't properly signed, log
+# the error and return undef.
+sub pgpverify {
+    my ($id, $hdr, $dups, $body) = @_;
+
+    # Make sure the article is a valid signed message.
+    unless ($$hdr{'x-pgp-sig'}) {
+        log "$id missing X-PGP-Sig header";
+        return;
+    }
+    my ($version, $signature, @headers) = parse_pgp_sig $$hdr{'x-pgp-sig'};
+    unless ($signature) {
+        log "$id invalid X-PGP-Sig header";
+        return;
+    }
+    for (@headers) {
+        if ($$dups{lc $_}) {
+            log "$id signed header $_ is duplicated";
+            return;
+        }
+    }
+    my %headers = map { lc ($_) => 1 } @headers;
+    for (qw/control date/) {
+        unless ($headers{$_}) {
+            log "$id $_ header not signed";
+            return;
+        }
+    }
+
+    # Check the signature.
+    my $message = generate_pgp ($version, \@headers, $signature, $hdr, $body);
+    write_message ($message, "$TMPDIR/$$");
+    return gpg_check ($id, "$TMPDIR/$$");
+}
+
+##############################################################################
+# Control message actions
+##############################################################################
+
+# Process a newgroup.  Takes the message ID, the name of the group, the mode,
+# and the body of the message (to find the description) and updates the
+# database appropriately.  Logs the results of the action.
+sub newgroup {
+    my ($id, $group, $mode, $body) = @_;
+    $mode = $mode ? substr ($mode, 0, 1) : 'y';
+
+    # Locate and parse the description out of the body.  newgroup control
+    # messages without descriptions will not be acted on.
+    my ($next, $description);
+    for (@$body) {
+        if ($next && /^\Q$group\E\s+(.+)/) {
+            $description = $1;
+            last;
+        } elsif ($_ =~ /^For your newsgroups file:\s*$/) {
+            $next = 1;
+        }
+    }
+    unless ($description) {
+        log "$id no description in body of newgroup for $group";
+        return;
+    }
+    if ($mode eq 'm' && $description !~ /\(Moderated\)$/) {
+        $description =~ s/\s*\(Moderated\)//;
+        $description =~ s/\s*$/ (Moderated)/;
+    }
+
+    # Now, actually update the database.
+    my %db;
+    open (LOCK, "+> $ACTIVE.lock") or logdie "cannot open $ACTIVE.lock: $!";
+    flock (LOCK, LOCK_EX) or logdie "cannot lock $ACTIVE.lock: $!";
+    tie (%db, 'DB_File', $ACTIVE) or logdie "cannot tie $ACTIVE: $!";
+    if (!$db{$group}) {
+        log "ACTION: newgroup $group $mode";
+    } else {
+        my @old = split (' ', $db{$group}, 2);
+        if ($old[0] ne $mode) {
+            log "ACTION: changegroup $group from $old[0] to $mode";
+        } elsif ($old[1] ne $description) {
+            log "ACTION: changedesc $group";
+        }
+    }
+    $db{$group} = "$mode $description";
+    untie %db;
+    close LOCK;
+    log "$id processed newgroup";
+}
+
+# Process an rmgroup.  Takes the message ID, the name of the group, and logs
+# the results of the action.
+sub rmgroup {
+    my ($id, $group) = @_;
+    my %db;
+    open (LOCK, "+> $ACTIVE.lock") or logdie "cannot open $ACTIVE.lock: $!";
+    flock (LOCK, LOCK_EX) or logdie "cannot lock $ACTIVE.lock: $!";
+    tie (%db, 'DB_File', $ACTIVE) or logdie "cannot tie $ACTIVE: $!";
+    if ($db{$group}) {
+        log "ACTION: rmgroup $group";
+        delete $db{$group};
+    }
+    untie %db;
+    close LOCK;
+    log "$id processed rmgroup";
+}
+
+# Process a checkgroups.  Takes the group pattern affected and the body of the
+# message.  Logs all actions taken.
+sub checkgroups {
+    my ($id, $pattern, $body) = @_;
+    my %checkgroups;
+
+    # First, process the body of the checkgroups and build a hash of valid
+    # groups in the hierarchy in the same format as our database.
+  LINE:
+    for (@$body) {
+        next unless /$pattern/;
+        my ($group, $desc) = split (' ', $_, 2);
+        $desc =~ s/\s+$//;
+        next unless ($group =~ /^[a-z0-9+_.-]+$/);
+        next if ($group =~ /^\.|\.\.|\.$/);
+        my @components = split (/\./, $group);
+        for (@components) {
+            next LINE if /^\d+$/;
+            next LINE if /^(?:all|ctl)$/;
+        }
+        my $mode = ($desc =~ /\(Moderated\)$/) ? 'm' : 'y';
+        $checkgroups{$group} = "$mode $desc";
+    }
+
+    # Now, open the database and take a first pass through all groups for that
+    # same hierarchy that are in the database, fixing modes and descriptions
+    # and removing any groups that aren't in the new checkgroups.
+    my %db;
+    open (LOCK, "+> $ACTIVE.lock") or logdie "cannot open $ACTIVE.lock: $!";
+    flock (LOCK, LOCK_EX) or logdie "cannot lock $ACTIVE.lock: $!";
+    tie (%db, 'DB_File', $ACTIVE) or logdie "cannot tie $ACTIVE: $!";
+    my ($group, $old);
+    while (($group, $old) = each %db) {
+        next unless $group =~ /$pattern/;
+        if (!$checkgroups{$group}) {
+            log "ACTION: rmgroup $group";
+            delete $db{$group};
+        } elsif ($db{$group} ne $checkgroups{$group}) {
+            my @old = split (' ', $db{$group}, 2);
+            my ($mode, $description) = split (' ', $checkgroups{$group}, 2);
+            if ($old[0] ne $mode) {
+                log "ACTION: changegroup $group from $old[0] to $mode";
+            } elsif ($old[1] ne $description) {
+                log "ACTION: changedesc $group";
+            }
+            $db{$group} = $checkgroups{$group};
+        }
+    }
+
+    # Now, take a final pass through the checkgroups to add any groups that we
+    # were missing.
+    for (keys %checkgroups) {
+        unless ($db{$_}) {
+            my ($mode, $description) = split (' ', $checkgroups{$_}, 2);
+            log "ACTION: newgroup $_ $mode";
+            $db{$_} = $checkgroups{$_};
+        }
+    }
+    untie %db;
+    close LOCK;
+    log "$id processed checkgroups";
+}
+
+##############################################################################
+# Archiving
+##############################################################################
+
+# Archive a particular message in a file.  Takes the file name, the headers
+# array, and the body array.
+sub archive_message {
+    my ($file, $headers, $body) = @_;
+    my $message = join ('', @$headers) . "\n" . join ('', @$body);
+    $message = "From usenet " . scalar (gmtime) . "\n" . $message . "\n";
+    open (LOCK, "+> $ARCHIVE/.lock")
+        or logdie "cannot open $ARCHIVE/.lock: $!";
+    flock (LOCK, LOCK_EX) or logdie "cannot lock $ARCHIVE/.lock: $!";
+    if (-f "$file.gz") {
+        my $old = gzopen ("$file.gz", 'r')
+            or logdie "cannot open $file.gz: $!";
+        my $new = gzopen ("$file.new.gz", 'w')
+            or logdie "cannot create $file.new.gz: $!";
+        my ($buffer, $bytes);
+        while (($bytes = $old->gzread ($buffer, 64 * 1024)) > 0) {
+            if ($new->gzwrite ($buffer) != $bytes) {
+                logdie "cannot write to $file.new.gz: $!";
+            }
+        }
+        $old->gzclose;
+        if ($new->gzwrite ($message) != length $message) {
+            logdie "cannot write to $file.new.gz: $!";
+        }
+        $new->gzclose;
+    } else {
+        my $new = gzopen ("$file.new.gz", 'w')
+            or logdie "cannot create $file.gz: $!";
+        if ($new->gzwrite ($message) != length $message) {
+            logdie "cannot write to $file.new.gz: $!";
+        }
+        $new->gzclose;
+    }
+    rename ("$file.new.gz", "$file.gz")
+        or logdie "cannot rename $file.new.gz: $!";
+    close LOCK;
+}
+
+# Archive a control message.  Write the control message as a compressed file,
+# and deal with the possibility that an archive for that control message
+# already exists.  Uses a lock file at the top of the archive directory to
+# prevent any contention.  Takes the message ID, the name of the affected
+# group and the raw header and body arrays.
+sub archive {
+    my ($id, $group, $headers, $body) = @_;
+    my $dir = $group;
+    $dir =~ s/\..*//;
+    logdie "bad newsgroup name $group" if (!$dir || $dir =~ m%^\.|^-|/%);
+    $dir = "$ARCHIVE/$dir";
+    unless (-d $dir) {
+        mkdir $dir or logdie "cannot create $ARCHIVE/$dir: $!";
+    }
+    archive_message ("$dir/$group", $headers, $body);
+    log "$id archived as $group";
+}
+
+##############################################################################
+# Main routine
+##############################################################################
+
+# Trim extraneous garbage from the path.
+my $fullpath = $0;
+$0 =~ s%.*/%%;
+
+# Open the log file.
+openlog;
+
+# Read in control.ctl.  We only do this once.
+my $rules = read_ctl;
+
+# Processing loop.  We listen on stdin and get file names and message IDs, one
+# set per line, separated by spaces.
+my ($file, $id);
+while (<STDIN>) {
+    ($file, $id) = split;
+
+    # Don't process any files over 256KB for a variety of reasons.  (Big Eight
+    # checkgroups messages are about 180KB.)
+    my $size = (-s $file);
+    if (!$size || $size > 256 * 1024) {
+        $size = 0 unless $size;
+        log "$id has invalid size ($size)";
+        next;
+    }
+
+    # Parse the article.
+    open (ART, $file) or logdie "cannot open article $file: $!";
+    my (@headers, @body, %hdr, %dups);
+    next unless parse_article (\*ART, $id, \@headers, \@body, \%hdr, \%dups);
+    $id = $hdr{'message-id'} unless $id;
+    my $sender = clean_from ($hdr{sender} || $hdr{from});
+    my @control = split (' ', $hdr{control});
+
+    # Discard newgroup and rmgroup messages over 64KB, since they'll also be
+    # archived, and I don't really want to archive tons of crap.
+    if ($control[0] =~ /^(?:new|rm)group$/ && $size > 64 * 1024) {
+        log "$id $control[0] too large ($size)\n";
+        next;
+    }
+
+    # Check to see what we want to do with it.
+    my ($action, $pattern) = check_ctl ($rules, $id, $sender, @control);
+    if ($action =~ /^verify-(.+)/) {
+        my $wanted = $1;
+        my $signer = pgpverify ($id, \%hdr, \%dups, \@body);
+        if (defined ($signer) && $signer eq $wanted) {
+            $action = 'doit';
+        } else {
+            $action = 'drop';
+        }
+    }
+
+    # Act on the results.
+    if ($action eq 'doit') {
+        if ($control[0] eq 'newgroup') {
+            newgroup ($id, $control[1], $control[2], \@body);
+        } elsif ($control[0] eq 'rmgroup') {
+            rmgroup ($id, $control[1]);
+        } elsif ($control[0] eq 'checkgroups') {
+            checkgroups ($id, $pattern, \@body);
+        } else {
+            log "$id unknown control type $control[0]";
+        }
+    } elsif ($action ne 'drop') {
+        log "$id internal: unknown action $action";
+    }
+
+    # We archive anything that parsed correctly as a newgroup or rmgroup, even
+    # if it failed PGP verification.  This should perhaps be rethought later.
+    if ($control[0] =~ /^(new|rm)group$/) {
+        archive ($id, $control[1], \@headers, \@body);
+    } elsif ($control[0] eq 'checkgroups') {
+        unless (-d "$ARCHIVE/other.ctl") {
+            mkdir "$ARCHIVE/other.ctl"
+                or logdie "cannot create $ARCHIVE/other.ctl: $!";
+        }
+        my $year = (gmtime)[5] + 1900;
+        archive_message ("$ARCHIVE/other.ctl/checkgroups.$year", \@headers,
+                         \@body);
+        log "$id archived checkgroups";
+    }
+} continue {
+    unlink $file or logdie "cannot unlink article $file: $!";
+}

@@ -1,0 +1,236 @@
+#!/usr/bin/perl -w
+$ID = q$Id$;
+#
+# update-control -- Manually update the newsgroup database.
+#
+# Copyright 2003 Russ Allbery <rra@stanford.edu>
+#
+# This program is free software; you may redistribute it and/or modify it
+# under the same terms as Perl itself.
+
+##############################################################################
+# Site configuration
+##############################################################################
+
+# Path to the active newsgroup database.
+$ACTIVE = '/work/usenet/config/active.db';
+
+# The log file into which to record actions taken.
+$LOG = '/work/usenet/config/log';
+
+##############################################################################
+# Modules and declarations
+##############################################################################
+
+require 5.006;
+
+use strict;
+use vars qw($ACTIVE $ID $LOG);
+use subs qw(log);
+
+use DB_File ();
+use Fcntl qw(LOCK_EX);
+use IO::Handle ();
+use POSIX qw(strftime);
+
+##############################################################################
+# Logging
+##############################################################################
+
+# Open the log file.
+sub openlog {
+    open (LOG, ">> $LOG") or die "$0: can't open $LOG: $!\n";
+}
+
+# Log a message to the log file and to standard out.
+sub log {
+    my $date = strftime('%Y-%m-%d %T', gmtime);
+    print LOG "$date [$$] ", @_, " (manual)\n";
+    LOG->flush;
+    print @_, "\n";
+}
+
+##############################################################################
+# Actions
+##############################################################################
+
+# Add a new newsgroup to the database or update an existing one's mode or
+# description.  Takes the newsgroup, the mode, and the description.
+sub newgroup {
+    my ($group, $mode, $description) = @_;
+    my $moderated = ($description =~ /\(Moderated\)$/);
+    if (($mode eq 'm' && !$moderated) || ($mode eq 'y' && $moderated)) {
+        die "$0: description is inconsistent with group status\n";
+    }
+
+    # Update the database.
+    my %db;
+    open (LOCK, "+> $ACTIVE.lock")
+        or die "$0: cannot open $ACTIVE.lock: $!\n";
+    flock (LOCK, LOCK_EX) or die "$0: cannot lock $ACTIVE.lock: $!\n";
+    tie (%db, 'DB_File', $ACTIVE) or die "$0: cannot tie $ACTIVE: $!\n";
+    if (!$db{$group}) {
+        log "ACTION: newgroup $group $mode";
+    } else {
+        my @old = split (' ', $db{$group}, 2);
+        if ($old[0] ne $mode) {
+            log "ACTION: changegroup $group from $old[0] to $mode";
+        } elsif ($old[1] ne $description) {
+            log "ACTION: changedesc $group";
+        }
+    }
+    $db{$group} = "$mode $description";
+    untie %db;
+    close LOCK;
+}
+
+# Remove a newsgroup from the database.  Takes the newsgroup name.
+sub rmgroup {
+    my ($group) = @_;
+    my %db;
+    open (LOCK, "+> $ACTIVE.lock")
+        or die "$0: cannot open $ACTIVE.lock: $!\n";
+    flock (LOCK, LOCK_EX) or die "$0: cannot lock $ACTIVE.lock: $!\n";
+    tie (%db, 'DB_File', $ACTIVE) or die "$0: cannot tie $ACTIVE: $!\n";
+    if ($db{$group}) {
+        log "ACTION: rmgroup $group";
+        delete $db{$group};
+    }
+    untie %db;
+    close LOCK;
+}
+
+# Process a checkgroups.  Takes the prefix affected by the checkgroups and
+# reads the actual checkgroups from standard input.
+sub checkgroups {
+    my ($prefix) = @_;
+    $prefix .= '.' unless $prefix =~ /\.$/;
+    my $pattern = qr/^\Q$prefix\E/;
+    my %checkgroups;
+
+    # First, process the body of the checkgroups and build a hash of valid
+    # groups in the hierarchy in the same format as our database.
+  LINE:
+    local $_;
+    while (<STDIN>) {
+        next unless /$pattern/;
+        my ($group, $desc) = split (' ', $_, 2);
+        $desc =~ s/\s+$//;
+        next unless ($group =~ /^[a-z0-9+_.-]+$/);
+        next if ($group =~ /^\.|\.\.|\.$/);
+        my @components = split (/\./, $group);
+        for (@components) {
+            next LINE if /^\d+$/;
+            next LINE if /^(?:all|ctl)$/;
+        }
+        my $mode = ($desc =~ /\(Moderated\)$/) ? 'm' : 'y';
+        $checkgroups{$group} = "$mode $desc";
+    }
+
+    # Now, open the database and take a first pass through all groups for that
+    # same hierarchy that are in the database, fixing modes and descriptions
+    # and removing any groups that aren't in the new checkgroups.
+    my %db;
+    open (LOCK, "+> $ACTIVE.lock")
+        or die "$0: cannot open $ACTIVE.lock: $!\n";
+    flock (LOCK, LOCK_EX) or die "$0: cannot lock $ACTIVE.lock: $!\n";
+    tie (%db, 'DB_File', $ACTIVE) or die "$0: cannot tie $ACTIVE: $!\n";
+    my ($group, $old);
+    while (($group, $old) = each %db) {
+        next unless $group =~ /$pattern/;
+        if (!$checkgroups{$group}) {
+            log "ACTION: rmgroup $group";
+            delete $db{$group};
+        } elsif ($db{$group} ne $checkgroups{$group}) {
+            my @old = split (' ', $old, 2);
+            my ($mode, $description) = split (' ', $checkgroups{$group}, 2);
+            if ($old[0] ne $mode) {
+                log "ACTION: changegroup $group from $old[0] to $mode";
+            } elsif ($old[1] ne $description) {
+                log "ACTION: changedesc $group";
+            }
+            $db{$group} = $checkgroups{$group};
+        }
+    }
+
+    # Now, take a final pass through the checkgroups to add any groups that we
+    # were missing.
+    for (keys %checkgroups) {
+        unless ($db{$_}) {
+            my ($mode, $description) = split (' ', $checkgroups{$_}, 2);
+            log "ACTION: newgroup $_ $mode";
+            $db{$_} = $checkgroups{$_};
+        }
+    }
+    untie %db;
+    close LOCK;
+}
+
+# Bulk-populate the database with a file in checkgroups format.  This only
+# adds groups, never removes or modifies them, and it doesn't log its actions.
+# It's intended primarily for bootstrapping the database.  The groups are read
+# from standard input.
+sub bulkload {
+    my %db;
+    open (LOCK, "+> $ACTIVE.lock")
+        or die "$0: cannot open $ACTIVE.lock: $!\n";
+    flock (LOCK, LOCK_EX) or die "$0: cannot lock $ACTIVE.lock: $!\n";
+    tie (%db, 'DB_File', $ACTIVE) or die "$0: cannot tie $ACTIVE: $!\n";
+
+    # Walk through the input, filtering out illegal groups and add them to the
+    # database.
+    local $_;
+  LINE:
+    while (<STDIN>) {
+        my ($group, $desc) = split (' ', $_, 2);
+        $desc =~ s/\s+$//;
+        next unless ($group =~ /^[a-z0-9+_.-]+$/);
+        next if ($group =~ /^\.|\.\.|\.$/);
+        my @components = split (/\./, $group);
+        for (@components) {
+            next LINE if /^\d+$/;
+            next LINE if /^(?:all|ctl)$/;
+        }
+        my $mode = ($desc =~ /\(Moderated\)$/) ? 'm' : 'y';
+        $db{$group} = "$mode $desc" unless $db{$group};
+    }
+    untie %db;
+    close LOCK;
+}
+
+##############################################################################
+# Main routine
+##############################################################################
+
+# Trim extraneous garbage from the path.
+my $fullpath = $0;
+$0 =~ s%.*/%%;
+
+# Open the log file.
+openlog;
+
+# Parse the command line and run the appropriate command.
+my ($command, @args) = @ARGV;
+if ($command eq 'newgroup') {
+    if (@args != 3) {
+        die "Usage: update-control newgroup <group> <mode> <description>\n";
+    }
+    newgroup (@args);
+} elsif ($command eq 'rmgroup') {
+    if (@args != 1) {
+        die "Usage: update-control rmgroup <group>\n";
+    }
+    rmgroup (@args);
+} elsif ($command eq 'checkgroups') {
+    if (@args != 1) {
+        die "Usage: update-control checkgroups <prefix> < <checkgroups>\n";
+    }
+    checkgroups (@args);
+} elsif ($command eq 'bulkload') {
+    if (@args != 0) {
+        die "Usage: update-control bulkload < <checkgroups>\n";
+    }
+    bulkload;
+} else {
+    die "Usage: update-control (newgroup|rmgroup|checkgroups|bulkload)\n";
+}

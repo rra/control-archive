@@ -1,0 +1,96 @@
+#!/usr/bin/perl -w
+$ID = q$Id$;
+#
+# export-control -- Export the newsgroup database as an active file.
+#
+# Copyright 2003 Russ Allbery <rra@stanford.edu>
+#
+# This program is free software; you may redistribute it and/or modify it
+# under the same terms as Perl itself.
+
+##############################################################################
+# Site configuration
+##############################################################################
+
+# Path to the active newsgroup database.
+$ACTIVE = '/work/usenet/config/active.db';
+
+# Path to the control.ctl file to use.
+$CONTROL = '/work/usenet/config/control.ctl';
+
+# The log file into which to record actions taken.
+$LOG = '/work/usenet/config/log';
+
+# Directory in which to create the active and newsgroups files.
+$ROOT = '/work/usenet/config/export';
+
+##############################################################################
+# Modules and declarations
+##############################################################################
+
+require 5.005;
+
+use strict;
+use vars qw($ACTIVE $CONTROL $ID $LOG $ROOT);
+
+use DB_File ();
+use Fcntl qw(LOCK_EX);
+use File::Copy qw(copy);
+
+##############################################################################
+# Implementation
+##############################################################################
+
+# Takes in a newsgroup name and returns the right number of tabs after it for
+# an entry in a newsgroups file.
+sub tabs {
+    my $newsgroup = shift;
+    my $extra = int ((23 - length $newsgroup) / 8);
+    $extra = $extra > 0 ? $extra : 0;
+    return ("\t" x (1 + $extra));
+}
+
+# Trim extraneous garbage from the path.
+my $fullpath = $0;
+$0 =~ s%.*/%%;
+
+# Create the active and newsgroups files.
+open (ACTIVE, "> $ROOT/.active.new")
+    or die "$0: cannot create $ROOT/.active.new: $!\n";
+open (NEWSGROUPS, "> $ROOT/.newsgroups.new")
+    or die "$0: cannot create $ROOT/.newsgroups.new: $!\n";
+
+# Open and lock the database.
+my %db;
+open (LOCK, "+> $ACTIVE.lock") or die "$0: cannot open $ACTIVE.lock: $!";
+flock (LOCK, LOCK_EX) or die "$0: cannot lock $ACTIVE.lock: $!";
+tie (%db, 'DB_File', $ACTIVE) or die "$0: cannot tie $ACTIVE: $!";
+
+# Do the export.
+for my $group (sort keys %db) {
+    my ($mode, $desc) = split (' ', $db{$group}, 2);
+    print ACTIVE "$group 0000000000 0000000001 $mode\n";
+    print NEWSGROUPS $group, tabs ($group), "$desc\n";
+}
+untie %db;
+close LOCK;
+close ACTIVE;
+close NEWSGROUPS;
+
+# Create the final versions.
+rename ("$ROOT/.active.new", "$ROOT/active")
+    or die "$0: cannot rename $ROOT/.active.new to $ROOT/active\n";
+rename ("$ROOT/.newsgroups.new", "$ROOT/newsgroups")
+    or die "$0: cannot rename $ROOT/.newsgroups.new to $ROOT/newsgroups\n";
+system ("gzip -9 -c '$ROOT/active' > '$ROOT/active.gz'") == 0
+    or die "$0: gzip of active exited with status ", ($? >> 8), "\n";
+system ("gzip -9 -c '$ROOT/newsgroups' > '$ROOT/newsgroups.gz'") == 0
+    or die "$0: gzip of newsgroups exited with status ", ($? >> 8), "\n";
+system ("bzip2 -kf '$ROOT/active'") == 0
+    or die "$0: bzip2 of active exited with status ", ($? >> 8), "\n";
+system ("bzip2 -kf '$ROOT/newsgroups'") == 0
+    or die "$0: bzip2 of newsgroups exited with status ", ($? >> 8), "\n";
+
+# Copy some other files into the export directory.
+copy ($CONTROL, "$ROOT/control.ctl");
+copy ($LOG, "$ROOT/LOG");
