@@ -1,0 +1,420 @@
+#!/usr/bin/perl -w
+$ID = q$Id$;
+#
+# control-summary -- Send a summary of control activity.
+#
+# Copyright 2003 Russ Allbery <rra@stanford.edu>
+#
+# This program is free software; you may redistribute it and/or modify it
+# under the same terms as Perl itself.
+
+##############################################################################
+# Site configuration
+##############################################################################
+
+# Path to the active newsgroup database.
+$ACTIVE = '/work/usenet/config/active.db';
+
+# Default address to send mail to.
+$ADDRESS = 'usenet-config@isc.org';
+
+# Directory in which to find log files that record the actions taken.
+$LOGBASE = '/work/usenet/config';
+
+# Default newsgroup to post to.
+$NEWSGROUP = 'news.lists.misc';
+
+# The address from which the reports are mailed.
+$SENDER = 'rra@stanford.edu';
+
+##############################################################################
+# Modules and declarations
+##############################################################################
+
+require 5.005;
+
+use strict;
+use vars qw($ACTIVE $ADDRESS $ID $LOGBASE $NEWSGROUP $SENDER);
+
+use Date::Parse qw(str2time);
+use Fcntl qw(LOCK_SH);
+use Getopt::Long qw(GetOptions);
+use POSIX qw(strftime);
+
+##############################################################################
+# Data gathering
+##############################################################################
+
+# Given a time interval, build a list of all log file names to be inspected to
+# find all log messages in that interval.
+sub build_log_names {
+    my ($start, $end) = @_;
+    die "$0: bad date range: $start to $end\n" if $start > $end;
+    my @current = gmtime $start;
+    my @end = gmtime $end;
+    my @logs;
+    while ($current[5] < $end[5]) {
+        push (@logs, strftime ('log.%Y-%m', @current));
+        $current[4]++;
+        if ($current[4] == 12) {
+            $current[4] = 0;
+            $current[5]++;
+        }
+    }
+    while ($current[4] <= $end[4]) {
+        push (@logs, strftime ('log.%Y-%m', @current));
+        $current[4]++;
+    }
+    return @logs;
+}
+
+# Scan the appropriate log files and find all actions performed in that
+# interval.  Takes the start date and the end date (as seconds since epoch)
+# and returns all of those actions as a list, without parsing them.
+sub scan_log {
+    my ($start, $end) = @_;
+    my @logs = build_log_names ($start, $end);
+    my @actions;
+    for (@logs) {
+        open (LOG, "$LOGBASE/$_")
+            or die "$0: cannot open $LOGBASE/$_: $!\n";
+        my $line;
+        while (defined ($line = <LOG>)) {
+            next unless /(\d+-\d+-\d+ \d+:\d+:\d+) \[\d+\] (ACTION: .*)/;
+            my ($date, $action) = ($1, $2);
+            $date = str2time ($date, 'UTC');
+            next if ($date < $start);
+            last if ($date > $end);
+            push (@actions, "$date $action");
+        }
+    }
+    return @actions;
+}
+
+# Given an exclusion pattern for groups and a list of actions, generate a
+# textual report of the changes and return it as a string.  Uses the database
+# to get descriptions for the affected groups.
+sub report {
+    my ($exclude, @actions) = @_;
+    my (@newgroup, @rmgroup, @changedesc, @changegroup);
+    for (@actions) {
+        my ($action, $group) = (split ' ')[3,4];
+        next if ($exclude && $group =~ /$exclude/);
+        if    ($action eq 'newgroup')    { push (@newgroup,    $group) }
+        elsif ($action eq 'rmgroup')     { push (@rmgroup,     $group) }
+        elsif ($action eq 'changedesc')  { push (@changedesc,  $group) }
+        elsif ($action eq 'changegroup') { push (@changegroup, $group) }
+        else { warn "$0: cannot parse action $action\n" }
+    }
+
+    # Open and lock the database.
+    my %db;
+    open (LOCK, "+> $ACTIVE.lock") or die "$0: cannot open $ACTIVE.lock: $!";
+    flock (LOCK, LOCK_SH) or die "$0: cannot lock $ACTIVE.lock: $!";
+    tie (%db, 'DB_File', $ACTIVE) or die "$0: cannot tie $ACTIVE: $!";
+
+    # Trim out changes that have been reversed or are no longer applicable.
+    @newgroup    = grep { defined $db{$_} } @newgroup;
+    @changegroup = grep { defined $db{$_} } @changegroup;
+    @changedesc  = grep { defined $db{$_} } @changedesc;
+    @rmgroup     = grep { not defined $db{$_} } @rmgroup;
+
+    # Generate the report.
+    my $report = '';
+    if (@newgroup) {
+        $report .= "Newsgroups added:\n";
+        for (@newgroup) {
+            my ($mode, $desc) = split (' ', $db{$_}, 2);
+            $report .= $_ . tabs ($_) . "$desc\n";
+        }
+    }
+    if (@rmgroup) {
+        $report .= "\n" if $report;
+        $report .= "Newsgroups removed:\n" . join ("\n", @rmgroup, '');
+    }
+    if (@changegroup) {
+        $report .= "\n" if $report;
+        $report .= "Newsgroups whose status was changed:\n";
+        for (@changegroup) {
+            my ($mode, $desc) = split (' ', $db{$_}, 2);
+            $report .= $_ . tabs ($_) . "$desc\n";
+        }
+    }
+    if (@changedesc) {
+        $report .= "\n" if $report;
+        $report .= "Changed descriptions:\n";
+        for (@changedesc) {
+            my ($mode, $desc) = split (' ', $db{$_}, 2);
+            $report .= $_ . tabs ($_) . "$desc\n";
+        }
+    }
+    if (@actions) {
+        $report .= "\n" if $report;
+        $report .= "Raw action log:\n" . join ("\n", @actions);
+    }
+
+    # Close the database and return.
+    untie %db;
+    close LOCK;
+    return $report;
+}
+
+##############################################################################
+# Date handling
+##############################################################################
+
+# Given a timestamp (or using the current time if no argument is given),
+# returns the timestamp for the previous day, handling daylight savings time.
+sub yesterday {
+    my $now  = defined $_[0] ? $_[0] : time;
+    my $then = $now - 60 * 60 * 24;
+    my $ndst = (localtime $now)[8] > 0;
+    my $tdst = (localtime $then)[8] > 0;
+    return $then - ($tdst - $ndst) * 60 * 60;
+}
+
+# Given a timestamp (or using the current time if no argument is given),
+# returns the timestamp for the next day, handling daylight savings time.
+sub tomorrow {
+    my $now  = defined $_[0] ? $_[0] : time;
+    my $then = $now + 60 * 60 * 24;
+    my $ndst = (localtime $now)[8] > 0;
+    my $tdst = (localtime $then)[8] > 0;
+    return $then - ($tdst - $ndst) * 60 * 60;
+}
+
+# Given a flag saying whether to do a weekly report and then zero, one, or two
+# arguments, return the start and end timestamps.  If no arguments are given,
+# generate a report for the past day or week.  If one argument is given,
+# generate a report for the one day (or week) period starting at that time
+# (since this will normally just be a date, which represents midnight on that
+# day).  If two arguments are given, those are the start and end points.
+sub parse_date {
+    my ($weekly, $start, $end) = @_;
+    if (not defined $start) {
+        my $now = time;
+        if ($weekly) {
+            $start = $now;
+            for (1..7) {
+                $start = yesterday ($start);
+            }
+            return ($start, $now);
+        } else {
+            return (yesterday ($now), $now);
+        }
+    } elsif (not defined $end) {
+        $start = str2time ($start, 'UTC');
+        if ($weekly) {
+            $end = $start;
+            for (1..7) {
+                $end = tomorrow ($end);
+            }
+            return ($start, $end);
+        } else {
+            return ($start, tomorrow ($start));
+        }
+    } else {
+        return (str2time ($start), str2time ($end));
+    }
+}
+
+##############################################################################
+# Reports
+##############################################################################
+
+# Send an e-mail report.  Takes the text report, the start and end times, the
+# e-mail address to mail the report to, and a flag saying whether to just
+# print the output to standard output.
+sub mail {
+    my ($report, $start, $end, $address, $nomail) = @_;
+    $start = strftime ('%Y-%m-%d', gmtime $start);
+    $end   = strftime ('%Y-%m-%d', gmtime $end);
+    if ($nomail) {
+        open (MAIL, '>&STDOUT') or die "$0: cannot dup stdout: $!\n";
+    } else {
+        my ($sendmail) = grep { -x $_ }
+            qw(/usr/sbin/sendmail /usr/lib/sendmail);
+        $sendmail ||= '/usr/lib/sendmail';
+        open (MAIL, "| $sendmail -f $SENDER -t -oi -oem")
+            or die "$0: cannot open a pipe to sendmail: $!\n";
+    }
+    print MAIL "From: Automated Log Scan <$SENDER>\n";
+    print MAIL "To: $address\n";
+    print MAIL "Subject: Newsgroup changes ($start - $end)\n";
+    print MAIL "\n";
+    print MAIL $report;
+    close MAIL;
+    die "$0: sendmail exited with status ", ($? >> 8), "\n" if ($? != 0);
+}
+
+# Post a report.  Takes the text report, the start and end times, the
+# newsgroup or newsgroups to post the report to, and a flag saying whether to
+# just print the output to standard output.
+sub post {
+    my ($report, $start, $end, $group, $nopost) = @_;
+    $start = strftime ('%Y-%m-%d', gmtime $start);
+    $end   = strftime ('%Y-%m-%d', gmtime $end);
+    my $post = "From: Automated Log Scan <$SENDER>\n";
+    $post   .= "Newsgroups: $group\n";
+    $post   .= "Subject: Newsgroup changes ($start - $end)\n";
+    $post   .= "\n";
+    $post   .= $report;
+    if ($nopost) {
+        print $post;
+    } else {
+        my $nntp = Net::NNTP->new;
+        unless ($nntp->post ($post)) {
+            die "$0: can't post: ", $nntp->code, ' ', $nntp->message, "\n";
+        }
+        $nntp->quit;
+    }
+}
+
+##############################################################################
+# Implementation
+##############################################################################
+
+# Trim extraneous garbage from the path.
+my $fullpath = $0;
+$0 =~ s%.*/%%;
+
+# Parse command-line options.
+my ($address, $exclude, $newsgroup, $help, $nomail, $post, $raw, $weekly,
+    $version);
+Getopt::Long::Configure ('bundling');
+GetOptions ('address|a=s'          => \$address,
+            'exclude|e=s'          => \$exclude,
+            'group|g'              => \$newsgroup,
+            'help|h'               => \$help,
+            'dry-run|just-print|n' => \$nomail,
+            'post|p'               => \$post,
+            'raw|r'                => \$raw,
+            'weekly|w'             => \$weekly,
+            'version|v'            => \$version) or exit 1;
+if ($help) {
+    print "Feeding myself to perldoc, please wait....\n";
+    exec ('perldoc', '-t', $fullpath);
+} elsif ($version) {
+    my $version = join (' ', (split (' ', $ID))[1..3]);
+    $version =~ s/,v\b//;
+    $version =~ s/(\S+)$/($1)/;
+    die $version, "\n";
+}
+die "$0: too many arguments given\n" if (@ARGV > 2);
+$address   ||= $ADDRESS;
+$newsgroup ||= $NEWSGROUP;
+
+# Figure out the start and end dates for which we're parsing logs.
+my ($start, $end) = parse_date ($weekly, @ARGV);
+
+# Get the actions that were taken in that timeframe.
+my @actions = scan_log ($start, $end);
+
+# If there's anything left, send the summary mail or post the message.
+if (@actions) {
+    my $report = $raw ? join ("\n", @actions) : report ($exclude, @actions);
+    if ($post) {
+        post ($report, $start, $end, $address, $nomail);
+    } else {
+        mail ($report, $start, $end, $newsgroup, $nomail);
+    }
+}
+
+##############################################################################
+# Documentation
+##############################################################################
+
+=head1 NAME
+
+control-summary - Send a daily summary of control activity
+
+=head1 SYNOPSIS
+
+control-summary [B<-hnprwv>] [B<-a> I<address>] [B<-g> I<newsgroup>]
+[[I<start>] I<date>]
+
+=head1 DESCRIPTION
+
+B<daily-summary> either prints out or mails a summary of activity in an
+active newsgroup database maintained by B<process-control> and
+B<update-control>, taken from their log files.
+
+If no times are given on the command-line, the activity of the past day is
+summarized.  If one time is given, the activity for that day is summarized.
+If two times are given, the activity between those two times is summarized.
+Times may be given in any format that can be parsed by Date::Parse.
+
+=head1 OPTIONS
+
+=over 4
+
+=item B<-a> I<address>, B<--address>=I<address>
+
+Send the message to I<address> rather than the default of
+usenet-config@isc.org.  If you are using this program for your own purposes,
+please either use this option or change the default address at the top of
+this script.
+
+=item B<-e> I<pattern>, B<--exclude>=I<pattern>
+
+Exclude actions for groups matching I<pattern> from the report, where
+I<pattern> is a regular expression.
+
+=item B<-h>, B<--help>
+
+Print out this documentation (which is done simply by feeding the script to
+C<perldoc -t>).
+
+=item B<-g> I<newsgroup>, B<--newsgroup>=I<newsgroup>
+
+Post the message to I<newsgroup> instead of the default of news.lists.misc.
+This option only makes sense in combination with B<-p>.  If you are using
+this program for your own purpose, you probably want to either use this
+option or change the default address at the top of the script if you're
+posting the results.
+
+=item B<-n>, B<--dry-run>, B<--just-print>
+
+Rather than mail or post the output, just print the mail message or post
+that would have been sent to standard out instead.
+
+=item B<-p>, B<--post>
+
+Rather than mailing the message, post it instead.  Note that an Approved
+header will be added pointing to the sender configured at the top of this
+script, so be careful with moderated groups.
+
+=item B<-r>, B<--raw>
+
+Don't format the report and include the newsgroup descriptions.  Instead,
+just print out the actions from the logs.
+
+=item B<-w>, B<--weekly>
+
+If no or only one date is specified on the command line, use a week as the
+default interval instead of a day.  In other words, if no dates are
+specified, the report will be for the previous week.  If one date is
+specified, the report will be for the week following that date.
+
+=item B<-v>, B<--version>
+
+Print out the version of B<control-summary> and exit.
+
+=back
+
+=head1 SEE ALSO
+
+process-control(1), update-control(1)
+
+=head1 AUTHOR
+
+Russ Allbery <rra@stanford.edu>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2003 by Russ Allbery <rra@stanford.edu>
+
+This program is free software; you may redistribute it and/or modify it
+under the same terms as Perl itself.
+
+=cut
