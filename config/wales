@@ -9,4 +9,5 @@ url: "http://www.wales-usenet.org/"
 pgp: yes
 key-id: wales-usenet
 key-fingerprint: "2D 9E DE DF 12 DA 34 5C  49 E1 EE 28 E3 AB 0D AD"
+key-url: "http://www.wales-usenet.org/english/newsadmin.txt"
 admin-group: wales.usenet.config
