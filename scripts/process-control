@@ -118,9 +118,10 @@ sub read_ctl {
 }
 
 # Given a reference to an array of rules, the message ID, a sender, a control
-# message type, and an optional target, return a list of the action (one of
-# doit, verify-*, or mail) and the matching pattern.  The second is used for
-# checkgroups.
+# message type, and a target, return a list of the action (one of doit,
+# verify-*, or mail) and the matching pattern.  The second is used for
+# checkgroups.  The target for a checkgroups doesn't come from the control
+# message and instead is the first group in the body of the checkgroups.
 sub check_ctl {
     my ($rules, $id, $sender, $type, $target) = @_;
     my $pattern;
@@ -128,9 +129,7 @@ sub check_ctl {
     for (@$rules) {
         my @rule = split /:/;
         if ($type eq $rule[0] && $sender =~ /$rule[1]/) {
-            if ($type ne 'checkgroups') {
-                next unless $target =~ /$rule[2]/;
-            }
+            next unless $target =~ /$rule[2]/;
             $action = $rule[3];
             $pattern = $rule[2];
             last;
@@ -265,6 +264,29 @@ sub clean_from {
     s/[^-a-zA-Z0-9+_.@%]/_/g;
     s/^-/_/;
     return $_;
+}
+
+# Find the first valid group in a checkgroups message.  Takes a reference to
+# the body of the message.
+sub checkgroups_group {
+    my $body = shift;
+  LINE:
+    for (@$body) {
+        my ($group, $desc) = split (' ', $_, 2);
+        $desc =~ s/\s+$//;
+        next unless $desc;
+        next unless ($group =~ /^[a-z0-9+_.-]+$/);
+        next unless $group =~ /\./;
+        next if ($group =~ /^\.|\.\.|\.$/);
+        next if length ($group) > 80;
+        my @components = split (/\./, $group);
+        for (@components) {
+            next LINE if /^\d+$/;
+            next LINE if /^(?:all|ctl)$/;
+            next LINE if length ($_) > 30;
+        }
+        return $group;
+    }
 }
 
 ##############################################################################
@@ -671,6 +693,12 @@ while (<STDIN>) {
     if ($control[0] =~ /^(?:new|rm)group$/ && $size > 64 * 1024) {
         log "$id $control[0] too large ($size)\n";
         next;
+    }
+
+    # If this is a checkgroups, figure out what hierarchy it's affecting.
+    if ($control[0] eq 'checkgroups') {
+        my $group= checkgroups_group (\@body);
+        @control = ('checkgroups', $group);
     }
 
     # Check to see what we want to do with it.
