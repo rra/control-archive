@@ -573,11 +573,12 @@ sub archive_message {
     my ($file, $headers, $body) = @_;
     my $umask = umask 002;
     my $message = join ('', @$headers) . "\n" . join ('', @$body);
-    $message = "From usenet " . scalar (gmtime) . "\n" . $message . "\n";
+    $message = "From usenet " . scalar (gmtime) . "\n" . $message;
     open (LOCK, "+> $ARCHIVE/.lock")
         or logdie "cannot open $ARCHIVE/.lock: $!";
     flock (LOCK, LOCK_EX) or logdie "cannot lock $ARCHIVE/.lock: $!";
     if (-f "$file.gz") {
+        $message = "\n" . $message;
         my $old = gzopen ("$file.gz", 'r')
             or logdie "cannot open $file.gz: $!";
         my $new = gzopen ("$file.new.gz", 'w')
