@@ -1,7 +1,7 @@
-##  rone's unified control.ctl
-##  $Id$
-##
 ##  control.ctl - Access control for control messages.
+##  Last modified: @DATE@
+##
+##  Based on rone's unified control.ctl file.
 ##
 ##  Please copy usenet-config@isc.org on any updates to this file so that
 ##  it can be updated in the INN CVS repository and on ftp.isc.org.  For
