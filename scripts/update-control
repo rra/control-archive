@@ -242,3 +242,105 @@ if ($command eq 'newgroup') {
 } else {
     die "Usage: update-control (newgroup|rmgroup|checkgroups|bulkload)\n";
 }
+
+##############################################################################
+# Documentation
+##############################################################################
+
+=head1 NAME
+
+update-control - Manually update the newsgroup database
+
+=head1 SYNOPSIS
+
+update-control newgroup I<group> I<mode> I<description>
+
+update-control rmgroup I<group>
+
+update-control checkgroups I<prefix> < I<checkgroups>
+
+update-control bulkload < I<checkgroups>
+
+=head1 DESCRIPTION
+
+This program supplements B<process-control>, which handles automatic
+processing of control messages, by allowing manual changes to be made to the
+same database, locking properly and making the same sorts of log entries.
+
+newgroup creates a new group with the specified mode (which should be either
+C<y> or C<m>) and description (which for moderated groups must end with
+C<(Moderated)>).  Note that the description generally contains whitespace
+and therefore must be quoted for the shell.  If the newsgroup already exists
+in the database, this command can still be used to change the mode or
+description of the group.
+
+rmgroup removes the specified group from the database.
+
+checkgroups applies a checkgroups for the given prefix, which should be the
+common prefix shared by all of the groups in the checkgroups message.  A
+period will be appended to I<prefix> and then only groups in the checkgroups
+that start with that prefix will be processed.  B<update-control> will
+expect on standard input a file in checkgroups format (one line per group,
+in the format:  group name, whitespace, group description; where the
+description ends with C<(Moderated)> if the group is moderated).  Any
+discrepancies with the newsgroup database will be corrected.
+
+bulkload does the same thing as checkgroups except that it doesn't take a
+prefix, processes all groups in its input, refuses to remove groups or
+change the mode or description of existing groups, and doesn't log.  It's
+used for bootstrapping a database from a newsgroups file.
+
+The log messages will also be printed to standard output if any action is
+taken.
+
+Please note that to work properly, B<update-control> has to have write
+permissions to the database and log files, the same as B<process-control>
+
+=head1 EXAMPLES
+
+Add the new newsgroup example.test:
+
+    update-control newgroup example.test y 'Testing examples.'
+
+Add the new moderated newsgroup example.moderated:
+
+    update-control newgroup example.moderated m \
+        'Moderated examples. (Moderated)'
+
+Remove example.moderated:
+
+    update-control rmgroup example.moderated
+
+Bootstrap the database from a previous newsgroups file:
+
+    update-control bulkload < newsgroups
+
+Apply a checkgroups for the example.* hierarchy:
+
+    % cat | update-control checkgroups example
+    example.moderated           Moderated examples. (Moderated)
+    example.test                Testing examples.
+    <Ctrl-D>
+
+(The % indicates a Unix shell prompt and is not part of the command.  The
+Ctrl-D indicates that keypress.  This is an example of someone typing the
+checkgroups in to the program; normally, one would instead save just the
+body of a checkgroups message in a file and then pipe it into
+B<update-control> as in the previous example.)
+
+=head1 SEE ALSO
+
+process-control(1)
+
+=head1 AUTHOR
+
+Russ Allbery <rra@stanford.edu>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2003 by Russ Allbery <rra@stanford.edu>
+
+This program is free software; you may redistribute it and/or modify it
+under the same terms as Perl itself.
+
+=cut
