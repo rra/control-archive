@@ -7,7 +7,7 @@ sender: [ group-admin@usenet.is ]
 contact: [ "IS Group Admins <group-admin@usenet.is>" ]
 url: "http://www.usenet.is/"
 pgp: yes
-key-id: is.isnet
+key-id: group-admin@usenet.is
 key-fingerprint: "33 32 8D 46 1E 5E 1C 7F  48 60 8E 72 E5 3E CA EA"
 key-url: "http://www.usenet.is/group-admin.asc"
 admin-group: is.isnet
