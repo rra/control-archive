@@ -5,5 +5,5 @@ type: public
 description: "Baden-Wuerttemberg, Germany"
 sender: [ news@news.belwue.de ]
 pgp: yes
-key-id: belwue-hier-control
+key-id: belwue-hir-control
 admin-group: belwue.infos
