@@ -1,0 +1,11 @@
+id: $Id$
+hierarchy: PGSQL
+groups: pgsql.*
+type: public
+description: Gated PostgreSQL mailing lists
+sender: [ news@postgresql.org ]
+contact: [ news@postgresql.org ]
+url: "http://news.hub.org/gpg_public_keys.html"
+pgp: yes
+key-id: news@postgresql.org
+key-url: "http://news.hub.org/gpg_public_keys.html"
