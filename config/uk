@@ -4,6 +4,8 @@ groups: uk.*
 type: public
 description: "United Kingdom of Great Britain and Northern Ireland"
 sender: [ control@usenet.org.uk ]
+url: "http://www.usenet.org.uk/"
 pgp: yes
 key-id: uk.net.news.announce
+key-url: "http://www.usenet.org.uk/newsadmins.html"
 admin-group: uk.net.news.announce
