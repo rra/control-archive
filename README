@@ -27,8 +27,8 @@ isn't part of CVS).  You can do this with:
     mkdir keyring
     gpg --homedir=keyring --import keys/*
 
-Then, run ./generate-files.  This should result in PGPKEYS, README.html,
-and control.ctl in the current directory.
+Then, run ./scripts/generate-files.  This should result in PGPKEYS,
+README.html, and control.ctl in the current directory.
 
 control.ctl should be checked in to the samples/ directory of the INN CVS
 repository on all active branches (or the INN maintainers asked to do this
