@@ -1,4 +1,4 @@
-From: Automated Log Scan <rra@stanford.edu>
+From: Newsgroup Changes Report <rra@stanford.edu>
 Newsgroups: {$newsgroup}
 Subject: Newsgroup changes ({$start} to {$end})
 Approved: rra@stanford.edu
