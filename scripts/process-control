@@ -170,16 +170,26 @@ sub check_headers {
     if ($control[0] eq 'newgroup') {
         return "$id bad newgroup mode $control[2]"
             if ($control[2] && $control[2] !~ /^[ym]/);
-        return "$id bad newsgroup name $control[1]"
+        return "$id bad newsgroup name $control[1] (invalid characters)"
             unless ($control[1] =~ /^[a-z0-9+_.-]+$/);
-        return "$id bad newsgroup name $control[1]"
+        return "$id bad newsgroup name $control[1] (empty component)"
             if ($control[1] =~ /^\.|\.\.|\.$/);
-        return "$id bad newsgroup name $control[1]"
-            if ($control[1] =~ /^-/);
+        return "$id bad newsgroup name $control[1] (bad initial character)"
+            unless ($control[1] =~ /^[a-z]/);
+        return "$id bad newsgroup name $control[1] (too long)"
+            if (length ($control[1]) > 80);
+        return "$id bad newsgroup name $control[1] (one component)"
+            unless ($control[1] =~ /\./);
+        return "$id bad newsgroup name $control[1] (reserved hierarchy)"
+            if ($control[1] =~ /^(?:control|to|example)\./);
         my @components = split (/\./, $control[1]);
         for (@components) {
-            return "$id all-numeric component in $control[1]" if /^\d+$/;
-            return "$id all or ctl used in $control[1]" if /^(?:all|ctl)$/;
+            return "$id bad component in $control[1] (all numeric)"
+                if /^\d+$/;
+            return "$id bad component in $control[1] (all or ctl)"
+                if /^(?:all|ctl)$/;
+            return "$id bad component in $control[1] (bad initial character)"
+                unless /^[a-z0-9]/;
         }
     }
     return '';
