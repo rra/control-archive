@@ -544,6 +544,7 @@ sub checkgroups {
 # array, and the body array.
 sub archive_message {
     my ($file, $headers, $body) = @_;
+    my $umask = umask 002;
     my $message = join ('', @$headers) . "\n" . join ('', @$body);
     $message = "From usenet " . scalar (gmtime) . "\n" . $message . "\n";
     open (LOCK, "+> $ARCHIVE/.lock")
@@ -576,6 +577,7 @@ sub archive_message {
     rename ("$file.new.gz", "$file.gz")
         or logdie "cannot rename $file.new.gz: $!";
     close LOCK;
+    umask $umask;
 }
 
 # Archive a control message.  Write the control message as a compressed file,
