@@ -449,6 +449,16 @@ sub newgroup {
         $description =~ s/\s*\(Moderated\)$//;
     }
 
+    # Check any extra restrictions we put on the newsgroup name for control
+    # messages we still want to archive.
+    my @components = split (/\./, $group);
+    for (@components) {
+        if (length ($_) > 30) {
+            log "$id bad component in $control[1] (too long)";
+            return;
+        }
+    }
+
     # Now, actually update the database.
     my %db;
     open (LOCK, "+> $ACTIVE.lock") or logdie "cannot open $ACTIVE.lock: $!";
@@ -503,10 +513,12 @@ sub checkgroups {
         next unless $desc;
         next unless ($group =~ /^[a-z0-9+_.-]+$/);
         next if ($group =~ /^\.|\.\.|\.$/);
+        next if length ($group) > 80;
         my @components = split (/\./, $group);
         for (@components) {
             next LINE if /^\d+$/;
             next LINE if /^(?:all|ctl)$/;
+            next LINE if length ($_) > 30;
         }
         my $mode = ($desc =~ /\(Moderated\)$/) ? 'm' : 'y';
         $checkgroups{$group} = "$mode $desc";
@@ -771,11 +783,14 @@ begin with either C<y> (unmoderated) or C<m> (moderated).
 =item *
 
 The message is a newgroup control message and the group name to be created
-contains a character other than those from the set [a-z0-9+_.-], begins or
-ends with a period, contains two consecutive periods, begins with -,
-contains a name component (delimited by periods) that is entirely numeric,
-or contains a name component (delimited by periods) equal to C<all> or
-C<ctl> (these have special meaning for older servers).
+is longer than 80 octets, contains a character other than those from the set
+[a-z0-9+_.-], begins or ends with a period, does not contain a period,
+contains two consecutive periods, begins with a character other than a
+lowercase letter, starts with C<control.>, C<example.>, or C<to.>, contains
+a name component (delimited by periods) that is entirely numeric, contains a
+name component (delimited by periods) equal to C<all> or C<ctl> (these have
+special meaning for older servers), or contains a name component that begins
+with a character other than a digit or letter.
 
 =back
 
@@ -796,18 +811,19 @@ Messages that F<control.ctl> indicates need to be checked using PGP will be
 passed through GnuPG using the same algorithm as pgpverify and will only be
 processed if the signer matches the required signer in F<control.ctl>.
 
+newgroup messages must have a C<For your newsgroups file:> line in the body,
+followed by a line suitable for a checkgroups message (the group name, some
+whitespace, and the description).  C<(Moderated)> will be added to the
+description if not present for a moderated group, and will be removed if
+present for an unmoderated group.  For a newgroup message to be acted on, it
+must also not contain any component longer than 30 characters.
+
 The same constraints on group names mentioned above are also applied to the
 group names in the body of a checkgroups message, and any groups not fitting
 those requirements will be ignored, as will any group that does not have a
 description.  In a checkgroups message, the moderation status of the group
 will be determined by the presence or absence of C<(Moderated)> at the end
 of the description.
-
-newgroup messages must have a C<For your newsgroups file:> line in the body,
-followed by a line suitable for a checkgroups message (the group name, some
-whitespace, and the description).  C<(Moderated)> will be added to the
-description if not present for a moderated group, and will be removed if
-present for an unmoderated group.
 
 Even if a newsgroup already exists, its description and mode will be checked
 and updated by any applicable newgroup or checkgroups message.
