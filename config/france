@@ -1,0 +1,9 @@
+id: $Id$
+hierarchy: FRANCE
+groups: france.*
+type: public
+description: France
+sender: [ control@usenet-france.news.eu.org ]
+pgp: yes
+key-id: control@usenet-france.news.eu.org
+admin-group: france.admin.evolutions
