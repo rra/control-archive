@@ -326,7 +326,7 @@ if (@actions) {
 
 =head1 NAME
 
-control-summary - Send a daily summary of control activity
+control-summary - Send a summary report of control activity
 
 =head1 SYNOPSIS
 
