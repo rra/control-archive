@@ -1,0 +1,52 @@
+The files in this directory are used to generate control.ctl for both the
+INN distribution and for ftp.isc.org, and the PGPKEYS and README.html
+files for /pub/usenet/CONFIG on ftp.isc.org.  This process is at present
+semi-automated; scripts in this directory will automate the process of
+putting together those files, but installing them is currently done by
+hand.
+
+The configuration data is in one file per hierarchy in the config/
+directory.  Each file has the format specified in FORMAT and is designed
+to be readable by INN's new configuration parser in case this can be
+further automated down the road.  The config/special/ directory contains
+overrides, raw control.ctl fragments that should be used for particular
+hierarchies instead of automatically-generated entries (usually for
+special comments).
+
+The keys/ directory contains the PGP public keys for every hierarchy that
+has one.  Generally there's some introductory text giving the key ID and
+user ID.
+
+The forms/ directory contains the basic file structure for the three
+generated files.
+
+To generate files from the configuration data and keys, first create a
+GnuPG keyring containing all of the keys in the directory keyring (which
+isn't part of CVS).  You can do this with:
+
+    mkdir keyring
+    gpg --homedir=keyring --import keys/*
+
+Then, run ./generate-files.  This should result in PGPKEYS, README.html,
+and control.ctl in the current directory.
+
+control.ctl should be checked in to the samples/ directory of the INN CVS
+repository on all active branches (or the INN maintainers asked to do this
+if the control files are being maintained by people other than INN
+maintainers).
+
+Each of these files should also be updated in /news/local on isrv4.isc.org
+(control.ctl.netwide is what control.ctl is called there).  To do this,
+first lock each file with:
+
+    co -l control.ctl.netwide README.html PGPKEYS
+
+then copy the new files over, and finally check them in with:
+
+    ci -u control.ctl.netwide README.html PGPKEYS
+
+with some suitable commit message.
+
+Updates to hierarchy control information is generally either posted to
+news.admin.hierarchies or mailed to usenet-config@isc.org.  There is a FAQ
+at <http://www.eyrie.org/~eagle/faqs/usenet-hier.html>.
