@@ -21,6 +21,8 @@ require 5.004;
 use strict;
 use vars qw($ID);
 
+use POSIX qw(strftime);
+
 ##############################################################################
 # Parsing
 ##############################################################################
@@ -91,8 +93,13 @@ sub check_fingerprint {
 # the initial header.
 sub cat_file {
     my ($fh, $file) = @_;
+    my $date = strftime ('%Y-%m-%d', localtime);
     open (FILE, $file) or die "Cannot open $file: $!\n";
-    print $fh <FILE>;
+    local $_;
+    while (<FILE>) {
+        s/\@DATE\@/$date/g;
+        print $fh $_;
+    }
     close FILE;
 }
 
