@@ -102,5 +102,6 @@ unless (-d "$ROOT/LOGS") {
 opendir (LOGS, $LOG) or die "$0: cannot opendir $LOG: $!\n";
 for (grep { /^log\.\d{4}-\d\d$/ } readdir LOGS) {
     copy ("$LOG/$_", "$ROOT/LOGS/$_");
+    chmod 0664, "$ROOT/LOGS/$_";
 }
 closedir LOGS;
