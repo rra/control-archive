@@ -1,10 +1,11 @@
 id: $Id$
-hierarchy: "CITYSCAPE & DEMON"
-groups: cityscp.*
+hierarchy: "CITYSCP & DEMON"
+groups: cityscp.*|demon.*
 type: public
 description: "Cityscape Internet Services & Demon Internet, UK"
 sender: [ newsmaster@demon.net ]
 contact: [ "Dave Williams <newsmaster@demon.net>" ]
-url: "ftp://ftp.demon.co.uk/pub/news/doc/demon.news.txt"
 pgp: yes
 key-id: demon.news
+key-url: "ftp://ftp.demon.co.uk/pub/news/doc/demon.news.txt"
+admin-group: demon.news
