@@ -54,6 +54,9 @@ sub tabs {
 my $fullpath = $0;
 $0 =~ s%.*/%%;
 
+# Get permissions right.
+umask 007;
+
 # Create the active and newsgroups files.
 open (ACTIVE, "> $ROOT/.active.new")
     or die "$0: cannot create $ROOT/.active.new: $!\n";

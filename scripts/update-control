@@ -206,6 +206,9 @@ sub bulkload {
 my $fullpath = $0;
 $0 =~ s%.*/%%;
 
+# Get permissions right.
+umask 007;
+
 # Open the log file.
 openlog;
 
