@@ -4,6 +4,8 @@ groups: fr.*
 type: public
 description: "French Language"
 sender: [ control@usenet-fr.news.eu.org ]
+url: "http://www.usenet-fr.news.eu.org/"
 pgp: yes
 key-id: control@usenet-fr.news.eu.org
+key-url: "http://www.usenet-fr.news.eu.org/fur/usenet/presentation-fr.html"
 admin-group: fr.usenet.forums.annonces
