@@ -1,0 +1,13 @@
+id: "$Id$"
+hierarchy: IT-ALT
+groups: it-alt.*
+type: public
+description: Alternate Italian
+sender: [ it-alt@x-privat.org ]
+contact: [ it-alt@x-privat.org ]
+url: "http://www.x-privat.org/it-alt/"
+pgp: yes
+key-id: it-alt@x-privat.org
+key-fingerprint: "01AE 93F7 CE3B C1F4  E035 8E23 C404 A230"
+key-url: "http://www.x-privat.org/it-alt/pgp.txt"
+admin-group: it-alt.config
