@@ -9,4 +9,5 @@ url: "http://www.mozilla.org/community.html"
 pgp: yes
 key-id: netscape.public.admin
 key-fingerprint: "B7 80 55 12 1F 9C 17 0B  86 66 AD 3B DB 68 35 EC"
+key-url: "http://www.mozilla.org/newsfeeds.html"
 admin-group: netscape.public.admin
