@@ -3,4 +3,10 @@ hierarchy: SFNET
 groups: sfnet.*
 type: public
 description: Finland
-sender: [ sfnet@*.cs.tut.fi ]
+sender: [ sfnet@*cs.tut.fi ]
+contact: [ sfnet@cs.tut.fi ]
+url: "http://www.cs.tut.fi/sfnet/"
+#pgp: yes
+#key-id: "sfnet@cs.tut.fi"
+#key-fingerprint: "C1 EC A9 CB D8 04 55 CF 8C E9 C8 B7 F2 F3 4E 61"
+admin-group: sfnet.ryhmat+listat
