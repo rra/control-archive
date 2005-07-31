@@ -1,0 +1,9 @@
+id: "$Id$"
+hierarchy: PBINFO
+groups: pbinfo.*
+type: public
+description: Paderborn, Germany
+sender: [ postmaster@upb.de ]
+contact: [ news@uni-paderborn.de ]
+pgp: yes
+key-id: news@uni-paderborn.de
