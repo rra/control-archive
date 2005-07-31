@@ -433,7 +433,11 @@ sub pgpverify {
     # Check the signature.
     my $message = generate_pgp ($version, \@headers, $signature, $hdr, $body);
     write_message ($message, "$TMPDIR/$$");
-    return gpg_check ($id, "$TMPDIR/$$");
+    my $signer = gpg_check ($id, "$TMPDIR/$$");
+    if ($signer =~ /\s/ && $signer =~ /</) {
+        $signer =~ s/^.*?<([^>]+)>.*/$1/;
+    }
+    return $signer;
 }
 
 ##############################################################################
