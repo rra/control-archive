@@ -1,8 +1,0 @@
-id: "$Id$"
-hierarchy: FAM
-groups: fam.*
-type: public
-description: Family Usenet
-sender: [ admin@family-usenet.com ]
-url: "http://checkgroups.family-usenet.com/"
-admin-group: fam.admin.talk
