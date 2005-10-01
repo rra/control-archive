@@ -1,0 +1,6 @@
+id: "$Id$"
+hierarchy: HFX
+groups: hfx.*
+type: public
+description: "Halifax, Nova Scotia"
+sender: [ stevemackie@gmail.com ]
