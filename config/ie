@@ -5,7 +5,6 @@ type: public
 description: Ireland
 sender: [ control@usenet.ie ]
 contact: [ control@usenet.ie ]
-url: "http://www.usenet.ie/"
 pgp: yes
 key-id: control@usenet.ie
 admin-group: ie.news.group

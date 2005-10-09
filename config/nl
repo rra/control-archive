@@ -5,9 +5,8 @@ type: public
 description: Netherlands
 sender: [ nl-admin@nic.surfnet.nl ]
 contact: [ nl-admin@nic.surfnet.nl ]
-url: "http://www.kinkhorst.com/usenet/nladmin.en.html (English)"
+url: "http://nl.news-admin.org/info/nladmin.html"
 pgp: yes
 key-id: nl.newsgroups
 key-fingerprint: "45 20 0B D5 A1 21 EA 7C  EF B2 95 6C 25 75 4D 27"
-key-url: "http://pgp.mit.edu:11371/pks/lookup?op=get&search=0x23E9B3A9"
 admin-group: nl.newsgroups

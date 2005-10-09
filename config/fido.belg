@@ -4,7 +4,6 @@ groups: fido.belg.*
 type: public
 description: FidoNet
 sender: [ fidobelg@mail.z2.fidonet.org ]
-url: "http://www.z2.fidonet.org/news/fido.belg.news/"
 pgp: yes
 key-id: fido.belg.news
 admin-group: fido.belg.news

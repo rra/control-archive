@@ -5,7 +5,6 @@ type: public
 description: "FLORA Community WEB, Canada"
 sender: [ news@flora.ottawa.on.ca ]
 contact: [ russell@flora.org ]
-url: "http://news.flora.org/"
 pgp: yes
 key-id: flora-news
 admin-group: flora.general

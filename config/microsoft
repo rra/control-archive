@@ -5,7 +5,6 @@ type: public
 description: Microsoft Corporation, USA
 sender: [ usenet@microsoft.com ]
 contact: [ usenet@microsoft.com ]
-url: "http://www.microsoft.com/usenetadmin"
 pgp: yes
 key-id: usenet@microsoft.com
 key-fingerprint: "1C 3B EB AF 7C 5C 8A B0  CD 5F 5C B0 AB 74 4F B1"
