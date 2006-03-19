@@ -1,5 +1,5 @@
                          GROUP CREATION POLICIES
-                        Last modified: 2004-10-09
+                        Last modified: 2006-03-19
 
   (This document was originally written by David Lawrence, but has since
   been updated and is currently maintained by Russ Allbery.  For all
@@ -164,14 +164,18 @@ THE NEWSGROUPS FILE
 
     group.name<tabs>description.[ (Moderated)]
 
-  There should be one or more hard tabs (assume 8 column tab stops) to get
-  to a description; if the group.name is more than 24 characters, just one
-  tab.  The description should start with a capital and end in a period
-  and not be more than 56 characters (80 - 24) long.  If the group is
-  moderated, it should have " (Moderated)" following the period, not
-  counted as part of the length of the description.  The goal is to keep
-  the total line under 80 columns, so if the group name is 25 characters
-  long you'd have eight less description characters to work with.
+  There should be at least one hard tab (assume 8 column tab stops)
+  between the group name and the description.  If the group name is
+  shorter than 24 characters, follow it with sufficient tabs so that the
+  description starts in column 24.  If the group name is longer than 24
+  characters, follow it with one tab.  The description should start with
+  a capital and not be more than 56 characters (80 - 24) long.  If the
+  group is moderated, it should have " (Moderated)" at the very end of the
+  description, not counted as part of the length of the description.  This
+  text must be exactly that, with no variations, as it is used by news
+  software to find moderated groups.  The goal is to keep the total line
+  under 80 columns, so if the group name is 25 characters long you'd have
+  eight less description characters to work with.
 
   Some over-long descriptions could be made to easily fit the length by
   dropping "puff" phrases like "Discussion of" which don't meaningfully
