@@ -326,11 +326,11 @@ sub parse_pgp_sig {
 # Generate the PGP message that should be verified.  Takes the version, a
 # reference to a list of headers that should be included in the signed
 # version, the signature, a ref to the hash of article headers, and a ref to
-# the array of body lines.  Returns the PGP message to be verified.
+# the array of body lines.  Returns the PGP message and the signature as a
+# list.
 sub generate_pgp {
     my ($version, $headers, $signature, $hdr, $body) = @_;
-    my $message  = "-----BEGIN PGP SIGNED MESSAGE-----\n\n";
-    $message .= "X-Signed-Headers: " . join (',', @$headers) . "\n";
+    my $message = "X-Signed-Headers: " . join (',', @$headers) . "\n";
     for my $header (@$headers) {
         my $label = lc $header;
         $message .= "$header: ";
@@ -343,11 +343,11 @@ sub generate_pgp {
         $line =~ s/^-/- -/;
         $message .= $line;
     }
-    $message .= "\n-----BEGIN PGP SIGNATURE-----\n";
-    $message .= "Version: $version\n";
-    $message .= $signature;
-    $message .= "\n-----END PGP SIGNATURE-----\n";
-    return $message;
+    my $sig = "\n-----BEGIN PGP SIGNATURE-----\n";
+    $sig .= "Version: $version\n";
+    $sig .= $signature;
+    $sig .= "\n-----END PGP SIGNATURE-----\n";
+    return ($message, $sig);
 }
 
 # Write the message to a file for checking.
@@ -363,11 +363,11 @@ sub write_message {
 # message.  Takes the message ID for error reporting and file as an argument
 # and gets the keyring and path to GnuPG from global variables.
 sub gpg_check {
-    my ($id, $file) = @_;
+    my ($id, $file, $sigfile) = @_;
 
     # Run GnuPG and make sure it exits successfully.
     my $opts = "--quiet --status-fd=1 --logger-fd=1 --keyring=$KEYRING";
-    open (GPG, "$GPGV $opts $file 2> /dev/null |")
+    open (GPG, "$GPGV $opts $file $sigfile 2> /dev/null |")
         or logdie "cannot execute $GPGV: $!";
     local $/;
     $_ = <GPG>;
@@ -431,10 +431,12 @@ sub pgpverify {
     }
 
     # Check the signature.
-    my $message = generate_pgp ($version, \@headers, $signature, $hdr, $body);
+    my ($message, $sigfile)
+        = generate_pgp ($version, \@headers, $signature, $hdr, $body);
     write_message ($message, "$TMPDIR/$$");
-    my $signer = gpg_check ($id, "$TMPDIR/$$");
-    if ($signer =~ /\s/ && $signer =~ /</) {
+    write_message ($sigfile, "$TMPDIR/$$.asc");
+    my $signer = gpg_check ($id, "$TMPDIR/$$", "$TMPDIR/$$.asc");
+    if ($signer && $signer =~ /\s/ && $signer =~ /</) {
         $signer =~ s/^.*?<([^>]+)>.*/$1/;
     }
     return $signer;
