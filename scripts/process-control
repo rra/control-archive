@@ -367,7 +367,7 @@ sub gpg_check {
 
     # Run GnuPG and make sure it exits successfully.
     my $opts = "--quiet --status-fd=1 --logger-fd=1 --keyring=$KEYRING";
-    open (GPG, "$GPGV $opts $file $sigfile 2> /dev/null |")
+    open (GPG, "$GPGV $opts $sigfile $file 2> /dev/null |")
         or logdie "cannot execute $GPGV: $!";
     local $/;
     $_ = <GPG>;
