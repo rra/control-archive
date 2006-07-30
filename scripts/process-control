@@ -338,11 +338,8 @@ sub generate_pgp {
         $message .= "\n";
     }
     $message .= "\n";
-    for (@$body) {
-        my $line = $_;
-        $line =~ s/^-/- -/;
-        $message .= $line;
-    }
+    $message .= join ('', @$body);
+    $message =~ s/[ \t]+\n/\n/g;
     my $sig = "\n-----BEGIN PGP SIGNATURE-----\n";
     $sig .= "Version: $version\n";
     $sig .= $signature;
