@@ -369,6 +369,7 @@ sub gpg_check {
     local $/;
     $_ = <GPG>;
     unlink $file or log "ERROR: cannot unlink $file: $!";
+    unlink $sigfile or log "ERROR: cannot unlink $sigfile: $!";
     close GPG;
 
     # Check the results.
