@@ -3,18 +3,16 @@
 # Accept all newgroups (except ones forged from Big 8 newgroup issuers,
 # who never issue alt.* control messages) and silently ignore all
 # rmgroups.  This file used to attempt to track and recommend trusted
-# rmgroup issuers; it no longer does because they change too frequently.
-# What policy to use for alt.* groups varies widely from site to site.
-# For a small site, it is strongly recommended that this policy be changed
-# to drop all newgroups for alt.* as well as rmgroups and that the news
-# admin only add new alt.* groups on request, as tons of alt.* newgroups
-# are sent out regularly with the intent more to create nonsense entries
-# in active files than to actually create a useable newsgroup.
+# rmgroup issuers, but this idea is now obsolete.  What policy to use for
+# alt.* groups varies widely from site to site.  For a small site, it is
+# strongly recommended that this policy be changed to drop all newgroups
+# for alt.* as well as rmgroups and that the news admin only add new alt.*
+# groups on request, as tons of alt.* newgroups are sent out regularly
+# with the intent more to create nonsense entries in active files than to
+# actually create a useable newsgroup.
 #
-# Other options and comments on alt.* groups can be found at
-# <http://www.alt-config.org/>, one of the many alt.* FAQ sites.  Be aware
-# that there is no official, generally accepted alt.* policy and all
-# information about alt.* groups available is essentially someone's
+# Be aware that there is no official, generally accepted alt.* policy and
+# all information about alt.* groups available is essentially someone's
 # opinion, including these comments.  There are nearly as many different
 # policies with regard to alt.* groups as there are Usenet sites.
 #
