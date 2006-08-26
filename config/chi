@@ -3,4 +3,5 @@ hierarchy: CHI
 groups: chi.*
 type: public
 description: "Chicago, USA"
-sender: [ lisbon@*chi.il.us lisbon@*interaccess.com ]
+sender: [ lisbon@*chi.il.us ]
+url: "http://lull.org/pub/chi-newsgroup-faq"
