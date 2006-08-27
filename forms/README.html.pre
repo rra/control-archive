@@ -36,6 +36,11 @@ existing software in order to work.</P>
 <P>Listed below are the steps you need to take to enable PGP
 authentication of control messages on your system.</P>
 
+<P><STRONG>WARNING:</STRONG> The instructions for INN below are only for
+very old versions of INN.  If you are using a current version of INN
+(2.0 or later), please see the documentation that comes with INN rather
+than following these instructions.</P>
+
 <P>Here is the short and simple version for someone who feels confident
 hacking around the news system and doesn't like to read a lot:</P>
 
