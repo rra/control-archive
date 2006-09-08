@@ -162,7 +162,7 @@ THE NEWSGROUPS FILE
 
   Here's what should be included for each line:
 
-    group.name<tabs>description.[ (Moderated)]
+    group.name<tabs>description[ (Moderated)]
 
   There should be at least one hard tab (assume 8 column tab stops)
   between the group name and the description.  If the group name is
@@ -176,6 +176,10 @@ THE NEWSGROUPS FILE
   software to find moderated groups.  The goal is to keep the total line
   under 80 columns, so if the group name is 25 characters long you'd have
   eight less description characters to work with.
+
+  Traditionally, all newsgroup descriptions ended with a period, but this
+  isn't necessary and steals away one character that is occasionally
+  useful for forming a better description.
 
   Some over-long descriptions could be made to easily fit the length by
   dropping "puff" phrases like "Discussion of" which don't meaningfully
