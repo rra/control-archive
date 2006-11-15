@@ -220,6 +220,7 @@ sub download {
     unless (defined $groups) {
         die "$0: failed to download list: ", $nntp->message, "\n";
     }
+  LINE:
     for my $group (sort keys %$groups) {
         next unless ($group =~ /$pattern/);
         next unless ($group =~ /^[a-z0-9+_.-]+$/);
