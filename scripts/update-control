@@ -3,7 +3,7 @@ $ID = q$Id$;
 #
 # update-control -- Manually update the newsgroup database.
 #
-# Copyright 2003 Russ Allbery <rra@stanford.edu>
+# Copyright 2003, 2006 Russ Allbery <rra@stanford.edu>
 #
 # This program is free software; you may redistribute it and/or modify it
 # under the same terms as Perl itself.
@@ -31,6 +31,7 @@ use subs qw(log);
 use DB_File ();
 use Fcntl qw(LOCK_EX);
 use IO::Handle ();
+use Net::NNTP ();
 use POSIX qw(strftime);
 
 ##############################################################################
@@ -207,6 +208,35 @@ sub bulkload {
     close LOCK;
 }
 
+# Download an active file from a remote server, filter out any groups that
+# don't start with prefix, and generate a checkgroups file from it.
+sub download {
+    my ($server, $prefix) = @_;
+    $prefix .= '.' unless $prefix =~ /\.$/;
+    my $pattern = qr/^\Q$prefix\E/;
+    my $nntp = Net::NNTP->new ($server)
+        or die "$0: cannot connect to $server: $!\n";
+    my $groups = $nntp->list;
+    unless (defined $groups) {
+        die "$0: failed to download list: ", $nntp->message, "\n";
+    }
+    for my $group (sort keys %$groups) {
+        next unless ($group =~ /$pattern/);
+        next unless ($group =~ /^[a-z0-9+_.-]+$/);
+        next if ($group =~ /^\.|\.\.|\.$/);
+        my @components = split (/\./, $group);
+        for (@components) {
+            next LINE if /^\d+$/;
+            next LINE if /^(?:all|ctl)$/;
+        }
+        my $description = 'No description.';
+        if ($$groups{$group}[2] =~ /^m/) {
+            $description .= ' (Moderated)';
+        }
+        print "$group $description\n";
+    }
+}
+
 ##############################################################################
 # Main routine
 ##############################################################################
@@ -243,6 +273,11 @@ if ($command eq 'newgroup') {
         die "Usage: update-control bulkload < <checkgroups>\n";
     }
     bulkload;
+} elsif ($command eq 'download') {
+    if (@args != 2) {
+        die "Usage: update-control download <server> <prefix>\n";
+    }
+    download (@args);
 } else {
     die "Usage: update-control (newgroup|rmgroup|checkgroups|bulkload)\n";
 }
