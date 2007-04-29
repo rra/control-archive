@@ -3,4 +3,9 @@ hierarchy: GNU
 groups: gnu.*
 type: public
 description: "Free Software Foundation"
-sender: [ gnu@prep.ai.mit.edu news@*ai.mit.edu ]
+sender: [ usenet@gnu.org ]
+url: "http://www.gnu.org/usenet/usenet.html"
+pgp: yes
+key-id: usenet@gnu.org
+key-url: "http://www.gnu.org/usenet/usenet-pgp-key.txt"
+admin-group: gnu.gnusenet.config
