@@ -1,0 +1,11 @@
+id: $Id$
+hierarchy: SCOT
+groups: scot.*
+type: public
+description: Scotland
+sender: [ control@scot.news-admin.org ]
+url: "http://scot.news-admin.org/"
+pgp: yes
+key-id: control@scot.news-admin.org
+key-url: "http://scot.news-admin.org/signature.html"
+admin-group: scot.newsgroups.discuss
