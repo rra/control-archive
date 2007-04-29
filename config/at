@@ -5,4 +5,7 @@ type: public
 description: Austria
 sender: [ control@usenet.backbone.at ]
 url: "http://www.usenet.at/"
+pgp: yes
+key-id: control@usenet.backbone.at
+key-url: "http://www.usenet.at/pgpkey.asc"
 admin-group: at.usenet.gruppen
