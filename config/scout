@@ -1,0 +1,11 @@
+id: "$Id$"
+hierarchy: SCOUT
+groups: scout.*
+type: public
+description: Scouts and guides
+sender: [ control@news.scoutnet.org ]
+url: "http://news.scoutnet.org/"
+pgp: yes
+key-id: control@news.scoutnet.org
+key-url: "http://news.scoutnet.org/scout-pgpkey.asc"
+admin-group: scout.admin
