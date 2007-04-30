@@ -1,7 +1,0 @@
-id: "$Id$"
-hierarchy: MICROSOFT.PRIVATE
-groups: microsoft.private.*
-type: private
-description: Microsoft Corporation, USA
-sender: [ usenet@microsoft.com ]
-contact: [ usenet@microsoft.com ]

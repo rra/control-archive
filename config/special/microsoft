@@ -1,0 +1,19 @@
+## MICROSOFT (Microsoft Corporation, USA)
+#
+# Control articles for that hierarchy are not issued by Microsoft itself
+# but by a Usenet active participant in order to improve the quality of
+# the propagation of Microsoft newsgroups.  Their official URL is:
+# http://www.microsoft.com/communities/newsgroups/list/en-us/default.aspx
+#
+# Contact: control-microsoft@trigofacile.com
+# URL: http://www.trigofacile.com/divers/usenet/clefs/index.htm
+# Admin group: microsoft.public.news.server
+# Key URL: http://www.trigofacile.com/divers/usenet/clefs/pgpkey-microsoft.asc
+# Key fingerprint = DF70 5FC9 F615 D52E 02DB  A3CB 63A9 8D13 E60E 2FAA
+# Syncable server: msnews.microsoft.com
+# *PGP*   See comment at top of file.
+newgroup:*:microsoft.*:drop
+rmgroup:*:microsoft.*:drop
+checkgroups:control-microsoft@trigofacile.com:microsoft.*:verify-control-microsoft@trigofacile.com
+newgroup:control-microsoft@trigofacile.com:microsoft.*:verify-control-microsoft@trigofacile.com
+rmgroup:control-microsoft@trigofacile.com:microsoft.*:verify-control-microsoft@trigofacile.com
