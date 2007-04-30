@@ -1,5 +1,5 @@
                          GROUP CREATION POLICIES
-                        Last modified: 2006-09-07
+                        Last modified: 2007-04-29
 
   (This document was originally written by David Lawrence, but has since
   been updated and is currently maintained by Russ Allbery.  For all
@@ -120,7 +120,8 @@ HIERARCHY MAINTENANCE
 
   with no leading whitespace, followed on the next line by a valid
   description line for the newsgroup (see THE NEWSGROUPS FILE for a
-  discussion of the format of this line).
+  discussion of the format of this line).  This description must not
+  contain any control characters (octets between 0x00 and 0x1F).
 
   The newsgroup descriptions in the newsgroups file are taken from the
   most recent control message for that group, whether a valid "newgroup"
