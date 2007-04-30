@@ -1,0 +1,13 @@
+id: "$Id$"
+hierarchy: OPENWATCOM
+groups: openwatcom.*
+type: public
+description: Open Watcom compilers
+sender: [ admin@openwatcom.news-admin.org ]
+contact: [ admin@openwatcom.news-admin.org ]
+url: "http://www.openwatcom.org/"
+pgp: yes
+key-id: admin@openwatcom.news-admin.org
+key-url: "http://cmeerw.org/files/openwatcom/pgp-openwatcom.asc"
+sync-server: news.openwatcom.org
+admin-group: openwatcom.contributors
