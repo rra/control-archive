@@ -275,6 +275,7 @@ sub checkgroups_group {
         my ($group, $desc) = split (' ', $_, 2);
         $desc =~ s/\s+$//;
         next unless $desc;
+        next if $desc =~ /[\x00-\x1f]/;
         next unless ($group =~ /^[a-z0-9+_.-]+$/);
         next unless $group =~ /\./;
         next if ($group =~ /^\.|\.\.|\.$/);
@@ -464,10 +465,15 @@ sub newgroup {
             $next = 0;
         }
     }
+    if ($description =~ /[\x00-\x1f]/) {
+        log "$id control characters in newsgroup description";
+        return;
+    }
     unless ($description) {
         log "$id no description in body of newgroup for $group";
         return;
     }
+    $description =~ s/[\x00-\x1f]//g;
     if ($mode eq 'm' && $description !~ /\(Moderated\)$/) {
         $description =~ s/\s*\(Moderated\)//;
         $description =~ s/\s*$/ (Moderated)/;
@@ -537,6 +543,7 @@ sub checkgroups {
         my ($group, $desc) = split (' ', $_, 2);
         $desc =~ s/\s+$//;
         next unless $desc;
+        next if $desc =~ /[\x00-\x1f]/;
         next unless ($group =~ /^[a-z0-9+_.-]+$/);
         next if ($group =~ /^\.|\.\.|\.$/);
         next if length ($group) > 80;
@@ -848,10 +855,11 @@ processed if the signer matches the required signer in F<control.ctl>.
 
 newgroup messages must have a C<For your newsgroups file:> line in the body,
 followed by a line suitable for a checkgroups message (the group name, some
-whitespace, and the description).  C<(Moderated)> will be added to the
-description if not present for a moderated group, and will be removed if
-present for an unmoderated group.  For a newgroup message to be acted on, it
-must also not contain any component longer than 30 characters.
+whitespace, and the description, containing no control characters).
+C<(Moderated)> will be added to the description if not present for a
+moderated group, and will be removed if present for an unmoderated group.
+For a newgroup message to be acted on, it must also not contain any
+component longer than 30 characters.
 
 The same constraints on group names mentioned above are also applied to the
 group names in the body of a checkgroups message, and any groups not fitting
@@ -910,7 +918,7 @@ controlchan by Marco d'Itri.  Portions based on pgpverify by David Lawrence.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2003 by Russ Allbery <rra@stanford.edu>
+Copyright 2003, 2007 by Russ Allbery <rra@stanford.edu>
 
 Copyright 2001 by Marco d'Itri <md@linux.it>
 
