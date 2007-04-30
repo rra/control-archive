@@ -1,6 +1,10 @@
-id: $Id$
+id: "$Id$"
 hierarchy: UW
 groups: uw.*
 type: public
 description: "University of Waterloo, Canada"
-sender: [ bcameron@math.uwaterloo.ca ]
+sender: [ newsgroups@news.uwaterloo.ca ]
+pgp: yes
+key-id: newsgroups@news.uwaterloo.ca
+sync-server: news.uwaterloo.ca
+admin-group: uw.newsgroups
