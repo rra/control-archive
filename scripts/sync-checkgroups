@@ -1,0 +1,51 @@
+#!/usr/bin/python
+# -*- coding: latin1 -*-
+#
+# sync-checkgroups news.server [hierarchy]
+#
+# From Julien ÉLIE.
+
+import nntplib
+import sys
+
+if len(sys.argv) == 1:
+    sys.exit('The name of the news server is missing.')
+
+if len(sys.argv) == 3:
+    hierarchy = sys.argv[2]
+else:
+    hierarchy = ''
+
+news_server = nntplib.NNTP(sys.argv[1])
+list = news_server.list()
+descriptions = news_server.descriptions('*')
+news_server.quit()
+
+groups = dict()
+
+for group in [g for g in list[1] if g[0].startswith(hierarchy)]:
+    if group[3] == 'y':
+        groups[group[0]] = 'No description.'
+    else:
+        groups[group[0]] = 'No description. (Moderated)'
+
+for description in [d for d in descriptions[1] if groups.has_key(d[0])]:
+    if description[1] != '':
+        if groups[description[0]].endswith(' (Moderated)'):
+            if not description[1].endswith(' (Moderated)'):
+                groups[description[0]] = description[1] + ' (Moderated)'
+            else:
+                groups[description[0]] = description[1]
+        else:
+            groups[description[0]] = description[1]
+
+keys = groups.keys()
+keys.sort()
+
+for group in keys:
+    if len(group) < 8:
+        print group + '\t\t\t' + groups[group]
+    elif len(group) < 16:
+        print group + '\t\t' + groups[group]
+    else:
+        print group + '\t' + groups[group]
