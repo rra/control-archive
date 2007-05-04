@@ -26,7 +26,7 @@ groups = dict()
 for group in [g for g in list[1] if g[0].startswith(hierarchy)]:
     if group[3] == 'y':
         groups[group[0]] = 'No description.'
-    else:
+    elif group[3] == 'm':
         groups[group[0]] = 'No description. (Moderated)'
 
 for description in [d for d in descriptions[1] if groups.has_key(d[0])]:
