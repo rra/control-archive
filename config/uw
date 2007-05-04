@@ -5,6 +5,6 @@ type: public
 description: "University of Waterloo, Canada"
 sender: [ newsgroups@news.uwaterloo.ca ]
 pgp: yes
-key-id: newsgroups@news.uwaterloo.ca
+key-id: uw.newsgroups
 sync-server: news.uwaterloo.ca
 admin-group: uw.newsgroups
