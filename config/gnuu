@@ -1,0 +1,6 @@
+id: $Id$
+hierarchy: GNUU
+groups: gnuu.*
+type: private
+description: "GNUU e.V., Oberursel, Germany"
+contact: [ news@gnuu.de ]
