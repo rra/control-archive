@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: OPERA
 groups: opera.*
 type: public
@@ -7,3 +7,4 @@ sender: [ *@opera.com ]
 contact: [ usenet@opera.com ]
 pgp: yes
 key-id: opera-group-admin
+sync-server: news.opera.com
