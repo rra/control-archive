@@ -10,4 +10,4 @@ pgp: yes
 key-id: be.announce.newgroups
 key-fingerprint: "30 2A 45 94 70 DE 1F D5  81 8C 58 64 D2 F7 08 71"
 key-url: "http://usenet.be/be.announce.newgroups.asc"
-admin-group: be.announce.newgroups
+admin-group: be.announce
