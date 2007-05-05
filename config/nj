@@ -1,0 +1,6 @@
+id: "$Id$"
+hierarchy: NJ
+groups: nj.*
+type: public
+description: "New Jersey, USA"
+sender: [ nj-admin@gunslinger.net ]
