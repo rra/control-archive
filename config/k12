@@ -4,3 +4,4 @@ groups: k12.*
 type: public
 description: "US Educational Network"
 sender: [ braultr@*csmanoirs.qc.ca ]
+url: "http://www.k12groups.org/"
