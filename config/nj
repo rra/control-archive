@@ -4,3 +4,5 @@ groups: nj.*
 type: public
 description: "New Jersey, USA"
 sender: [ nj-admin@gunslinger.net ]
+contact: [ nj-admin@gunslinger.net ]
+url: "http://www.exit109.com/~jeremy/nj/"
