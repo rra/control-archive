@@ -10,4 +10,4 @@ pgp: yes
 key-id: schule.konfig
 key-fingerprint: "64 06 F0 AE E1 46 85 0C  BD CA 0E 53 8B 1E 73 D2"
 key-url: "http://www.afaik.de/usenet/admin/schule/control/schule.asc"
-admin-group: schule.konfig
+admin-group: schule.admin
