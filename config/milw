@@ -1,12 +1,13 @@
-id: $Id$
+id: "$Id$"
 hierarchy: MILW
 groups: milw.*
 type: public
 description: "Milwaukee, Wisconsin, USA"
 sender: [ milw@usenet.mil.wi.us ]
 contact: [ milw@usenet.mil.wi.us ]
-url: "http://usenet.mil.wi.us"
+url: "http://usenet.mil.wi.us/"
 pgp: yes
 key-id: milw.config
 key-fingerprint: "6E 9B 9F 70 98 AB 9C E5  C3 C0 05 82 21 5B F4 9E"
 key-url: "http://usenet.mil.wi.us/pgpkey"
+admin-group: milw.config
