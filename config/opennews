@@ -1,0 +1,9 @@
+id: "$Id$"
+hierarchy: OPENNEWS
+groups: opennews.*
+type: public
+description: "Open News Network"
+sender: [ schiller@babsi.de ]
+url: "http://www.open-news-network.org/"
+pgp: yes
+key-id: news@news2.open-news-network.org
