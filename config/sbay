@@ -1,6 +1,7 @@
-id: $Id$
+id: "$Id$"
 hierarchy: SBAY
 groups: sbay.*
 type: public
 description: "South Bay/Silicon Valley, California"
 sender: [ ikluft@thunder.sbay.org steveh@grafex.sbay.org ]
+url: "http://www.sbay.org/sbay-newsgroups.html"
