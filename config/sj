@@ -1,0 +1,7 @@
+id: "$Id$"
+hierarchy: SJ
+groups: sj.*
+type: public
+description: "St. John's, Newfoundland and Labrador, Canada"
+sender: [ randy@mun.ca ]
+contact: [ randy@mun.ca ]

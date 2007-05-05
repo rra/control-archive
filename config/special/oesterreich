@@ -1,0 +1,12 @@
+## OESTERREICH (Free Austria)
+#
+# This is apparently another alt.* or free.* but specific to Austria.
+# Currently, the ftp.isc.org list doesn't honor newgroup messages in the
+# hierarchy due to lack of requests, but here is the information in case
+# any news admin wishes to carry it.
+#
+# URL: http://www.tahina.priv.at/~cm/oe/index.en.html
+#newgroup:*:oesterreich.*:doit
+#newgroup:group-admin@isc.org:oesterreich.*:drop
+#newgroup:tale@*uu.net:oesterreich.*:drop
+#rmgroup:*:oesterreich.*:drop

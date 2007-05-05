@@ -1,0 +1,7 @@
+id: "$Id$"
+hierarchy: NF
+groups: nf.*
+type: public
+description: "Newfoundland and Labrador, Canada"
+sender: [ randy@mun.ca ]
+contact: [ randy@mun.ca ]
