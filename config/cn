@@ -4,6 +4,7 @@ groups: cn.*
 type: public
 description: China
 sender: [ control@bentium.com ]
+url: "http://news.yaako.com/"
 pgp: yes
 key-id: cn.admin.news.announce
 key-fingerprint: "62 97 EE 33 F7 16 25 C1  A4 9E 47 BA C5 3E 5E 9E"
