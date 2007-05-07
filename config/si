@@ -4,6 +4,8 @@ groups: si.*
 type: public
 description: "The Republic of Slovenia"
 sender: [ news-admin@arnes.si ]
+url: "http://www.arnes.si/news/config/"
 pgp: yes
 key-id: si.news.announce.newsgroups
+key-url: "http://www.arnes.si/news/config/"
 admin-group: si.news.announce.newsgroups
