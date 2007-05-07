@@ -1,0 +1,9 @@
+id: "$Id$"
+hierarchy: PERL
+groups: perl.*
+type: public
+description: Perl Programming Language
+sender: [ newsadmin@perl.org ]
+contact: [ ask@perl.org ]
+url: "http://www.nntp.perl.org/about/"
+pgp: yes
