@@ -1,11 +1,12 @@
-id: $Id$
+id: "$Id$"
 hierarchy: KANTO
 groups: kanto.*
 type: public
-description: "?"
+description: Japan
 newgroup-sender: [ *@*.jp ]
 rmgroup-sender: [ ty@kamoi.imasy.or.jp ]
 checkgroups-sender: [ ty@kamoi.imasy.or.jp ]
+url: "http://www.pub.isas.ac.jp/~takayuki/kanto/kanto.html
 pgp: yes
 key-id: kanto.news.network
-admin-group: kanto.news.network
+admin-group: kanto.news.general
