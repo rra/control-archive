@@ -1,0 +1,7 @@
+id: "$Id$"
+hierarchy: SSLUG
+groups: sslug.*
+type: private
+description: "Skåne Sjælland Linux User Group"
+sender: [ sparre@sslug.se ]
+url: "http://en.sslug.dk/"
