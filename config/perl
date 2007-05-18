@@ -4,8 +4,9 @@ groups: perl.*
 type: public
 description: Perl Programming Language
 sender: [ newsadmin@perl.org ]
-contact: [ ask@perl.org ]
+contact: [ newsadmin@perl.org ]
 url: "http://www.nntp.perl.org/about/"
 pgp: yes
 key-id: newsadmin@perl.org
 key-url: "http://www.nntp.perl.org/about/newsadmin@perl.org.pgp"
+key-fingerprint: "438F D1BA 4DCC 3B1A BED8  2BCC 3298 8A7D 8B2A CFBB"
