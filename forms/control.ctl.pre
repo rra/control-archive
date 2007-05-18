@@ -14,8 +14,9 @@
 ##  this file for the most up-to-date hierarchy control information and
 ##  please use the latest version if you intend to carry all hierarchies.
 ##
-##  You may wish to review and change the policy for alt.*, free.*, and
-##  it-alt.* below before using this file on your server.
+##  You may wish to review and change the policy for alt.*, free.*,
+##  it-alt.*, and oesterreich.* below before using this file on your
+##  server.
 ##
 ##  Format:
 ##     <message>:<from>:<newsgroups>:<action>
@@ -82,6 +83,9 @@
 ##  for the hierarchy), URL, Key URL (URL for PGP key), Key fingerprint, Key
 ##  mail (address to mail for PGP key), and Syncable server (for actsync or
 ##  a similar tool).
+##
+##  Names used in this file that cannot be encoded in 7bit ASCII are in
+##  UTF-8.  The only non-7bit-ASCII content is in comments.
 
 ## -------------------------------------------------------------------------
 ##	DEFAULT
