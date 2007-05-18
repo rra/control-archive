@@ -7,3 +7,5 @@ sender: [ newsadmin@perl.org ]
 contact: [ ask@perl.org ]
 url: "http://www.nntp.perl.org/about/"
 pgp: yes
+key-id: newsadmin@perl.org
+key-url: "http://www.nntp.perl.org/about/newsadmin@perl.org.pgp"
