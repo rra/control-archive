@@ -1,7 +1,8 @@
-id: $Id$
+id: "$Id$"
 hierarchy: DFW
 groups: dfw.*
 type: public
 description: "Dallas/Fort Worth, Texas, USA"
 sender: [ eric@*cirr.com ]
 url: "http://www.cirr.com/dfw/"
+admin-group: dfw.usenet.config
