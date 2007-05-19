@@ -5,3 +5,4 @@ type: public
 description: "Austin, Texas, USA"
 sender: [ chip@unicom.com fletcher@cs.utexas.edu pug@pug.net ]
 url: "http://frenzy.austin.tx.us/austin/"
+admin-group: austin.usenet.config
