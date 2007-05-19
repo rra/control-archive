@@ -1,0 +1,7 @@
+id: "$Id$"
+hierarchy: ADASS
+groups: adass.*
+type: public
+description: "Astronomical Data Analysis Software and Systems"
+sender: [ news@iraf.noao.edu ]
+url: "http://iraf.noao.edu/iraf/web/adass_news.html"
