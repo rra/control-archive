@@ -19,7 +19,7 @@ $ACTIVE = '/work/usenet/config/active.db';
 $CONTROL = '/work/usenet/config/control.ctl';
 
 # The directory in which to look for log files.
-$LOGS = '/work/usenet/config';
+$LOGS = '/work/usenet/config/logs';
 
 # Directory in which to create the active and newsgroups files.
 $ROOT = '/work/usenet/config/export';
@@ -156,7 +156,7 @@ The export directory into which the generated active and newsgroups files
 are put.  Logs are copied into a LOGS subdirectory.  Other files in this
 directory are left untouched.
 
-=item F</work/usenet/config/log.%Y-%m>
+=item F</work/usenet/config/logs/log.%Y-%m>
 
 Where actions are logged by B<process-control> and B<update-control>.  %Y is
 replaced by the current four-digit year and %m by the current two digit

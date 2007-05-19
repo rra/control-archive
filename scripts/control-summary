@@ -19,7 +19,7 @@ $ACTIVE = '/work/usenet/config/active.db';
 $ADDRESS = 'usenet-config@isc.org';
 
 # Directory in which to find log files that record the actions taken.
-$LOGBASE = '/work/usenet/config';
+$LOGBASE = '/work/usenet/config/logs';
 
 # Default newsgroup to post to.
 $NEWSGROUP = 'news.lists.misc';

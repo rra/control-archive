@@ -31,7 +31,7 @@ $KEYRING = '/work/usenet/config/keyring/pubring.gpg';
 
 # The log file into which to record actions taken.  The current year and
 # month will be appended.
-$LOGBASE = '/work/usenet/config/log';
+$LOGBASE = '/work/usenet/config/logs/log';
 
 # The temporary directory to use for PGP verification.
 $TMPDIR = '/work/usenet/config/tmp';
@@ -509,7 +509,7 @@ sub newgroup {
     $db{$group} = "$mode $description";
     untie %db;
     close LOCK;
-    log "$id processed newgroup";
+    log "$id processed newgroup for $group";
 }
 
 # Process an rmgroup.  Takes the message ID, the name of the group, and logs
@@ -526,7 +526,7 @@ sub rmgroup {
     }
     untie %db;
     close LOCK;
-    log "$id processed rmgroup";
+    log "$id processed rmgroup for $group";
 }
 
 # Process a checkgroups.  Takes the group pattern affected and the body of the
@@ -593,7 +593,7 @@ sub checkgroups {
     }
     untie %db;
     close LOCK;
-    log "$id processed checkgroups";
+    log "$id processed checkgroups for $pattern";
 }
 
 ##############################################################################
@@ -710,7 +710,7 @@ while (<STDIN>) {
 
     # If this is a checkgroups, figure out what hierarchy it's affecting.
     if ($control[0] eq 'checkgroups') {
-        my $group= checkgroups_group (\@body);
+        my $group = checkgroups_group (\@body);
         @control = ('checkgroups', $group);
     }
 
@@ -900,7 +900,7 @@ The keyring used to verify PGP-signed control messages.  The user IDs on the
 keys stored in this keyring must match the user IDs expected according to
 the rules in F<control.ctl>.
 
-=item F</work/usenet/config/log.%Y-%m>
+=item F</work/usenet/config/logs/log.%Y-%m>
 
 Where actions are logged.  %Y is replaced by the current four-digit year and
 %m by the current two digit month.
