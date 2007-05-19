@@ -1,6 +1,7 @@
-id: $Id$
+id: "$Id$"
 hierarchy: AUSTIN
 groups: austin.*
 type: public
-description: "Texas, USA"
+description: "Austin, Texas, USA"
 sender: [ chip@unicom.com fletcher@cs.utexas.edu pug@pug.net ]
+url: "http://frenzy.austin.tx.us/austin/"
