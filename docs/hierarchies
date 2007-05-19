@@ -10,11 +10,12 @@ that one interesting.
 
 The remainder of this file are the notes that tale maintained when he was
 maintaining the control message archive and active newsgroup database.
-For the remainder of this file, I refers to tale.
-
-The last update of this file was in May of 2001, but I believe the last
+For the remainder of this file, I refers to tale.  I believe the last
 comprehensive work on maintaining it stopped somewhat earlier.  Most of
 the information here dates from the 1990s.
+
+I have added a few additional notes since when I chose not to add a
+hierarchy to the public list for some reason.
 
 
 This file contains information about the handling of particular
@@ -404,6 +405,9 @@ The following are miscellaneous notes I have about various hierarchies.
 local list of active groups unless you have some special need for having
 it, such as a private local hierarchy by the same name."
 
+acay.*
+  Appears to be a private hierarchy for an Australian ISP.  See
+  <http://www.acay.com.au/member.htm>.
 alive.*
   It is not clear to me what the status of this hierarchy is.  My latest
   messages to Sander van Minnen <mattew@pobox.org.sg> (or
