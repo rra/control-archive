@@ -1,0 +1,10 @@
+id: "$Id$"
+hierarchy: FIDO.GER
+groups: fido.ger.*
+type: public
+description: "German FIDO Net Echos"
+sender: [ fido.ger@news.fu-berlin.de ]
+url: "ftp://ftp.fu-berlin.de/doc/news/fido.ger/fido.ger-info.english"
+pgp: yes
+key-id: fido.ger@news.fu-berlin.de
+key-url: "ftp://ftp.fu-berlin.de/doc/news/fido.ger/PGP-Key"
