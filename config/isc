@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: ISC
 groups: isc.*
 type: public

@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: BDA
 groups: bda.*
 type: public

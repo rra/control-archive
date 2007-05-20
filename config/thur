@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: THUR
 groups: thur.*
 type: public

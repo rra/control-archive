@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: VEGAS
 groups: vegas.*
 type: public

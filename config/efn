@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: "EFN & EUG"
 groups: efn.*|eug.*
 type: public

@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: TRIANGLE
 groups: triangle.*
 type: public

@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: "GER & HANNET & HANNOVER & HILDESHEIM & HISS"
 groups: ger.*|hannover.*|hannet.*|hildesheim.*|hiss.*
 type: public

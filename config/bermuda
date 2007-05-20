@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: BERMUDA
 groups: bermuda.*
 type: public

@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: NL-ALT
 groups: nl-alt.*
 type: public

@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: HAMSTER
 groups: hamster.*
 type: public

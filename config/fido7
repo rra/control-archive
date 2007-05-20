@@ -2,7 +2,7 @@ id: "$Id$"
 hierarchy: FIDO7
 groups: fido7.*
 type: public
-description: FidoNet
+description: "Russian FidoNet"
 sender: [ newgroups-request@fido7.ru ]
 url: "http://www.fido7.ru/"
 pgp: yes

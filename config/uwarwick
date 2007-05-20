@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: UWARWICK
 groups: uwarwick.*
 type: local

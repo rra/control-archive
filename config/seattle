@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: SEATTLE
 groups: seattle.*
 type: public

@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: XS4ALL
 groups: xs4all.*
 type: public

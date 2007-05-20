@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: UIUC
 groups: uiuc.*
 type: local

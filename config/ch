@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: CH
 groups: ch.*
 type: public

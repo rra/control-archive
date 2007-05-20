@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: VAN
 groups: van.*
 type: public

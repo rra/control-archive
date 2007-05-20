@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: "ALABAMA & HSV"
 groups: alabama.*|hsv.*
 type: public

@@ -1,8 +1,8 @@
-id: $Id$
+id: "$Id$"
 hierarchy: FIDO.BELG
 groups: fido.belg.*
 type: public
-description: FidoNet
+description: "Belgian FidoNet"
 sender: [ fidobelg@mail.z2.fidonet.org ]
 pgp: yes
 key-id: fido.belg.news

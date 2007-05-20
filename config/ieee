@@ -1,6 +1,6 @@
-id: $Id$
+id: "$Id$"
 hierarchy: IEEE
 groups: ieee.*
 type: defunct
 description: "Institute of Electrical and Electronic Engineers"
-contact: [ <postoffice@ieee.org> ]
+contact: [ postoffice@ieee.org ]

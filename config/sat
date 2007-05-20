@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: SAT
 groups: sat.*
 type: public

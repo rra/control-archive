@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: VMSNET
 groups: vmsnet.*
 type: public

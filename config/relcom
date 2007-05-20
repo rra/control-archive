@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: RELCOM
 groups: relcom.*
 type: public

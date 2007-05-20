@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: OH
 groups: oh.*
 type: public

@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: CUHK
 groups: cuhk.*
 type: local

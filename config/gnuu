@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: GNUU
 groups: gnuu.*
 type: private

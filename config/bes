@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: BES
 groups: bes.*
 type: private

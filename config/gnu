@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: GNU
 groups: gnu.*
 type: public

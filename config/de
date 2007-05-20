@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: DE
 groups: de.*
 type: public

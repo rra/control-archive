@@ -1,7 +1,7 @@
-id: $Id$
+id: "$Id$"
 hierarchy: CLARI
 groups: clari.*
-type: public
+type: private
 description: "Features and News, available on a commercial basis"
 sender: [ cl*@clarinet.com ]
 contact: [ support@clari.net ]

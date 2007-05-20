@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: MANAWATU
 groups: manawatu.*
 type: local

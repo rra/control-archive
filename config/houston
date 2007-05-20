@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: HOUSTON
 groups: houston.*
 type: public

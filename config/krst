@@ -1,4 +1,4 @@
-id: $Id$
+id: "$Id$"
 hierarchy: KRST
 groups: krst.*
 type: local
