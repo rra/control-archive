@@ -5,7 +5,7 @@ type: public
 description: "Japan and Japanese language"
 sender: [ committee@fj-news.org ]
 contact: [ committee@fj-news.org ]
-url: "http://www.is.tsukuba.ac.jp/~yas/fj/"
+url: "http://www.fj-news.org/index.html.en"
 pgp: yes
 key-id: fj.news.announce
 key-url: "http://www.is.tsukuba.ac.jp/~yas/fj/fj.asc"
