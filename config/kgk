@@ -4,4 +4,6 @@ groups: kgk.*
 type: public
 description: "Japanese ?"
 sender: [ usenet@film.rlss.okayama-u.ac.jp ]
+contact: [ kgk@film.rlss.okayama-u.ac.jp ]
 url: "http://film.rlss.okayama-u.ac.jp/~kgk/nnml+/index.html"
+admin-group: kgk.admin
