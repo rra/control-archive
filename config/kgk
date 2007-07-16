@@ -1,0 +1,7 @@
+id: "$Id$"
+hierarchy: KGK
+groups: kgk.*
+type: public
+description: "Japanese ?"
+sender: [ usenet@film.rlss.okayama-u.ac.jp ]
+url: "http://film.rlss.okayama-u.ac.jp/~kgk/nnml+/index.html"
