@@ -36,7 +36,7 @@
 ##                    location by following the action with an = and the
 ##                    log ("mail" says to mail the admin, an empty location
 ##                    tosses the log information, and a relative path xxx
-##                    logs to $LOG/xxx.log.
+##                    logs to $LOG/xxx.log).
 ##
 ##  The *last* matching entry is used.  See the expire.ctl(5) man page for
 ##  complete information.
@@ -72,7 +72,7 @@
 ##     hierarchies from your server if you carry them, unless you've
 ##     contacted the listed contact address and arranged a feed.
 ##
-##     If you have permission to carry any of the hierachies so listed in
+##     If you have permission to carry any of the hierarchies so listed in
 ##     this file, you should change the entries for those hierarchies below.
 ##
 ##  The comments of this file aren't in any formal or well-defined syntax,
