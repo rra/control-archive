@@ -1,0 +1,12 @@
+id: "$Id$"
+hierarchy: NIPPON
+groups: nippon.*
+type: private
+description: Japan
+sender: [ news@gcd.org ]
+url: "http://www.gcd.org/news/nippon/"
+pgp: yes
+key-id: nippon.news.group
+key-fingerprint: "BC CF 15 CD B1 3C DF B3  C3 DE 35 6F 2F F7 46 DB"
+key-url: "http://www.gcd.org/news/nippon/"
+admin-group: nippon.news.group
