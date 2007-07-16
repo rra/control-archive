@@ -1,0 +1,12 @@
+id: "$Id$"
+hierarchy: JLUG
+groups: jlug.*
+type: public
+description: "Japan Linux Users Group"
+sender: [ news@linux.or.jp ]
+contact: [ news@linux.or.jp ]
+url: "http://www.linux.or.jp/community/news/index.html"
+pgp: yes
+key-id: news@linux.or.jp
+key-url: "http://www.linux.or.jp/pgpkey/news"
+admin-group: jlug.config
