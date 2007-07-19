@@ -166,17 +166,19 @@ THE NEWSGROUPS FILE
     group.name<tabs>description[ (Moderated)]
 
   There should be at least one hard tab (assume 8 column tab stops)
-  between the group name and the description.  If the group name is
-  shorter than 24 characters, follow it with sufficient tabs so that the
-  description starts in column 24.  If the group name is longer than 24
-  characters, follow it with one tab.  The description should start with
-  a capital and not be more than 56 characters (80 - 24) long.  If the
-  group is moderated, it should have " (Moderated)" at the very end of the
-  description, not counted as part of the length of the description.  This
-  text must be exactly that, with no variations, as it is used by news
-  software to find moderated groups.  The goal is to keep the total line
-  under 80 columns, so if the group name is 25 characters long you'd have
-  eight less description characters to work with.
+  between the group name and the description.  If the group name is at
+  least 16 characters, follow it with one tab.  If the group name is at
+  least 8 characters, follow it with two tabs.  In the unlikely event the
+  group name is less than 8 characters, follow it with three tabs.
+
+  The total line length should be at most 79 columns.  The description
+  should start with a capital and not be more than 55 characters (79 - 24)
+  long.  If the group name is longer than 24 characters, the description
+  should be correspondingly shorter.  If the group is moderated, it should
+  have " (Moderated)" at the very end of the description, not counted as
+  part of the length of the description.  This text must be exactly that,
+  with no variations, as it is used by news software to find moderated
+  groups.
 
   Traditionally, all newsgroup descriptions ended with a period, but this
   isn't necessary and steals away one character that is occasionally
@@ -206,7 +208,8 @@ THE NEWSGROUPS FILE
   newsgroups file.  This unfortunately means that different lines of the
   file will require different character set settings to read properly, and
   those character sets are not documented in the file.  Hopefully some
-  future standard will provide a way to address this.
+  future standard will provide a way to address this; in the meantime,
+  using UTF-8 for non-ASCII characters is recommended.
 
 LOGGING
 
