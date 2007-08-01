@@ -2,8 +2,8 @@ id: "$Id$"
 hierarchy: KGK
 groups: kgk.*
 type: public
-description: "Japanese ?"
+description: "Administered by KGK, Japan"
 sender: [ usenet@film.rlss.okayama-u.ac.jp ]
-contact: [ kgk@film.rlss.okayama-u.ac.jp ]
-url: "http://film.rlss.okayama-u.ac.jp/~kgk/nnml+/index.html"
+contact: [ "Keiji KOSAKA <kgk@film.rlss.okayama-u.ac.jp>" ]
+url: "http://film.rlss.okayama-u.ac.jp/~kgk/kgk/index.html"
 admin-group: kgk.admin
