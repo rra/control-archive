@@ -3,6 +3,11 @@
 ##
 ##  Based on rone's unified control.ctl file.
 ##
+##  For a web presentation of the information recorded here, as well as
+##  other useful information about Usenet hierarchies, please see:
+##
+##      <http://usenet.trigofacile.com/hierarchies/>
+##
 ##  Please copy usenet-config@isc.org on any updates to this file so that
 ##  it can be updated in the INN CVS repository and on ftp.isc.org.  For
 ##  changes to a public hierarchy, please also post the changes to
