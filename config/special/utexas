@@ -1,4 +1,5 @@
 ## UTEXAS (*LOCAL* -- University of Texas, USA)
+# URL: http://www.utexas.edu/its/usenet/index.php
 newgroup:fletcher@cs.utexas.edu:utexas.*:doit
 newgroup:news@geraldo.cc.utexas.edu:utexas.*:doit
 newgroup:fletcher@cs.utexas.edu:utexas*class.*:mail

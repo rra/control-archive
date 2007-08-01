@@ -1,4 +1,5 @@
 ## UT (*LOCAL* -- University of Toronto, Canada)
-# newgroup:news@ecf.toronto.edu:ut.*:doit
-# newgroup:news@ecf.toronto.edu:ut.class.*:mail
-# rmgroup:news@ecf.toronto.edu:ut.*:doit
+# URL: http://www.utoronto.ca/ns/utornews/
+#newgroup:news@ecf.toronto.edu:ut.*:doit
+#newgroup:news@ecf.toronto.edu:ut.class.*:mail
+#rmgroup:news@ecf.toronto.edu:ut.*:doit
