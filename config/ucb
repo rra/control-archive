@@ -5,5 +5,8 @@ type: public
 description: "University of California Berkeley, USA"
 sender: [ usenet@agate.berkeley.edu ]
 contact: [ "Chris van den Berg <usenet@agate.berkeley.edu>" ]
+url: "http://www.net.berkeley.edu/usenet/"
 pgp: yes
 key-id: ucb.news
+key-fingerprint: "96 B8 8E 9A 98 09 37 7D  0E EC 81 88 DB 90 29 BF"
+key-url: "http://www.net.berkeley.edu/usenet/usenet.asc"
