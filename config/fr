@@ -2,7 +2,7 @@ id: "$Id$"
 hierarchy: FR
 groups: fr.*
 type: public
-description: "French Language"
+description: "French language"
 sender: [ control@usenet-fr.news.eu.org ]
 url: "http://www.usenet-fr.news.eu.org/"
 pgp: yes
