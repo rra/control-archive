@@ -1,0 +1,14 @@
+id: "$Id$"
+hierarchy: HR
+groups: hr.*
+type: public
+description: "Croatian language"
+sender: [ newsmaster@carnet.hr ]
+contact: [ newsmaster@carnet.hr ]
+url: "http://newsfeed.carnet.hr/control/"
+sync-server: news.carnet.hr
+pgp: yes
+key-id: newsmaster@carnet.hr
+key-url: "http://newsfeed.carnet.hr/control/key.txt"
+key-fingerprint: "0EE5 74FB 1C40 7ADB 0AAC  A52F 7192 1BA3 ED63 AD9A"
+admin-group: hr.news.admin
