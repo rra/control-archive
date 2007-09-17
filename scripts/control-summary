@@ -121,21 +121,15 @@ sub report {
         @actions = grep { (split ' ')[4] !~ /$exclude/ } @actions;
     }
 
-    # There are no descriptions maintained for this hierarchy.  This is a
-    # hack; fix it later.
-    @actions = grep {
-        my ($action, $group) = (split ' ')[3,4];
-        $group !~ /^microsoft\./ || $action ne 'changedesc';
-    } @actions;
-
-    # Sort the actions out into their own lists.
-    my (@newgroup, @rmgroup, @changedesc, @changegroup);
+    # Sort the actions out into their own lists.  Use hash tables so that we
+    # don't report the same action on the same group twice.
+    my (%newgroup, %rmgroup, %changedesc, %changegroup);
     for (@actions) {
         my ($action, $group) = (split ' ')[3,4];
-        if    ($action eq 'newgroup')    { push (@newgroup,    $group) }
-        elsif ($action eq 'rmgroup')     { push (@rmgroup,     $group) }
-        elsif ($action eq 'changedesc')  { push (@changedesc,  $group) }
-        elsif ($action eq 'changegroup') { push (@changegroup, $group) }
+        if    ($action eq 'newgroup')    { $newgroup{$group}    = 1 }
+        elsif ($action eq 'rmgroup')     { $rmgroup{$group}     = 1 }
+        elsif ($action eq 'changedesc')  { $changedesc{$group}  = 1 }
+        elsif ($action eq 'changegroup') { $changegroup{$group} = 1 }
         else { warn "$0: cannot parse action $action\n" }
     }
 
@@ -147,10 +141,10 @@ sub report {
 
     # Trim out changes that have been reversed or are no longer applicable
     # and sort the groups.
-    @newgroup    = sort grep { defined $db{$_} } @newgroup;
-    @changegroup = sort grep { defined $db{$_} } @changegroup;
-    @changedesc  = sort grep { defined $db{$_} } @changedesc;
-    @rmgroup     = sort grep { not defined $db{$_} } @rmgroup;
+    my @newgroup    = sort grep {  defined $db{$_} } keys %newgroup;
+    my @changegroup = sort grep {  defined $db{$_} } keys %changegroup;
+    my @changedesc  = sort grep {  defined $db{$_} } keys %changedesc;
+    my @rmgroup     = sort grep { !defined $db{$_} } keys %rmgroup;
 
     # Generate the report.
     my $report = '';
