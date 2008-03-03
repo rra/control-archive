@@ -1,0 +1,14 @@
+id: "$Id$"
+hierarchy: AIOE
+groups: aioe.*
+type: public
+description: Aioe.org
+sender: [ usenet@aioe.org ]
+contact: [ usenet@aioe.org ]
+url: "http://news.aioe.org/hierarchy/"
+pgp: yes
+key-id: usenet@aioe.org
+key-fingerprint: "2203 1AAC 51E7 C7FD 664F  1D80 90DF 6C71 2322 A7F8"
+key-url: "http://news.aioe.org/hierarchy/aioe.txt"
+admin-group: aioe.system
+sync-server: nntp.aioe.org
