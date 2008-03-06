@@ -1,0 +1,8 @@
+id: "$Id$"
+hierarchy: LUEBECK
+groups: luebeck.*
+type: public
+description: "Luebeck, Germany"
+sender: [ usenet@zybrkat.org ]
+contact: [ usenet@zybrkat.org ]
+admin-group: luebeck.admin
