@@ -1,0 +1,11 @@
+id: $Id$
+hierarchy: "DEMON"
+groups: demon.*
+type: public
+description: "Demon Internet, UK"
+sender: [ newsmaster@demon.net ]
+contact: [ newsmaster@demon.net ]
+pgp: yes
+key-id: demon.news
+key-url: "ftp://ftp.demon.co.uk/pub/news/doc/demon.news.txt"
+admin-group: demon.news
