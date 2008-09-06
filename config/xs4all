@@ -3,5 +3,5 @@ hierarchy: XS4ALL
 groups: xs4all.*
 type: public
 description: "XS4ALL, Netherlands"
-sender: [ news@*xs4all.nl ]
-contact: [ "Cor Bosman <news@xs4all.nl>" ]
+sender: [ news@xs4all.nl ]
+contact: [ "XS4ALL Newsmaster <news@xs4all.nl>" ]
