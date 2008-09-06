@@ -1,0 +1,6 @@
+id: "$Id$"
+hierarchy: NEWS4US
+groups: news4us.*
+type: local
+description: "NEWS4US dot NL, Netherlands"
+contact: [ info@news4us.nl ]
