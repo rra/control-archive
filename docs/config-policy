@@ -149,6 +149,19 @@ NEW HIERARCHIES
   control messages, you also need to send us the public key or a pointer
   to where it can be found.
 
+  There are several legacy hierarchies that allow control messages from
+  anyone in a certain region, and two (alt.* and free.*) that allow
+  control messages from anyone.  Given rampant abuse of this capability,
+  new hierarchies that allow anyone to send control messages will not be
+  added without extremely compelling justification.  If the intention is
+  to create a hierarchy in which anyone in a particular region or with a
+  particular affiliation can create a group, we strongly recommend still
+  using a central control message sender with PGP-signed control messages
+  (possibly automated) and providing some way for people with the
+  appropriate affiliation to request that it add a new group.  Otherwise,
+  the hierarchy is likely to fill with junk groups that will never be
+  used.
+
 THE NEWSGROUPS FILE
 
   The newsgroups file is maintained by using the "For your newsgroups
