@@ -193,7 +193,7 @@ sub generate_config {
         }
         $action = "verify-$$config{'key-id'}";
     }
-    if ($$config{type} eq 'public') {
+    if ($$config{type} eq 'public' || $$config{type} eq 'historic') {
         for my $type (qw/checkgroups newgroup rmgroup/) {
             my $sender = $$config{"$type-sender"} || $$config{sender};
             next unless $sender;
