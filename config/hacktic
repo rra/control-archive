@@ -1,0 +1,8 @@
+id: "$Id$"
+hierarchy: HACKTIC
+groups: hacktic.*
+type: historic
+description: "XS4ALL, Netherlands"
+sender: [ news@zhaum.xs4all.nl ]
+pgp: yes
+key-id: news@zhaum.xs4all.nl
