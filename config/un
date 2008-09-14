@@ -1,7 +1,7 @@
 id: "$Id$"
 hierarchy: UN
 groups: un.*
-type: public
+type: historic
 description: "The United Nations"
 sender: [ news@news.itu.int ]
 pgp: yes
