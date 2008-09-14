@@ -1,5 +1,5 @@
                          GROUP CREATION POLICIES
-                        Last modified: 2008-09-11
+                        Last modified: 2008-09-14
 
   (This document was originally written by David Lawrence, but has since
   been updated and is currently maintained by Russ Allbery.  For all
@@ -22,6 +22,11 @@
   discrepancies with other authoritative lists are pointed out.  Please
   send mail to usenet-config@isc.org if you have such a discrepancy to
   point out.
+
+  For a friendlier view of the information in this directory, including
+  relevant log messages and recent changes, see:
+
+    <http://usenet.trigofacile.com/hierarchies/>
 
   Given the volume of Usenet control messages and the number of
   hierarchies publicly available, some intentional, some not, it is

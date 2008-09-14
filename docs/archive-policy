@@ -1,5 +1,5 @@
                      CONTROL MESSAGE ARCHIVE POLICIES
-                        Last modified: 2003-05-17
+                        Last modified: 2008-09-14
 
   This document describes the policies by which the archive of control
   messages in this directory <ftp://ftp.isc.org/pub/usenet/control/> are
@@ -92,3 +92,16 @@ HOW THE ARCHIVES ARE MAINTAINED
 
   If you have any questions or comments about the archive, please send
   them to usenet-config@isc.org.
+
+OTHER RESOURCES
+
+  For one set of currently active newsgroups in various hierarchies and
+  information about control message issuers for different hierarchies,
+  see:
+
+    <ftp://ftp.isc.org/pub/usenet/CONFIG/>
+
+  For a friendlier unified view of information about known hierarchies,
+  including links to specific archive files, see:
+
+    <http://usenet.trigofacile.com/hierarchies/>
