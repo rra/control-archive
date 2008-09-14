@@ -78,7 +78,13 @@
 ##     contacted the listed contact address and arranged a feed.
 ##
 ##     If you have permission to carry any of the hierarchies so listed in
-##     this file, you should change the entries for those hierarchies below.
+##     this file, you should change the entries for those hierarchies
+##     below. 
+##
+##   * Some hierarchies are marked as *HISTORIC*.  These hierarchies
+##     aren't entirely defunct, but they are very low-traffic, not widely
+##     read or carried, and may not be worth carrying.  If you don't intend
+##     to carry them, comment out their entries.
 ##
 ##  The comments of this file aren't in any formal or well-defined syntax,
 ##  but they are meant to use a consistent syntax to allow eventual parsing
