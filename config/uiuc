@@ -1,6 +1,6 @@
 id: "$Id$"
 hierarchy: UIUC
 groups: uiuc.*
-type: local
+type: defunct
 description: "University of Illinois at Urbana-Champaign, USA"
 contact: [ news@ks.uiuc.edu ]
