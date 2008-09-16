@@ -1,7 +1,7 @@
 id: "$Id$"
 hierarchy: "EFN & EUG"
 groups: efn.*|eug.*
-type: public
+type: historic
 description: "Eugene Free Computer Network, Eugene/Springfield, Oregon, USA"
 sender: [ newsadmin@efn.org ]
 pgp: yes

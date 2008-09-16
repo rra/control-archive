@@ -1,7 +1,7 @@
 id: "$Id$"
 hierarchy: EASYNET
 groups: easynet.*
-type: public
+type: historic
 description: "Easynet PLC, UK"
 sender: [ newsmaster@easynet.net ]
 contact: [ "Christiaan Keet <newsmaster@easynet.net>" ]

@@ -1,7 +1,7 @@
 id: "$Id$"
 hierarchy: HUMANITYQUEST
 groups: humanityquest.*
-type: public
+type: historic
 description: "Humanities discussion"
 sender: [ news-admin@humanityquest.com ]
 contact: [ news-admin@humanityquest.com ]
