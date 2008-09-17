@@ -3,9 +3,9 @@ hierarchy: US
 groups: us.*
 type: public
 description: "United States of America"
-sender: [ control@usenetnews.us ]
+sender: [ us-control@lists.killfile.org ]
 contact: [ us-control@lists.killfile.org ]
 admin-group: us.config
 pgp: yes
-key-id: us.control@lists.killfile.org
+key-id: us-control@lists.killfile.org
 key-fingerprint: "BB96 EB2C CFD0 75C8 E9DE  C2C2 1DA2 9D87 B73C AF1B"
