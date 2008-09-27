@@ -1,5 +1,5 @@
 id: "$Id$"
-hierarchy: "GER & HANNET & HANNOVER & HILDESHEIM & HISS"
+hierarchy: "GER & HANNOVER & HANNET & HILDESHEIM & HISS"
 groups: ger.*|hannover.*|hannet.*|hildesheim.*|hiss.*
 type: public
 description: "Hannover, Germany"
