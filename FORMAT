@@ -1,5 +1,9 @@
+This is the format for the configuration files in config (excluding the
+special files in config/special, which are used verbatim).  The
+configuration files are read by scripts/generate-files.
+
 hierarchy: (abbreviated hierarchy name, all caps)
-type: [ public | private | local | defunct ]
+type: [ public | private | local | defunct | historic ]
 description: (short English description)
 groups: (shell case pattern for hierarchy)
 sender: (vector of patterns matching control message sender)
@@ -9,8 +13,15 @@ checkgroups-sender: (vector of patterns matching checkgroups sender)
 contact: (vector of contact addresses)
 url: (hierarchy URL)
 pgp: [ yes | no ]
+non-pgp-drop: [ yes | no ]
 key-id: (user ID of PGP key)
 key-url: (URL for PGP key for hierarchy)
 key-fingerprint: (fingerprint of PGP key)
 key-mail: (instructions for obtaining the key via e-mail)
 sync-server: (news server allowing LIST)
+
+This format cannot handle different rules for particular sub-hierarchies
+without giving them entirely separate entries, and the actions are
+determined by the hierarchy type.  It also doesn't have a way of adding an
+extended comment description some special situation for a hierarchy.
+Those restrictions are the reason for many of the special entries.
