@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: SLAC
 groups: slac.*
 type: private

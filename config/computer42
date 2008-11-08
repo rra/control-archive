@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: COMPUTER42
 groups: computer42.*
 type: public

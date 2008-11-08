@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: IA
 groups: ia.*
 type: public

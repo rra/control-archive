@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: FINET
 groups: finet.*
 type: public

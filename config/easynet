@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: EASYNET
 groups: easynet.*
 type: historic

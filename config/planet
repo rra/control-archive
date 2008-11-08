@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: PLANET
 groups: planet.*
 type: local

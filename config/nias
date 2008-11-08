@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: NIAS
 groups: nias.*
 type: public

@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: STL
 groups: stl.*
 type: public

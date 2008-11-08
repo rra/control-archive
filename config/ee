@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: EE
 groups: ee.*
 type: public

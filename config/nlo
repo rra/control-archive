@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: NLO
 groups: nlo.*
 type: public

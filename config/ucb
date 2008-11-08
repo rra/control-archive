@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: UCB
 groups: ucb.*
 type: public

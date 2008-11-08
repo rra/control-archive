@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: YORK
 groups: york.*
 type: local

@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: WA
 groups: wa.*
 type: public

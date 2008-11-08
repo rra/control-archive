@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: PGH
 groups: pgh.*
 type: public

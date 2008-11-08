@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: BIZ
 groups: biz.*
 type: public

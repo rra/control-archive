@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: KWNET
 groups: kwnet.*
 type: local

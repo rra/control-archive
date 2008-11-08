@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: UFRA
 groups: ufra.*
 type: public

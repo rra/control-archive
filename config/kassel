@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: KASSEL
 groups: kassel.*
 type: public

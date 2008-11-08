@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: MEDLUX
 groups: medlux.*
 type: public

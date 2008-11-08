@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: NCTU
 groups: nctu.*
 type: public

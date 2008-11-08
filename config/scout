@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: SCOUT
 groups: scout.*
 type: public

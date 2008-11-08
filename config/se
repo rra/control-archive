@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: SE
 groups: se.*
 type: public

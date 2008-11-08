@@ -1,5 +1,4 @@
 #!/usr/bin/perl -w
-$ID = q$Id$;
 #
 # update-control -- Manually update the newsgroup database.
 #

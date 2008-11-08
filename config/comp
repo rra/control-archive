@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: COMP, HUMANITIES, MISC, NEWS, REC, SCI, SOC, TALK
 groups: comp.*|humanities.*|misc.*|news.*|rec.*|sci.*|soc.*|talk.*
 type: public

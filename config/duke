@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: DUKE
 groups: duke.*
 type: local

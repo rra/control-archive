@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: KANTO
 groups: kanto.*
 type: public

@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: CODEWARRIOR
 groups: codewarrior.*
 type: public

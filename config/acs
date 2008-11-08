@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: "ACS & OSU"
 groups: acs.*|osu.*
 type: local

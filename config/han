@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: HAN
 groups: han.*
 type: public

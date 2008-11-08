@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: TX
 groups: tx.*
 type: public

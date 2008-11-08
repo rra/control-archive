@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: TAOS
 groups: taos.*
 type: public

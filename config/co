@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: CO
 groups: co.*
 type: public

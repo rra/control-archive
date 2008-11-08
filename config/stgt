@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: STGT
 groups: stgt.*
 type: public

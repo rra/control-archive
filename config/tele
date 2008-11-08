@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: TELE
 groups: tele.*
 type: local

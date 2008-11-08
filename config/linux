@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: LINUX
 groups: linux.*
 type: public

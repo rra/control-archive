@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: SOLENT
 groups: solent.*
 type: public

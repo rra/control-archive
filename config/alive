@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: ALIVE
 groups: alive.*
 type: defunct

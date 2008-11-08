@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: COURTS
 groups: courts.*
 type: defunct

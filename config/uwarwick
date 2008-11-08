@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: UWARWICK
 groups: uwarwick.*
 type: local

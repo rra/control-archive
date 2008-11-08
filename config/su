@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: SU
 groups: su.*
 type: local

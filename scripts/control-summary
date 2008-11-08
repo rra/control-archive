@@ -1,5 +1,4 @@
 #!/usr/bin/perl -w
-$ID = q$Id$;
 #
 # control-summary -- Send a summary of control activity.
 #
@@ -347,16 +346,10 @@ GetOptions ('address|a=s'          => \$address,
             'post|p'               => \$post,
             'raw|r'                => \$raw,
             'template|t=s'         => \$template,
-            'weekly|w'             => \$weekly,
-            'version|v'            => \$version) or exit 1;
+            'weekly|w'             => \$weekly) or exit 1;
 if ($help) {
     print "Feeding myself to perldoc, please wait....\n";
     exec ('perldoc', '-t', $fullpath);
-} elsif ($version) {
-    my $version = join (' ', (split (' ', $ID))[1..3]);
-    $version =~ s/,v\b//;
-    $version =~ s/(\S+)$/($1)/;
-    die $version, "\n";
 }
 die "$0: too many arguments given\n" if (@ARGV > 2);
 $address   ||= $ADDRESS;
@@ -393,7 +386,7 @@ control-summary - Send a summary report of control activity
 
 =head1 SYNOPSIS
 
-control-summary [B<-hnprwv>] [B<-a> I<address>] [B<-g> I<newsgroup>]
+control-summary [B<-hnprw>] [B<-a> I<address>] [B<-g> I<newsgroup>]
 [B<-t> I<template>] [[I<start>] I<date>]
 
 =head1 DESCRIPTION
@@ -476,10 +469,6 @@ If no or only one date is specified on the command line, use a week as the
 default interval instead of a day.  In other words, if no dates are
 specified, the report will be for the previous week.  If one date is
 specified, the report will be for the week following that date.
-
-=item B<-v>, B<--version>
-
-Print out the version of B<control-summary> and exit.
 
 =back
 

@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: BIRK
 groups: birk.*
 type: local

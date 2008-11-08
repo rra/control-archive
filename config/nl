@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: NL
 groups: nl.*
 type: public

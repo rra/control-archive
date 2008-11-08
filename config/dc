@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: DC
 groups: dc.*
 type: public

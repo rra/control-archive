@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: NCU
 groups: ncu.*
 type: local

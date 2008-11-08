@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: CANB
 groups: canb.*
 type: public

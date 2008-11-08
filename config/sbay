@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: SBAY
 groups: sbay.*
 type: public

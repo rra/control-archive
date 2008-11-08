@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: EUNET
 groups: eunet.*
 type: public

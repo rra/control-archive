@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: MENSA
 groups: mensa.*
 type: public

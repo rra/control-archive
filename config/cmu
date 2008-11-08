@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: CMU
 groups: cmu.*
 type: local

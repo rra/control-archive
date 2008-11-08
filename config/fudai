@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: FUDAI
 groups: fudai.*
 type: public

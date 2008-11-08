@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: UCD
 groups: ucd.*
 type: public

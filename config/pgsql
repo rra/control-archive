@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: PGSQL
 groups: pgsql.*
 type: public

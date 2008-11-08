@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: PIPEX
 groups: pipex.*
 type: public

@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: HAMILTON
 groups: hamilton.*
 type: public

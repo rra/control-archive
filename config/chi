@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: CHI
 groups: chi.*
 type: public

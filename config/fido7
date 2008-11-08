@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: FIDO7
 groups: fido7.*
 type: public

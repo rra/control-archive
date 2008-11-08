@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: HFX
 groups: hfx.*
 type: public

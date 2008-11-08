@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: PSU
 groups: psu.*
 type: local

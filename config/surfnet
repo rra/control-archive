@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: SURFNET
 groups: surfnet.*
 type: public

@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: SUNET
 groups: sunet.*
 type: public

@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: CU
 groups: cu.*
 type: local

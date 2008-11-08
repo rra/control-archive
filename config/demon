@@ -1,4 +1,3 @@
-id: $Id$
 hierarchy: "DEMON"
 groups: demon.*
 type: public

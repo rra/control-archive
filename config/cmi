@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: CMI
 groups: cmi.*
 type: local

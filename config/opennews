@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: OPENNEWS
 groups: opennews.*
 type: public

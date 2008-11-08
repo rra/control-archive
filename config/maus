@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: MAUS
 groups: maus.*
 type: public

@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: HIV
 groups: hiv.*
 type: public

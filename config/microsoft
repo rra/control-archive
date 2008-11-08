@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: MICROSOFT
 groups: microsoft.*
 type: public

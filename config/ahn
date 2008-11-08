@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: AHN
 groups: ahn.*
 type: public

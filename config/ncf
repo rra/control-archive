@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: NCF
 groups: ncf.*
 type: local

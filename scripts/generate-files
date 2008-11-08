@@ -1,5 +1,4 @@
 #!/usr/bin/perl -w
-$ID = q$Id$;
 #
 # generate-files -- Generate config and doc files from hierarchy configs.
 #

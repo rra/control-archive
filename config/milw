@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: MILW
 groups: milw.*
 type: public

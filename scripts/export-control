@@ -1,5 +1,4 @@
 #!/usr/bin/perl -w
-$ID = q$Id$;
 #
 # export-control -- Export the newsgroup database as an active file.
 #

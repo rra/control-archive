@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: TAMU
 groups: tamu.*
 type: public

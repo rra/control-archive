@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: CA
 groups: ca.*
 type: public

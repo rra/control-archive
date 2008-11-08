@@ -1,5 +1,4 @@
 #!/usr/bin/perl -w
-$ID = q$Id$;
 #
 # parse-ctl -- Parse a control.ctl file into hierarchy config files.
 #
@@ -58,7 +57,6 @@ sub write_entry {
     $filename =~ s/,? .*//;
     open (ENTRY, "> config/$filename")
         or die "Cannot create config/$filename: $!\n";
-    print ENTRY 'id: ' . "\$" . 'Id' . "\$" . "\n";
     for (qw/hierarchy groups type description sender newgroup-sender
             rmgroup-sender checkgroups-sender contact url pgp key-id
             key-fingerprint key-url key-mail sync-server/) {

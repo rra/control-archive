@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: TUM
 groups: tum.*
 type: public

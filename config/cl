@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: CL
 groups: cl.*
 type: private

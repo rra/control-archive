@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: LAW
 groups: law.*
 type: public

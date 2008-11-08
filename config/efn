@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: "EFN & EUG"
 groups: efn.*|eug.*
 type: historic

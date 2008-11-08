@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: BOFH
 groups: bofh.*
 type: private

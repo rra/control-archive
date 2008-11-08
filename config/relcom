@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: RELCOM
 groups: relcom.*
 type: public

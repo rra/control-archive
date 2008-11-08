@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: CONCORDIA
 groups: concordia.*
 type: public

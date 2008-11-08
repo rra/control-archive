@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: TCFN
 groups: tcfn.*
 type: public

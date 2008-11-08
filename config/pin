@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: PIN
 groups: pin.*
 type: public

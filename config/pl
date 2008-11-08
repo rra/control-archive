@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: PL
 groups: pl.*
 type: public

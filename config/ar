@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: AR
 groups: ar.*
 type: public

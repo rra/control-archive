@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: PBINFO
 groups: pbinfo.*
 type: public

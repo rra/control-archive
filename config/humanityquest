@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: HUMANITYQUEST
 groups: humanityquest.*
 type: historic

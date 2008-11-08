@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: WPI
 groups: wpi.*
 type: local

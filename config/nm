@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: NM
 groups: nm.*
 type: public

@@ -1,5 +1,4 @@
 #!/bin/sh
-# $Id$
 #
 # weekly-report -- Run control-summary to produce the news.lists.misc report.
 #

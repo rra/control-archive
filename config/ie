@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: IE
 groups: ie.*
 type: public

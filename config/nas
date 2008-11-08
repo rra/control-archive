@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: NAS
 groups: nas.*
 type: local

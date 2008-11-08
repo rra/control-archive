@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: KC
 groups: kc.*
 type: public

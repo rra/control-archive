@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: BLGTN
 groups: blgtn.*
 type: public

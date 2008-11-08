@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: VGC
 groups: vgc.*
 type: public

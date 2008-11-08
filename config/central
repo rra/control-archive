@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: CENTRAL
 groups: central.*
 type: local

@@ -1,5 +1,4 @@
 #!/usr/bin/perl -w
-$ID = q$Id$;
 #
 # process-control -- Process Usenet control messages to maintain a database.
 #

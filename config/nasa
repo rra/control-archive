@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: NASA
 groups: nasa.*
 type: local

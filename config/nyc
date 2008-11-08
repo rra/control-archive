@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: NYC
 groups: nyc.*
 type: public

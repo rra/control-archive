@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: ADASS
 groups: adass.*
 type: public

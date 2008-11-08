@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: UTA
 groups: uta.*
 type: public

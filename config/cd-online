@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: CD-ONLINE
 groups: cd-online.*
 type: local

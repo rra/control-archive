@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: BLN
 groups: bln.*
 type: public

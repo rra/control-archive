@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: ARC
 groups: arc.*
 type: local

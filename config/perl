@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: PERL
 groups: perl.*
 type: public

@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: CN.BBS
 groups: cn.bbs.*
 type: public

@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: AZ
 groups: az.*
 type: public

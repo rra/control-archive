@@ -1,4 +1,3 @@
-id: "$Id$"
 hierarchy: NIAGARA
 groups: niagara.*
 type: public
