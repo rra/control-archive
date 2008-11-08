@@ -1,7 +1,0 @@
-## WEST-VIRGINIA (West Virginia, USA)
-# Note: checkgroups only by bryan27, not mark.
-checkgroups:bryan27@hgo.net:west-virginia.*:doit
-newgroup:mark@bluefield.net:west-virginia.*:doit
-newgroup:bryan27@hgo.net:west-virginia.*:doit
-rmgroup:mark@bluefield.net:west-virginia.*:doit
-rmgroup:bryan27@hgo.net:west-virginia.*:doit

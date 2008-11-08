@@ -1,0 +1,6 @@
+hierarchy: WEST-VIRGINIA
+groups: west-virginia.*
+type: public
+description: "West Virginia, USA"
+sender: [ mark@bluefield.net bryan27@hgo.net ]
+checkgroups-sender: [ bryan27@hgo.net ]
