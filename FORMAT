@@ -17,7 +17,6 @@ non-pgp-drop: [ yes | no ]
 key-id: (user ID of PGP key)
 key-url: (URL for PGP key for hierarchy)
 key-fingerprint: (fingerprint of PGP key)
-key-mail: (instructions for obtaining the key via e-mail)
 sync-server: (news server allowing LIST)
 
 This format cannot handle different rules for particular sub-hierarchies
