@@ -447,7 +447,7 @@ script, so be careful with moderated groups.
 Don't format the report and include the newsgroup descriptions.  Instead,
 just print out the actions from the logs.
 
-=item B<-t> I<template, B<--template>=I<template>
+=item B<-t> I<template>, B<--template>=I<template>
 
 Rather than using the simple mail or news message format defined in the
 script, generate the mail or news message from I<template>.  This template
