@@ -8,6 +8,10 @@ Processing:
    headers to look at, what rate at which to throttle, and how to
    configure it).  The need for this seems to have decreased lately.
 
+ * process-control should support using sm to retrieve the article if
+   instead of a path it gets a storage API token.  This would let it run
+   as a channel feed from a current innd.
+
 Configuration:
 
  * If PGP-enabled hierarchies marked PRIVATE included the verification
