@@ -6,5 +6,5 @@
 # that's posted to news.lists.misc.  It calls control-summary with the right
 # flags to use the appropriate template and so forth.
 
-/work/usenet/config/scripts/control-summary -e '^(alt|free)\.' -p \
-    -t /work/usenet/config/templates/control-report -w
+/srv/control/scripts/control-summary -e '^(alt|free)\.' -p \
+    -t /srv/control/templates/control-report -w
