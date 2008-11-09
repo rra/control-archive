@@ -1,0 +1,6 @@
+Files in this directory are Text::Template templates intended for use with
+scripts/control-summary.  See the documentation of that script for
+information about supported variables.  Please do not use this template
+as-is with a new installation, since it will post messages to
+news.lists.misc that duplicate the weekly messages already posted there.
+It is provided only as an example.
