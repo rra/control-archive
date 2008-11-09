@@ -2,7 +2,7 @@
 #
 # parse-ctl -- Parse a control.ctl file into hierarchy config files.
 #
-# Copyright 2002 Russ Allbery <rra@stanford.edu>
+# Copyright 2002, 2008 Russ Allbery <rra@stanford.edu>
 #
 # This program is free software; you may redistribute it and/or modify it
 # under the same terms as Perl itself.
@@ -248,3 +248,55 @@ sub parse_file {
 die "Usage: parse-ctl <file>\n" unless @ARGV == 1;
 parse_file ($ARGV[0]);
 exit;
+
+##############################################################################
+# Documentation
+##############################################################################
+
+=head1 NAME
+
+parse-ctl - Parse a control.ctl file into hierarchy config files
+
+=head1 SYNOPSIS
+
+B<parse-ctl> I<control.ctl>
+
+=head1 DESCRIPTION
+
+B<parse-ctl> reads a F<control.ctl> file and attempts to parse it into
+configuration fragments.  It creates a F<config> directory in the current
+directory and writes those fragments into that directory, named after the
+hierarchy for which they contain information.  Any entries that can't be
+parsed are stored verbatim in a F<config/special> directory, which is also
+created by this script.  This is the structure used as input to the
+B<generate-files> program.
+
+=head1 CAVEATS
+
+This program was written while I was bootstrapping the new Netnews control
+message processing and archiving system as a one-shot conversion process
+from the old global F<control.ctl> file.  I tweaked it to meet my needs at
+the time and then ran it once, and since then the configuration files have
+been edited and new features have been added that are not present in this
+script.  You should not expect to be able to generate the current
+F<config> tree from the current F<control.ctl> file using this script.
+
+This script is provided just in case it might prove useful for importing
+new data, and in case anyone wishes to update it or refer to it.
+
+=head1 SEE ALSO
+
+control.ctl(5), generate-files(1)
+
+=head1 AUTHOR
+
+Russ Allbery <rra@stanford.edu>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2002, 2008 Russ Allbery <rra@stanford.edu>
+
+This program is free software; you may redistribute it and/or modify it
+under the same terms as Perl itself.
+
+=cut
