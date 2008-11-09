@@ -574,7 +574,7 @@ hierarchy keys are not self-signed.
 
 =head1 SEE ALSO
 
-actsync(8), gpg(1), uwildmat(3)
+actsync(8), control.ctl(5), gpg(1), uwildmat(3)
 
 =head1 AUTHOR
 
