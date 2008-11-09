@@ -15,10 +15,9 @@
 # Modules and declarations
 ##############################################################################
 
-require 5.004;
+require 5.006;
 
 use strict;
-use vars qw($ID);
 
 use POSIX qw(strftime);
 use Text::Wrap qw(wrap);

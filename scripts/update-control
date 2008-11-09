@@ -2,7 +2,7 @@
 #
 # update-control -- Manually update the newsgroup database.
 #
-# Copyright 2003, 2006 Russ Allbery <rra@stanford.edu>
+# Copyright 2003, 2006, 2008 Russ Allbery <rra@stanford.edu>
 #
 # This program is free software; you may redistribute it and/or modify it
 # under the same terms as Perl itself.
@@ -12,10 +12,10 @@
 ##############################################################################
 
 # Path to the active newsgroup database.
-$ACTIVE = '/work/usenet/config/active.db';
+our $ACTIVE = '/srv/control/active.db';
 
 # The log file into which to record actions taken.
-$LOGBASE = '/work/usenet/config/logs/log';
+our $LOGBASE = '/srv/control/logs/log';
 
 ##############################################################################
 # Modules and declarations
@@ -24,7 +24,6 @@ $LOGBASE = '/work/usenet/config/logs/log';
 require 5.006;
 
 use strict;
-use vars qw($ACTIVE $ID $LOG $LOGBASE);
 use subs qw(log);
 
 use DB_File ();
@@ -305,37 +304,44 @@ update-control bulkload < I<checkgroups>
 =head1 DESCRIPTION
 
 This program supplements B<process-control>, which handles automatic
-processing of control messages, by allowing manual changes to be made to the
-same database, locking properly and making the same sorts of log entries.
+processing of control messages, by allowing manual changes to be made to
+the same database, locking properly and making the same sorts of log
+entries.
 
-newgroup creates a new group with the specified mode (which should be either
-C<y> or C<m>) and description (which for moderated groups must end with
-C<(Moderated)>).  Note that the description generally contains whitespace
-and therefore must be quoted for the shell.  If the newsgroup already exists
-in the database, this command can still be used to change the mode or
-description of the group.
+newgroup creates a new group with the specified mode (which should be
+either C<y> or C<m>) and description (which for moderated groups must end
+with C<(Moderated)>).  Note that the description generally contains
+whitespace and therefore must be quoted for the shell.  If the newsgroup
+already exists in the database, this command can still be used to change
+the mode or description of the group.
 
 rmgroup removes the specified group from the database.
 
-checkgroups applies a checkgroups for the given prefix, which should be the
-common prefix shared by all of the groups in the checkgroups message.  A
-period will be appended to I<prefix> and then only groups in the checkgroups
-that start with that prefix will be processed.  B<update-control> will
-expect on standard input a file in checkgroups format (one line per group,
-in the format:  group name, whitespace, group description; where the
-description ends with C<(Moderated)> if the group is moderated).  Any
-discrepancies with the newsgroup database will be corrected.
+checkgroups applies a checkgroups for the given prefix, which should be
+the common prefix shared by all of the groups in the checkgroups message.
+A period will be appended to I<prefix> and then only groups in the
+checkgroups that start with that prefix will be processed.
+B<update-control> will expect on standard input a file in checkgroups
+format (one line per group in the format group name, whitespace, group
+description, where the description ends with C<(Moderated)> if the group
+is moderated).  Any discrepancies with the newsgroup database will be
+corrected.
 
 bulkload does the same thing as checkgroups except that it doesn't take a
 prefix, processes all groups in its input, refuses to remove groups or
 change the mode or description of existing groups, and doesn't log.  It's
 used for bootstrapping a database from a newsgroups file.
 
+download uses the LIST command to get a list of newsgroups in a particular
+hierarchy from a remote server and prints to standard output a checkgroups
+file for that hierarchy.  It doesn't attempt to retrieve group
+descriptions.
+
 The log messages will also be printed to standard output if any action is
 taken.
 
 Please note that to work properly, B<update-control> has to have write
-permissions to the database and log files, the same as B<process-control>
+permissions to the database and log files, the same as B<process-control>.
 
 =head1 EXAMPLES
 
@@ -373,16 +379,16 @@ B<update-control> as in the previous example.)
 
 =over 4
 
-=item F</work/usenet/config/active.db>
+=item F</srv/control/active.db>
 
 The database of active groups, updated as described above.  It is locked
 against simultaneous access by using fcntl locking on a file by the same
 name but with C<.lock> appended.
 
-=item F</work/usenet/config/logs/log.%Y-%m>
+=item F</srv/control/logs/log.%Y-%m>
 
-Where actions are logged.  %Y is replaced by the current four-digit year and
-%m by the current two digit month.
+Where actions are logged.  %Y is replaced by the current four-digit year
+and %m by the current two digit month.
 
 =back
 
@@ -396,7 +402,7 @@ Russ Allbery <rra@stanford.edu>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2003, 2007 by Russ Allbery <rra@stanford.edu>
+Copyright 2003, 2007, 2008 by Russ Allbery <rra@stanford.edu>
 
 This program is free software; you may redistribute it and/or modify it
 under the same terms as Perl itself.

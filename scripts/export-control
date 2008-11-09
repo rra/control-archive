@@ -2,7 +2,7 @@
 #
 # export-control -- Export the newsgroup database as an active file.
 #
-# Copyright 2003 Russ Allbery <rra@stanford.edu>
+# Copyright 2003, 2008 Russ Allbery <rra@stanford.edu>
 #
 # This program is free software; you may redistribute it and/or modify it
 # under the same terms as Perl itself.
@@ -12,25 +12,24 @@
 ##############################################################################
 
 # Path to the active newsgroup database.
-$ACTIVE = '/work/usenet/config/active.db';
+our $ACTIVE = '/srv/control/active.db';
 
 # Path to the control.ctl file to use.
-$CONTROL = '/work/usenet/config/control.ctl';
+our $CONTROL = '/srv/control/control.ctl';
 
 # The directory in which to look for log files.
-$LOGS = '/work/usenet/config/logs';
+our $LOGS = '/srv/control/logs';
 
 # Directory in which to create the active and newsgroups files.
-$ROOT = '/work/usenet/config/export';
+our $ROOT = '/srv/control/export';
 
 ##############################################################################
 # Modules and declarations
 ##############################################################################
 
-require 5.005;
+require 5.006;
 
 use strict;
-use vars qw($ACTIVE $CONTROL $ID $LOGS $ROOT);
 
 use DB_File ();
 use Fcntl qw(LOCK_EX);
@@ -115,7 +114,7 @@ export-control - Export the newsgroup database as an active file
 
 =head1 SYNOPSIS
 
-export-control
+B<export-control>
 
 =head1 DESCRIPTION
 
@@ -137,25 +136,25 @@ exported to other systems somehow (such as by a web server).
 
 =over 4
 
-=item F</work/usenet/config/active.db>
+=item F</srv/control/active.db>
 
 The database of active groups, updated as described above.  It is locked
 against simultaneous access by using fcntl locking on a file by the same
 name but with C<.lock> appended.
 
-=item F</work/usenet/config/control.ctl>
+=item F</srv/control/control.ctl>
 
 The F<control.ctl> file used by B<process-control> to determine which
 control messages should be applied to the active newsgroups database.  Just
 copied into the export directory by B<export-control>.
 
-=item F</work/usenet/config/export>
+=item F</srv/control/export>
 
 The export directory into which the generated active and newsgroups files
 are put.  Logs are copied into a LOGS subdirectory.  Other files in this
 directory are left untouched.
 
-=item F</work/usenet/config/logs/log.%Y-%m>
+=item F</srv/control/logs/log.%Y-%m>
 
 Where actions are logged by B<process-control> and B<update-control>.  %Y is
 replaced by the current four-digit year and %m by the current two digit
@@ -174,7 +173,7 @@ Russ Allbery <rra@stanford.edu>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2003 by Russ Allbery <rra@stanford.edu>
+Copyright 2003, 2008 by Russ Allbery <rra@stanford.edu>
 
 This program is free software; you may redistribute it and/or modify it
 under the same terms as Perl itself.

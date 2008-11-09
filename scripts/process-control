@@ -14,36 +14,34 @@
 ##############################################################################
 
 # Path to the active newsgroup database.
-$ACTIVE = '/work/usenet/config/active.db';
+our $ACTIVE = '/srv/control/active.db';
 
 # Path to the root of the control message archive.
-$ARCHIVE = '/work/usenet/config/archive';
+our $ARCHIVE = '/srv/control/archive';
 
 # Path to the control.ctl file to use.
-$CONTROL = '/work/usenet/config/control.ctl';
+our $CONTROL = '/srv/control/control.ctl';
 
 # The full path to the gpgv binary.
-$GPGV = '/usr/bin/gpgv';
+our $GPGV = '/usr/bin/gpgv';
 
 # The full path to the GnuPG keyring.
-$KEYRING = '/work/usenet/config/keyring/pubring.gpg';
+our $KEYRING = '/srv/control/keyring/pubring.gpg';
 
 # The log file into which to record actions taken.  The current year and
 # month will be appended.
-$LOGBASE = '/work/usenet/config/logs/log';
+our $LOGBASE = '/srv/control/logs/log';
 
 # The temporary directory to use for PGP verification.
-$TMPDIR = '/work/usenet/config/tmp';
+our $TMPDIR = '/srv/control/tmp';
 
 ##############################################################################
 # Modules and declarations
 ##############################################################################
 
-require 5.005;
+require 5.006;
 
 use strict;
-use vars qw($ACTIVE $ARCHIVE $CONTROL $GPGV $ID $KEYRING $LOG $LOGBASE
-            $TMPDIR);
 use subs qw(log);
 
 use Compress::Zlib qw(gzopen);
@@ -775,14 +773,14 @@ process-control
 B<process-control> processes Usenet control messages, applying the rules
 from a F<control.ctl> file in the same format used by INN, and maintains a
 database of active groups with descriptions.  It also archives control
-messages in gzip format in a central archive and logs all of its actions to
-a log file.
+messages in gzip format in a central archive and logs all of its actions
+to a log file.
 
-It expects to receive on standard input file names and message IDs, one pair
-of file name and message ID per line.  The message ID is optional, but is
-used for logging until the message has been parsed and therefore omitting it
-may result in log messages that have no associated ID.  The file is deleted
-when it has been successfully processed.
+It expects to receive on standard input file names and message IDs, one
+pair of file name and message ID per line.  The message ID is optional,
+but is used for logging until the message has been parsed and therefore
+omitting it may result in log messages that have no associated ID.  The
+file is deleted when it has been successfully processed.
 
 Messages are considered invalid and are discarded (with a log message) if:
 
@@ -796,9 +794,9 @@ control message and is larger than 64KB.
 =item *
 
 The message is syntactically invalid.  This means that it's empty or it
-contains a line in the headers that doesn't fit the syntax of the headers (a
-sequence of printable, non-space ASCII characters followed by a colon and at
-least one space, or a line beginning with whitespace indicating a
+contains a line in the headers that doesn't fit the syntax of the headers
+(a sequence of printable, non-space ASCII characters followed by a colon
+and at least one space, or a line beginning with whitespace indicating a
 continuation of the previous header).
 
 =item *
@@ -811,10 +809,10 @@ Subject, Sender, or X-PGP-Sig are duplicated.
 
 The message is not a newgroup, rmgroup, or checkgroups control message, or
 the Control header doesn't follow the correct syntax for that type of
-control message.  An rmgroup control header must have exactly one argument,
-the name of the newsgroup to remove.  A newgroup control message may have
-two or three; the second must be the name of the newsgroup to create and the
-third, if present, must indicate the group mode.
+control message.  An rmgroup control header must have exactly one
+argument, the name of the newsgroup to remove.  A newgroup control message
+may have two or three; the second must be the name of the newsgroup to
+create and the third, if present, must indicate the group mode.
 
 =item *
 
@@ -824,51 +822,53 @@ begin with either C<y> (unmoderated) or C<m> (moderated).
 =item *
 
 The message is a newgroup control message and the group name to be created
-is longer than 80 octets, contains a character other than those from the set
-[a-z0-9+_.-], begins or ends with a period, does not contain a period,
+is longer than 80 octets, contains a character other than those from the
+set [a-z0-9+_.-], begins or ends with a period, does not contain a period,
 contains two consecutive periods, begins with a character other than a
-lowercase letter, starts with C<control.>, C<example.>, or C<to.>, contains
-a name component (delimited by periods) that is entirely numeric, contains a
-name component (delimited by periods) equal to C<all> or C<ctl> (these have
-special meaning for older servers), or contains a name component that begins
-with a character other than a digit or letter.
+lowercase letter, starts with C<control.>, C<example.>, or C<to.>,
+contains a name component (delimited by periods) that is entirely numeric,
+contains a name component (delimited by periods) equal to C<all> or C<ctl>
+(these have special meaning for older servers), or contains a name
+component that begins with a character other than a digit or letter.
 
 =back
 
-All other messages will be archived.  newgroup and rmgroup control messages
-will be archived in a file named I<hierarchy>/I<group>.gz, where I<group> is
-the affected group and I<hierarchy> is its first component (the part up to
-the first period in the name, if any).  checkgroups control messages will be
-archived in other.ctl/checkgroups.I<year> where I<year> is the current year.
+All other messages will be archived.  newgroup and rmgroup control
+messages will be archived in a file named I<hierarchy>/I<group>.gz, where
+I<group> is the affected group and I<hierarchy> is its first component
+(the part up to the first period in the name, if any).  checkgroups
+control messages will be archived in other.ctl/checkgroups.I<year> where
+I<year> is the current year.
 
 Messages will also be checked against the rules from a F<control.ctl> file
 and messages that, according to the rules in that file, should be acted on
 will result in updates to a database of active groups.  That database is a
-Berkeley DB 1.x file with keys equal to the group names and values of the
+Berkeley DB hash file with keys equal to the group names and values of the
 group mode, a single space, and then the group description.  It is locked
 against concurrent updates.
 
-Messages that F<control.ctl> indicates need to be checked using PGP will be
-passed through GnuPG using the same algorithm as pgpverify and will only be
-processed if the signer matches the required signer in F<control.ctl>.
+Messages that F<control.ctl> indicates need to be checked using PGP will
+be passed through GnuPG using the same algorithm as pgpverify and will
+only be processed if the signer matches the required signer in
+F<control.ctl>.
 
-newgroup messages must have a C<For your newsgroups file:> line in the body,
-followed by a line suitable for a checkgroups message (the group name, some
-whitespace, and the description, containing no control characters).
-C<(Moderated)> will be added to the description if not present for a
-moderated group, and will be removed if present for an unmoderated group.
-For a newgroup message to be acted on, it must also not contain any
-component longer than 30 characters.
+newgroup messages must have a C<For your newsgroups file:> line in the
+body, followed by a line suitable for a checkgroups message (the group
+name, some whitespace, and the description, containing no control
+characters).  C<(Moderated)> will be added to the description if not
+present for a moderated group, and will be removed if present for an
+unmoderated group.  For a newgroup message to be acted on, it must also
+not contain any component longer than 30 characters.
 
-The same constraints on group names mentioned above are also applied to the
-group names in the body of a checkgroups message, and any groups not fitting
-those requirements will be ignored, as will any group that does not have a
-description.  In a checkgroups message, the moderation status of the group
-will be determined by the presence or absence of C<(Moderated)> at the end
-of the description.
+The same constraints on group names mentioned above are also applied to
+the group names in the body of a checkgroups message, and any groups not
+fitting those requirements will be ignored, as will any group that does
+not have a description.  In a checkgroups message, the moderation status
+of the group will be determined by the presence or absence of
+C<(Moderated)> at the end of the description.
 
-Even if a newsgroup already exists, its description and mode will be checked
-and updated by any applicable newgroup or checkgroups message.
+Even if a newsgroup already exists, its description and mode will be
+checked and updated by any applicable newgroup or checkgroups message.
 
 All changes made to the database will be logged, starting with the word
 C<ACTION:>.
@@ -877,34 +877,35 @@ C<ACTION:>.
 
 =over 4
 
-=item F</work/usenet/config/active.db>
+=item F</srv/control/active.db>
 
 The database of active groups, updated as described above.  It is locked
 against simultaneous access by using fcntl locking on a file by the same
 name but with C<.lock> appended.
 
-=item F</work/usenet/config/archive>
+=item F</srv/control/archive>
 
-The root of the control message archive.  It is locked against simultaneous
-writers by using fcntl locking on a file named C<.lock> at the top level.
+The root of the control message archive.  It is locked against
+simultaneous writers by using fcntl locking on a file named C<.lock> at
+the top level.
 
-=item F</work/usenet/config/control.ctl>
+=item F</srv/control/control.ctl>
 
 The F<control.ctl> file used to determine which control messages should be
 applied to the active newsgroups database.
 
-=item F</work/usenet/config/keyring/pubring.gpg>
+=item F</srv/control/keyring/pubring.gpg>
 
-The keyring used to verify PGP-signed control messages.  The user IDs on the
-keys stored in this keyring must match the user IDs expected according to
-the rules in F<control.ctl>.
+The keyring used to verify PGP-signed control messages.  The user IDs on
+the keys stored in this keyring must match the user IDs expected according
+to the rules in F<control.ctl>.
 
-=item F</work/usenet/config/logs/log.%Y-%m>
+=item F</srv/control/logs/log.%Y-%m>
 
-Where actions are logged.  %Y is replaced by the current four-digit year and
-%m by the current two digit month.
+Where actions are logged.  %Y is replaced by the current four-digit year
+and %m by the current two digit month.
 
-=item F</work/usenet/config/tmp>
+=item F</srv/control/tmp>
 
 Used for temporary files for PGP verification.
 
@@ -912,12 +913,13 @@ Used for temporary files for PGP verification.
 
 =head1 AUTHORS
 
-Written by Russ Allbery <rra@stanford.edu>, based B<very> heavily on
-controlchan by Marco d'Itri.  Portions based on pgpverify by David Lawrence.
+Written by Russ Allbery <rra@stanford.edu>, based very heavily on
+controlchan by Marco d'Itri.  Portions based on pgpverify by David
+Lawrence.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2003, 2007 by Russ Allbery <rra@stanford.edu>
+Copyright 2003, 2007, 2008 by Russ Allbery <rra@stanford.edu>
 
 Copyright 2001 by Marco d'Itri <md@linux.it>
 
@@ -926,14 +928,15 @@ Copyright (c) 1996 UUNET Technologies, Inc.  All rights reserved.
 For the controlchan portions:
 
 Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
+modification, are permitted provided that the following conditions are
+met:
 
 =over 3
 
 =item 1.
 
-Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
+Redistributions of source code must retain the above copyright notice,
+this list of conditions and the following disclaimer.
 
 =item 2.
 
@@ -979,13 +982,13 @@ permission.
 
 THIS SOFTWARE IS PROVIDED BY UUNET "AS IS" AND ANY EXPRESS OR IMPLIED
 WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
-EVENT SHALL UUNET BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
-OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN
+NO EVENT SHALL UUNET BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
