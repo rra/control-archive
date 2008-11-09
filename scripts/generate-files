@@ -347,3 +347,244 @@ sub generate_html {
 generate_ctl;
 generate_keys;
 generate_html;
+
+##############################################################################
+# Documentation
+##############################################################################
+
+=head1 NAME
+
+generate-files - Generate config and doc files from hierarchy configs
+
+=head1 SYNOPSIS
+
+B<generate-files>
+
+=head1 DESCRIPTION
+
+B<generate-files> reads hierarchy configuration fragments and PGP keys and
+generates F<control.ctl>, F<PGPKEYS>, and F<README.html> (which is an HTML
+version of the F<PGPKEYS> file and contains the same information) in the
+current directory.  It is meant to be run from the root directory of a
+configuration tree for Netnews control messages.
+
+=head1 CONFIG FILE FORMAT
+
+The main source of input to this script is a directory of configuration
+fragments in F<config/>.  The format of those fragments is intended to be
+compatible with the new configuration syntax supported by INN (but not
+generally used within INN, at least yet).  If you have an INN source tree
+available, see F<doc/config-*> in the INN source for more details.
+
+Briefly, the format consists of key/value pairs in one of the following
+two formats:
+
+    <key>: <value>
+    <key>: [ <value> <value> ... ]
+
+In other words, keys take a single value or multiple values enclosed in
+square brackets and separated by whitespace.  The second form is called a
+vector.  Values that contain colons, whitespace, or double quotes must be
+enclosed in double quotes.  Values may not contain double quotes and
+escaping isn't implemented inside values.  Boolean values can be set with
+C<yes>, C<on>, or C<true> and C<no>, C<off>, or C<false>.
+
+The following keys are recognized:
+
+=over 4
+
+=item hierarchy
+
+The abbreviated hierarchy name, used for the heading of the corresponding
+F<control.ctl> entry.  This should conventionally be the group prefix of
+the hierarchy without a leading period and in all caps.  If this
+configuration file governs multiple hierarchies, each hierarchy should be
+listed separated by S<C< & >>; for example, C<FOO & BAR & BAZ> for a
+configuration file for C<foo.*>, C<bar.*>, and C<baz.*>.
+
+=item type
+
+The type of the hierarchy.  This should be one of public, private, local,
+defunct, or historic.  Public and historic hierarchies will generate
+F<control.ctl> entries that honor the control messages.  All others will
+generate F<control.ctl> entries with an action of C<mail> for newgroup
+messages and an action of C<doit> for rmgroup messages.
+
+=item description
+
+A short English description of the hierarchy.
+
+=item groups
+
+The F<control.ctl> pattern for the affected hierarchies.  This is one or
+more wildmat patterns separated by C<|>.
+
+=item sender
+
+A vector of wildmat patterns matching control message senders.  Even if
+there is only one control message sender for this hierarchy, it must be
+given in the form of a vector (enclosed in square brackets).  This by
+default sets the sender pattern for newgroups, rmgroups, and checkgroups,
+but can be overridden by the following keys.  It is also used for the
+control message sender in the F<PGPKEYS> file.
+
+=item newgroup-sender
+
+Overrides I<sender> and specifies the wildmat patterns matching newgroup
+senders.  The value must be a vector.
+
+=item rmgroup-sender
+
+Overrides I<sender> and specifies the wildmat patterns matching rmgroup
+senders.  The value must be a vector.
+
+=item checkgroups-sender
+
+Overrides I<sender> and specifies the wildmat patterns matching
+checkgroups senders.  The value must be a vector.
+
+=item contact
+
+A vector of contact addresses.  These will be included in Contact comments
+in the F<control.ctl> entry.
+
+=item url
+
+A URL for general information about the hierarchy.  Since URLs contain
+colons, this must be in double-quotes.  This will be included in a URL
+comment in the F<control.ctl> entry.
+
+=item pgp
+
+A boolean value indicating whether this hierarchy uses PGP.  The default
+is C<no>.
+
+=item non-pgp-drop
+
+By default, if I<pgp> is set to C<yes>, a rule is added to drop all
+non-signed control messages for this hierarchy.  Set this key to C<no> to
+disable that behavior.
+
+=item key-id
+
+The user ID of the PGP key.  The control message verification process for
+Netnews control messages matches the key ID (only the e-mail address
+portion in newer software, but the entire key ID in older software).  In
+retrospect, this was a poor design choice and hex key IDs should have been
+used instead, but there's a ton of software out there written with that
+assumption.  The value of this key should be that key ID, and must not
+contain whitespace.  Conventionally, either the e-mail address of the
+control message sender or the name of the administrative newsgroup for the
+hierarchy is used as the key ID.
+
+=item key-url
+
+A URL from which one can retrieve the PGP key for the hierarchy from some
+authoritative source (in other words, not a keyserver).  This value is put
+into a Key URL comment in F<control.ctl> and into the F<PGPKEYS> file.
+Since URLs contain colons, this value must be enclosed in double quotes.
+
+=item key-fingerprint
+
+The fingerprint of the PGP key.  If this value is set, B<generate-files>
+will verify during processing that the PGP key it finds for this hierarchy
+in the local keyring matches this fingerprint.  If set, this value is also
+included in a Key Fingerprint comment in F<control.ctl>.
+
+=item admin-group
+
+The administrative group for the hierarchy (conventionally the group to
+which announcements of new newsgroups and possibly newsgroup lists are
+posted).  This value is included in a comment in F<control.ctl> and
+F<PGPKEYS> if set.
+
+=item sync-server
+
+A publicly accessible NNTP server that supports the LIST ACTIVE command to
+retrieve a list of current newsgroups in this hierarchy, suitable for
+pointing B<actsync> at.
+
+=back
+
+Unknown keys are silently ignored.
+
+=head1 FILES
+
+=over 4
+
+=item F<config/*>
+
+The configuration fragments to be used for generating the output files.
+They must follow the format described above.
+
+=item F<config/special/*>
+
+Fragments of a F<control.ctl> file that are included verbatim.  If a file
+exists in this directory with the same name as one in the F<config/>
+directory, the file in this directory is used in preference.  Files in
+this directory cannot provide input to the F<PGPKEYS> file, so hierarchies
+that require special F<control.ctl> entries but have PGP information
+should have a conventional configuration file with the PGP information and
+then a special fragment.
+
+=item F<forms/PGPKEYS.pre>
+
+The initial portion of the F<PGPKEYS> file.  Any instances of C<@DATE@>
+will be replaced by the current date in YYYY-MM-DD format.
+
+=item F<forms/README.html.pre>
+
+The initial portion of the F<README.html> file.  Any instances of
+C<@DATE@> will be replaced by the current date in YYYY-MM-DD format.
+
+=item F<forms/README.html.post>
+
+The final portion of the F<README.html> file.  Any instances of C<@DATE@>
+will be replaced by the current date in YYYY-MM-DD format.
+
+=item F<forms/control.ctl.pre>
+
+The initial portion of the F<control.ctl> file.  Any instances of
+C<@DATE@> will be replaced by the current date in YYYY-MM-DD format.
+
+=item F<keys/*>
+
+A directory containing PGP keys.  Each file in this directory corresponds
+to the hierarchy whose configuration file in F<config/> has the same name.
+The contents of the F<keys/*> file is included verbatim in F<PGPKEYS>.
+
+=item F<keyring/>
+
+For each hierarchy configuration containing a I<key-fingerprint>
+parameter, B<generate-files> runs B<gpg> with its home directory pointing
+to this directory, asks for the fingerprint of that PGP key, and verifies
+that it matches I<key-fingerprint> exactly (including whitespace, so that
+value must match GnuPG's output format).  To generate this keyring in
+advance of running B<generate-files>, run:
+
+    mkdir keyring
+    chmod 700 keyring
+    gpg --homedir=keyring --import --allow-non-selfsigned-uid keys/*
+
+The B<--allow-non-selfsigned-uid> parameter is only required if you want
+to support PGP keys that aren't self-signed.  This is not secure, but some
+hierarchy keys are not self-signed.
+
+=back
+
+=head1 SEE ALSO
+
+actsync(8), gpg(1), uwildmat(3)
+
+=head1 AUTHOR
+
+Russ Allbery <rra@stanford.edu>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2002, 2003, 2004, 2008 Russ Allbery <rra@stanford.edu>
+
+This program is free software; you may redistribute it and/or modify it
+under the same terms as Perl itself.
+
+=cut
