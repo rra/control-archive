@@ -1,0 +1,57 @@
+                      Control Processing To-Do List
+
+Processing:
+
+ * Control messages in unmanaged hierarchies (alt.*, free.*) should really
+   be throttled somehow to deal with floods of useless newsgroup
+   creations.  It's not clear how best to do the throttling, though (what
+   headers to look at, what rate at which to throttle, and how to
+   configure it).  The need for this seems to have decreased lately.
+
+Configuration:
+
+ * If PGP-enabled hierarchies marked PRIVATE included the verification
+   configuration lines commented-out, cl.* and ka.* could be handled
+   without special fragments.
+
+ * If there were a way to add special rules for particular group patterns
+   within the hierarchy, carleton.*, git.*, israel.*, iu.*, umn.*, and
+   utexas.* could be handled without special fragments.
+
+ * If there were a way to add extended comments to an entry in the regular
+   config syntax, fa.*, local.*, and microsoft.* could be handled without
+   special fragments.
+
+Output:
+
+ * Currently, the generated newsgroups file uses the traditional mixed
+   encoding, where each hierarchy's descriptions are encoded in whatever
+   local character set that hierarchy happens to use.  This means that the
+   file itself has no single valid encoding.  Incoming control messages
+   should be parsed for a character set and then newsgroup descriptions
+   converted to UTF-8 so that a consistent UTF-8 newsgroups file can be
+   generated.
+
+Documentation:
+
+ * The template for README.html hasn't been looked at in years, has
+   David's e-mail address as the contact information, and is probably
+   hopelessly out of date in other respects.  It's also a bit odd to put
+   all the PGP keys into an HTML file.  It should be rewritten from
+   scratch to include currently relevant information, probably moved into
+   the pgpcontrol package instead of maintained here, and just reference
+   the text PGPKEYS file.
+
+ * The format of the PGPKEYS file is a left-over from when it was
+   generated from README.html using lynx -dump (after README.html was
+   manually updated).  There are certainly better formats that could be
+   used, and it would be nice to include the gpg -k --fingerprint output
+   for each key before the key for the benefit of human readers.
+   Currently some keys have that in their included text file and others
+   don't.
+
+ * docs/hierarchies is fairly obsolete.  Maintaining it is probably more
+   work still than anyone wants to go to, at least to the degree that it
+   used to be maintained, but it needs an editing pass to remove
+   information that only duplicates the current control.ctl file or which
+   is obviously no longer correct.
