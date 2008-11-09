@@ -2,14 +2,12 @@
 #
 # generate-files -- Generate config and doc files from hierarchy configs.
 #
-# Copyright 2002, 2003, 2004, 2008 Russ Allbery <rra@stanford.edu>
-#
-# This program is free software; you may redistribute it and/or modify it
-# under the same terms as Perl itself.
-#
 # This program converts machine-parsable hierarchy configuration fragments
 # into a control.ctl file in the format that had been used for the ISC and INN
 # versions of that file.  It also supports special overrides.
+#
+# Copyright 2002, 2003, 2004, 2008 Russ Allbery <rra@stanford.edu>
+# See LICENSE for licensing terms.
 
 ##############################################################################
 # Modules and declarations
@@ -575,15 +573,12 @@ hierarchy keys are not self-signed.
 
 actsync(8), control.ctl(5), gpg(1), uwildmat(3)
 
+This script is part of the control-archive package.  The control-archive
+web page at L<http://www.eyrie.org/~eagle/software/control-archive/> will
+have the current version of the package.
+
 =head1 AUTHOR
 
 Russ Allbery <rra@stanford.edu>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2002, 2003, 2004, 2008 Russ Allbery <rra@stanford.edu>
-
-This program is free software; you may redistribute it and/or modify it
-under the same terms as Perl itself.
 
 =cut

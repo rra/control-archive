@@ -3,9 +3,7 @@
 # export-control -- Export the newsgroup database as an active file.
 #
 # Copyright 2003, 2008 Russ Allbery <rra@stanford.edu>
-#
-# This program is free software; you may redistribute it and/or modify it
-# under the same terms as Perl itself.
+# See LICENSE for licensing terms.
 
 ##############################################################################
 # Site configuration
@@ -167,15 +165,12 @@ copies them into a LOGS subdirectory of the export directory.
 
 process-control(1), update-control(1)
 
+This script is part of the control-archive package.  The control-archive
+web page at L<http://www.eyrie.org/~eagle/software/control-archive/> will
+have the current version of the package.
+
 =head1 AUTHOR
 
 Russ Allbery <rra@stanford.edu>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2003, 2008 by Russ Allbery <rra@stanford.edu>
-
-This program is free software; you may redistribute it and/or modify it
-under the same terms as Perl itself.
 
 =cut

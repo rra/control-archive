@@ -6,8 +6,11 @@
 # Based *very* heavily on controlchan by Marco d'Itri.
 # Portions based on pgpverify by David Lawrence.
 #
-# Please see the end of the documentation for full copyright statements and
-# license terms.
+# Copyright 2003, 2007, 2008 by Russ Allbery <rra@stanford.edu>
+# Copyright 2001 by Marco d'Itri <md@linux.it>
+# Copyright (c) 1996 UUNET Technologies, Inc.  All rights reserved.
+#
+# See LICENSE for licensing terms.
 
 ##############################################################################
 # Site configuration
@@ -911,84 +914,18 @@ Used for temporary files for PGP verification.
 
 =back
 
+=head1 SEE ALSO
+
+export-control(1), update-control(1)
+
+This script is part of the control-archive package.  The control-archive
+web page at L<http://www.eyrie.org/~eagle/software/control-archive/> will
+have the current version of the package.
+
 =head1 AUTHORS
 
 Written by Russ Allbery <rra@stanford.edu>, based very heavily on
 controlchan by Marco d'Itri.  Portions based on pgpverify by David
 Lawrence.
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2003, 2007, 2008 by Russ Allbery <rra@stanford.edu>
-
-Copyright 2001 by Marco d'Itri <md@linux.it>
-
-Copyright (c) 1996 UUNET Technologies, Inc.  All rights reserved.
-
-For the controlchan portions:
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:
-
-=over 3
-
-=item 1.
-
-Redistributions of source code must retain the above copyright notice,
-this list of conditions and the following disclaimer.
-
-=item 2.
-
-Redistributions in binary form must reproduce the above copyright notice,
-this list of conditions and the following disclaimer in the documentation
-and/or other materials provided with the distribution.
-
-=back
-
-For the pgpverify portions:
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:
-
-=over 3
-
-=item 1.
-
-Redistributions of source code must retain the above copyright notice,
-this list of conditions and the following disclaimer.
-
-=item 2.
-
-Redistributions in binary form must reproduce the above copyright notice,
-this list of conditions and the following disclaimer in the documentation
-and/or other materials provided with the distribution.
-
-=item 3.
-
-All advertising materials mentioning features or use of this software must
-display the following acknowledgement:
-
-  This product includes software developed by UUNET Technologies, Inc.
-
-=item 4.
-
-The name of UUNET Technologies ("UUNET") may not be used to endorse or
-promote products derived from this software without specific prior written
-permission.
-
-=back
-
-THIS SOFTWARE IS PROVIDED BY UUNET "AS IS" AND ANY EXPRESS OR IMPLIED
-WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN
-NO EVENT SHALL UUNET BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
-TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut

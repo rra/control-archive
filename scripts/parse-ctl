@@ -2,16 +2,14 @@
 #
 # parse-ctl -- Parse a control.ctl file into hierarchy config files.
 #
-# Copyright 2002, 2008 Russ Allbery <rra@stanford.edu>
-#
-# This program is free software; you may redistribute it and/or modify it
-# under the same terms as Perl itself.
-#
 # This program converts a control.ctl following the formatting conventions
 # that had been used for the ISC and INN versions of that file into a tree of
 # hierarchy configuration files in a more machine-parsable format.  Any
 # entries that it's unable to parse are written into a separate tree of
 # special configurations.
+#
+# Copyright 2002, 2008 Russ Allbery <rra@stanford.edu>
+# See LICENSE for licensing terms.
 
 ##############################################################################
 # Modules and declarations
@@ -287,15 +285,12 @@ new data, and in case anyone wishes to update it or refer to it.
 
 control.ctl(5), generate-files(1)
 
+This script is part of the control-archive package.  The control-archive
+web page at L<http://www.eyrie.org/~eagle/software/control-archive/> will
+have the current version of the package.
+
 =head1 AUTHOR
 
 Russ Allbery <rra@stanford.edu>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2002, 2008 Russ Allbery <rra@stanford.edu>
-
-This program is free software; you may redistribute it and/or modify it
-under the same terms as Perl itself.
 
 =cut
