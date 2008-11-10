@@ -12,6 +12,20 @@ Processing:
    instead of a path it gets a storage API token.  This would let it run
    as a channel feed from a current innd.
 
+ * Support chkscope in checkgroups message from new USEPRO draft.
+
+ * Support checkgroups serial numbers from new USEPRO draft.
+
+ * Support message/news-groupinfo in newgroup control messages.  This
+   requires parsing the MIME structure of the message (probably using one
+   of the Perl MIME parsing libraries) and looking for a part of type
+   application/news-groupinfo, and then checking its charset as well as
+   parsing it.
+
+ * Support an optional strongly-conforming mode which requires the tab in
+   newsgroup descriptions and doesn't archive messages that aren't fully
+   compliant with the current standards.
+
 Configuration:
 
  * If PGP-enabled hierarchies marked PRIVATE included the verification
@@ -35,6 +49,20 @@ Output:
    should be parsed for a character set and then newsgroup descriptions
    converted to UTF-8 so that a consistent UTF-8 newsgroups file can be
    generated.
+
+   Julien ÉLIE collected the following information about character sets
+   for newsgroup descriptions in existing hierarchies:
+
+   - cn.* and han.* are in gb18030.
+   - fido7.*, medlux.*, and ukr.* are in cp1251.
+   - fr.* is in cp1252 but will be iso-8859-15.
+   - nctu.*, ncu.*, and tw.* are in big5 but tw.* has a bad group.
+   - scout.forum.{chinese,korean} are in big5.
+
+   Interpreting everything else as cp1252 seems to work currently.
+
+ * Generate control.conf (for DNews) and controlperm (for C News) output
+   files as well.
 
 Documentation:
 
