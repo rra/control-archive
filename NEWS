@@ -1,5 +1,10 @@
                    User-Visible control-archive Changes
 
+control-archive 1.0.1 (unreleased)
+
+    Change CVS to Subversion in the control.ctl reference to the INN
+    version control repository.
+
 control-archive 1.0.0 (2008-11-08)
 
     Initial public release.
