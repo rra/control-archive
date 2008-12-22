@@ -5,6 +5,10 @@ control-archive 1.0.1 (unreleased)
     Change CVS to Subversion in the control.ctl reference to the INN
     version control repository.
 
+    Hierarchy updates:
+
+    * Added grisbi.* from http://news.grisbi.org/
+
 control-archive 1.0.0 (2008-11-08)
 
     Initial public release.
