@@ -1,6 +1,9 @@
                    User-Visible control-archive Changes
 
-control-archive 1.0.1 (unreleased)
+control-archive 1.1.0 (unreleased)
+
+    Fix missing variable declaration in process-control and
+    update-control.
 
     Added an install target to the Makefile and updated the installation
     documentation to use it.

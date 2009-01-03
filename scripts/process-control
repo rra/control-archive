@@ -34,6 +34,7 @@ our $KEYRING = '/srv/control/keyring/pubring.gpg';
 # The log file into which to record actions taken.  The current year and
 # month will be appended.
 our $LOGBASE = '/srv/control/logs/log';
+our $LOG;
 
 # The temporary directory to use for PGP verification.
 our $TMPDIR = '/srv/control/tmp';

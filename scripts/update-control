@@ -14,6 +14,7 @@ our $ACTIVE = '/srv/control/active.db';
 
 # The log file into which to record actions taken.
 our $LOGBASE = '/srv/control/logs/log';
+our $LOG;
 
 ##############################################################################
 # Modules and declarations
