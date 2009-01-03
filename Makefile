@@ -23,6 +23,6 @@ install: control.ctl
 	install -m 644 -p docs/config-policy /srv/control/export/README
 	install -m 644 -p docs/hierarchies /srv/control/export/HIERARCHY-NOTES
 	install -m 644 -p docs/archive-policy /srv/control/archive/README
-	gpg --homedir=/srv/control/keyring --allow-non-selfsigned-uids \
+	gpg --homedir=/srv/control/keyring --allow-non-selfsigned-uid \
 	    --import keys/*
 	install -m 644 control.ctl /srv/control/
