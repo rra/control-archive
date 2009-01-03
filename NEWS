@@ -2,7 +2,10 @@
 
 control-archive 1.0.1 (unreleased)
 
-    Change CVS to Subversion in the control.ctl reference to the INN
+    Added an install target to the Makefile and updated the installation
+    documentation to use it.
+
+    Changed CVS to Subversion in the control.ctl reference to the INN
     version control repository.
 
     Hierarchy updates:

@@ -112,10 +112,16 @@ INSTALLATION
   location, edit the paths at the beginning of each of the scripts in the
   scripts/ directory to use different paths.  By default, copying all the
   files from the distribution into a /srv/control directory is almost all
-  that's needed.
+  that's needed.  An install rule is provided to do this.  To install the
+  software, run:
+
+      make install
+
+  You will need write access to /srv/control or permission to create it.
 
   process-control and generate-files need a GnuPG keyring containing all
-  of the honored hierarchy keys.  To generate this keyring, run:
+  of the honored hierarchy keys.  To generate this keyring, run make
+  install or:
 
       mkdir keyring
       gpg --homedir=keyring --allow-non-selfsigned-uids --import keys/*
@@ -123,10 +129,11 @@ INSTALLATION
   from the top level of this distribution.  process-control also expects a
   control.ctl file in /srv/control/control.ctl, which can be generated
   from the files included here (after creating the keyring as described
-  above) by running:
+  above) by running make install or:
 
       scripts/generate-files
 
+  Both of these are done automatically as part of make install.
   process-control expects /srv/control/archive to exist and archives
   control messages there.  It expects /srv/control/tmp to exist and uses
   it for temporary files for GnuPG control message verification.
@@ -146,9 +153,10 @@ INSTALLATION
   If you're using tinyleaf, here is the setup process:
 
   1. Create a directory that tinyleaf will use to store incoming articles
-     temporarily, the archive directory, and the logs directory:
+     temporarily, the archive directory, and the logs directory and
+     install the software:
 
-         mkdir archive logs spool
+         make install
 
   2. Run tinyleaf on some port, configuring it to use that directory and
      to run process-control.  A typical tinyleaf command line would be:
