@@ -20,6 +20,7 @@ control-archive 1.1.0 (unreleased)
     Hierarchy updates:
 
     * Added grisbi.* from http://news.grisbi.org/
+    * Updated gnuu.* from http://www.gnuu.de/config/
 
 control-archive 1.0.0 (2008-11-08)
 

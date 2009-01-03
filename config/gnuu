@@ -2,4 +2,8 @@ hierarchy: GNUU
 groups: gnuu.*
 type: private
 description: "GNUU e.V., Oberursel, Germany"
-contact: [ news@gnuu.de ]
+sender: [ news@gnuu.de ]
+url: "http://www.gnuu.de/"
+pgp: yes
+key-id: news@gnuu.de
+key-url: "http://www.gnuu.de/config/PGPKEY.GNUU"
