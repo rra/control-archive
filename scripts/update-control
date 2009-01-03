@@ -2,7 +2,7 @@
 #
 # update-control -- Manually update the newsgroup database.
 #
-# Copyright 2003, 2006, 2007, 2008 Russ Allbery <rra@stanford.edu>
+# Copyright 2003, 2006, 2007, 2008, 2009 Russ Allbery <rra@stanford.edu>
 # See LICENSE for licensing terms.
 
 ##############################################################################
