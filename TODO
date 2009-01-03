@@ -58,11 +58,17 @@ Output:
    - fr.* is in cp1252 but will be iso-8859-15.
    - nctu.*, ncu.*, and tw.* are in big5 but tw.* has a bad group.
    - scout.forum.{chinese,korean} are in big5.
+   - fido.* is in utf-8.
 
    Interpreting everything else as cp1252 seems to work currently.
 
  * Generate control.conf (for DNews) and controlperm (for C News) output
    files as well.
+
+ * Defunct hierarchies should not be listed in the regular control.ctl
+   when they've been defunct for more than six months or a year.  They
+   should instead be moved to something like docs/hierarchies, but that
+   file should be easily parsable.
 
 Documentation:
 
