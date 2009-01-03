@@ -11,7 +11,8 @@ control-archive 1.1.0 (unreleased)
     update-control.
 
     Added an install target to the Makefile and updated the installation
-    documentation to use it.
+    documentation to use it.  The default Makefile target now just builds
+    control.ctl rather than building a distribution.
 
     Changed CVS to Subversion in the control.ctl reference to the INN
     version control repository.

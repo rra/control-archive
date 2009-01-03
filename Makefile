@@ -4,6 +4,8 @@
 
 VERSION := $(shell grep '^control-archive' NEWS | head -1 | cut -d' ' -f 2)
 
+all: control.ctl
+
 dist:
 	git archive --prefix=control-archive-$(VERSION)/ master \
 	    | gzip -9c > control-archive-$(VERSION).tar.gz
