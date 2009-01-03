@@ -10,7 +10,7 @@ dist:
 
 control.ctl:
 	mkdir -p keyring
-	gpg --homedir=keyring --allow-non-selfsigned-uids --import keys/*
+	gpg --homedir=keyring --allow-non-selfsigned-uid --import keys/*
 	scripts/generate-files
 
 install: control.ctl
