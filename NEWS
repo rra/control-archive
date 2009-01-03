@@ -2,6 +2,11 @@
 
 control-archive 1.1.0 (unreleased)
 
+    In update-control bulkload, accept tabs in newsgroup descriptions and
+    change them to spaces.  Tabs are not permitted in the current grammar
+    for newsgroup lines or in the upcoming USEPRO standard, but better to
+    be liberal when importing from older sources.
+
     Fix missing variable declaration in process-control and
     update-control.
 

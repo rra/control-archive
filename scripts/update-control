@@ -192,6 +192,7 @@ sub bulkload {
     while (<STDIN>) {
         my ($group, $desc) = split (' ', $_, 2);
         $desc =~ s/\s+$//;
+        $desc =~ s/\t/ /g;
         next if $desc =~ /[\x00-\x1f]/;
         next unless ($group =~ /^[a-z0-9+_.-]+$/);
         next if ($group =~ /^\.|\.\.|\.$/);
