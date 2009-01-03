@@ -216,7 +216,7 @@ BOOTSTRAPPING
 
      and then bootstrap the database from it:
 
-         bzip2 -dc newsgroups.bz2 | scripts/update-control bootstrap
+         bzip2 -dc newsgroups.bz2 | scripts/update-control bulkload
 
   3. If you want the log information so that your reports will include
      changes made in the ftp.isc.org archive before you created your own,
