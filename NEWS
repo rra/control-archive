@@ -1,6 +1,6 @@
                    User-Visible control-archive Changes
 
-control-archive 1.1.0 (unreleased)
+control-archive 1.1.0 (2009-01-02)
 
     In update-control bulkload, accept tabs in newsgroup descriptions and
     change them to spaces.  Tabs are not permitted in the current grammar
