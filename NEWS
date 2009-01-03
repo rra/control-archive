@@ -21,6 +21,7 @@ control-archive 1.1.0 (unreleased)
 
     * Added grisbi.* from http://news.grisbi.org/
     * Updated gnuu.* from http://www.gnuu.de/config/
+    * Documented um.* removal in docs/hierarchies
 
 control-archive 1.0.0 (2008-11-08)
 

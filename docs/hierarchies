@@ -528,6 +528,11 @@ to.*
   control messages and test messages.  For example, SiteA and SiteB might
   each have a to.sitea and to.siteb on their machines to facilitate a
   special kind of news transport mechanism.
+um.*
+  This hierarchy was used for internal groups at the University of
+  Maryland.  Their internal news server was shut down on 22 Dec 2008 and
+  rmgroups were issued for all groups in this hierarchy.  It should be
+  removed.
 www.*
   Apparently someone who thought a newsgroup name and domain name should
   be equivalent.  Newgroup for www.wilhelp.com on 7 Jul 1998.
