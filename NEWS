@@ -1,5 +1,10 @@
                    User-Visible control-archive Changes
 
+control-archive 1.2.0 (unreleased)
+
+    Added better debugging to control-summary for failure to load the
+    template and failure to connect to an NNTP server.
+
 control-archive 1.1.0 (2009-01-02)
 
     In update-control bulkload, accept tabs in newsgroup descriptions and
@@ -7,7 +12,7 @@ control-archive 1.1.0 (2009-01-02)
     for newsgroup lines or in the upcoming USEPRO standard, but better to
     be liberal when importing from older sources.
 
-    Fix missing variable declaration in process-control and
+    Fixed missing variable declaration in process-control and
     update-control.
 
     Added an install target to the Makefile and updated the installation

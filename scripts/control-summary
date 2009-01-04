@@ -2,7 +2,7 @@
 #
 # control-summary -- Send a summary of control activity.
 #
-# Copyright 2003, 2004, 2008 Russ Allbery <rra@stanford.edu>
+# Copyright 2003, 2004, 2008, 2009 Russ Allbery <rra@stanford.edu>
 # See LICENSE for licensing terms.
 
 ##############################################################################
@@ -295,6 +295,9 @@ sub post {
     my $post;
     if ($template) {
         my $form = Text::Template->new (TYPE => 'FILE', SOURCE => $template);
+        unless (defined $form) {
+            die "$0: cannot load template $template: $Text::Template::ERROR\n";
+        }
         my $variables = { start     => $start,
                           end       => $end,
                           newsgroup => $group,
@@ -315,7 +318,8 @@ sub post {
     if ($nopost) {
         print $post;
     } else {
-        my $nntp = Net::NNTP->new;
+        my $nntp = Net::NNTP->new
+            or die "Cannot connect to news server\n";
         unless ($nntp->post ($post)) {
             die "$0: can't post: ", $nntp->code, ' ', $nntp->message, "\n";
         }
