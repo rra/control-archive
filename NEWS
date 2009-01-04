@@ -5,6 +5,8 @@ control-archive 1.2.0 (unreleased)
     Added better debugging to control-summary for failure to load the
     template and failure to connect to an NNTP server.
 
+    Install the control-report template on make install.
+
 control-archive 1.1.0 (2009-01-02)
 
     In update-control bulkload, accept tabs in newsgroup descriptions and

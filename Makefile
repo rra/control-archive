@@ -18,13 +18,14 @@ control.ctl:
 install: control.ctl
 	mkdir -p /srv/control
 	cd /srv/control && mkdir -p archive export keyring logs scripts \
-	    spool tmp
+	    spool templates tmp
 	install -m 755 -p scripts/control-summary scripts/export-control \
 	    scripts/process-control scripts/update-control \
 	    scripts/weekly-report /srv/control/scripts/
 	install -m 644 -p docs/config-policy /srv/control/export/README
 	install -m 644 -p docs/hierarchies /srv/control/export/HIERARCHY-NOTES
 	install -m 644 -p docs/archive-policy /srv/control/archive/README
+	install -m 644 -p templates/control-report /srv/control/templates/
 	gpg --homedir=/srv/control/keyring --allow-non-selfsigned-uid \
 	    --import keys/*
 	install -m 644 control.ctl /srv/control/
