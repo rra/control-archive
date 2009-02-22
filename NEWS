@@ -7,6 +7,10 @@ control-archive 1.2.0 (unreleased)
 
     Install the control-report template on make install.
 
+    Hierarchy updates:
+
+    * Fix pubnet.* URL into the control archive
+
 control-archive 1.1.0 (2009-01-02)
 
     In update-control bulkload, accept tabs in newsgroup descriptions and
