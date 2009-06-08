@@ -10,6 +10,7 @@ control-archive 1.2.0 (unreleased)
     Hierarchy updates:
 
     * Fix pubnet.* URL into the control archive
+    * Remove sdnet.* configuration, document in docs/hierarchies
 
 control-archive 1.1.0 (2009-01-02)
 

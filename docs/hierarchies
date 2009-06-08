@@ -512,6 +512,12 @@ pubnet.*
   This hierarchy used to carry groups about publically available Unix
   systems, but fell into disuse.  It was formally removed for lack of
   traffic in the summer of 1991.  it should be removed.
+sdnet.*
+  This hierarchy is for discussion of and within the Greater San Diego
+  Area, California, USA.  It was formerly maintained by William Kronert,
+  but he stepped down as hierarchy maintainer and no one else
+  volunteered.  It is therefore now frozen, but the existing groups are
+  still in use.
 stardivision.*
   This hierarchy was for the company that made the StarOffice business
   suite software.  It was renamed to staroffice.* in September 1999, and
