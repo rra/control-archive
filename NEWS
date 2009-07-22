@@ -11,6 +11,7 @@ control-archive 1.2.0 (unreleased)
 
     * Fix pubnet.* URL into the control archive
     * Remove sdnet.* configuration, document in docs/hierarchies
+    * Update the ba.* key ID to match the configuration
 
 control-archive 1.1.0 (2009-01-02)
 
