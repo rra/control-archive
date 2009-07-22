@@ -16,6 +16,7 @@ control-archive 1.2.0 (unreleased)
     * Add szaf.* (private)
     * Update sender for opennews.*
     * Update admin group for cl.*
+    * Update URL for hun.*
 
 control-archive 1.1.0 (2009-01-02)
 

@@ -3,7 +3,7 @@ groups: hun.*
 type: public
 description: Hungary
 sender: [ hun-mnt@news.sztaki.hu ]
-url: "http://www.sztaki.hu/~kissg/news/hiteles.html"
+url: "http://gatling.ikk.sztaki.hu/~kissg/news/"
 pgp: yes
 key-id: hun.admin.news
 key-url: "http://gatling.ikk.sztaki.hu/~kissg/news/hun.admin.news.asc"
