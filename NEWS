@@ -15,6 +15,7 @@ control-archive 1.2.0 (unreleased)
     * Added eternal-september.* from http://www.eternal-september.org/
     * Added szaf.* (private)
     * Updated sender for opennews.*
+    * Updated admin group for cl.*
 
 control-archive 1.1.0 (2009-01-02)
 
