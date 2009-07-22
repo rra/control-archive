@@ -70,6 +70,9 @@ Output:
    should instead be moved to something like docs/hierarchies, but that
    file should be easily parsable.
 
+ * Add a separate RESERVED status for things like local.*, test.*,
+   and example.*.
+
 Documentation:
 
  * The template for README.html hasn't been looked at in years, has
