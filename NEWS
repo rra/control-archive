@@ -9,9 +9,10 @@ control-archive 1.2.0 (unreleased)
 
     Hierarchy updates:
 
-    * Fix pubnet.* URL into the control archive
-    * Remove sdnet.* configuration, document in docs/hierarchies
-    * Update the ba.* key ID to match the configuration
+    * Fixed pubnet.* URL into the control archive
+    * Removed sdnet.* configuration, document in docs/hierarchies
+    * Updated the ba.* key ID to match the configuration
+    * Added eternal-september.* from http://www.eternal-september.org/
 
 control-archive 1.1.0 (2009-01-02)
 
