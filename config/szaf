@@ -1,0 +1,6 @@
+hierarchy: SZAF
+groups: szaf.*
+type: private
+description: "German ?"
+sender: [ hirtenrat@szaf.org ]
+admin-group: szaf.admin

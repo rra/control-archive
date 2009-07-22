@@ -13,6 +13,7 @@ control-archive 1.2.0 (unreleased)
     * Removed sdnet.* configuration, document in docs/hierarchies
     * Updated the ba.* key ID to match the configuration
     * Added eternal-september.* from http://www.eternal-september.org/
+    * Added szaf.* (private)
 
 control-archive 1.1.0 (2009-01-02)
 
