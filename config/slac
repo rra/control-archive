@@ -1,7 +1,0 @@
-hierarchy: SLAC
-groups: slac.*
-type: private
-description: "Stanford Linear Accelerator Center, Stanford, USA"
-newgroup-sender: [ news@news.stanford.edu ]
-rmgroup-sender: [ news@news.stanford.edu ]
-contact: [ news@news.stanford.edu ]

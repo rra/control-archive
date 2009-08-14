@@ -18,6 +18,7 @@ control-archive 1.2.0 (unreleased)
     * Update admin group for cl.*
     * Update URL for hun.*
     * Update URL and add syncable server for nlo.*
+    * Remove slac.* and bes.* configuration, document in docs/hierarchies
 
 control-archive 1.1.0 (2009-01-02)
 
