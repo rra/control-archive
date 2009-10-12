@@ -2,6 +2,9 @@
 
 control-archive 1.2.0 (unreleased)
 
+    When generating a control message report with exclusions, don't send
+    the report if all actions during the time period were excluded.
+
     Add better debugging to control-summary for failure to load the
     template and failure to connect to an NNTP server.
 

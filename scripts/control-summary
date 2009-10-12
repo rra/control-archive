@@ -115,6 +115,7 @@ sub report {
     my ($exclude, @actions) = @_;
     if ($exclude) {
         @actions = grep { (split ' ')[4] !~ /$exclude/ } @actions;
+        return unless @actions;
     }
 
     # Sort the actions out into their own lists.  Use hash tables so that we
@@ -369,6 +370,7 @@ if (@actions) {
         $report = join ("\n", @actions, '');
     } else {
         $report = report ($exclude, @actions);
+        exit unless $report;
     }
     if ($post) {
         post ($report, $start, $end, $newsgroup, $template, $nomail);
