@@ -552,3 +552,8 @@ zer.*
   z-netz.* in a reorganization in 1996.  Contact lutz@jena.thur.de (Lutz
   Donnerhacke) and/or dirk.meyer@dinoex.sub.org (Dirk Meyer) for more
   information. See also t-netz.* in this file.  It should be removed.
+zipnews.*
+  This appears to have been a discussion hierarchy for Zippo's news
+  service, a now-defunct organization.  It was declared obsolete in a list
+  of hierarchies posted in January 2000 and there has been no subsequent
+  information about it.  It should be removed.
