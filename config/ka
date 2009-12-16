@@ -9,3 +9,4 @@ pgp: yes
 key-id: usenet@karlsruhe.org
 key-fingerprint: "DE 19 BB 25 76 19 81 17  F0 67 D2 23 E8 C8 7C 90"
 key-url: "http://www.karlsruhe.org/pubkey-news.karlsruhe.org.asc"
+admin-group: ka.admin
