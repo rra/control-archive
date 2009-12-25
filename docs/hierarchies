@@ -137,10 +137,6 @@ fh-hannover.*
 fur.*
   For Furrynet use only.  Contact fur-config@taronga.com for more
   information.
-ibm.*
-  For internal use by IBM Corporation (ibm.net) only.  Contact Mike Knope
-  <mknope@us.ibm.com> or Ken Paquette <ken@us.ibm.com> for more
-  information.
 ibmnet.*
   For internal use by IBM Corporation (ibm.net) only.  Contact
   news@ibm.net for more information.
@@ -476,6 +472,12 @@ god.*
   bodies of the messages use the alt prefix), two newgroups were sent in
   August 1999 and were quickly followed by a half-dozen joke newgroups.
   It should be removed.
+ibm.*
+  Originally for internal use by IBM Corporation (ibm.com) only.  The
+  ibm.software.* hierarchy was available via news.software.ibm.com for a
+  while, but was then closed by IBM on 2009-12-31.  The hierarchy was
+  redistributed to other servers and may still have usage outside of the
+  original IBM source.
 jessica.*
   Newgroup for jessica.config on 5 Nov 1997 by uhclem@usit.net, apparently
   as some sort of joke.

@@ -24,6 +24,7 @@ control-archive 1.2.0 (unreleased)
     * Remove slac.* and bes.* configuration, document in docs/hierarchies
     * Mention zipnews.* as obsolete in the hierarchy notes file
     * Add admin group for ka.*
+    * Update ibm.* information in the hierarchy notes file
 
 control-archive 1.1.0 (2009-01-02)
 
