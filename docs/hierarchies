@@ -475,9 +475,11 @@ god.*
 ibm.*
   Originally for internal use by IBM Corporation (ibm.com) only.  The
   ibm.software.* hierarchy was available via news.software.ibm.com for a
-  while, but was then closed by IBM on 2009-12-31.  The hierarchy was
-  redistributed to other servers and may still have usage outside of the
-  original IBM source.
+  while, but was then closed by IBM on 2009-12-31.  The ibm.software.*
+  portion of the hierarchy was redistributed to other servers and may
+  still have usage outside of the original IBM source.  It is unknown if
+  ibm.* outside of ibm.software.* is still in use inside IBM. ibm.* groups
+  other than ibm.software.* should be removed.
 jessica.*
   Newgroup for jessica.config on 5 Nov 1997 by uhclem@usit.net, apparently
   as some sort of joke.
