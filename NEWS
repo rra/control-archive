@@ -1,6 +1,6 @@
                    User-Visible control-archive Changes
 
-control-archive 1.2.0 (unreleased)
+control-archive 1.2.0 (2009-12-29)
 
     When generating a control message report with exclusions, don't send
     the report if all actions during the time period were excluded.
