@@ -427,6 +427,10 @@ apc.*
 au.*
   This Collabra newgroup was apparently a typo for aus.ads.jobs by
   joe_wright@compuware.com on 10 Jul 1998.
+bes.*
+  A semi-public hierarchy for discussion of the Beijing Spectrometer,
+  originally coordinated at Stanford University.  The hierarchy went idle
+  and was declared defunct in September of 2009.  It should be removed.
 betanews.*
   Tests from Microsoft were escaping around the world.  It should be
   removed.
@@ -522,6 +526,12 @@ sdnet.*
   but he stepped down as hierarchy maintainer and no one else
   volunteered.  It is therefore now frozen, but the existing groups are
   still in use.
+slac.*
+  This hierarchy was for discussion of the Stanford Linear Accelerator
+  Center.  It was a local hierarchy that was distributed to various
+  partner sites and hence became semi-public.  After a long period of
+  declining usage, it was shut down by SLAC in September 2009.  It should
+  be removed.
 stardivision.*
   This hierarchy was for the company that made the StarOffice business
   suite software.  It was renamed to staroffice.* in September 1999, and
