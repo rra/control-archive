@@ -5,6 +5,6 @@ description: "Szafe im Netz
 contact: [ hirtenrat@szaf.org ]
 sender: [ hirtenrat@szaf.org ]
 pgp: yes
-key-id: hirtenrat@szaf.org
+key-id: Hirtenrat
 key-url: "http://news.szaf.org/szaf/szaf-key.txt"
 admin-group: szaf.admin

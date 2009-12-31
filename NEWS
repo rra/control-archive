@@ -5,6 +5,7 @@ control-archive 1.2.1 (unreleased)
     Hierarchy updates:
 
     * Add key URL for szaf.*
+    * Change szaf.* key-id to Hiertenrat to work around pgpverify bug
 
 control-archive 1.2.0 (2009-12-29)
 
