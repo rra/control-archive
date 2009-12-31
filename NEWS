@@ -1,5 +1,11 @@
                    User-Visible control-archive Changes
 
+control-archive 1.2.1 (unreleased)
+
+    Hierarchy updates:
+
+    * Add URL for szaf.*
+
 control-archive 1.2.0 (2009-12-29)
 
     When generating a control message report with exclusions, don't send
