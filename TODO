@@ -2,6 +2,10 @@
 
 Processing:
 
+ * Verification of the PGP signature of control messages should extract
+   the e-mail address from the key ID and use that for matching in
+   control.ctl rather than just the first word of the key ID.
+
  * Control messages in unmanaged hierarchies (alt.*, free.*) should really
    be throttled somehow to deal with floods of useless newsgroup
    creations.  It's not clear how best to do the throttling, though (what
