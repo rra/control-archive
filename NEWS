@@ -7,6 +7,11 @@ control-archive 1.2.1 (unreleased)
     * Add key URL for szaf.*
     * Change szaf.* key-id to Hiertenrat to work around pgpverify bug
 
+    Documentation updates:
+
+    * Reference RFC 5536 in the config policy
+    * Don't mention the unenforced component length limit
+
 control-archive 1.2.0 (2009-12-29)
 
     When generating a control message report with exclusions, don't send

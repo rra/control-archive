@@ -1,5 +1,5 @@
                          GROUP CREATION POLICIES
-                        Last modified: 2008-09-14
+                        Last modified: 2010-01-01
 
   (This document was originally written by David Lawrence, but has since
   been updated and is currently maintained by Russ Allbery.  For all
@@ -97,18 +97,11 @@ HIERARCHY MAINTENANCE
   - the name must have at least two components
   - the first component must begin with a letter
   - the first component must not be "control", "to", or "example".
+  - the entire newsgroup name must be no longer than 80 characters
 
-  Those criteria are based on rules written by Henry Spencer for the
-  Son-of-1036 draft standard and included in the current USEFOR draft.  At
-  this time, only pure ASCII newsgroup names are accepted.  Unicode
-  newsgroup names will be considered should they ever be standardized.
-
-  There is an additional criteria that is also taken from the current
-  USEFOR draft, but which is still a matter of some debate -- the limit on
-  the length of a component.  The de facto limit was 14 octets for over a
-  decade and a half.  It is currently proposed that this be lifted to a
-  "soft" limit of 30 octets (in other words, this limit is recommended but
-  not required).  This limit is currently enforced.  Entire newsgroup
+  Those criteria are based on the rules in RFC 5536.  At this time, only
+  pure ASCII newsgroup names are accepted.  Unicode newsgroup names will
+  be considered should they ever be standardized.  Entire newsgroup
   names are limited to 80 characters, rather than the soft limit of 72
   characters proposed by the standard, because two existing non-joke
   groups have names longer than 72 characters.
