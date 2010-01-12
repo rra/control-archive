@@ -2,5 +2,4 @@ hierarchy: KIEL
 groups: kiel.*
 type: public
 description: "Kiel, Germany"
-sender: [ kris@koehntopp.de ]
-url: "http://news.koehntopp.de/kiel/"
+admin-group: kiel.sysop
