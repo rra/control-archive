@@ -5,3 +5,4 @@ description: "Kassel, Germany"
 sender: [ dirk.meyer@dinoex.sub.org ]
 pgp: yes
 key-id: kassel-admin
+admin-group: kassel.admin
