@@ -1,0 +1,6 @@
+hierarchy: ULM
+groups: ulm.*
+type: private
+description: "Ulm, Germany"
+sync-server: news.in-ulm.de
+admin-group: ulm.misc
