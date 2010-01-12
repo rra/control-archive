@@ -3,7 +3,10 @@ groups: stgt.*
 type: public
 description: "Stuttgart, Germany"
 sender: [ stgt-control@news.uni-stuttgart.de ]
+contact: [ news@news.uni-stuttgart.de ]
 url: "http://news.uni-stuttgart.de/hierarchie/stgt/"
 pgp: yes
 key-id: stgt-control
+key-fingerprint: "BA A4 0A 54 8F F5 F5 1E  72 48 51 AE 09 51 DE 44"
 key-url: "http://news.uni-stuttgart.de/hierarchie/stgt/stgt-control.txt"
+admin-group: stgt.net
