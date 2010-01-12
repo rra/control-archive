@@ -1,0 +1,6 @@
+hierarchy: OWL
+groups: owl.*
+type: public
+description: "Ostwestfalen-Lippe, Germany"
+contact: [ news@owl.de ]
+sync-server: news.owl.de
