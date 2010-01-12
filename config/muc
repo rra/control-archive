@@ -6,4 +6,5 @@ sender: [ muc-cmsg@muenchen.pro-bahn.org ]
 pgp: yes
 key-id: muc.admin
 key-fingerprint: "43 C7 0E 7C 45 C7 06 E0  BD 6F 76 CE 07 39 5E 66"
+key-url: "http://home.arcor.de/andreas-barth/muc-admin.html"
 admin-group: muc.admin
