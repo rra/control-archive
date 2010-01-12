@@ -2,11 +2,7 @@ hierarchy: UFRA
 groups: ufra.*
 type: public
 description: "Unterfranken, Deutschland"
-sender: [ news@mayn.de ]
-contact: [ news@mayn.de ]
-url: "http://www.mayn.de/users/news/"
 pgp: yes
 key-id: news.mayn.de
 key-fingerprint: "F7 AD 96 D8 7A 3F 7E 84  02 0C 83 9A DB 8F EB B8"
-sync-server: "news.mayn.de (contact news@mayn.de if permission denied)"
 admin-group: ufra.admin
