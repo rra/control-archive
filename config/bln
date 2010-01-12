@@ -3,3 +3,6 @@ groups: bln.*
 type: public
 description: "Berlin, Germany"
 sender: [ news@*fu-berlin.de ]
+contact: [ news@fu-berlin.de ]
+url: "ftp://ftp.fu-berlin.de/doc/news/bln/bln"
+admin-group: bln.net.news
