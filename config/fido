@@ -2,4 +2,3 @@ hierarchy: FIDO
 groups: fido.*
 type: public
 description: FidoNet
-sender: [ root@mbh.org ]
