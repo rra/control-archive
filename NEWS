@@ -43,6 +43,7 @@ control-archive 1.3.0 (unreleased)
     * Add information about muenster.* to hierarchy notes
     * Include more information in example.* entry
     * Remove control message processing for fa.*, use no sender template
+    * Add more explanation for local.*
 
     Thanks to Thomas Hochstein for the updates to the regional German
     groups and fido.*.

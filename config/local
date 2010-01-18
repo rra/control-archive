@@ -1,0 +1,11 @@
+hierarchy: LOCAL
+type: reserved
+description: "Local-only groups"
+groups: local.*
+comment: [
+    "Historically reserved for local groups and occasionally configured"
+    "for such groups in news software.  It is not really a good idea for"
+    "sites to use this hierarchy for local groups, since they may occur"
+    "on many unconnected sites and may confuse news readers that read at"
+    "multiple sites."
+]

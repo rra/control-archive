@@ -1,5 +1,0 @@
-## LOCAL (Local-only groups)
-# It is not really a good idea for sites to use these since they may occur
-# on many unconnected sites.
-newgroup:*:local.*:mail
-rmgroup:*:local.*:drop
