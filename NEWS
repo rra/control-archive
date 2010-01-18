@@ -29,6 +29,7 @@ control-archive 1.3.0 (unreleased)
     * Remove sender, contact, URL, and sync server for ufra.*
     * Add new private hierarchy ulm.* (Ulm, Germany)
     * Remove control sender for fido.*; the domain is for sale
+    * Add information about muenster.* to hierarchy notes
 
     Thanks to Thomas Hochstein for the updates to the regional German
     groups and fido.*.

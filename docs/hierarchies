@@ -503,6 +503,11 @@ mod.*
   Some people have considered restarting the concept of this hierarchy
   (which I personally think it is a bad idea), but as yet it has not been
   done.
+muenster.*
+  A regional hierarchy for the city of Muenster in Germany.  The original
+  contact, Lars von Olleschik <lars@von-olleschik.de>, is no longer
+  involved in running the hierarchy.  The organization buene.org may
+  still be involved.
 net.*
   This hierarchy is only meant to be carried by sites that live by a
   strict set of rules meant to keep down abuse of Usenet and improve the
