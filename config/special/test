@@ -1,5 +1,0 @@
-## TEST (Local test hierarchy)
-# It is not really a good idea for sites to use these since they may occur
-# on many unconnected sites.
-newgroup:*:test.*:mail
-rmgroup:*:test.*:mail

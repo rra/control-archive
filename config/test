@@ -1,0 +1,9 @@
+hierarchy: TEST
+groups: test.*
+type: reserved
+description: Local test hierarchy
+comment: [
+    "Historically used as a local test hierarchy.  It is not a good idea"
+    "to use this hierarchy name on any production server since they may"
+    "occur on many unconnected sites."
+]
