@@ -60,6 +60,13 @@ sub parse_config {
         warn "$file:$.: unparsable line: $_\n"
             unless /^([^:\s]+): (\S.*)/;
         my ($key, $value) = ($1, $2);
+        while ($_ && $value =~ /^\[/ && $value !~ /\]/) {
+            $_ = <CONFIG>;
+            if (defined $_) {
+                chomp;
+                $value .= ' ' . $_;
+            }
+        }
         if ($value =~ /^\[ .* \]\s*$/) {
             my @values;
             $value =~ s/^\[\s*//;
@@ -167,7 +174,12 @@ sub generate_config {
     elsif ($$config{type} eq 'private')  { print $fh '*PRIVATE* -- '  }
     elsif ($$config{type} eq 'defunct')  { print $fh '*DEFUNCT* -- '  }
     elsif ($$config{type} eq 'historic') { print $fh '*HISTORIC* -- ' }
+    elsif ($$config{type} eq 'reserved') { print $fh '*RESERVED* -- ' }
     print $fh $$config{description}, ")\n";
+    if ($$config{comment}) {
+        $NEEDSPACE = 1;
+        print_comment ($fh, join (' ', @{ $$config{comment} }));
+    }
 
     # Print out a special comment for unusual hierarchies or public
     # hierarchies with no control message sender.
@@ -441,11 +453,11 @@ configuration file for C<foo.*>, C<bar.*>, and C<baz.*>.
 
 =item type
 
-The type of the hierarchy.  This should be one of public, private, local,
-defunct, or historic.  Public and historic hierarchies will generate
-F<control.ctl> entries that honor the control messages.  All others will
-generate F<control.ctl> entries with an action of C<mail> for newgroup
-messages and an action of C<doit> for rmgroup messages.
+The type of the hierarchy.  This should be one of C<public>, C<private>,
+C<local>, C<defunct>, C<historic>, or C<reserved>.  Public and historic
+hierarchies will generate F<control.ctl> entries that honor the control
+messages.  All others will generate F<control.ctl> entries with an action of
+C<mail> for newgroup messages and an action of C<doit> for rmgroup messages.
 
 =item description
 

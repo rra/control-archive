@@ -3,7 +3,7 @@ special files in config/special, which are used verbatim).  The
 configuration files are read by scripts/generate-files.
 
 hierarchy: (abbreviated hierarchy name, all caps)
-type: [ public | private | local | defunct | historic ]
+type: [ public | private | local | defunct | historic | reserved ]
 description: (short English description)
 groups: (shell case pattern for hierarchy)
 sender: (vector of patterns matching control message sender)
@@ -18,6 +18,12 @@ key-id: (user ID of PGP key)
 key-url: (URL for PGP key for hierarchy)
 key-fingerprint: (fingerprint of PGP key)
 sync-server: (news server allowing LIST)
+comment: (vector of comment lines)
+
+"Vector" means that the value must be enclosed in [] and consists of
+space-separated values, which may be quoted with double quotes.  Vector
+values may be given on multiple lines, but only if the value does not
+contain a closing bracket (due to limitations in the parser).
 
 This format cannot handle different rules for particular sub-hierarchies
 without giving them entirely separate entries, and the actions are
