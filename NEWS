@@ -2,6 +2,10 @@
 
 control-archive 1.3.0 (unreleased)
 
+    Special-case public hierarchies with no control message senders and
+    add a comment saying that the hierarchy is in use, but has no active
+    maintainer.
+
     When generating PGPKEYS and README.html, allow for the possibility of
     having no control message senders for abandoned hierarchies.
 

@@ -153,6 +153,21 @@ sub generate_config {
         print_comment ($fh, $comment);
         print $fh "#\n";
     }
+
+    # Print out a special comment for public hierarchies with no control
+    # message sender.
+    if ($$config{type} eq 'public' && !$$config{sender}
+        && !$$config{'newgroup-sender'} && !$$config{'rmgroup-sender'}) {
+        print $fh "#\n";
+        my $comment = "This hierarchy is still in use, but it has no"
+            . " active maintainer.  Control messages for this hierarchy"
+            . " should not be honored without confirming that the sender"
+            . " is the new hierarchy maintainer.";
+        print_comment ($fh, $comment);
+        print $fh "#\n";
+    }
+
+    # Generate the metadata comments.
     for (@{ $$config{contact} || [] }) {
         print $fh "# Contact: $_\n";
     }
