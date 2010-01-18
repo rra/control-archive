@@ -245,7 +245,7 @@ sub generate_keys_entry {
     my @sender;
     if ($$config{sender}) {
         @sender = @{ $$config{sender} };
-    } else {
+    } elsif ($$config{'rmgroup-sender'}) {
         @sender = @{ $$config{'rmgroup-sender'} };
     }
     for (@sender) {
@@ -291,7 +291,7 @@ sub generate_html_entry {
     my @sender;
     if ($$config{sender}) {
         @sender = @{ $$config{sender} };
-    } else {
+    } elsif ($$config{'rmgroup-sender'}) {
         @sender = @{ $$config{'rmgroup-sender'} };
     }
     for (@sender) {
