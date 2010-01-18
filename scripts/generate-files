@@ -239,10 +239,10 @@ sub generate_config {
     my $action = 'doit';
     if ($$config{pgp}) {
         print_comment ($fh, '*PGP*   See comment at top of file.');
-        print_space ($fh);
         if ($$config{'non-pgp-drop'}
             && (!$$config{'newgroup-sender'}
                 || $$config{'newgroup-sender'}[0] ne '*')) {
+            print_space ($fh);
             print $fh "newgroup:*:$$config{groups}:drop\n";
             print $fh "rmgroup:*:$$config{groups}:drop\n";
         }
@@ -258,6 +258,10 @@ sub generate_config {
                 print $fh (/^\*(\@\*\.[^.]+)?$/) ? "doit\n" : "$action\n";
             }
         }
+    } elsif ($$config{type} eq 'reserved') {
+        print_space ($fh);
+        print $fh "newgroup:*:$$config{groups}:drop\n";
+        print $fh "rmgroup:*:$$config{groups}:drop\n";
     } else {
         my $sender = $$config{'newgroup-sender'} || $$config{sender} || ['*'];
         for (@$sender) {
@@ -467,8 +471,10 @@ configuration file for C<foo.*>, C<bar.*>, and C<baz.*>.
 The type of the hierarchy.  This should be one of C<public>, C<private>,
 C<local>, C<defunct>, C<historic>, or C<reserved>.  Public and historic
 hierarchies will generate F<control.ctl> entries that honor the control
-messages.  All others will generate F<control.ctl> entries with an action of
-C<mail> for newgroup messages and an action of C<doit> for rmgroup messages.
+messages.  Reserved hierarchies will generate entries that drop all
+control messages for that hierarchy.  All others will generate
+F<control.ctl> entries with an action of C<mail> for newgroup messages and
+an action of C<doit> for rmgroup messages.
 
 =item description
 
