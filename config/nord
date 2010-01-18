@@ -1,0 +1,4 @@
+hierarchy: NORD
+groups: nord.*
+type: public
+description: "Northern Germany"

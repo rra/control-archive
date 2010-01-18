@@ -1,0 +1,5 @@
+hierarchy: NERSC
+groups: nersc.*
+type: public
+description: "National Energy Research Scientific Computing Center"
+contact: [ usenet@nersc.gov ]
