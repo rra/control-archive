@@ -4,9 +4,16 @@ type: public
 description: Microsoft Corporation, USA
 sender: [ control-microsoft@trigofacile.com ]
 contact: [ control-microsoft@trigofacile.com ]
+url: "http://www.trigofacile.com/divers/usenet/clefs/index.htm"
 pgp: yes
 key-id: control-microsoft@trigofacile.com
 key-fingerprint: "DF70 5FC9 F615 D52E 02DB  A3CB 63A9 8D13 E60E 2FAA"
 key-url: "http://www.trigofacile.com/divers/usenet/clefs/pgpkey-microsoft.asc"
 sync-server: msnews.microsoft.com
 admin-group: microsoft.public.news.server
+comment: [
+    "Control articles for that hierarchy are not issued by Microsoft itself"
+    "but by a Usenet active participant in order to improve the quality of"
+    "the propagation of Microsoft newsgroups.  Their official URL is:"
+    "http://www.microsoft.com/communities/newsgroups/list/en-us/default.aspx"
+]
