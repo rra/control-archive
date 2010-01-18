@@ -9,6 +9,10 @@ control-archive 1.3.0 (unreleased)
     When generating PGPKEYS and README.html, allow for the possibility of
     having no control message senders for abandoned hierarchies.
 
+    The key fingerprint pseudo-header in control.ctl entries now matches
+    the syntax of the other pseudo-headers, using a colon instead of an
+    equal sign.
+
     Hierarchy updates:
 
     * Update description for belwue.* to be more correct

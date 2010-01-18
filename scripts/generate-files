@@ -20,6 +20,10 @@ use strict;
 use POSIX qw(strftime);
 use Text::Wrap qw(wrap);
 
+# If this variable is set when printing a header for a control.ctl entry, we
+# need to print a blank comment line before the header.
+our $NEEDSPACE;
+
 ##############################################################################
 # Parsing
 ##############################################################################
@@ -107,14 +111,33 @@ sub check_fingerprint {
 # Generation
 ##############################################################################
 
+# Print a blank comment line if needed.
+sub print_space {
+    my ($fh) = @_;
+    if ($NEEDSPACE) {
+        print $fh "#\n";
+        $NEEDSPACE = 0;
+    }
+}
+
+# Print a metadata comment for a hierarchy.
+sub print_header {
+    my ($fh, $header, $value) = @_;
+    print_space ($fh);
+    print $fh "# ${header}: $value\n";
+}
+
 # Print a comment to control.ctl properly wrapped with the leading comment
 # character.  Takes the file descriptor and the comment string.
 sub print_comment {
     my ($fh, $comment) = @_;
+    print_space ($fh);
     $Text::Wrap::columns = 74;
     $Text::Wrap::unexpand = 0;
     $comment .= "\n" unless $comment =~ /\n\z/;
-    print $fh wrap ('# ', '# ', $comment . "\n");
+    $comment = wrap ('# ', '# ', $comment);
+    print $fh $comment;
+    $NEEDSPACE = 1 if (($comment =~ tr/\n/\n/) > 1);
 }
 
 # Given an open file handle and a file, cat the contents of that file into the
@@ -145,39 +168,36 @@ sub generate_config {
     elsif ($$config{type} eq 'defunct')  { print $fh '*DEFUNCT* -- '  }
     elsif ($$config{type} eq 'historic') { print $fh '*HISTORIC* -- ' }
     print $fh $$config{description}, ")\n";
+
+    # Print out a special comment for unusual hierarchies or public
+    # hierarchies with no control message sender.
     if ($$config{type} eq 'historic') {
-        print $fh "#\n";
+        $NEEDSPACE = 1;
         my $comment = "This hierarchy is not entirely defunct, but it"
             . " receives very little traffic and is included primarily for"
             . " the sake of completeness.";
         print_comment ($fh, $comment);
-        print $fh "#\n";
-    }
-
-    # Print out a special comment for public hierarchies with no control
-    # message sender.
-    if ($$config{type} eq 'public' && !$$config{sender}
-        && !$$config{'newgroup-sender'} && !$$config{'rmgroup-sender'}) {
-        print $fh "#\n";
+    } elsif ($$config{type} eq 'public' && !$$config{sender}
+             && !$$config{'newgroup-sender'} && !$$config{'rmgroup-sender'}) {
+        $NEEDSPACE = 1;
         my $comment = "This hierarchy is still in use, but it has no"
             . " active maintainer.  Control messages for this hierarchy"
             . " should not be honored without confirming that the sender"
             . " is the new hierarchy maintainer.";
         print_comment ($fh, $comment);
-        print $fh "#\n";
     }
 
     # Generate the metadata comments.
     for (@{ $$config{contact} || [] }) {
-        print $fh "# Contact: $_\n";
+        print_header ($fh, 'Contact', $_);
     }
-    print $fh "# URL: $$config{url}\n" if $$config{url};
-    print $fh "# Admin group: $$config{'admin-group'}\n"
+    print_header ($fh, 'URL', $$config{url}) if $$config{url};
+    print_header ($fh, 'Admin group', $$config{'admin-group'})
         if $$config{'admin-group'};
-    print $fh "# Key URL: $$config{'key-url'}\n" if $$config{'key-url'};
-    print $fh "# Key fingerprint = $$config{'key-fingerprint'}\n"
+    print_header ($fh, 'Key URL', $$config{'key-url'}) if $$config{'key-url'};
+    print_header ($fh, 'Key fingerprint', $$config{'key-fingerprint'})
         if $$config{'key-fingerprint'};
-    print $fh "# Syncable server: $$config{'sync-server'}\n"
+    print_header ($fh, 'Syncable server', $$config{'sync-server'})
         if $$config{'sync-server'};
     my $comment;
     if ($$config{type} eq 'local' || $$config{type} eq 'private') {
@@ -195,7 +215,8 @@ sub generate_config {
     # Generate the actual rules.
     my $action = 'doit';
     if ($$config{pgp}) {
-        print $fh "# *PGP*   See comment at top of file.\n";
+        print_comment ($fh, '*PGP*   See comment at top of file.');
+        print_space ($fh);
         if ($$config{'non-pgp-drop'}
             && (!$$config{'newgroup-sender'}
                 || $$config{'newgroup-sender'}[0] ne '*')) {
@@ -209,6 +230,7 @@ sub generate_config {
             my $sender = $$config{"$type-sender"} || $$config{sender};
             next unless $sender;
             for (@$sender) {
+                print_space ($fh);
                 print $fh "$type:$_:$$config{groups}:";
                 print $fh (/^\*(\@\*\.[^.]+)?$/) ? "doit\n" : "$action\n";
             }
@@ -216,13 +238,16 @@ sub generate_config {
     } else {
         my $sender = $$config{'newgroup-sender'} || $$config{sender} || ['*'];
         for (@$sender) {
+            print_space ($fh);
             print $fh "newgroup:$_:$$config{groups}:mail\n";
         }
         $sender = $$config{'rmgroup-sender'} || $$config{sender} || ['*'];
         for (@$sender) {
+            print_space ($fh);
             print $fh "rmgroup:$_:$$config{groups}:$action\n";
         }
     }
+    $NEEDSPACE = 0;
 }
 
 # Generate a control.ctl file in the current directory by combining the
