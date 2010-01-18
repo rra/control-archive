@@ -40,10 +40,6 @@ Configuration:
    within the hierarchy, carleton.*, git.*, israel.*, iu.*, umn.*, and
    utexas.* could be handled without special fragments.
 
- * If there were a way to add extended comments to an entry in the regular
-   config syntax, fa.*, local.*, and microsoft.* could be handled without
-   special fragments.
-
 Output:
 
  * Currently, the generated newsgroups file uses the traditional mixed
@@ -73,9 +69,6 @@ Output:
    when they've been defunct for more than six months or a year.  They
    should instead be moved to something like docs/hierarchies, but that
    file should be easily parsable.
-
- * Add a separate RESERVED status for things like local.*, test.*,
-   and example.*.
 
 Documentation:
 
