@@ -19,8 +19,8 @@ and released under the following license:
   WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
-scripts/process-control is based on a version controlchan from INN, which
-had the following copyright and license:
+scripts/process-control is based on an older version of controlchan from
+INN, which had the following copyright and license:
 
   Copyright 2001 by Marco d'Itri <md@linux.it>
 
