@@ -70,7 +70,7 @@ sub parse_config {
         if ($value =~ /^\[ .* \]\s*$/) {
             my @values;
             $value =~ s/^\[\s*//;
-            $value =~ s/\s*\]$/ /;
+            $value =~ s/\s*\]\s*$/ /;
             while ($value =~ s/^(\"[^\"]+\"|\S+)\s+//) {
                 my $element = $1;
                 $element =~ s/^\"//;
@@ -178,7 +178,18 @@ sub generate_config {
     print $fh $$config{description}, ")\n";
     if ($$config{comment}) {
         $NEEDSPACE = 1;
-        print_comment ($fh, join (' ', @{ $$config{comment} }));
+        my $comment = '';
+        for my $line (@{ $$config{comment} }) {
+            if ($line eq '' && length ($comment) > 0) {
+                print_comment ($fh, $comment);
+                $comment = '';
+                $NEEDSPACE = 1;
+            }
+            next if $line eq '';
+            $comment .= ' ' if length ($comment) > 0;
+            $comment .= $line;
+        }
+        print_comment ($fh, $comment) if length ($comment) > 0;
     }
 
     # Print out a special comment for unusual hierarchies or public
