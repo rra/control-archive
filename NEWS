@@ -1,6 +1,6 @@
                    User-Visible control-archive Changes
 
-control-archive 1.3.0 (unreleased)
+control-archive 1.3.0 (2010-01-17)
 
     Special-case public hierarchies with no control message senders and
     add a comment saying that the hierarchy is in use, but has no active
