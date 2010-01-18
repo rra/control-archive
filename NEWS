@@ -41,6 +41,7 @@ control-archive 1.3.0 (unreleased)
     * Add new private hierarchy ulm.* (Ulm, Germany)
     * Remove control sender for fido.*; the domain is for sale
     * Add information about muenster.* to hierarchy notes
+    * Include more information in example.* entry
 
     Thanks to Thomas Hochstein for the updates to the regional German
     groups and fido.*.

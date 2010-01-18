@@ -1,0 +1,10 @@
+hierarchy: EXAMPLE
+type: reserved
+description: For use in examples
+groups: example.*
+comment: [
+    "The example.* hierarchy is reserved by RFC 5536 and MUST NOT be used"
+    "for regular newsgroups.  It is intended for use in examples,"
+    "standards documents, and similar places to avoid clashes with real"
+    "newsgroup names."
+]
