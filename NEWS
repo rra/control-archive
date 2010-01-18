@@ -24,9 +24,10 @@ control-archive 1.3.0 (unreleased)
     * Add contact, URL, sync server, and admin group for thur.*
     * Remove sender, contact, URL, and sync server for ufra.*
     * Add new private hierarchy ulm.* (Ulm, Germany)
+    * Remove control sender for fido.*; the domain is for sale
 
     Thanks to Thomas Hochstein for the updates to the regional German
-    groups.
+    groups and fido.*.
 
 control-archive 1.2.1 (2010-01-02)
 
