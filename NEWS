@@ -34,6 +34,10 @@ control-archive 1.3.0 (unreleased)
     Thanks to Thomas Hochstein for the updates to the regional German
     groups and fido.*.
 
+    Documentation updates:
+
+    * Supersedes is allowed but not recommended in control messages
+
 control-archive 1.2.1 (2010-01-02)
 
     Hierarchy updates:

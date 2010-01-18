@@ -125,6 +125,12 @@ HIERARCHY MAINTENANCE
   most recent control message for that group, whether a valid "newgroup"
   or "checkgroups" message.
 
+  While this archive does not place limitations on the Supersedes header,
+  be aware that many control message processors refuse to accept control
+  messages that have a Supersedes header due to widespread abuse.
+  Supersedes serve little purpose in control messages, and senders are
+  best served by not using them.
+
 NEW HIERARCHIES
 
   If you are the maintainer for a hierarchy that is not already present in
