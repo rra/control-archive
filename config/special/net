@@ -12,7 +12,7 @@
 # URL: http://www.usenet2.org
 # Admin group: net.config
 # Key URL: http://www.usenet2.org/control@usenet2.org.asc
-# Key fingerprint = D7 D3 5C DB 18 6A 29 79  BF 74 D4 58 A3 78 9D 22
+# Key fingerprint: D7 D3 5C DB 18 6A 29 79  BF 74 D4 58 A3 78 9D 22
 # *PGP*   See comment at top of file.
 newgroup:*:net.*:drop
 rmgroup:*:net.*:drop

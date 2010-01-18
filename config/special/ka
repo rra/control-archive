@@ -3,7 +3,7 @@
 # URL: http://www.karlsruhe.org/
 # Admin group: ka.admin
 # Key URL: http://www.karlsruhe.org/pubkey-news.karlsruhe.org.asc
-# Key fingerprint = DE 19 BB 25 76 19 81 17  F0 67 D2 23 E8 C8 7C 90
+# Key fingerprint: DE 19 BB 25 76 19 81 17  F0 67 D2 23 E8 C8 7C 90
 # For private use only, contact the above address for information.
 # *PGP*   See comment at top of file.
 newgroup:*:ka.*:drop
