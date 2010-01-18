@@ -1,5 +1,26 @@
                    User-Visible control-archive Changes
 
+control-archive 1.2.2 (unreleased)
+
+    Hierarchy updates:
+
+    * Update description for belwue.* to be more correct
+    * Add contact, URL, and fingerprint for belwue.*
+    * Add contact, URL, and admin group for bln.*
+    * Add fingerprint and admin group for ffm.*
+    * Add admin group for kassel.*
+    * Remove sender and URL, add admin group for kiel.*
+    * Add key URL for muc.*
+    * Add new public hierarchy owl.* (Ostwestfalen-Lippe, Germany)
+    * Update description for sachsnet.*
+    * Add contact, fingerprint, and admin group for stgt.*
+    * Add contact, URL, sync server, and admin group for thur.*
+    * Remove sender, contact, URL, and sync server for ufra.*
+    * Add new private hierarchy ulm.* (Ulm, Germany)
+
+    Thanks to Thomas Hochstein for the updates to the regional German
+    groups.
+
 control-archive 1.2.1 (2010-01-02)
 
     Hierarchy updates:
