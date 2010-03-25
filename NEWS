@@ -1,5 +1,14 @@
                    User-Visible control-archive Changes
 
+control-archive 1.4.0 (unreleased)
+
+    Add support for chkscope parameters in the checkgroups control
+    message.  process-control now correctly filters out out-of-scope lines
+    and doesn't apply the checkgroups to out-of-scope entries in the
+    current active file, but the scope is not yet correctly used to
+    determine the matching control.ctl entry.  Should fix problems with
+    processing ka.* checkgroups.
+
 control-archive 1.3.0 (2010-01-17)
 
     Special-case public hierarchies with no control message senders and

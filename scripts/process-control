@@ -162,12 +162,18 @@ sub check_headers {
     return "$id unknown control type $control[0]"
         if ($control[0] !~ /^(?:(?:new|rm)group|checkgroups)$/);
     return "$id invalid control header"
-        if (!@control || @control > 3);
+        if (!@control);
     return "$id invalid control header"
         if ($control[0] eq 'rmgroup' && @control > 2);
     return "$id missing newsgroup for $control[0]"
         if ($control[0] =~ /^(?:new|rm)group$/ && !$control[1]);
-    if ($control[0] eq 'newgroup') {
+    if ($control[0] eq 'checkgroups') {
+        my @info = @control[1 .. $#control];
+        for (@info) {
+            return "$id bad syntax for checkgroups: $_\n"
+                unless /^(\#\d+|!?[a-zA-Z0-9+_-]+(\.[a-zA-Z0-9+_-]+)*)\z/;
+        }
+    } elsif ($control[0] eq 'newgroup') {
         return "$id bad newgroup mode $control[2]"
             if ($control[2] && $control[2] !~ /^[ym]/);
         return "$id bad newsgroup name $control[1] (invalid characters)"
@@ -530,10 +536,15 @@ sub rmgroup {
     log "$id processed rmgroup for $group";
 }
 
-# Process a checkgroups.  Takes the group pattern affected and the body of the
-# message.  Logs all actions taken.
+# Process a checkgroups.  Takes the group pattern affected, the body of the
+# message, and the checkgroup arguments.  Logs all actions taken.
 sub checkgroups {
-    my ($id, $pattern, $body) = @_;
+    my ($id, $pattern, $body, @args) = @_;
+    @args = grep { !/^\#/ } @args;
+    my $include = join ('|', grep { /[^!]/ } @args);
+    $include = qr/^(?:$include)(?:\.|\z)/ if $include;
+    my $exclude = join ('|', map { s/^\!//; $_ } grep { /^!/ } @args);
+    $exclude = qr/^(?:$exclude)(?:\.|\z)/ if $exclude;
     my %checkgroups;
 
     # First, process the body of the checkgroups and build a hash of valid
@@ -554,13 +565,20 @@ sub checkgroups {
             next LINE if /^(?:all|ctl)$/;
             next LINE if length ($_) > 30;
         }
+        if ($include) {
+            next unless /$include/;
+        }
+        if ($exclude) {
+            next if /$exclude/;
+        }
         my $mode = ($desc =~ /\(Moderated\)$/) ? 'm' : 'y';
         $checkgroups{$group} = "$mode $desc";
     }
 
     # Now, open the database and take a first pass through all groups for that
-    # same hierarchy that are in the database, fixing modes and descriptions
-    # and removing any groups that aren't in the new checkgroups.
+    # same hierarchy that are in the database, match @include, and don't match
+    # @exclude, fixing modes and descriptions and removing any groups that
+    # aren't in the new checkgroups.
     my %db;
     open (LOCK, "+> $ACTIVE.lock") or logdie "cannot open $ACTIVE.lock: $!";
     flock (LOCK, LOCK_EX) or logdie "cannot lock $ACTIVE.lock: $!";
@@ -568,6 +586,12 @@ sub checkgroups {
     my ($group, $old);
     while (($group, $old) = each %db) {
         next unless $group =~ /$pattern/;
+        if ($include) {
+            next unless $group =~ /$include/;
+        }
+        if ($exclude) {
+            next if $group =~ /$exclude/;
+        }
         if (!$checkgroups{$group}) {
             log "ACTION: rmgroup $group";
             delete $db{$group};
@@ -710,6 +734,8 @@ while (<STDIN>) {
     }
 
     # If this is a checkgroups, figure out what hierarchy it's affecting.
+    # This should really be based on the checkgroups arguments if present, but
+    # isn't yet.
     if ($control[0] eq 'checkgroups') {
         my $group = checkgroups_group (\@body);
         @control = ('checkgroups', $group);
@@ -734,7 +760,7 @@ while (<STDIN>) {
         } elsif ($control[0] eq 'rmgroup') {
             rmgroup ($id, $control[1]);
         } elsif ($control[0] eq 'checkgroups') {
-            checkgroups ($id, $pattern, \@body);
+            checkgroups ($id, $pattern, \@body, @control[1 .. $#control]);
         } else {
             log "$id unknown control type $control[0]";
         }

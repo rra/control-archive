@@ -16,7 +16,11 @@ Processing:
    instead of a path it gets a storage API token.  This would let it run
    as a channel feed from a current innd.
 
- * Support chkscope in checkgroups message from new USEPRO draft.
+ * The chkscope parameter in checkgroups control messages is honored, but
+   the body is still parsed to find the affected hierarchy rather than
+   using the chkscope information.  This also means that permissions are
+   not applied properly in cases where multiple hierarchies with different
+   permission rules are included in the same checkgroups message.
 
  * Support checkgroups serial numbers from new USEPRO draft.
 
