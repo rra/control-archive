@@ -18,6 +18,7 @@ key-id: (user ID of PGP key)
 key-url: (URL for PGP key for hierarchy)
 key-fingerprint: (fingerprint of PGP key)
 sync-server: (news server allowing LIST)
+admin-group: (administrative group of hierarchy)
 comment: (vector of comment lines)
 
 "Vector" means that the value must be enclosed in [] and consists of
