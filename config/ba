@@ -2,10 +2,11 @@ hierarchy: BA
 groups: ba.*
 type: public
 description: "San Francisco Bay Area, USA"
-sender: [ ba-mod@nas.nasa.gov ]
-contact: [ ba-mod@nas.nasa.gov ]
-url: "http://ennui.org/ba/"
+sender: [ ba-mod@panix.com ]
+contact: [ ba-mod@panix.com ]
+url: "http://www.panix.com/~babm/ba/"
 pgp: yes
-key-id: ba.news.config
-key-url: "http://ennui.org/ba/ba-mod.asc"
+key-id: ba.config
+key-url: "http://www.panix.com/~babm/ba/ba-mod.asc"
+key-fingerprint: "3C B6 7A 3B 34 53 C0 58  D2 FB 65 E8 E9 6F CD 46"
 admin-group: ba.news.config
