@@ -3,8 +3,8 @@ groups: fr.*
 type: public
 description: "French language"
 sender: [ control@usenet-fr.news.eu.org ]
-url: "http://www.usenet-fr.news.eu.org/"
+url: "http://www.usenet-fr.net/"
 pgp: yes
 key-id: control@usenet-fr.news.eu.org
-key-url: "http://www.usenet-fr.news.eu.org/fur/usenet/presentation-fr.html"
+key-url: "http://www.usenet-fr.net/fur/usenet/presentation-fr.html"
 admin-group: fr.usenet.forums.annonces
