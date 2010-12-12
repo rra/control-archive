@@ -9,6 +9,8 @@ control-archive 1.4.0 (unreleased)
     determine the matching control.ctl entry.  Should fix problems with
     processing ka.* checkgroups.
 
+    Suppress Perl warnings from some malformed control messages.
+
     Hierarchy updates:
 
     * Update URL for de.*

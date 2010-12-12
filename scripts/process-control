@@ -130,7 +130,7 @@ sub check_ctl {
     for (@$rules) {
         my @rule = split /:/;
         if ($type eq $rule[0] && $sender =~ /$rule[1]/) {
-            next unless $target =~ /$rule[2]/;
+            next unless ($target && $target =~ /$rule[2]/);
             $action = $rule[3];
             $pattern = $rule[2];
             last;
@@ -280,7 +280,7 @@ sub checkgroups_group {
   LINE:
     for (@$body) {
         my ($group, $desc) = split (' ', $_, 2);
-        $desc =~ s/\s+$//;
+        $desc =~ s/\s+$// if defined $desc;
         next unless $desc;
         next if $desc =~ /[\x00-\x1f]/;
         next unless ($group =~ /^[a-z0-9+_.-]+$/);
@@ -472,7 +472,7 @@ sub newgroup {
             $next = 0;
         }
     }
-    if ($description =~ /[\x00-\x1f]/) {
+    if (defined ($description) && $description =~ /[\x00-\x1f]/) {
         log "$id control characters in newsgroup description";
         return;
     }
