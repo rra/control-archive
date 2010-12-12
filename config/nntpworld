@@ -1,0 +1,12 @@
+hierarchy: NNTPWORLD
+groups: nntpworld.*
+type: public
+description: General discussion
+sender: [ usenet@nntpworld.net ]
+contact: [ usenet@nntpworld.net ]
+url: "http://www.nntpworld.net/"
+pgp: yes
+key-id: usenet@nntpworld.net
+key-fingerprint: "C7 BB E0 56 7A 8A 5A 86  09 B5 E3 29 E1 BB 8C E1"
+key-url: "http://www.nntpworld.net/nntpworld.asc"
+admin-group: nntpworld.config
