@@ -6,7 +6,7 @@
 # Based *very* heavily on controlchan by Marco d'Itri.
 # Portions based on pgpverify by David Lawrence.
 #
-# Copyright 2003, 2007, 2008 by Russ Allbery <rra@stanford.edu>
+# Copyright 2003, 2007, 2008, 2010 by Russ Allbery <rra@stanford.edu>
 # Copyright 2001 by Marco d'Itri <md@linux.it>
 # Copyright (c) 1996 UUNET Technologies, Inc.  All rights reserved.
 #
@@ -130,7 +130,7 @@ sub check_ctl {
     for (@$rules) {
         my @rule = split /:/;
         if ($type eq $rule[0] && $sender =~ /$rule[1]/) {
-            next unless ($target && $target =~ /$rule[2]/);
+            next unless (defined ($target) && $target =~ /$rule[2]/);
             $action = $rule[3];
             $pattern = $rule[2];
             last;
