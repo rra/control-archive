@@ -1,6 +1,6 @@
                    User-Visible control-archive Changes
 
-control-archive 1.5.0 (unreleased)
+control-archive 1.5.0 (2011-01-02)
 
     Fix broken checkgroups processing.  A combination of bugs in the
     initial implementation of chkscope support resulted in the removal of
