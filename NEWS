@@ -1,5 +1,12 @@
                    User-Visible control-archive Changes
 
+control-archive 1.5.0 (unreleased)
+
+    Fix broken checkgroups processing.  A combination of bugs in the
+    initial implementation of chkscope support resulted in the removal of
+    the first group listed in a checkgroups followed by ignoring the rest
+    of the checkgroups.  The chkscope support should now work as intended.
+
 control-archive 1.4.0 (2010-12-12)
 
     Add support for chkscope parameters in the checkgroups control

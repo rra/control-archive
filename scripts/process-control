@@ -541,7 +541,7 @@ sub rmgroup {
 sub checkgroups {
     my ($id, $pattern, $body, @args) = @_;
     @args = grep { !/^\#/ } @args;
-    my $include = join ('|', grep { /[^!]/ } @args);
+    my $include = join ('|', grep { /^[^!]/ } @args);
     $include = qr/^(?:$include)(?:\.|\z)/ if $include;
     my $exclude = join ('|', map { s/^\!//; $_ } grep { /^!/ } @args);
     $exclude = qr/^(?:$exclude)(?:\.|\z)/ if $exclude;
@@ -566,10 +566,10 @@ sub checkgroups {
             next LINE if length ($_) > 30;
         }
         if ($include) {
-            next unless /$include/;
+            next unless ($group =~ /$include/);
         }
         if ($exclude) {
-            next if /$exclude/;
+            next if ($group =~ /$exclude/);
         }
         my $mode = ($desc =~ /\(Moderated\)$/) ? 'm' : 'y';
         $checkgroups{$group} = "$mode $desc";
@@ -733,16 +733,17 @@ while (<STDIN>) {
         next;
     }
 
-    # If this is a checkgroups, figure out what hierarchy it's affecting.
-    # This should really be based on the checkgroups arguments if present, but
-    # isn't yet.
+    # Check to see what we want to do with it.  If this is a checkgroups,
+    # figure out what hierarchy it's affecting.  This should really be
+    # based on the checkgroups arguments if present, but isn't yet.
+    my ($action, $pattern);
     if ($control[0] eq 'checkgroups') {
         my $group = checkgroups_group (\@body);
-        @control = ('checkgroups', $group);
+        ($action, $pattern)
+            = check_ctl ($rules, $id, $sender, 'checkgroups', $group);
+    } else {
+        ($action, $pattern) = check_ctl ($rules, $id, $sender, @control);
     }
-
-    # Check to see what we want to do with it.
-    my ($action, $pattern) = check_ctl ($rules, $id, $sender, @control);
     if ($action =~ /^verify-(.+)/) {
         my $wanted = $1;
         my $signer = pgpverify ($id, \%hdr, \%dups, \@body);
