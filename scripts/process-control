@@ -170,7 +170,7 @@ sub check_headers {
     if ($control[0] eq 'checkgroups') {
         my @info = @control[1 .. $#control];
         for (@info) {
-            return "$id bad syntax for checkgroups: $_\n"
+            return "$id bad syntax for checkgroups: $_"
                 unless /^(\#\d+|!?[a-zA-Z0-9+_-]+(\.[a-zA-Z0-9+_-]+)*)\z/;
         }
     } elsif ($control[0] eq 'newgroup') {

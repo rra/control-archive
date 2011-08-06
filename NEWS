@@ -1,5 +1,10 @@
                    User-Visible control-archive Changes
 
+control-archive 1.5.1 (unreleased)
+
+    Suppress a stray blank line in the logs when processing invalid
+    checkgroups.
+
 control-archive 1.5.0 (2011-01-02)
 
     Fix broken checkgroups processing.  A combination of bugs in the
