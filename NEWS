@@ -1,6 +1,10 @@
                    User-Visible control-archive Changes
 
-control-archive 1.5.1 (unreleased)
+control-archive 1.6.0 (unreleased)
+
+    In export-control, when copying the control.ctl file and the logs to
+    the export directory, set the modification times of the copied files
+    to match the modification times of the originals.
 
     Suppress a stray blank line in the logs when processing invalid
     checkgroups.

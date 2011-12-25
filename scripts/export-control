@@ -2,7 +2,8 @@
 #
 # export-control -- Export the newsgroup database as an active file.
 #
-# Copyright 2003, 2008 Russ Allbery <rra@stanford.edu>
+# Copyright 2003, 2008, 2011 Russ Allbery <rra@stanford.edu>
+#
 # See LICENSE for licensing terms.
 
 ##############################################################################
@@ -92,6 +93,8 @@ system ("bzip2 -kf '$ROOT/newsgroups'") == 0
 
 # Copy some other files into the export directory.
 copy ($CONTROL, "$ROOT/control.ctl");
+my ($mtime) = (stat $CONTROL)[9];
+utime 0, $mtime, "$ROOT/control.ctl";
 unless (-d "$ROOT/LOGS") {
     mkdir "$ROOT/LOGS" or die "$0: cannot mkdir $ROOT/LOGS: $!\n";
 }
@@ -99,6 +102,8 @@ opendir (LOGS, $LOGS) or die "$0: cannot opendir $LOGS: $!\n";
 for (grep { /^log\.\d{4}-\d\d$/ } readdir LOGS) {
     copy ("$LOGS/$_", "$ROOT/LOGS/$_");
     chmod 0664, "$ROOT/LOGS/$_";
+    my ($mtime) = (stat "$LOGS/$_")[9];
+    utime 0, $mtime, "$ROOT/LOGS/$_";
 }
 closedir LOGS;
 
