@@ -6,6 +6,6 @@
 newgroup:*:bofh.*:drop
 rmgroup:*:bofh.*:drop
 # The following three lines are only for authorized bofh.* sites.
-#checkgroups:bofh-control@lists.killfile.org:bofh.*:verify-bofh-control@lists.killfile.org
-#newgroup:bofh-control@lists.killfile.org:bofh.*:verify-bofh-control@lists.killfile.org
-#rmgroup:bofh-control@lists.killfile.org:bofh.*:verify-bofh-control@lists.killfile.org
+#checkgroups:bofh-control@killfile.org:bofh.*:verify-bofh-control@lists.killfile.org
+#newgroup:bofh-control@killfile.org:bofh.*:verify-bofh-control@lists.killfile.org
+#rmgroup:bofh-control@killfile.org:bofh.*:verify-bofh-control@lists.killfile.org

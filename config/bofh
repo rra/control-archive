@@ -2,7 +2,7 @@ hierarchy: BOFH
 groups: bofh.*
 type: private
 description: "Bastard Operator From Hell"
-sender: [ bofh-control@lists.killfile.org ]
+sender: [ bofh-control@killfile.org ]
 contact: [ bofh-control@lists.killfile.org ]
 pgp: yes
 key-id: bofh-control@lists.killfile.org
