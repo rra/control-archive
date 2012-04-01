@@ -1,0 +1,11 @@
+## BOFH (*PRIVATE* -- Bastard Operator From Hell)
+# Contact: bofh-control@lists.killfile.org
+# Key fingerprint: 40B5 8A56 1E00 6152 083E  38B3 CEF5 6980 7DC1 A266
+# For private use only, contact the above address for information.
+# *PGP*   See comment at top of file.
+newgroup:*:bofh.*:drop
+rmgroup:*:bofh.*:drop
+# The following three lines are only for authorized bofh.* sites.
+#checkgroups:bofh-control@lists.killfile.org:bofh.*:verify-bofh-control@lists.killfile.org
+#newgroup:bofh-control@lists.killfile.org:bofh.*:verify-bofh-control@lists.killfile.org
+#rmgroup:bofh-control@lists.killfile.org:bofh.*:verify-bofh-control@lists.killfile.org

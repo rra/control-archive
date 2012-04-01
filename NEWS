@@ -9,6 +9,10 @@ control-archive 1.6.0 (unreleased)
     Suppress a stray blank line in the logs when processing invalid
     checkgroups.
 
+    Hierarchy updates:
+
+    * Update sender and PGP information for bofh.*
+
 control-archive 1.5.0 (2011-01-02)
 
     Fix broken checkgroups processing.  A combination of bugs in the
