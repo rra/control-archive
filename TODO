@@ -37,8 +37,8 @@ Processing:
 Configuration:
 
  * If PGP-enabled hierarchies marked PRIVATE included the verification
-   configuration lines commented-out, cl.* and ka.* could be handled
-   without special fragments.
+   configuration lines commented-out, bofh.*, cl.*, and ka.* could be
+   handled without special fragments.
 
  * If there were a way to add special rules for particular group patterns
    within the hierarchy, carleton.*, git.*, israel.*, iu.*, umn.*, and
