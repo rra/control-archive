@@ -12,6 +12,7 @@ control-archive 1.6.0 (unreleased)
     Hierarchy updates:
 
     * Update sender and PGP information for bofh.*
+    * Update sender for grisbi.*
 
 control-archive 1.5.0 (2011-01-02)
 
