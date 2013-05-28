@@ -17,6 +17,7 @@ control-archive 1.6.0 (unreleased)
 
     * Update sender and PGP information for bofh.*
     * Update sender for grisbi.*
+    * Add dictator.*
 
 control-archive 1.5.0 (2011-01-02)
 
