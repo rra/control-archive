@@ -9,6 +9,10 @@ control-archive 1.6.0 (unreleased)
     Suppress a stray blank line in the logs when processing invalid
     checkgroups.
 
+    Hopefully improve the details about the formatting and langth of the
+    newsgroups line and be clearer about how line length is calculated
+    with tabs.
+
     Hierarchy updates:
 
     * Update sender and PGP information for bofh.*

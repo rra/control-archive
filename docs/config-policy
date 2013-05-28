@@ -188,14 +188,20 @@ THE NEWSGROUPS FILE
   least 8 characters, follow it with two tabs.  In the unlikely event the
   group name is less than 8 characters, follow it with three tabs.
 
-  The total line length should be at most 79 columns.  The description
-  should start with a capital and not be more than 55 characters (79 - 24)
-  long.  If the group name is longer than 24 characters, the description
-  should be correspondingly shorter.  If the group is moderated, it should
-  have " (Moderated)" at the very end of the description, not counted as
-  part of the length of the description.  This text must be exactly that,
-  with no variations, as it is used by news software to find moderated
-  groups.
+  The total line length should be at most 79 columns for good display in
+  the traditional terminal width.  The description should start with a
+  capital and not be more than 55 characters (79 - 24) long.  If the group
+  name is 24 characters or more, the description should be correspondingly
+  shorter so that the group name, a tab to the next 8-character tab stop,
+  and the group description still fits in 79 columns.  (For example, if
+  the group name is 32 characters long, a tab to the next tab stop means
+  the description will start at column 40 and should be no longer than 39
+  characters (79 - 40).
+
+  If the group is moderated, it should have " (Moderated)" at the very end
+  of the description, not counted as part of the length of the
+  description.  This text must be exactly that, with no variations, as it
+  is used by news software to find moderated groups.
 
   Traditionally, all newsgroup descriptions ended with a period, but this
   isn't necessary and steals away one character that is occasionally
