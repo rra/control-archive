@@ -1,6 +1,6 @@
                    User-Visible control-archive Changes
 
-control-archive 1.6.0 (unreleased)
+control-archive 1.6.0 (2013-06-01)
 
     In export-control, when copying the control.ctl file and the logs to
     the export directory, set the modification times of the copied files
