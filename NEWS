@@ -9,7 +9,7 @@ control-archive 1.6.0 (2013-06-01)
     Suppress a stray blank line in the logs when processing invalid
     checkgroups.
 
-    Hopefully improve the details about the formatting and langth of the
+    Hopefully improve the details about the formatting and length of the
     newsgroups line and be clearer about how line length is calculated
     with tabs.
 
