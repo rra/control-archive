@@ -3,8 +3,8 @@ groups: dictator.*
 type: public
 description: Dictator's Handbook
 sender: [ news@dictatorshandbook.net ]
-contact: [ "Randall Wood <rsw@therandymon.com>" ]
-url: "http://www.dictatorshandbook.net/usenet/usenetadmin.html"
+contact: [ news@dictatorshandbook.net ]
+url: "http://dictatorshandbook.net/usenet/usenetadmin.html"
 pgp: yes
 key-id: news@dictatorshandbook.net
 key-fingerprint: "5C0A 741A F931 D79A D9E9  BBB7 4406 4481 91ED C5F2"
