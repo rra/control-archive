@@ -6,6 +6,7 @@ control-archive 1.6.1 (unreleased)
 
     * Update sender for chile.*
     * Update metadata for dictator.*
+    * Revert change to the sender for grisbi.*
 
 control-archive 1.6.0 (2013-06-01)
 

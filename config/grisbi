@@ -2,7 +2,7 @@ hierarchy: GRISBI
 groups: grisbi.*
 type: public
 description: Grisbi Personal Finance Manager software
-sender: [ control@grisbi.org ]
+sender: [ grisbi-control@grisbi.org ]
 contact: [ newsmaster@grisbi.org ]
 url: "http://news.grisbi.org/"
 pgp: yes
