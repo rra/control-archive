@@ -124,7 +124,7 @@ INSTALLATION
   install or:
 
       mkdir keyring
-      gpg --homedir=keyring --allow-non-selfsigned-uids --import keys/*
+      gpg --homedir=keyring --allow-non-selfsigned-uid --import keys/*
 
   from the top level of this distribution.  process-control also expects a
   control.ctl file in /srv/control/control.ctl, which can be generated
