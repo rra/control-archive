@@ -9,6 +9,8 @@ all: control.ctl
 dist:
 	git archive --prefix=control-archive-$(VERSION)/ master \
 	    | gzip -9c > control-archive-$(VERSION).tar.gz
+	git archive --prefix=control-archive-$(VERSION)/ master \
+	    | xz > control-archive-$(VERSION).tar.xz
 
 control.ctl:
 	mkdir -p keyring
