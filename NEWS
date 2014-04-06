@@ -7,6 +7,7 @@ control-archive 1.6.1 (unreleased)
     * Update sender for chile.*
     * Update metadata for dictator.*
     * Revert change to the sender for grisbi.*
+    * Update PGP key for grisbi.* for new default key ID
 
 control-archive 1.6.0 (2013-06-01)
 
