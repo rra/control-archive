@@ -6,7 +6,7 @@
 # into a control.ctl file in the format that had been used for the ISC and INN
 # versions of that file.  It also supports special overrides.
 #
-# Copyright 2002, 2003, 2004, 2008 Russ Allbery <rra@stanford.edu>
+# Copyright 2002, 2003, 2004, 2008 Russ Allbery <eagle@eyrie.org>
 # See LICENSE for licensing terms.
 
 ##############################################################################
@@ -648,6 +648,6 @@ have the current version of the package.
 
 =head1 AUTHOR
 
-Russ Allbery <rra@stanford.edu>
+Russ Allbery <eagle@eyrie.org>
 
 =cut

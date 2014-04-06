@@ -2,11 +2,11 @@
 #
 # process-control -- Process Usenet control messages to maintain a database.
 #
-# Written by Russ Allbery <rra@stanford.edu>
+# Written by Russ Allbery <eagle@eyrie.org>
 # Based *very* heavily on controlchan by Marco d'Itri.
 # Portions based on pgpverify by David Lawrence.
 #
-# Copyright 2003, 2007, 2008, 2010, 2011 by Russ Allbery <rra@stanford.edu>
+# Copyright 2003, 2007, 2008, 2010, 2011 by Russ Allbery <eagle@eyrie.org>
 # Copyright 2001 by Marco d'Itri <md@linux.it>
 # Copyright (c) 1996 UUNET Technologies, Inc.  All rights reserved.
 #
@@ -952,7 +952,7 @@ have the current version of the package.
 
 =head1 AUTHORS
 
-Written by Russ Allbery <rra@stanford.edu>, based very heavily on
+Written by Russ Allbery <eagle@eyrie.org>, based very heavily on
 controlchan by Marco d'Itri.  Portions based on pgpverify by David
 Lawrence.
 

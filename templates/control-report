@@ -1,8 +1,8 @@
-From: Newsgroup Changes Report <rra@stanford.edu>
+From: Newsgroup Changes Report <eagle@eyrie.org>
 Newsgroups: {$newsgroup}
 Followup-To: news.admin.hierarchies
 Subject: Newsgroup changes ({$start} to {$end})
-Approved: rra@stanford.edu
+Approved: eagle@eyrie.org
 
 Over the past week, the following changes have been made to the list of
 Usenet newsgroups maintained at <ftp://ftp.isc.org/pub/usenet/CONFIG/>.

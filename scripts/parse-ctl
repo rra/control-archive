@@ -8,7 +8,7 @@
 # entries that it's unable to parse are written into a separate tree of
 # special configurations.
 #
-# Copyright 2002, 2008 Russ Allbery <rra@stanford.edu>
+# Copyright 2002, 2008 Russ Allbery <eagle@eyrie.org>
 # See LICENSE for licensing terms.
 
 ##############################################################################
@@ -291,6 +291,6 @@ have the current version of the package.
 
 =head1 AUTHOR
 
-Russ Allbery <rra@stanford.edu>
+Russ Allbery <eagle@eyrie.org>
 
 =cut
