@@ -2,5 +2,3 @@ hierarchy: WPG
 groups: wpg.*
 type: public
 description: "Winnipeg, Manitoba, Canada"
-sender: [ mills@cc.umanitoba.ca ]
-contact: [ "Gary Mills <mills@cc.umanitoba.ca>" ]

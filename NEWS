@@ -1,5 +1,11 @@
                    User-Visible control-archive Changes
 
+control-archive 1.6.2 (unreleased)
+
+    Hierarchy updates:
+
+    * wpg.* no longer has an active maintainer.
+
 control-archive 1.6.1 (2014-04-06)
 
     Hierarchy updates:
