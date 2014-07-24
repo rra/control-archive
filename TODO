@@ -34,6 +34,8 @@ Processing:
    newsgroup descriptions and doesn't archive messages that aren't fully
    compliant with the current standards.
 
+ * Support throttling of control messages by sender or NNTP-Posting-Host.
+
 Configuration:
 
  * If PGP-enabled hierarchies marked PRIVATE included the verification
