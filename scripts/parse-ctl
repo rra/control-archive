@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 #
-# parse-ctl -- Parse a control.ctl file into hierarchy config files.
+# Parse a control.ctl file into hierarchy config files.
 #
 # This program converts a control.ctl following the formatting conventions
 # that had been used for the ISC and INN versions of that file into a tree of
@@ -9,6 +9,7 @@
 # special configurations.
 #
 # Copyright 2002, 2008 Russ Allbery <eagle@eyrie.org>
+#
 # See LICENSE for licensing terms.
 
 ##############################################################################

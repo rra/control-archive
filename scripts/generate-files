@@ -1,12 +1,13 @@
 #!/usr/bin/perl -w
 #
-# generate-files -- Generate config and doc files from hierarchy configs.
+# Generate config and doc files from hierarchy configs.
 #
 # This program converts machine-parsable hierarchy configuration fragments
 # into a control.ctl file in the format that had been used for the ISC and INN
 # versions of that file.  It also supports special overrides.
 #
 # Copyright 2002, 2003, 2004, 2008 Russ Allbery <eagle@eyrie.org>
+#
 # See LICENSE for licensing terms.
 
 ##############################################################################

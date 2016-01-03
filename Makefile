@@ -1,6 +1,10 @@
 # This Makefile contains only simple dist and install rule to generate a
 # distribution tarball and copy the software to /srv/control.  The software
 # doesn't need any compilation, so there are no other rules.
+#
+# Copyright 2008, 2009, 2014, 2016 Russ Allbery <eagle@eyrie.org>
+#
+# See LICENSE for licensing terms.
 
 VERSION := $(shell grep '^control-archive' NEWS | head -1 | cut -d' ' -f 2)
 
