@@ -2,11 +2,11 @@ hierarchy: DICTATOR
 groups: dictator.*
 type: public
 description: Dictator's Handbook
-sender: [ news@dictatorshandbook.net ]
+sender: [ randito@dictatorshandbook.net ]
 contact: [ news@dictatorshandbook.net ]
 url: "http://dictatorshandbook.net/usenet/usenetadmin.html"
 pgp: yes
-key-id: news@dictatorshandbook.net
-key-fingerprint: "5C0A 741A F931 D79A D9E9  BBB7 4406 4481 91ED C5F2"
+key-id: randito@dictatorshandbook.net
+key-fingerprint: "6FCA 1263 3947 C2BA 9F15  998F 5B1B 7FF9 4B1A 460A"
 key-url: "http://www.dictatorshandbook.net/usenet/news-public.key"
 admin-group: dictator.announce
