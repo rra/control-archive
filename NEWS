@@ -9,6 +9,8 @@ control-archive 1.7.0 (unreleased)
     Drop newgroup and rmgroup messages for control, general, junk, test,
     and to top-level groups.  Thanks, D. Stussy.
 
+    Add clean and distclean targets to the Makefile.
+
     Hierarchy updates:
 
     * wpg.* no longer has an active maintainer

@@ -31,3 +31,7 @@ install: control.ctl
 	gpg --homedir=/srv/control/keyring --allow-non-selfsigned-uid \
 	    --import keys/*
 	install -m 644 control.ctl /srv/control/
+
+clean distclean:
+	rm -f PGPKEYS README.html control.ctl
+	rm -rf keyring
