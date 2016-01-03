@@ -138,3 +138,7 @@ version:*:*:log=version
 ## Default (for any group)
 newgroup:*:*:mail
 rmgroup:*:*:mail
+
+## Special reserved groups
+newgroup:*:control|general|junk|to:drop
+rmgroup:*:control|general|junk|to:drop
