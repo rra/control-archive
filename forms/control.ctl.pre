@@ -140,5 +140,5 @@ newgroup:*:*:mail
 rmgroup:*:*:mail
 
 ## Special reserved groups
-newgroup:*:control|general|junk|to:drop
-rmgroup:*:control|general|junk|to:drop
+newgroup:*:control|general|junk|test|to:drop
+rmgroup:*:control|general|junk|test|to:drop

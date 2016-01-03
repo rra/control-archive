@@ -6,8 +6,8 @@ control-archive 1.7.0 (unreleased)
     rather than falling back on the default of mailing checkgroups to the
     news administrator.  Thanks, D. Stussy.
 
-    Drop newgroup and rmgroup messages for control, general, junk, and to
-    top-level groups.  Thanks, D. Stussy.
+    Drop newgroup and rmgroup messages for control, general, junk, test,
+    and to top-level groups.  Thanks, D. Stussy.
 
     Hierarchy updates:
 
