@@ -260,6 +260,7 @@ sub generate_config {
         }
     } elsif ($$config{type} eq 'reserved') {
         print_space ($fh);
+        print $fh "checkgroups:*:$$config{groups}:drop\n";
         print $fh "newgroup:*:$$config{groups}:drop\n";
         print $fh "rmgroup:*:$$config{groups}:drop\n";
     } else {
