@@ -1,0 +1,9 @@
+hierarchy: PRIVATE
+groups: private.*
+type: reserved
+description: Server-local newsgroups
+comment: [
+    "Sometimes used for groups intended to be private to a specific server."
+    "It is not a good idea to use this hierarchy name on any production"
+    "server since they may occur on many unconnected sites."
+]

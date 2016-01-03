@@ -13,6 +13,7 @@ control-archive 1.7.0 (unreleased)
 
     * wpg.* no longer has an active maintainer
     * Update metadata and PGP key for dictator.*
+    * Add control.*, private.*, and to.* as reserved hierarchies
 
 control-archive 1.6.1 (2014-04-06)
 

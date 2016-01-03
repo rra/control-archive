@@ -1,0 +1,10 @@
+hierarchy: TO
+type: reserved
+description: Special hierarchy for UUCP point-to-point messages
+groups: to.*
+comment: [
+    "Historically, the to.* hierarchy was used with UUCP to send special"
+    "control messages to a particular peer.  This usage is very obsolete,"
+    "but the hierarchy is still special-cased in some news software and"
+    "should not be used."
+]

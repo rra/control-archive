@@ -1,0 +1,10 @@
+hierarchy: CONTROL
+type: reserved
+description: Special hierarchy for control messages
+groups: control.*
+comment: [
+    "The control.* hierarchy is reserved by RFC 5536 and MUST NOT be used"
+    "for regular newsgroups.  It is used by some news implementations, such"
+    "as INN, as a local, special hierarchy that shows all control messages"
+    "posted to any group."
+]
