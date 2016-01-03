@@ -97,6 +97,14 @@
 ##
 ##  Names used in this file that cannot be encoded in 7bit ASCII are in
 ##  UTF-8.  The only non-7bit-ASCII content is in comments.
+##
+##  Information in this file has been contributed by many different people
+##  and has been based on numerous historical revisions of this file.  A
+##  full, detailed history of contributions and copyright holders probably
+##  does not exist.  So far as the current maintainers are aware, copying
+##  and distribution of this file, with or without modification, are
+##  permitted in any medium without royalty.  This file is offered as-is,
+##  without any warranty.
 
 ## -------------------------------------------------------------------------
 ##	DEFAULT
