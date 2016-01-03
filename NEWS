@@ -1,6 +1,6 @@
                    User-Visible control-archive Changes
 
-control-archive 1.7.0 (unreleased)
+control-archive 1.7.0 (2016-01-03)
 
     For reserved hierarchies, also drop all checkgroups for the hierarchy
     rather than falling back on the default of mailing checkgroups to the
