@@ -1,0 +1,10 @@
+hierarchy: GENERAL
+type: reserved
+description: Sometimes used as a local catch-all
+groups: general.*
+comment: [
+    "There is some history of using a newsgroup named general as a local"
+    "catch-all discussion group.  That newsgroup name and hierarchy should"
+    "be avoided on production servers since it may occur at many"
+    "disconnected sites."
+]

@@ -1,0 +1,12 @@
+hierarchy: JUNK
+type: reserved
+description: Used for unwanted newsgroups
+groups: junk.*
+comment: [
+    "The junk newsgroup is reserved by RFC 5536 and MUST NOT be used.  It"
+    "is used by some implementations to store messages to unwanted
+    "newsgroups.  The junk.* hierarchy is not reserved by RFC 5536, but"
+    "it's marked reserved here because, given the special meaning of the"
+    "junk group, using it for any other purpose would be confusing and"
+    "might trigger implementation bugs."
+]
