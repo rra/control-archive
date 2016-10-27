@@ -2,6 +2,9 @@
 
 control-archive 1.7.1 (unreleased)
 
+    Force use of gpg1 in scripts/generate-files and Makefile for right
+    now, until I have a chance to port the logic here to GnuPG v2.
+
     Update URLs to server-patches in README.html.  These have been moved
     to an ARCHIVE subdirectory since they're generally obsolete now.
 

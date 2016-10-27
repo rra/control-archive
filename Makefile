@@ -19,7 +19,7 @@ dist:
 README.html control.ctl: forms/README.html.post forms/README.html.pre \
 		forms/control.ctl.pre
 	mkdir -p keyring
-	gpg --homedir=keyring --allow-non-selfsigned-uid --import keys/*
+	gpg1 --homedir=keyring --allow-non-selfsigned-uid --import keys/*
 	scripts/generate-files
 
 install: control.ctl
@@ -33,7 +33,7 @@ install: control.ctl
 	install -m 644 -p docs/hierarchies /srv/control/export/HIERARCHY-NOTES
 	install -m 644 -p docs/archive-policy /srv/control/archive/README
 	install -m 644 -p templates/control-report /srv/control/templates/
-	gpg --homedir=/srv/control/keyring --allow-non-selfsigned-uid \
+	gpg1 --homedir=/srv/control/keyring --allow-non-selfsigned-uid \
 	    --import keys/*
 	install -m 644 control.ctl /srv/control/
 
