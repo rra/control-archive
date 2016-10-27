@@ -1,9 +1,8 @@
-pub  2048R/C86CC6E1 2008-11-16 Control Grisbi <grisbi-control@grisbi.org>
-uid                            Control Grisbi <control@grisbi.org>
-uid                            News Subsystem <news@ns.grisbi.org>
+pub   2048R/C86CC6E1 2008-11-16
+uid                  Control Grisbi <grisbi-control@grisbi.org>
 
 -----BEGIN PGP PUBLIC KEY BLOCK-----
-Version: GnuPG v1.4.9 (FreeBSD)
+Version: GnuPG v1
 
 mQENBEkgfHEBCACpZEi5+GIQDUyvbZ6Q/NcHEjDNnzJwWlxjH8MEJfDiozpMAeq8
 5uNxrUeR4UqiFO1CPHZvvAZECQPIp6hrlVrhjYT0x9fmBYdfSKx51PRj8Mh1BAG0
@@ -18,20 +17,6 @@ kLrPklFk4v8u/Hx/30scqsWMAO0QWhrFt9QOMiqFOt7eo3ntbu0HFeNlxj0+46Fz
 3B52Uxj1MqetsVx0A5fejy4M2x5mzoVO7NLIsWVvnMJ9yzxkI6BsejHYT3Pt/Azq
 etw166Miwb42iE1yEUSLjumHv9hq5GvZane+7yKrE3iIMqZZGdRAt/NEzloxJhn1
 Q5KIUbo8EpbyyAUb0ovNRgllqx6KhW8kw085aYnYM9ym3X6IK1/TiAEiJXbXf7hY
-1le2jIa0I0NvbnRyb2wgR3Jpc2JpIDxjb250cm9sQGdyaXNiaS5vcmc+iQE2BBMB
-AgAgBQJJIHxxAhsDBgsJCAcDAgQVAggDBBYCAwECHgECF4AACgkQ8sYqPchsxuEo
-wQf/T8DHDzhxtrv8x5In2ZewdmHwl269j5iWOimpTxmTkrfbk/l6mpmUhyiG7Q5j
-iizfydKqlMxFcHcuGjcJVNpBF1bHh0e6GegfKPV7XC8yYbGAJOR56EGT/Q1J9KD4
-Cs+R7+wdofE5ZI33jw3J22RAWKrhLcC3VrFwi2cIQ0ZpuxsFkcVcKNlaA3pasfJB
-U0Tn/8FJZBK+YVtNVlNteESyRwBv3ZyextfrXDL1/0HuMHmUmR/iPvM+FaQY1tyV
-7nlrpsE0kIPyB5B74telTJZEIX3SIpNSaqXvbQsnV9yJkBIuCIPG0z5XJHH7cCtC
-usu2GFEb0TyQsp4T9bWpY3ja7LQjTmV3cyBTdWJzeXN0ZW0gPG5ld3NAbnMuZ3Jp
-c2JpLm9yZz6JATYEEwECACAFAkp1POQCGwMGCwkIBwMCBBUCCAMEFgIDAQIeAQIX
-gAAKCRDyxio9yGzG4Qi6B/wOga+5dHLZR0O8dfNl37hsFGlhdrMvu3Cj6dHWaBm6
-ViWUSFixWn99JoKiB1hD3DnujZRes/qaL4EUkXh945gtOXm0ZhlT7RS5SsSsNpSj
-xzrCm88CDeLSH2CDc4xBiRcVpNFAjCL5yuyeQ5N6tdI1STYje+yUhzDVGtF0WfhL
-Noabb1hgYKAkqpEyhXWG1yOPKKEgpHzO7cdDDTkaWNdS71bIqomLt04mnNShzCHM
-dzJQQ03NewFb76IA6z6no/oix0kkDfUp3JDgc4qvyGxD9Myp0bl7fB5KAK97cJ0Z
-S4ZLiNdaLCOs58+wGwmZOijvXNYn67Y9iFnARMwNbMDJ
-=bhMR
+1le2jIY=
+=eqpL
 -----END PGP PUBLIC KEY BLOCK-----
