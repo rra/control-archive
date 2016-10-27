@@ -19,9 +19,9 @@ systems automatically honor requests from some particular people to
 add or remove newsgroups, it is risky to trust the From: and Sender:
 headers to identify the real sender of a message, as has historically
 been done.  Thus a system using Philip Zimmerman's 
-<A HREF="#Getting PGP">Pretty Good Privacy</A>&#174
-(PGP&#174 ) was developed to provide a more secure means
-of authenticating the sender of a control message.</P>
+<A HREF="#Getting PGP">Pretty Good Privacy</A> (PGP) was developed to
+provide a more secure means of authenticating the sender of a control
+message.</P>
 
 <P>Unlike traditional PGP authentication of messages, which just
 verifies that the contents of the body of a message are unchanged from
@@ -51,8 +51,8 @@ hacking around the news system and doesn't like to read a lot:</P>
 <A HREF="ftp://ftp.isc.org/pub/pgpcontrol/pgpverify">
 ftp://ftp.isc.org/pub/pgpcontrol/pgpverify</A>
 <LI>
-<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/server-patches/">
-ftp://ftp.isc.org/pub/pgpcontrol/server-patches/</A>
+<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/ARCHIVE/server-patches/">
+ftp://ftp.isc.org/pub/pgpcontrol/ARCHIVE/server-patches/</A>
 </UL>
 <LI>Add
 <A HREF="#Keys">maintainers' PGP public keys</A>
@@ -96,25 +96,25 @@ patch to hook it into the news server's processing of control messages.</P>
 <A HREF="ftp://ftp.isc.org/pub/pgpcontrol/pgpverify">
 ftp://ftp.isc.org/pub/pgpcontrol/pgpverify</A>,
 is a
-<A HREF="#Getting Perl">Perl</A>
-script that should work with Perl version 4 and up.  (I have not tested
-it with earlier versions.)  It does not contain any code making it
-dependent on any particular news server software.</P>
+<A HREF="#Getting Perl">Perl</A> script that should work with Perl version
+5.003 and up.  (I have not tested it with earlier versions.)  It does not
+contain any code making it dependent on any particular news server
+software.</P>
 
 <P>
-<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/server-patches/">
-ftp://ftp.isc.org/pub/pgpcontrol/server-patches/</A>
+<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/ARCHIVE/server-patches/">
+ftp://ftp.isc.org/pub/pgpcontrol/ARCHIVE/server-patches/</A>
 has patches for hooking the system into existing news server software.
 Choose the one for your system from the list below.</P>
 <UL>
 <LI>
-<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/server-patches/inn1.4sec/pgpcontrol.pch">
+<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/ARCHIVE/server-patches/inn1.4sec/pgpcontrol.pch">
 INN version 1.4sec</A>
 <LI>
-<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/server-patches/inn1.4unoff4/pgpcontrol.pch">
+<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/ARCHIVE/server-patches/inn1.4unoff4/pgpcontrol.pch">
 INN version 1.4unoff4</A>
 <LI>
-<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/server-patches/cnews-CR.G/pgpcontrol.pch">
+<A HREF="ftp://ftp.isc.org/pub/pgpcontrol/ARCHIVE/server-patches/cnews-CR.G/pgpcontrol.pch">
 C News version CR.G</A>
 (Courtesy of System Administrator &lt;root@hp9000.laafb.af.mil&gt; and
 Charles Lindsey &lt;chl@clw.cs.man.ac.uk&gt;)
@@ -232,11 +232,10 @@ describe the format of the file, and there is an even longer
 <I>control.ctl(5)</I> manual page.  To enable PGP verification in
 addition to the normal authorization done by <I>control.ctl</I>, use
 the action <B>verify-<I>pgp_userid</I></B> in the fourth field.
-<P>For example, if you trust group-admin@isc.org (currently David
-Lawrence &lt;tale@isc.org&gt;, aka tale@uunet.uu.net, the author of
-this document) to manage groups in the "Big 8" hierarchies, you could
-have lines like these (but don't use the backslash continuation, which
-I have used here for readability; keep it all on one line):</P>
+<P>For example, if you trust group-admin@isc.org (currently Russ Allbery
+&lt;eagle@eyrie.org&gt;) to manage groups in the "Big 8" hierarchies, you
+could have lines like these (but don't use the backslash continuation,
+which I have used here for readability; keep it all on one line):</P>
 
 <PRE>
 newgroup:group-admin@isc.org:\
@@ -264,11 +263,10 @@ enable PGP verification in addition to the normal authorization done
 by <I>controlperm</I>, use the action <B>p</B> in the fourth field
 instead of <B>y</B> and add a fifth field for the <I>pgp_userid</I>.</P>
 
-<P>For example, if you trust group-admin@isc.org (currently David
-Lawrence &lt;tale@isc.org&gt;, aka tale@uunet.uu.net, the author of
-this document) to manage groups in the "Big 8" hierarchies, you could
-have lines like these (but don't use the backslash continuation, which
-I have used here for readability; keep it all on one line):</P>
+<P>For example, if you trust group-admin@isc.org (currently Russ Allbery
+&lt;eagle@eyrie.org&gt;) to manage groups in the "Big 8" hierarchies, you
+could have lines like these (but don't use the backslash continuation,
+which I have used here for readability; keep it all on one line):</P>
 
 <PRE>
 comp,sci,misc,news,rec,soc,talk group-admin@isc.org nrc pv \
@@ -374,12 +372,12 @@ it can give you important information such as which keyring is being
 used.</P>
 
 <P>If it still doesn't work and you've tried and tried to figure out why, 
-<A HREF="mailto:tale@isc.org (David C Lawrence)">email me</A>
-a complete description of the problem you are having and how you have
-tried to remedy it.  At a bare minimum, your mail should include a
-copy of the message you are trying to verify, a typescript of the
-attempted execution of <I>pgpverify -test</I>, and the output of
-<I>pgp -kc</I> and <I>pgp -kvc news.announce.newgroups</I>.</P>
+<A HREF="mailto:eagle@eyrie.org">email me</A> a complete description of
+the problem you are having and how you have tried to remedy it.  At a bare
+minimum, your mail should include a copy of the message you are trying to
+verify, a typescript of the attempted execution of <I>pgpverify -test</I>,
+and the output of <I>pgp -kc</I> and <I>pgp -kvc
+news.announce.newgroups</I>.</P>
 
 <P>When <I>pgpverify</I> passes its test, use the appropriate procedure
 below for you news server to verify the authorization system.</P>

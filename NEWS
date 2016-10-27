@@ -1,5 +1,17 @@
                    User-Visible control-archive Changes
 
+control-archive 1.7.1 (unreleased)
+
+    Update URLs to server-patches in README.html.  These have been moved
+    to an ARCHIVE subdirectory since they're generally obsolete now.
+
+    Update multiple contact addresses in README.html from tale@isc.org to
+    eagle@eyrie.org or usenet-config@isc.org.
+
+    Update README.html documentation of pgpverify to note that it now
+    requires Perl 5.003 or later (which is still far older than anyone's
+    Perl installation is likely to be).
+
 control-archive 1.7.0 (2016-01-03)
 
     For reserved hierarchies, also drop all checkgroups for the hierarchy

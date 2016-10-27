@@ -27,10 +27,10 @@ strongly recommend that you use only alphanumeric characters, the at
 sign, dot, dash, plus and underscore.</P>
 
 <P>If you will be signing control messages, please
-<A HREF="mailto:tale@isc.org (David C Lawrence)">let me know</A> the
-hierarchy that you are responsible for maintaining and the information
-that you would like to appear in the <A HREF="#Keys">List of PGP
-Public Keys for Newsgroup Administration</A>.</P>
+<A HREF="mailto:usenet-config@isc.org">let me know</A> the hierarchy that
+you are responsible for maintaining and the information that you would
+like to appear in the <A HREF="#Keys">List of PGP Public Keys for
+Newsgroup Administration</A>.</P>
 
 <HR><HR>
 
@@ -53,10 +53,10 @@ article, posted regularly in the
 newsgroup.</P>
 
 <HR>
-Last modified: 16 June 1999
+Last modified: 2016-10-27
 <ADDRESS>
-David C Lawrence<BR>
-<A HREF="mailto:tale@isc.org (David C Lawrence)">tale@isc.org</A>
+Russ Allbery<BR>
+<A HREF="mailto:eagle@eyrie.org">eagle@eyrie.org</A>
 </ADDRESS>
 </BODY>
 </HTML>
