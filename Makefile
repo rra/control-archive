@@ -8,7 +8,7 @@
 
 VERSION := $(shell grep '^control-archive' NEWS | head -1 | cut -d' ' -f 2)
 
-all: control.ctl
+all: README.html control.ctl
 
 dist:
 	git archive --prefix=control-archive-$(VERSION)/ master \
@@ -16,7 +16,8 @@ dist:
 	git archive --prefix=control-archive-$(VERSION)/ master \
 	    | xz > control-archive-$(VERSION).tar.xz
 
-control.ctl:
+README.html control.ctl: forms/README.html.post forms/README.html.pre \
+		forms/control.ctl.pre
 	mkdir -p keyring
 	gpg --homedir=keyring --allow-non-selfsigned-uid --import keys/*
 	scripts/generate-files
