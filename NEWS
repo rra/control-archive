@@ -16,6 +16,10 @@ control-archive 1.8.0 (unreleased)
     requires Perl 5.003 or later (which is still far older than anyone's
     Perl installation is likely to be).
 
+    Hierarchy updates:
+
+    * Drop unused UIDs from the grisbi.* key
+
 control-archive 1.7.0 (2016-01-03)
 
     For reserved hierarchies, also drop all checkgroups for the hierarchy
