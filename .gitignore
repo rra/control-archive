@@ -2,6 +2,7 @@
 /README.html
 /archive
 /control-archive-*.tar.gz*
+/control-archive-*.tar.xz*
 /control.ctl
 /export
 /keyring
