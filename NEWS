@@ -1,6 +1,10 @@
                    User-Visible control-archive Changes
 
-control-archive 1.7.1 (unreleased)
+control-archive 1.8.0 (unreleased)
+
+    Support signing IDs with whitespace in process-control.  Most of the
+    support was already there, but the code to parse the output from GnuPG
+    was only grabbing the first "word."
 
     Force use of gpg1 in scripts/generate-files and Makefile for right
     now, until I have a chance to port the logic here to GnuPG v2.

@@ -458,7 +458,7 @@ sub gpg_check {
             log "$id PGP: gpgv died on signal " . ($? & 255);
         }
     } else {
-        if (/\[GNUPG:\]\s+GOODSIG\s+\S+\s+(\S+)/) {
+        if (/\[GNUPG:\]\s+GOODSIG\s+\S+\s+(.+)/) {
             $signer = $1;
         } else {
             my $firstline = $_;
