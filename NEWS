@@ -6,9 +6,6 @@ control-archive 1.8.0 (unreleased)
     support was already there, but the code to parse the output from GnuPG
     was only grabbing the first "word."
 
-    Force use of gpg1 in scripts/generate-files and Makefile for right
-    now, until I have a chance to port the logic here to GnuPG v2.
-
     Update URLs to server-patches in README.html.  These have been moved
     to an ARCHIVE subdirectory since they're generally obsolete now.
 
