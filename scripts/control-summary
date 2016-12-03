@@ -83,7 +83,7 @@ sub scan_log {
     my @logs = build_log_names ($start, $end);
     my @actions;
     for my $log (@logs) {
-        if (-f "$LOGBASE/$log" || @logs == 1) {
+        if (-f "$LOGBASE/$log") {
             open (LOG, "$LOGBASE/$log")
                 or die "$0: cannot open $LOGBASE/$log: $!\n";
             local $_;

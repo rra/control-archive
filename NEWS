@@ -6,6 +6,9 @@ control-archive 1.8.0 (unreleased)
     support was already there, but the code to parse the output from GnuPG
     was only grabbing the first "word."
 
+    Avoid reporting an error when producing a log summary and no log file
+    exists for the summary period.
+
     Update URLs to server-patches in README.html.  These have been moved
     to an ARCHIVE subdirectory since they're generally obsolete now.
 
