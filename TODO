@@ -99,3 +99,10 @@ Documentation:
    used to be maintained, but it needs an editing pass to remove
    information that only duplicates the current control.ctl file or which
    is obviously no longer correct.
+
+ * Incorporate the Usenet Hierarchy Administration FAQ into this package
+   and review and update it for current practices.
+
+Style:
+
+ * Update all Perl code to my current Perl coding style.
