@@ -19,6 +19,9 @@ control-archive 1.8.0 (unreleased)
     requires Perl 5.003 or later (which is still far older than anyone's
     Perl installation is likely to be).
 
+    Add humanities.* to the README.html instructions for C News and D
+    News, and fix a repeated word.  Thanks, Julien ÉLIE.
+
     Hierarchy updates:
 
     * Drop unused UIDs from the grisbi.* key

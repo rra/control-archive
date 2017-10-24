@@ -269,7 +269,7 @@ could have lines like these (but don't use the backslash continuation,
 which I have used here for readability; keep it all on one line):</P>
 
 <PRE>
-comp,sci,misc,news,rec,soc,talk group-admin@isc.org nrc pv \
+comp,sci,misc,news,rec,soc,talk,humanities group-admin@isc.org nrc pv \
 news.announce.newgroups
 </PRE>
 
@@ -290,16 +290,16 @@ it all on one line):</P>
 
 <PRE>
 newgroup:group-admin@isc.org:\
-comp.*,misc.*,news.*,rec.*,sci.*,soc.*,talk.*:doit,pgp
+comp.*,misc.*,news.*,rec.*,sci.*,soc.*,talk.*,humanities.*:doit,pgp
 rmgroup:group-admin@isc.org:\
-omp.*,misc.*,news.*,rec.*,sci.*,soc.*,talk.*:doit,pgp
+comp.*,misc.*,news.*,rec.*,sci.*,soc.*,talk.*,humanities.*:doit,pgp
 checkgroups:group-admin@isc.org:\
-comp.*,misc.*,news.*,rec.*,sci.*,soc.*,talk.*:doit,pgp
+comp.*,misc.*,news.*,rec.*,sci.*,soc.*,talk.*,humanities.*:doit,pgp
 </PRE>
 
 <P>Note that there is no provision, with the current D News
 implementation, for checking that the signature matches a particular
-string, just that it it has a valid signature.  This is probably
+string, just that it has a valid signature.  This is probably
 adequate security as long as you keep the news user's PGP key ring
 limited only to people you trust to maintain newsgroup hierarchies.</P>
 
