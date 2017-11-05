@@ -10,7 +10,7 @@
 # multiple (thankfully consistent) copyrights and license statements.
 #
 #
-# Copyright 2003, 2007, 2008, 2010, 2011 Russ Allbery <eagle@eyrie.org>
+# Copyright 2003, 2007, 2008, 2010, 2011, 2017 Russ Allbery <eagle@eyrie.org>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -90,7 +90,7 @@ our $ARCHIVE = '/srv/control/archive';
 our $CONTROL = '/srv/control/control.ctl';
 
 # The full path to the gpgv binary.
-our $GPGV = '/usr/bin/gpgv';
+our $GPGV = '/usr/bin/gpg1';
 
 # The full path to the GnuPG keyring.
 our $KEYRING = '/srv/control/keyring/pubring.gpg';
@@ -436,6 +436,7 @@ sub gpg_check {
 
     # Run GnuPG and make sure it exits successfully.
     my $opts = "--quiet --status-fd=1 --logger-fd=1 --keyring=$KEYRING";
+    $opts .= "--allow-weak-digest-algos";
     open (GPG, "$GPGV $opts $sigfile $file 2> /dev/null |")
         or logdie "cannot execute $GPGV: $!";
     local $/;

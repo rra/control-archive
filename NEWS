@@ -9,6 +9,10 @@ control-archive 1.8.0 (unreleased)
     Avoid reporting an error when producing a log summary and no log file
     exists for the summary period.
 
+    Switch to gpg1 explicitly, since the code is designed to expect its
+    status messages, and add --allow-weak-digest-algos to allow the old
+    signatures used by most hierarchies.
+
     Update URLs to server-patches in README.html.  These have been moved
     to an ARCHIVE subdirectory since they're generally obsolete now.
 
