@@ -86,6 +86,11 @@
 ##     read or carried, and may not be worth carrying.  If you don't intend
 ##     to carry them, comment out their entries.
 ##
+##   * Some hierarchies are marked as *RESERVED*.  These are used for
+##     special purposes by news software and should not be managed by
+##     control messages.  This config file drops all control messages for
+##     those hierarchies.
+##
 ##  The comments of this file aren't in any formal or well-defined syntax,
 ##  but they are meant to use a consistent syntax to allow eventual parsing
 ##  by scripts into a better database format.  Please follow the syntax of

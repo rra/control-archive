@@ -26,6 +26,8 @@ control-archive 1.8.0 (unreleased)
     Add humanities.* to the README.html instructions for C News and D
     News, and fix a repeated word.  Thanks, Julien ÉLIE.
 
+    Add a comment to control.ctl explaining reserved hierarchies.
+
     Hierarchy updates:
 
     * Drop unused UIDs from the grisbi.* key
