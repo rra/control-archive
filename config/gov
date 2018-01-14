@@ -1,8 +1,0 @@
-hierarchy: GOV
-groups: gov.*
-type: public
-description: "Government Information"
-sender: [ gov-usenet-announce-moderator@govnews.org ]
-pgp: yes
-key-id: gov.usenet.announce
-admin-group: gov.usenet.announce

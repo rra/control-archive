@@ -31,6 +31,7 @@ control-archive 1.8.0 (unreleased)
     Hierarchy updates:
 
     * Drop unused UIDs from the grisbi.* key
+    * Remove gov.* configuration
 
 control-archive 1.7.0 (2016-01-03)
 
