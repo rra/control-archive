@@ -41,6 +41,9 @@
             { "title": "Maintenance" },
         ],
     },
+    "quote": {
+        "author": "Gene Spafford",
+    },
     "distribution": {
         "section": "usenet",
         "tarname": "control-archive",
