@@ -10,7 +10,7 @@
 #
 # Copyright 2002, 2008 Russ Allbery <eagle@eyrie.org>
 #
-# See LICENSE for licensing terms.
+# SPDX-License-Identifier: MIT
 
 ##############################################################################
 # Modules and declarations
@@ -282,6 +282,10 @@ F<config> tree from the current F<control.ctl> file using this script.
 This script is provided just in case it might prove useful for importing
 new data, and in case anyone wishes to update it or refer to it.
 
+=head1 AUTHOR
+
+Russ Allbery <eagle@eyrie.org>
+
 =head1 SEE ALSO
 
 control.ctl(5), generate-files(1)
@@ -289,9 +293,5 @@ control.ctl(5), generate-files(1)
 This script is part of the control-archive package.  The control-archive
 web page at L<http://www.eyrie.org/~eagle/software/control-archive/> will
 have the current version of the package.
-
-=head1 AUTHOR
-
-Russ Allbery <eagle@eyrie.org>
 
 =cut

@@ -28,6 +28,8 @@ control-archive 1.8.0 (unreleased)
 
     Add a comment to control.ctl explaining reserved hierarchies.
 
+    Add SPDX-License-Identifier headers to significant files.
+
     Hierarchy updates:
 
     * Drop unused UIDs from the grisbi.* key

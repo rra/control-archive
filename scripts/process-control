@@ -10,7 +10,7 @@
 # multiple (thankfully consistent) copyrights and license statements.
 #
 #
-# Copyright 2003, 2007, 2008, 2010, 2011, 2017, 2018
+# Copyright 2003, 2007-2008, 2010-2011, 2017-2018
 #    Russ Allbery <eagle@eyrie.org>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -44,6 +44,18 @@
 #    notice, this list of conditions and the following disclaimer in the
 #    documentation and/or other materials provided with the distribution.
 #
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+#
 #
 # Copyright (c) 1996 UUNET Technologies, Inc.  All rights reserved.
 #
@@ -76,6 +88,9 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#
+# SPDX-License-Identifier: MIT AND BSD-2-Clause AND BSD-4-Clause
 
 ##############################################################################
 # Site configuration
@@ -1008,6 +1023,11 @@ Used for temporary files for PGP verification.
 
 =back
 
+=head1 AUTHORS
+
+Written by Russ Allbery <eagle@eyrie.org>, based very heavily on controlchan
+by Marco d'Itri.  Portions based on pgpverify by David Lawrence.
+
 =head1 SEE ALSO
 
 export-control(1), update-control(1)
@@ -1015,11 +1035,5 @@ export-control(1), update-control(1)
 This script is part of the control-archive package.  The control-archive
 web page at L<http://www.eyrie.org/~eagle/software/control-archive/> will
 have the current version of the package.
-
-=head1 AUTHORS
-
-Written by Russ Allbery <eagle@eyrie.org>, based very heavily on
-controlchan by Marco d'Itri.  Portions based on pgpverify by David
-Lawrence.
 
 =cut

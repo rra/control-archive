@@ -4,7 +4,7 @@
 #
 # Copyright 2008, 2009, 2014, 2016 Russ Allbery <eagle@eyrie.org>
 #
-# See LICENSE for licensing terms.
+# SPDX-License-Identifier: MIT
 
 VERSION := $(shell grep '^control-archive' NEWS | head -1 | cut -d' ' -f 2)
 

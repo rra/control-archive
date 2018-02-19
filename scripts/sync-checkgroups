@@ -1,9 +1,10 @@
 #!/usr/bin/python
-# -*- coding: latin1 -*-
 #
 # sync-checkgroups news.server [hierarchy]
 #
-# From Julien ÉLIE.
+# Copyright 2007 Julien ÉLIE <julien@trigofacile.com>
+#
+# SPDX-License-Identifier: MIT
 
 import nntplib
 import sys
