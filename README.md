@@ -17,30 +17,33 @@ newsgroup lists available from ftp.isc.org.
 
 ## Description
 
-This package contains two major components:
+This package contains three major components:
 
-* All of the configuration used to generate the `control.ctl` file
-  distributed from ftp.isc.org and included in INN and the `PGPKEYS` and
-  `README.html` files distributed with pgpcontrol, along with the script
-  to generate those files.  This information is used to maintain the
-  ftp.isc.org list of active newsgroups.
+* All of the configuration used to generate a `control.ctl` file for INN
+  and the `PGPKEYS` and `README.html` files distributed with pgpcontrol,
+  along with the script to generate those files.
 
-* The software used to process control messages, verifying them against
-  that authorization information, and maintain a control message archive
-  and list of active newsgroups.  Software is also included to generate
+* Software to process control messages, verify them against that
+  authorization information, and maintain a control message archive and
+  list of active newsgroups.  Software is also included to generate
   reports of recent changes to the list of active newsgroups.
 
-Manual changes to the canonical newsgroup list are also supported, in a
-way that generates the same log messages and uses the same locking
-structure so that they can co-exist with automated changes and be included
-in the same reports.  Also included in this package are the documentation
-files included in the control message archive and newsgroup lists on
-ftp.isc.org.
+* The documentation files included in the control message archive and
+  newsgroup lists on ftp.isc.org.
+
+Manual changes to the canonical newsgroup list are supported in a way that
+generates the same log messages and uses the same locking structure so
+that they can co-exist with automated changes and be included in the same
+reports.
+
+This is the software that generates the [active newsgroup
+lists](ftp://ftp.isc.org/pub/usenet/CONFIG/) and [control message
+archive](ftp://ftp.isc.org/pub/usenet/control/) hosted on ftp.isc.org, and
+the source of the `control.ctl` file provided with INN.
 
 For a web presentation of the information recorded here, as well as other
-useful information about Usenet hierarchies, please see:
-
-    <http://usenet.trigofacile.com/hierarchies/>
+useful information about Usenet hierarchies, please see the [list of
+Usenet managed hierarchies](http://usenet.trigofacile.com/hierarchies/).
 
 ## Requirements
 
