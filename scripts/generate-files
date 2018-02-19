@@ -648,8 +648,8 @@ Russ Allbery <eagle@eyrie.org>
 
 actsync(8), control.ctl(5), gpg(1), uwildmat(3)
 
-This script is part of the control-archive package.  The control-archive
-web page at L<http://www.eyrie.org/~eagle/software/control-archive/> will
-have the current version of the package.
+This script is part of the control-archive package.  The control-archive web
+page at L<https://www.eyrie.org/~eagle/software/control-archive/> will have
+the current version of the package.
 
 =cut

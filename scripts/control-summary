@@ -505,8 +505,8 @@ Russ Allbery <eagle@eyrie.org>
 
 process-control(1), update-control(1)
 
-This script is part of the control-archive package.  The control-archive
-web page at L<http://www.eyrie.org/~eagle/software/control-archive/> will
-have the current version of the package.
+This script is part of the control-archive package.  The control-archive web
+page at L<https://www.eyrie.org/~eagle/software/control-archive/> will have
+the current version of the package.
 
 =cut

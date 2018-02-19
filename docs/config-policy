@@ -1,5 +1,5 @@
                          GROUP CREATION POLICIES
-                        Last modified: 2013-06-03
+                        Last modified: 2018-02-19
 
   (This document was originally written by David Lawrence, but has since
   been updated and is currently maintained by Russ Allbery.  For all
@@ -36,7 +36,7 @@
   send a note to usenet-config@isc.org containing the details.  You may
   also want to look at:
 
-    <http://www.eyrie.org/~eagle/faqs/usenet-hier.html>
+    <https://www.eyrie.org/~eagle/faqs/usenet-hier.html>
 
   This message refers to "newgroup" and "rmgroup" control messages, which
   are special types of Usenet articles that add and remove groups,
@@ -53,7 +53,7 @@
   format, see the control.ctl(5) man page that comes with INN.  A copy is
   available on the web at:
 
-    <http://www.eyrie.org/~eagle/software/inn/docs/control.ctl.html>
+    <https://www.eyrie.org/~eagle/software/inn/docs/control.ctl.html>
 
 HIERARCHY MAINTENANCE
 
@@ -137,7 +137,7 @@ NEW HIERARCHIES
   the control.ctl file in this directory, we strongly recommend reading
   the Usenet Hierarchies FAQ at:
 
-    <http://www.eyrie.org/~eagle/faqs/usenet-hier.html>
+    <https://www.eyrie.org/~eagle/faqs/usenet-hier.html>
 
   which contains information about how to have your hierarchy added to
   these newsgroup lists as well as how to make it easier for other sites
