@@ -5,9 +5,12 @@ Comment: This file documents the copyright statements and licenses for
  .
  For any copyright year range specified as YYYY-ZZZZ in this file, the
  range specifies every single year in that closed interval.
+Copyright: 2002-2004, 2006-2014, 2016-2018 Russ Allbery <eagle@eyrie.org>
+License: Expat
 
 Files: *
-Copyright: 2002-2004, 2006-2014, 2016 Russ Allbery <eagle@eyrie.org>
+Copyright: 2002-2004, 2006-2014, 2016-2018 Russ Allbery <eagle@eyrie.org>
+  2007 Julien ÉLIE <julien@trigofacile.com>
 License: Expat
 
 Files: docs/archive-policy docs/config-policy
@@ -21,7 +24,7 @@ License: all-permissive
 Files: scripts/process-control
 Copyright: 1996 UUNET Technologies, Inc.
   2001 Marco d'Itri <md@linux.it>
-  2003, 2007-2008, 2010-2011 Russ Allbery <eagle@eyrie.org>
+  2003, 2007-2008, 2010-2011, 2017-2018 Russ Allbery <eagle@eyrie.org>
 License: Expat and BSD-2-clause-no-disclaimer and BSD-4-clause-UUNET
 
 License: BSD-2-clause-no-disclaimer
@@ -86,4 +89,3 @@ License: Expat
  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
  OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
  THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-

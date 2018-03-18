@@ -1,6 +1,6 @@
                    User-Visible control-archive Changes
 
-control-archive 1.8.0 (unreleased)
+control-archive 1.8.0 (2018-03-18)
 
     Support signing IDs with whitespace in process-control.  Most of the
     support was already there, but the code to parse the output from GnuPG

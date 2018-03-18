@@ -307,7 +307,7 @@ the repository at:
 https://git.eyrie.org/git/usenet/control-archive.git
 
 or [view the repository on the
-web](https://git.eyrie.org/?p=usenet/control.archive.git).
+web](https://git.eyrie.org/?p=usenet/control-archive.git).
 
 The eyrie.org repository is the canonical one, maintained by the author,
 but using GitHub is probably more convenient for most purposes.  Pull
