@@ -29,7 +29,7 @@
     "vcs": {
         "type": "Git",
         "url": "https://git.eyrie.org/git/usenet/control-archive.git",
-        "browse": "https://git.eyrie.org/?p=usenet/control.archive.git",
+        "browse": "https://git.eyrie.org/?p=usenet/control-archive.git",
         "github": "rra/control-archive",
     },
     "readme": {
