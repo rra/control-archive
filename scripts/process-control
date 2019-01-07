@@ -10,7 +10,7 @@
 # multiple (thankfully consistent) copyrights and license statements.
 #
 #
-# Copyright 2003, 2007-2008, 2010-2011, 2017-2018
+# Copyright 2003, 2007-2008, 2010-2011, 2017-2019
 #    Russ Allbery <eagle@eyrie.org>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -402,8 +402,10 @@ sub parse_pgp_sig {
     # $b64 matches a single base64 character.
     my $b64 = '[a-zA-Z0-9+/]';
 
-    # Now actually parse the header.
-    return unless /^(\S+)$s(\S+)(($s$b64{64})+$s$b64+=?=?$s=$b64{4})$/;
+    # Now actually parse the header.  Require that the headers argument
+    # contain at least one comma so that we can more easily diagnose a missing
+    # version header.
+    return unless /^(\S+)$s(\S+,\S+)(($s$b64{64})+$s$b64+=?=?$s=$b64{4})$/;
 
     # Return the appropriate bits of the header.
     my ($version, $headers, $signature) = ($1, $2, $3);
@@ -500,7 +502,7 @@ sub pgpverify {
     }
     my ($version, $signature, @headers) = parse_pgp_sig $$hdr{'x-pgp-sig'};
     unless ($signature) {
-        log "$id invalid X-PGP-Sig header";
+        log "$id invalid X-PGP-Sig header (missing version?)";
         return;
     }
     for (@headers) {

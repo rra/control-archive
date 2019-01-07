@@ -1,5 +1,12 @@
                    User-Visible control-archive Changes
 
+control-archive 1.9.0 (unreleased)
+
+    When verifying PGP signatures, require that the headers part of the
+    X-PGP-Sig header contain a comma.  This more readily diagnoses a
+    missing version field and improves the error message, instead of
+    reporting that the Control header is not signed.
+
 control-archive 1.8.0 (2018-03-18)
 
     Support signing IDs with whitespace in process-control.  Most of the
