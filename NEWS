@@ -7,6 +7,10 @@ control-archive 1.9.0 (unreleased)
     missing version field and improves the error message, instead of
     reporting that the Control header is not signed.
 
+    Hierarchy updates:
+
+    * Fix line endings in nntpworld.* key
+
 control-archive 1.8.0 (2018-03-18)
 
     Support signing IDs with whitespace in process-control.  Most of the
