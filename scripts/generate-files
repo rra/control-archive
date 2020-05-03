@@ -6,7 +6,7 @@
 # into a control.ctl file in the format that had been used for the ISC and INN
 # versions of that file.  It also supports special overrides.
 #
-# Copyright 2002-2004, 2008 Russ Allbery <eagle@eyrie.org>
+# Copyright 2002-2004, 2008, 2020 Russ Allbery <eagle@eyrie.org>
 #
 # SPDX-License-Identifier: MIT
 
@@ -102,7 +102,8 @@ sub check_fingerprint {
     my ($config) = @_;
     return unless $$config{'key-fingerprint'};
     my $options = '--no-secmem-warning --homedir=keyring --fingerprint';
-    my $print = `gpg $options $$config{'key-id'}`;
+    $options .= ' --no-permission-warning';
+    my $print = `gpg1 $options $$config{'key-id'}`;
     if ($? != 0) {
         warn "Failed to find fingerprint for $$config{'key-id'}\n";
         return;
@@ -624,7 +625,7 @@ The contents of the F<keys/*> file is included verbatim in F<PGPKEYS>.
 =item F<keyring/>
 
 For each hierarchy configuration containing a I<key-fingerprint>
-parameter, B<generate-files> runs B<gpg> with its home directory pointing
+parameter, B<generate-files> runs B<gpg1> with its home directory pointing
 to this directory, asks for the fingerprint of that PGP key, and verifies
 that it matches I<key-fingerprint> exactly (including whitespace, so that
 value must match GnuPG's output format).  To generate this keyring in
@@ -632,7 +633,7 @@ advance of running B<generate-files>, run:
 
     mkdir keyring
     chmod 700 keyring
-    gpg --homedir=keyring --import --allow-non-selfsigned-uid keys/*
+    gpg1 --homedir=keyring --import --allow-non-selfsigned-uid keys/*
 
 The B<--allow-non-selfsigned-uid> parameter is only required if you want
 to support PGP keys that aren't self-signed.  This is not secure, but some
@@ -646,7 +647,7 @@ Russ Allbery <eagle@eyrie.org>
 
 =head1 SEE ALSO
 
-actsync(8), control.ctl(5), gpg(1), uwildmat(3)
+actsync(8), control.ctl(5), gpg1(1), uwildmat(3)
 
 This script is part of the control-archive package.  The control-archive web
 page at L<https://www.eyrie.org/~eagle/software/control-archive/> will have

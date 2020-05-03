@@ -2,6 +2,10 @@
 
 control-archive 1.9.0 (unreleased)
 
+    Use gpg1 instead of gpg in the Makefile and scripts/generate-files to
+    support older keys.  Suppress warnings about keyring permissions when
+    generating files.
+
     When verifying PGP signatures, require that the headers part of the
     X-PGP-Sig header contain a comma.  This more readily diagnoses a
     missing version field and improves the error message, instead of
