@@ -1,0 +1,12 @@
+hierarchy: ROCKSOLID
+groups: rocksolid.*
+type: public
+description: "Rocksolid network - novabbs.com"
+sender: [ usenet@novabbs.com ]
+contact: [ usenet@novabbs.com ]
+url: http://news.novabbs.com/hierarchy/
+pgp: yes
+key-id: usenet@novabbs.com
+key-url: http://news.novabbs.com/hierarchy/rocksolid.txt
+key-fingerprint: FF84 6D73 0B72 CC0C B69B  6480 2A1C 655B F6D1 0B13
+admin-group: rocksolid.shared.rocksolid
