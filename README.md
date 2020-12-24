@@ -1,6 +1,6 @@
-# control-archive 1.8.0
+# control-archive 1.9.0
 
-Copyright 2002-2004, 2007-2014, 2016-2018 Russ Allbery <eagle@eyrie.org>.
+Copyright 2002-2004, 2007-2014, 2016-2020 Russ Allbery <eagle@eyrie.org>.
 Copyright 2001 Marco d'Itri.  Copyright 1996 UUNET Technologies, Inc..
 This software is distributed under a BSD-style license.  Please see the
 section [License](#license) below for more information.
@@ -57,6 +57,9 @@ Perl 5.6 or later plus the following additional Perl modules are required:
 [gzip](https://www.gnu.org/software/gzip/) and
 [bzip2](http://www.bzip.org/) are required.  Both are generally available
 with current operating systems, possibly as supplemental packages.
+
+[GnuPG](https://gnupg.org/) 1.4.20 or later is required to import keys and
+verify signatures.  This package does not yet work with GnuPG 2.x.
 
 process-control expects to be fed file names and message IDs of control
 messages on standard input and therefore needs to be run from a news
@@ -318,7 +321,7 @@ requests are gratefully reviewed and normally accepted.
 The control-archive package as a whole is covered by the following
 copyright statement and license:
 
-> Copyright 2002-2004, 2007-2014, 2016-2018
+> Copyright 2002-2004, 2007-2014, 2016-2020
 >     Russ Allbery <eagle@eyrie.org>
 >
 > Copyright 2001

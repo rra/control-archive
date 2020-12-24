@@ -1,12 +1,12 @@
 {
     "name": "control-archive",
-    "version": "1.8.0",
+    "version": "1.9.0",
     "synopsis": "processing and archiving of Netnews control messages",
     "maintainer": "Russ Allbery <eagle@eyrie.org>",
     "copyrights": [
         {
             "holder": "Russ Allbery <eagle@eyrie.org>",
-            "years": "2002-2004, 2007-2014, 2016-2018",
+            "years": "2002-2004, 2007-2014, 2016-2020",
         },
         {
             "holder": "Marco d'Itri",

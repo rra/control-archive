@@ -1,6 +1,6 @@
                    User-Visible control-archive Changes
 
-control-archive 1.9.0 (unreleased)
+control-archive 1.9.0 (2020-12-24)
 
     Use gpg1 instead of gpg in the Makefile and scripts/generate-files to
     support older keys.  Suppress warnings about keyring permissions when

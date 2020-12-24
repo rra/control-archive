@@ -9,6 +9,9 @@ Perl 5.6 or later plus the following additional Perl modules are required:
 [bzip2](http://www.bzip.org/) are required.  Both are generally available
 with current operating systems, possibly as supplemental packages.
 
+[GnuPG](https://gnupg.org/) 1.4.20 or later is required to import keys and
+verify signatures.  This package does not yet work with GnuPG 2.x.
+
 process-control expects to be fed file names and message IDs of control
 messages on standard input and therefore needs to be run from a news
 server or some other source of control messages.  A minimalist news server
