@@ -3,8 +3,9 @@ groups: fr.*
 type: public
 description: "French language"
 sender: [ control@usenet-fr.news.eu.org ]
-url: "http://www.usenet-fr.net/"
+url: "https://www.usenet-fr.net/"
 pgp: yes
 key-id: control@usenet-fr.news.eu.org
-key-url: "http://www.usenet-fr.net/fur/usenet/presentation-fr.html"
+key-url: "https://www.usenet-fr.net/pgp-fr-2020.txt"
+key-fingerprint: "D5F3 69B2 9757 3622 0153  54E7 FA42 3E89 970E B10B"
 admin-group: fr.usenet.forums.annonces

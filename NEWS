@@ -16,6 +16,7 @@ control-archive 1.9.0 (unreleased)
     * Remove the dictator.* hierarchy (shuttered by its maintainer)
     * Add rocksolid.*
     * Fix line endings in nntpworld.* key
+    * Replace the fr.* key and URLs and add a key fingerprint
 
 control-archive 1.8.0 (2018-03-18)
 
