@@ -1,5 +1,11 @@
                    User-Visible control-archive Changes
 
+control-archive 1.9.1 (unreleased)
+
+    Hierarchy updates:
+
+    * Change the official signing key for the Big Eight hierarchies
+
 control-archive 1.9.0 (2020-12-24)
 
     Use gpg1 instead of gpg in the Makefile and scripts/generate-files to
