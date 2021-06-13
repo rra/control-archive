@@ -1,21 +1,11 @@
 ## NET (*HISTORIC* -- Usenet 2)
 #
 # This was a failed experiment in a different newsgroup creation policy and
-# administrative policy which has now been almost entirely abandoned.  The
-# information is retained here for the few sites still using it, but sites
-# not already carrying the groups probably won't be interested.
+# administrative policy which has now been abandoned.
 #
 # (This was also the original unmoderated Usenet hierarchy from before the
 # Great Renaming.  The groups that used to be in net.* in the 1980s are now
 # in the Big Eight hierarchies.)
 #
-# URL: http://www.usenet2.org
-# Admin group: net.config
-# Key URL: http://www.usenet2.org/control@usenet2.org.asc
-# Key fingerprint: D7 D3 5C DB 18 6A 29 79  BF 74 D4 58 A3 78 9D 22
-# *PGP*   See comment at top of file.
 newgroup:*:net.*:drop
 rmgroup:*:net.*:drop
-#checkgroups:control@usenet2.org:net.*:verify-control@usenet2.org
-#newgroup:control@usenet2.org:net.*:verify-control@usenet2.org
-#rmgroup:control@usenet2.org:net.*:verify-control@usenet2.org
