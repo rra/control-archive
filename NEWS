@@ -5,6 +5,7 @@ control-archive 1.9.1 (unreleased)
     Hierarchy updates:
 
     * Change the official signing key for the Big Eight hierarchies
+    * Use https for the Big Eight web site
     * Remove remnant net.* information and document that it is abandoned
 
 control-archive 1.9.0 (2020-12-24)

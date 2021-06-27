@@ -4,7 +4,7 @@ type: public
 description: "The Big Eight"
 sender: [ group-admin@isc.org ]
 contact: [ board@big-8.org ]
-url: "http://www.big-8.org/"
+url: "https://www.big-8.org/"
 pgp: yes
 key-id: news.announce.newgroups
 key-fingerprint: "8E18 1BEF 0BE6 3896 2C1A  5C98 FAFE 7B55 0C18 C8B7"
