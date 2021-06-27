@@ -5,11 +5,11 @@ Comment: This file documents the copyright statements and licenses for
  .
  For any copyright year range specified as YYYY-ZZZZ in this file, the
  range specifies every single year in that closed interval.
-Copyright: 2002-2004, 2006-2014, 2016-2020 Russ Allbery <eagle@eyrie.org>
+Copyright: 2002-2004, 2006-2014, 2016-2021 Russ Allbery <eagle@eyrie.org>
 License: Expat
 
 Files: *
-Copyright: 2002-2004, 2006-2014, 2016-2020 Russ Allbery <eagle@eyrie.org>
+Copyright: 2002-2004, 2006-2014, 2016-2021 Russ Allbery <eagle@eyrie.org>
   2007 Julien ÉLIE <julien@trigofacile.com>
 License: Expat
 
