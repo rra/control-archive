@@ -1,6 +1,6 @@
 # control-archive
 
-Copyright 2002-2004, 2007-2014, 2016-2020 Russ Allbery <eagle@eyrie.org>.
+Copyright 2002-2004, 2007-2014, 2016-2021 Russ Allbery <eagle@eyrie.org>.
 Copyright 2001 Marco d'Itri.  Copyright 1996 UUNET Technologies, Inc..
 This software is distributed under a BSD-style license.  Please see the
 section [License](#license) below for more information.
@@ -321,7 +321,7 @@ requests are gratefully reviewed and normally accepted.
 The control-archive package as a whole is covered by the following
 copyright statement and license:
 
-> Copyright 2002-2004, 2007-2014, 2016-2020
+> Copyright 2002-2004, 2007-2014, 2016-2021
 >     Russ Allbery <eagle@eyrie.org>
 >
 > Copyright 2001
