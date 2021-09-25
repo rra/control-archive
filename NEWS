@@ -1,5 +1,10 @@
                    User-Visible control-archive Changes
 
+control-archive 1.9.2 (unreleased)
+
+    Change Subversion to Git in the control.ctl reference to the INN
+    version control repository.
+
 control-archive 1.9.1 (2021-06-27)
 
     Hierarchy updates:
