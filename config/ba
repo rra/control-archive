@@ -2,11 +2,8 @@ hierarchy: BA
 groups: ba.*
 type: public
 description: "San Francisco Bay Area, USA"
-sender: [ ba-mod@panix.com ]
-contact: [ ba-mod@panix.com ]
-url: "http://www.panix.com/~babm/ba/"
-pgp: yes
-key-id: ba.config
-key-url: "http://www.panix.com/~babm/ba/ba-mod.asc"
-key-fingerprint: "3C B6 7A 3B 34 53 C0 58  D2 FB 65 E8 E9 6F CD 46"
 admin-group: ba.config
+comment: [
+    "This hierarchy is still in use but has no active maintainers as of"
+    "October of 2021.  No control messages are currently being issued for it."
+]
