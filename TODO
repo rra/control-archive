@@ -46,6 +46,9 @@ Configuration:
    within the hierarchy, carleton.*, git.*, israel.*, iu.*, umn.*, and
    utexas.* could be handled without special fragments.
 
+ * Add a way to designate hierarchies that are still in use but have no
+   active maintainers.
+
 Output:
 
  * Currently, the generated newsgroups file uses the traditional mixed
@@ -106,3 +109,5 @@ Documentation:
 Style:
 
  * Update all Perl code to my current Perl coding style.
+
+ * Use YAML for all configuration.
