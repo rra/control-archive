@@ -8,6 +8,7 @@ control-archive 1.9.2 (unreleased)
     Hierarchy updates:
 
     * ba.* is now unmaintained
+    * Change URLs and control sender address for fido7.*
 
 control-archive 1.9.1 (2021-06-27)
 

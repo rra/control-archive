@@ -2,9 +2,9 @@ hierarchy: FIDO7
 groups: fido7.*
 type: public
 description: "Russian FidoNet"
-sender: [ newgroups-request@fido7.ru ]
-url: "http://www.fido7.ru/"
+sender: [ newgroups-request@fido7.org ]
+url: "http://www.fido7.org/"
 pgp: yes
 key-id: fido7.announce.newgroups
-key-url: "http://www.fido7.ru/pgpcontrol.html"
+key-url: "http://www.fido7.org/pgpcontrol.html"
 admin-group: fido7.postmasters
