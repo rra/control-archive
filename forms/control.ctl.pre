@@ -66,7 +66,7 @@
 ##     field to "mail" or "doit=mail" or "doit=<log file>" or whatever you
 ##     prefer (replacing <log file> with the name of an appropriate log
 ##     file).
-## 
+##
 ##   * A number of hierarchies are for local use only but have leaked out
 ##     into the general stream.  In this config file, they are set so that
 ##     the groups will be easy to remove, and are marked with a comment of
@@ -79,7 +79,7 @@
 ##
 ##     If you have permission to carry any of the hierarchies so listed in
 ##     this file, you should change the entries for those hierarchies
-##     below. 
+##     below.
 ##
 ##   * Some hierarchies are marked as *HISTORIC*.  These hierarchies
 ##     aren't entirely defunct, but they are very low-traffic, not widely
