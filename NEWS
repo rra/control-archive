@@ -9,6 +9,8 @@ control-archive 1.9.2 (unreleased)
 
     * ba.* is now unmaintained
     * Change URLs and control sender address for fido7.*
+    * bln.* now uses PGP-signed control messages
+    * Update admin group and URL for bln.*
 
 control-archive 1.9.1 (2021-06-27)
 

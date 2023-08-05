@@ -2,7 +2,11 @@ hierarchy: BLN
 groups: bln.*
 type: public
 description: "Berlin, Germany"
-sender: [ news@*fu-berlin.de ]
+sender: [ news@fu-berlin.de ]
 contact: [ news@fu-berlin.de ]
-url: "ftp://ftp.fu-berlin.de/doc/news/bln/bln"
-admin-group: bln.net.news
+url: "https://ftp.fu-berlin.de/doc/news/bln/bln-info.txt"
+pgp: yes
+key-id: news@fu-berlin.de
+key-url: https://ftp.fu-berlin.de/doc/news/bln/bln-key.txt
+key-fingerprint: "2B24 B5C7 8A48 6140 7BCD  5A88 281D 9076 3F36 8EA0"
+admin-group: bln.misc
