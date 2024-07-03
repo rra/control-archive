@@ -9,4 +9,4 @@ pgp: yes
 key-id: thur.net.news.groups
 key-fingerprint: "7E 3D 73 13 93 D4 CA 78  39 DE 3C E7 37 EE 22 F1"
 sync-server: news.thur.de
-admin-group: thur.net.news.groups
+admin-group: thur.net.admin

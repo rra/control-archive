@@ -2,10 +2,4 @@ hierarchy: FFM
 groups: ffm.*
 type: public
 description: "Frankfurt/M., Germany"
-sender: [ ffm.admin@arcor.de ]
-url: "http://ffm.arcornews.de/"
-pgp: yes
-key-id: ffm.admin
-key-fingerprint: "53 A0 82 62 6F C7 81 C9  CF 53 AB 00 A3 F8 C2 11"
-key-url: "ftp://ftp.arcor-online.net/pub/news/PGPKEY.FFM"
 admin-group: ffm.admin

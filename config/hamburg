@@ -2,11 +2,4 @@ hierarchy: HAMBURG
 groups: hamburg.*
 type: public
 description: "City of Hamburg, Germany"
-sender: [ hamburg@steering-group.net ]
-contact: [ hamburg@steering-group.net ]
-url: "http://www.steering-group.net/hamburg/"
-pgp: yes
-key-id: hamburg.koordination
-key-url: "http://www.steering-group.net/hamburg/hamburg.koordination.txt"
-key-fingerprint: "3E E7 0C BB 6E 01 94 EE  45 6F C5 57 F4 B9 54 8E"
 admin-group: hamburg.koordination

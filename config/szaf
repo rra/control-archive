@@ -1,10 +1,12 @@
 hierarchy: SZAF
 groups: szaf.*
 type: private
-description: "Szafe im Netz
+description: "Szafe im Netz"
 contact: [ hirtenrat@szaf.org ]
 sender: [ hirtenrat@szaf.org ]
+url: "https://news.szaf.org/szaf/"
 pgp: yes
 key-id: Hirtenrat
-key-url: "http://news.szaf.org/szaf/szaf-key.txt"
+key-url: "https://news.szaf.org/szaf/szaf-key.txt"
+key-fingerprint: "10F3 04EF 734B 0A9C 8F1B 3620 089D 2104 8585 4234"
 admin-group: szaf.admin

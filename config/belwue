@@ -2,11 +2,3 @@ hierarchy: BELWUE
 groups: belwue.*
 type: public
 description: "Landeshochschulnetz Baden-Wuerttemberg, Germany"
-sender: [ news@news.belwue.de ]
-contact: [ news@belwue.de ]
-url: "http://www.belwue.de/produkte/dienste/dienste-usenet1.html"
-pgp: yes
-key-id: belwue-hir-control
-key-fingerprint: "2E FF 2B 8A 89 1F E5 AA  6F 89 67 24 50 B5 42 D9"
-key-url: "http://www.belwue.de/fileadmin/belwue/Dokumente/Newsserver/belwue-hir-control.asc"
-admin-group: belwue.infos
